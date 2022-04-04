@@ -4,14 +4,12 @@ drop table menu;
 drop table foodinfo;
 drop table dignosis;
 drop table recfood;
+
 create table member(
 seq number(10),
 id varchar2(10),
 pw varchar2(50) not null,
 nick varchar2(10) not null,
-heigth number(10) not null,
-age number(10) not null,
-act number(1) not null,
 constraint user_seq primary key(seq),
 constraint id unique(id));
 
@@ -27,9 +25,11 @@ id varchar2(10),
 checkday date default sysdate,
 weigth number(10) not null,
 blood number(10) not null,
-bsugar number(10) not null,
+bsugar number(10) not null, 
+heigth number(10) not null,
+age number(10) not null,
 act number(1) not null,
-constraint checking_id_fk foreign key(id) references member(id)
+constraint checkdata_id_fk foreign key(id) references member(id)
 );
 
 create table menu(
@@ -63,13 +63,4 @@ bs number(1),
 bp number(1),
 diaday date default sysdate,
 constraint dignosis_id_fk foreign key(id) references member(id)
-);
-
-create table recfood(
-id varchar2(10),
-recmeal number(1),
-recday date default sysdate,
-foodid varchar2(30),
-constraint recfood_id_fk foreign key(id) references member(id),
-constraint recfood_foodid_fk foreign key(foodid) references foodinfo(foodid)
 );
