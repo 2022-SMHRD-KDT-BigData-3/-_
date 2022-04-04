@@ -80,9 +80,9 @@ public class MemberDAO {
 		         
 		         // 4. ? 바인드 변수에 값 채우기
 		         // join메소드 매개변수로 dto(입력받은 값들의 묶음 = 가방) 받아오기
-		         psmt.setString(2, dto.getId() );
-		         psmt.setString(3, dto.getPw() );
-		         psmt.setString(4, dto.getNick());
+		         psmt.setString(1, dto.getId() );
+		         psmt.setString(2, dto.getPw() );
+		         psmt.setString(3, dto.getNick());
 		         
 		         // 5. sql문 실행
 		         // insert -> DB에 변화생기기 때문에 Update
@@ -100,8 +100,8 @@ public class MemberDAO {
 		   public MemberDTO login(MemberDTO dto) {
 		      db_conn();
 		      try {
-		         String sql = "select * from member where it =? and pw =?";
-		         // select로 member에서 가지고 오는데 email과 pw값이 다 일치할때만 가지고 오겠다
+		         String sql = "select * from member where id =? and pw =?";
+		         // select로 member에서 가지고 오는데 id과 pw값이 다 일치할때만 가지고 오겠다
 		         
 		        psmt = conn.prepareStatement(sql);
 		        
@@ -115,8 +115,8 @@ public class MemberDAO {
 		        if(rs.next()) {
 		        	// 실행문장 실행 = 값이 있다 = 로그인성공
 		        	int seq = rs.getInt("seq");
-		        	String id = rs.getString(2);
-		        	String pw = rs.getString(3);
+		        	String id = rs.getString(1);
+		        	String pw = rs.getString(2);
 		        	String nick = rs.getString("nick");
 		        	
 		        	

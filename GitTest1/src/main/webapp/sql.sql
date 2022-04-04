@@ -13,6 +13,7 @@ nick varchar2(10) not null,
 constraint user_seq primary key(seq),
 constraint id unique(id));
 
+select * from member;
 create sequence user_seq
 	start with 1
 	increment by 1

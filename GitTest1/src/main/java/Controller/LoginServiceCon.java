@@ -50,7 +50,7 @@ public class LoginServiceCon extends HttpServlet {
 	      }else {
 	    	  System.out.println("로그인실패");
 	      }
-	      response.sendRedirect("../index.html");
+	      response.sendRedirect("./quixlab-master/index.jsp");
 	   }
 
 	
