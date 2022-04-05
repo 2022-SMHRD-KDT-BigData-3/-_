@@ -56,7 +56,7 @@
                                     </div>
                                     <input type="submit" class="btn login-form__btn submit w-100" value="회원가입">
                                 </form>
-                                    <p class="mt-5 login-form__footer">계정이 있습니까? <a href="page-login.html" class="text-primary">로그인 페이지로 이동 </a>
+                                    <p class="mt-5 login-form__footer">계정이 있습니까? <a href="page-login.jsp" class="text-primary">로그인 페이지로 이동 </a>
                                     </p>
                                 </div>
                             </div>

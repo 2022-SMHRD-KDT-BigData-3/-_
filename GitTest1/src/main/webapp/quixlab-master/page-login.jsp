@@ -51,7 +51,7 @@
                                     </div>
                                     <input type="submit" class="btn login-form__btn submit w-100" value="로그인">
                                 </form>
-                                <p class="mt-5 login-form__footer">계정이 없으신가요? <a href="page-register.html" class="text-primary">     회원가입</a>
+                                <p class="mt-5 login-form__footer">계정이 없으신가요? <a href="page-register.jsp" class="text-primary">     회원가입</a>
                             </div>
                         </div>
                     </div>
