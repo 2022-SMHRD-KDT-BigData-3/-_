@@ -47,10 +47,12 @@ public class LoginServiceCon extends HttpServlet {
 	    	  
 	    	  // 2. 로그인 정보를 담은 session 만들기
 	    	  session.setAttribute("info", info);
+	    	  response.sendRedirect("./quixlab-master/index.jsp");
 	      }else {
 	    	  System.out.println("로그인실패");
+	    	  response.sendRedirect("./quixlab-master/page-login.jsp");
 	      }
-	      response.sendRedirect("./quixlab-master/index.jsp");
+	     
 	   }
 
 	

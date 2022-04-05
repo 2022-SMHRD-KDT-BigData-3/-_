@@ -18,9 +18,9 @@
 </head>
 <body class="h-100">
 
-	<% 
-		// 로그인 정보가 담긴 session 불러오기
-		MemberDTO info = (MemberDTO)session.getAttribute("info");
+	<%
+	// 로그인 정보가 담긴 session 불러오기
+	MemberDTO info = (MemberDTO) session.getAttribute("info");
 	%>
 	<!--*******************
         Preloader start
@@ -46,7 +46,7 @@
 								<a class="text-center">
 									<h4>개인정보수정</h4>
 								</a>
-								<li>접속한 ID : <%=info.getId() %></li>
+								<li>접속한 ID : <%=info.getId()%></li>
 								<form class="mt-5 mb-5 login-input" action="../UpdatServiceCon"
 									method="post">
 									<div class="form-group">
@@ -67,10 +67,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 	<!--**********************************
         Scripts
     ***********************************-->

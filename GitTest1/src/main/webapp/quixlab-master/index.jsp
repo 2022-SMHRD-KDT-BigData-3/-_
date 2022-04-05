@@ -153,14 +153,10 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 							</div></li>
 						<li class="icons dropdown">
 							<div class="ss" data-toggle="dropdown">
-								<a>
-									<%if(info!=null){ %>
-									 <a href="LogoutServiceCon"><img src="images/user/logout.png"
-									height="40" width="40" id="logout">
-									<%} else{%> 
-									<img src="images/user/login.png" height="40" width="40" id="login"> 
-									<% }%>
-								</a>
+								<a> <%if(info!=null){ %> <a href="LogoutServiceCon"><img
+										src="images/user/logout.png" height="40" width="40"
+										id="logout"> <%} else{%> <img src="images/user/login.png"
+										height="40" width="40" id="login"> <% }%> </a>
 							</div>
 						</li>
 					</ul>
@@ -298,14 +294,14 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 					<li><a class="has-arrow" href="javascript:void()"
 						aria-expanded="false"> <i class="icon-notebook menu-icon"></i><span
 							class="nav-text">Pages</span>
-					</a>
-						<ul aria-expanded="false">
+					</a> <!-- 로그인  -->
+						<ul aria-expanded="User">
 							<li><a href="./page-login.jsp">로그인</a></li>
 							<li><a href="./page-register.jsp">회원가입</a></li>
 							<li><a href="./page-edit.jsp">개인정보수정</a></li>
 							<li><a class="has-arrow" href="javascript:void()"
 								aria-expanded="false">하기싫다</a>
-								<ul aria-expanded="false">	
+								<ul aria-expanded="false">
 								</ul></li>
 						</ul></li>
 				</ul>
@@ -318,200 +314,237 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 		<!--**********************************
             Content body start
         ***********************************-->
-		       <div class="content-body">
+		<div class="content-body">
 
-            <div class="container-fluid mt-3">
-                <div class="row">
-    
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-3">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">안녕하세요</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">nickname님</h2>
-                                    <p class="text-white mb-0">환영합니다!</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                         <div class="col-lg-3 col-md-6">
-                            <div class="card card-widget">
-                                <div class="card-body">
-                                    <h5 class="text-muted">정보 </h5>
-                                    <h2 class="mt-4">현재 nickname 건강정보</h2>
-                                    <!-- <span>현재 nickname 건강정보</span> -->
-                                    <div class="mt-4">
-                                        <h4>혈당</h4>
-                                        <h6>Blood pressure <span class="pull-right">30%</span></h6>
-                                        <div class="progress mb-3" style="height: 7px">
-                                            <div class="progress-bar bg-primary" style="width: 30%;" role="progressbar"><span class="sr-only">30% Order</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h4>혈압</h4>
-                                        <h6 class="m-t-10 text-muted">blood glucose <span class="pull-right">50%</span></h6>
-                                        <div class="progress mb-3" style="height: 7px">
-                                            <div class="progress-bar bg-success" style="width: 50%;" role="progressbar"><span class="sr-only">50% Order</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h4>BMI</h4>
-                                        <h6 class="m-t-10 text-muted">body mass index <span class="pull-right">20%</span></h6>
-                                        <div class="progress mb-3" style="height: 7px">
-                                            <div class="progress-bar bg-warning" style="width: 20%;" role="progressbar"><span class="sr-only">20% Order</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
-                        </div>
-                    
+			<div class="container-fluid mt-3">
+				<div class="row">
 
-                    
-                    
-                </div>
+					<div class="col-lg-3 col-sm-6">
+						<div class="card gradient-3">
+							<div class="card-body">
+								<h3 class="card-title text-white">안녕하세요</h3>
+								<div class="d-inline-block">
+									<%if(info!=null){ %>
+									<h2 class="text-white"><%=info.getNick() %>님
+									</h2>
+									<p class="text-white mb-0">환영합니다!</p>
+								</div>
+								<%}else{ %>
+								<h2 class="text-white">로그인을 해주세요</h2>
+								<%} %>
+								<span class="float-right display-5 opacity-5"><i
+									class="fa fa-users"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="card card-widget">
+							<div class="card-body">
+								<h5 class="text-muted">정보</h5>
+								<%if(info!=null){ %>
+								<h2 class="mt-4">
+									현재
+									<%=info.getNick() %>님 건강정보
+								</h2>
+								<%}else{ %>
+								<h2 class="mt-4">로그인 해주세요</h2>
+								<%} %>
+								<!-- <span>현재 nickname 건강정보</span> -->
+								<div class="mt-4">
+									<h4>혈당</h4>
+									<h6>
+										Blood pressure <span class="pull-right">30%</span>
+									</h6>
+									<div class="progress mb-3" style="height: 7px">
+										<div class="progress-bar bg-primary" style="width: 30%;"
+											role="progressbar">
+											<span class="sr-only">30% Order</span>
+										</div>
+									</div>
+								</div>
+								<div class="mt-4">
+									<h4>혈압</h4>
+									<h6 class="m-t-10 text-muted">
+										blood glucose <span class="pull-right">50%</span>
+									</h6>
+									<div class="progress mb-3" style="height: 7px">
+										<div class="progress-bar bg-success" style="width: 50%;"
+											role="progressbar">
+											<span class="sr-only">50% Order</span>
+										</div>
+									</div>
+								</div>
+								<div class="mt-4">
+									<h4>BMI</h4>
+									<h6 class="m-t-10 text-muted">
+										body mass index <span class="pull-right">20%</span>
+									</h6>
+									<div class="progress mb-3" style="height: 7px">
+										<div class="progress-bar bg-warning" style="width: 20%;"
+											role="progressbar">
+											<span class="sr-only">20% Order</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body pb-0 d-flex justify-content-between">
-                                        <div>
-                                            <h4 class="mb-1">혈압</h4>
-      
-                                        </div>
-                                        <div>
-                                            <ul>
-                                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">일</a></li>
-                                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">주</a></li>
-                                                <li class="d-inline-block"><a class="text-dark" href="#">달</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="chart-wrapper">
-                                        <canvas id="chart_widget_1"></canvas>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
+
+
+
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-12">
+								<div class="card">
+									<div class="card-body pb-0 d-flex justify-content-between">
+										<div>
+											<h4 class="mb-1">혈압</h4>
+
+										</div>
+										<div>
+											<ul>
+												<li class="d-inline-block mr-3"><a class="text-dark"
+													href="#">일</a></li>
+												<li class="d-inline-block mr-3"><a class="text-dark"
+													href="#">주</a></li>
+												<li class="d-inline-block"><a class="text-dark"
+													href="#">달</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="chart-wrapper">
+										<canvas id="chart_widget_1"></canvas>
+									</div>
+									<div class="card-body">
+										<div class="d-flex justify-content-between">
+											<h6>어제 혈압값</h6>
 											<h6>오늘 혈압값</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    			 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body pb-0 d-flex justify-content-between">
-                                        <div>
-                                            <h4 class="mb-1">혈당</h4>
-  
-                                        </div>
-                                        <div>
-                                            <ul>
-                                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">일</a></li>
-                                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">주</a></li>
-                                                <li class="d-inline-block"><a class="text-dark" href="#">달</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="chart-wrapper">
-                                        <canvas id="chart_widget_2"></canvas>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                        <h6>오늘 혈당값</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             	 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body pb-0 d-flex justify-content-between">
-                                        <div>
-                                            <h4 class="mb-1">BMI</h4>
- 
-                                        </div>
-                                        <div>
-                                            <ul>
-                                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">일</a></li>
-                                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">주</a></li>
-                                                <li class="d-inline-block"><a class="text-dark" href="#">달</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="chart-wrapper">
-                                        <canvas id="chart_wid3"></canvas>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                        <h6>오늘 BMI값</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="SummaryMain">
-                         <div class="col-lg-6 col-md-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Order Summary</h4>
-                                    <div id="morris-bar-chart"></div>
-                                </div>
-                            </div>
-                        </div>   
-                    </div>
-                
-                
-                    <div class="col-xl-6 col-lg-12 col-sm-12 col-xxl-12" id="worldMain">
-                        <div class="card">
-                            <div class="card-body">
-                                    <h4 class="card-title mb-0">Store Location</h4>
-                                <div id="world-map" style="height: 470px;"></div>
-                            </div>        
-                        </div>
-                    </div>
-                </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-12">
+								<div class="card">
+									<div class="card-body pb-0 d-flex justify-content-between">
+										<div>
+											<h4 class="mb-1">혈당</h4>
 
-                
+										</div>
+										<div>
+											<ul>
+												<li class="d-inline-block mr-3"><a class="text-dark"
+													href="#">일</a></li>
+												<li class="d-inline-block mr-3"><a class="text-dark"
+													href="#">주</a></li>
+												<li class="d-inline-block"><a class="text-dark"
+													href="#">달</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="chart-wrapper">
+										<canvas id="chart_widget_2"></canvas>
+									</div>
+									<div class="card-body">
+										<div class="d-flex justify-content-between">
+											<h6>어제 혈당값</h6>
+											<h6>오늘 혈당값</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-12">
+								<div class="card">
+									<div class="card-body pb-0 d-flex justify-content-between">
+										<div>
+											<h4 class="mb-1">BMI</h4>
+
+										</div>
+										<div>
+											<ul>
+												<li class="d-inline-block mr-3"><a class="text-dark"
+													href="#">일</a></li>
+												<li class="d-inline-block mr-3"><a class="text-dark"
+													href="#">주</a></li>
+												<li class="d-inline-block"><a class="text-dark"
+													href="#">달</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="chart-wrapper">
+										<canvas id="chart_wid3"></canvas>
+									</div>
+									<div class="card-body">
+										<div class="d-flex justify-content-between">
+											<h6>어제 BMI값</h6>
+											<h6>오늘 BMI값</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="SummaryMain">
+					<div class="col-lg-6 col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">Order Summary</h4>
+								<div id="morris-bar-chart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
-            </div>
-			<!-- #/ container -->
+				<div class="col-xl-6 col-lg-12 col-sm-12 col-xxl-12" id="worldMain">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title mb-0">Store Location</h4>
+							<div id="world-map" style="height: 470px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
 		</div>
-		<!--**********************************
+		<!-- #/ container -->
+	</div>
+	<!--**********************************
             Content body end
         ***********************************-->
 
 
-		<!--**********************************
+	<!--**********************************
             Footer start
         ***********************************-->
-		<div class="footer">
-			<div class="copyright">
-				<p>
-					스마트인재개발 &copy; Designed & Developed by <a
-						href="https://themeforest.net/user/quixlab">지금우리학원은</a> 2022
-				</p>
-			</div>
+	<div class="footer">
+		<div class="copyright">
+			<p>
+				스마트인재개발 &copy; Designed & Developed by <a
+					href="https://themeforest.net/user/quixlab">지금우리학원은</a> 2022
+			</p>
 		</div>
-		<!--**********************************
+	</div>
+	<!--**********************************
             Footer end
         ***********************************-->
 	</div>
@@ -556,13 +589,13 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
     		location.href="page-login.jsp"
     	});
     </script>
-    <script type="text/javascript">
+	<script type="text/javascript">
     	document.querySelector("#logout").addEventListener("click",function(){
     		location.href="../LogoutServiceCon"
     	});
     </script>
-    <script type="text/javascript"> document.getElementById("worldMain").style.display="none" </script>
-    <script type="text/javascript"> document.getElementById("SummaryMain").style.display="none" </script>
+	<script type="text/javascript"> document.getElementById("worldMain").style.display="none" </script>
+	<script type="text/javascript"> document.getElementById("SummaryMain").style.display="none" </script>
 
 </body>
 </html>
