@@ -151,6 +151,8 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 									</ul>
 								</div>
 							</div></li>
+										
+							<!-- 로그인 로그아웃 -->
 						<li class="icons dropdown">
 							<div class="ss" data-toggle="dropdown">
 								<a> <%if(info!=null){ %> <a href="LogoutServiceCon"><img
@@ -158,6 +160,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 										id="logout"> <%} else{%> <img src="images/user/login.png"
 										height="40" width="40" id="login"> <% }%> </a>
 							</div>
+				
 						</li>
 					</ul>
 				</div>
@@ -176,7 +179,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 					<li class="nav-label">Dashboard</li>
 					<li><a class="has-arrow" href="javascript:void()"
 						aria-expanded="false"> <i class="icon-speedometer menu-icon"></i><span
-							class="nav-text">Dashboard</span>
+							class="nav-text">UserInfo</span>
 					</a>
 						<ul aria-expanded="false">
 							<li><a href="./index.jsp">Home 1</a></li>

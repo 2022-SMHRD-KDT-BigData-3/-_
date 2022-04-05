@@ -3,13 +3,12 @@ drop table checking;
 drop table menu;
 drop table foodinfo;
 drop table dignosis;
-drop table recfood;
 
 create table member(
 seq number(10),
-id varchar2(10),
-pw varchar2(50) not null,
-nick varchar2(10) not null,
+id varchar2(100),
+pw varchar2(100) not null,
+nick varchar2(100) not null,
 constraint user_seq primary key(seq),
 constraint id unique(id));
 

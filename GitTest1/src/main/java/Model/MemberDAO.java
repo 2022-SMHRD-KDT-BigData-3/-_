@@ -115,8 +115,8 @@ public class MemberDAO {
 		        if(rs.next()) {
 		        	// 실행문장 실행 = 값이 있다 = 로그인성공
 		        	int seq = rs.getInt("seq");
-		        	String id = rs.getString(1);
-		        	String pw = rs.getString(2);
+		        	String id = rs.getString(2);
+		        	String pw = rs.getString(3);
 		        	String nick = rs.getString("nick");
 		        	
 		        	

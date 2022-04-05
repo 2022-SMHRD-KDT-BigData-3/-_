@@ -26,7 +26,7 @@ public class JoinServiceCon extends HttpServlet {
 		// 2. request객체에서 보낸 데이터 4가지 받아오기
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		String nick = request.getParameter("pw");
+		String nick = request.getParameter("nick");
 
 		System.out.println("id : " + id);
 		System.out.println("pw : " + pw);
