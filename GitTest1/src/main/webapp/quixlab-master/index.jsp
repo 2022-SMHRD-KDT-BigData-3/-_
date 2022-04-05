@@ -299,7 +299,11 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 							class="nav-text">Pages</span>
 					</a> <!-- 로그인  -->
 						<ul aria-expanded="User">
+						<%if(info!=null){ %>
+						<li><a href="../LogoutServiceCon">로그아웃</a></li>
+						<%}else{ %>
 							<li><a href="./page-login.jsp">로그인</a></li>
+							<%} %>
 							<li><a href="./page-register.jsp">회원가입</a></li>
 							<li><a href="./page-edit.jsp">개인정보수정</a></li>
 							<li><a class="has-arrow" href="javascript:void()"
