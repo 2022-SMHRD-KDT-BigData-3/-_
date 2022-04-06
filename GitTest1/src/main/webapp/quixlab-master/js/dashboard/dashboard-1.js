@@ -230,17 +230,7 @@
             labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
             type: 'line',
             defaultFontFamily: 'Montserrat',
-            datasets: [{
-                data: [0, 15, 57, 12, 85, 10, 50],
-                label: "어재 혈압",
-                /*backgroundColor: '#018921',*/
-                borderColor: '#018921',
-                borderWidth: 0.5,
-                pointStyle: 'circle',
-                pointRadius: 5,
-                pointBorderColor: 'transparent',
-                pointBackgroundColor: '#018921',
-            }, {
+            datasets: [ {
                 label: "오늘 혈압",
                 data: [0, 10, 20, 30, 40, 50, 60],
                /* backgroundColor: '#ADEB00',*/
@@ -319,16 +309,6 @@
             type: 'line',
             defaultFontFamily: 'Montserrat',
             datasets: [{
-                data: [0, 15, 57, 12, 85, 10, 50],
-                label: "어재 혈당",
-                /*backgroundColor: '#018921',*/
-                borderColor: '#018921',
-                borderWidth: 0.5,
-                pointStyle: 'circle',
-                pointRadius: 5,
-                pointBorderColor: 'transparent',
-                pointBackgroundColor: '#018921',
-            }, {
                 label: "오늘 혈당",
                 data: [0, 10, 20, 30, 40, 50, 60],
                /* backgroundColor: '#ADEB00',*/
@@ -407,16 +387,6 @@
             type: 'line',
             defaultFontFamily: 'Montserrat',
             datasets: [{
-                data: [0, 15, 57, 12, 85, 10, 50],
-                label: "어재 BMI",
-                /*backgroundColor: '#018921',*/
-                borderColor: '#018921',
-                borderWidth: 0.5,
-                pointStyle: 'circle',
-                pointRadius: 5,
-                pointBorderColor: 'transparent',
-                pointBackgroundColor: '#018921',
-            }, {
                 label: "오늘 BMI",
                 data: [0, 10, 20, 30, 40, 50, 60],
                /* backgroundColor: '#ADEB00',*/

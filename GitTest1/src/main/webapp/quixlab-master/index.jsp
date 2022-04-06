@@ -398,105 +398,100 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row">
-							<div class="col-12">
-								<div class="card">
-									<div class="card-body pb-0 d-flex justify-content-between">
-										<div>
-											<h4 class="mb-1">혈압</h4>
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body pb-0 d-flex justify-content-between">
+									<div>
+										<h4 class="mb-1">혈압</h4>
 
-										</div>
-										<div>
-											<ul>
-												<li class="d-inline-block mr-3"><a class="text-dark"
-													href="#">일</a></li>
-												<li class="d-inline-block mr-3"><a class="text-dark"
-													href="#">주</a></li>
-												<li class="d-inline-block"><a class="text-dark"
-													href="#">달</a></li>
-											</ul>
-										</div>
 									</div>
-									<div class="chart-wrapper">
-										<canvas id="chart_widget_1"></canvas>
+									<div>
+										<ul>
+											<li class="d-inline-block mr-3"><a class="text-dark"
+												href="#">일</a></li>
+											<li class="d-inline-block mr-3"><a class="text-dark"
+												href="#">주</a></li>
+											<li class="d-inline-block"><a class="text-dark" href="#">달</a></li>
+										</ul>
 									</div>
-									<div class="card-body">
-										<div class="d-flex justify-content-between">
-											<h6>어제 혈압값</h6>
-											<h6>오늘 혈압값</h6>
-										</div>
+								</div>
+								<div class="chart-wrapper">
+									<canvas id="chart_widget_1"></canvas>
+								</div>
+								<div class="card-body">
+									<div class="d-flex justify-content-between">
+										<h6>어제 혈압값</h6>
+										<h6>오늘 혈압값</h6>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row">
-							<div class="col-12">
-								<div class="card">
-									<div class="card-body pb-0 d-flex justify-content-between">
-										<div>
-											<h4 class="mb-1">혈당</h4>
 
-										</div>
-										<div>
-											<ul>
-												<li class="d-inline-block mr-3"><a class="text-dark"
-													href="#">일</a></li>
-												<li class="d-inline-block mr-3"><a class="text-dark"
-													href="#">주</a></li>
-												<li class="d-inline-block"><a class="text-dark"
-													href="#">달</a></li>
-											</ul>
-										</div>
+
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body pb-0 d-flex justify-content-between">
+									<div>
+										<h4 class="mb-1">혈당</h4>
+
 									</div>
-									<div class="chart-wrapper">
-										<canvas id="chart_widget_2"></canvas>
+									<div>
+										<ul>
+											<li class="d-inline-block mr-3"><a class="text-dark"
+												href="#">일</a></li>
+											<li class="d-inline-block mr-3"><a class="text-dark"
+												href="#">주</a></li>
+											<li class="d-inline-block"><a class="text-dark" href="#">달</a></li>
+										</ul>
 									</div>
-									<div class="card-body">
-										<div class="d-flex justify-content-between">
-											<h6>어제 혈당값</h6>
-											<h6>오늘 혈당값</h6>
-										</div>
+								</div>
+								<div class="chart-wrapper">
+									<canvas id="chart_widget_2"></canvas>
+								</div>
+								<div class="card-body">
+									<div class="d-flex justify-content-between">
+										<h6>어제 혈당값</h6>
+										<h6>오늘 혈당값</h6>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row">
-							<div class="col-12">
-								<div class="card">
-									<div class="card-body pb-0 d-flex justify-content-between">
-										<div>
-											<h4 class="mb-1">BMI</h4>
 
-										</div>
-										<div>
-											<ul>
-												<li class="d-inline-block mr-3"><a class="text-dark"
-													href="#">일</a></li>
-												<li class="d-inline-block mr-3"><a class="text-dark"
-													href="#">주</a></li>
-												<li class="d-inline-block"><a class="text-dark"
-													href="#">달</a></li>
-											</ul>
-										</div>
+
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body pb-0 d-flex justify-content-between">
+									<div>
+										<h4 class="mb-1">BMI</h4>
+
 									</div>
-									<div class="chart-wrapper">
-										<canvas id="chart_wid3"></canvas>
+									<div>
+										<ul>
+											<li class="d-inline-block mr-3"><a class="text-dark"
+												href="#">일</a></li>
+											<li class="d-inline-block mr-3"><a class="text-dark"
+												href="#">주</a></li>
+											<li class="d-inline-block"><a class="text-dark" href="#">달</a></li>
+										</ul>
 									</div>
-									<div class="card-body">
-										<div class="d-flex justify-content-between">
-											<h6>어제 BMI값</h6>
-											<h6>오늘 BMI값</h6>
-										</div>
+								</div>
+								<div class="chart-wrapper">
+									<canvas id="chart_wid3"></canvas>
+								</div>
+								<div class="card-body">
+									<div class="d-flex justify-content-between">
+										<h6>어제 BMI값</h6>
+										<h6>오늘 BMI값</h6>
 									</div>
 								</div>
 							</div>
