@@ -9,8 +9,10 @@ public class CheckingDTO {
 	private int act;
 	private int height;
 	private int age;
-	public CheckingDTO(int weigth, int blood, int bsugar, int act, int height, int age) {
+
+	public CheckingDTO(String id, int weigth, int blood, int bsugar, int act, int height, int age) {
 		super();
+		this.id = id;
 		this.weigth = weigth;
 		this.blood = blood;
 		this.bsugar = bsugar;

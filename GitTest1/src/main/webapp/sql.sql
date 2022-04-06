@@ -13,6 +13,7 @@ constraint user_seq primary key(seq),
 constraint id unique(id));
 
 select * from member;
+select * from checking;
 create sequence user_seq
 	start with 1
 	increment by 1
