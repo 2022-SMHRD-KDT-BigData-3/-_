@@ -1,3 +1,4 @@
+<%@page import="Model.CheckingDTO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -20,6 +21,7 @@
 <body>
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto"); 
 	%>
 	<!--*******************
         Preloader start
@@ -389,7 +391,8 @@
 																<th><h3>1</h3></th>
 																<td>나이</td>
 																<td><div class="dropdown">
-																		<input type="number" name="age" value="55"
+												
+															<input type="number" name="age"  value="<%if(info!=null){ %><%=ckdto.getAge() %><%} %>"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown1">
 																	</div></td>
@@ -399,7 +402,7 @@
 																<td>키</td>
 																<td>
 																	<div class="dropdown">
-																		<input type="number" name="weigth" value="29"
+														<input type="number" name="heigth" value="<%if(info!=null){ %><%=ckdto.getHeight() %><%} %>"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown2">
 																	</div>
@@ -409,7 +412,7 @@
 																<td>몸무게</td>
 																<td>
 																	<div class="dropdown">
-																		<input type="number" name="heigth"
+																		<input type="number" name="weigth" value="<%if(info!=null){ %><%=ckdto.getWeigth() %><%} %>"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown3">
 																	</div>
@@ -448,11 +451,11 @@
 										<div class="tdl-holder">
 											<div class="tdl-content">
 												<ul id="todo_list">
-													<li><label><input type="checkbox" name="act" value="1"
+													<li><label><input type="checkbox" name="act" value="1" <%if(info!=null){if(ckdto.getAct()==1){ %> checked="checked"<%}} %>
 															onclick="checkOnlyOne(this)" /><i></i><span>- 앉아서 주로 생활하거나 매일 가벼운 움직임만 하며 활동량이 적은 경우</span>
-															<li><label><input type="checkbox" name="act" value="2"
+															<li><label><input type="checkbox" name="act" value="2"  <%if(info!=null){if(ckdto.getAct()==2){ %> checked="checked"<%}} %>
 																	onclick="checkOnlyOne(this)" /><i></i><span>- 규칙적인 생활로 보통의 활동량을 가진 경우</span>
-																	<li><label><input type="checkbox"  value="3"
+																	<li><label><input type="checkbox"  value="3"  <%if(info!=null){if(ckdto.getAct()==3){ %> checked="checked"<%}} %>
 																			name="act" onclick="checkOnlyOne(this)" /><i></i><span>- 육체노동 등 평소 신체 활동량이 많은 경우</span>
 												</ul>
 											</div>

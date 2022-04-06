@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Model.CheckingDAO;
+import Model.CheckingDTO;
 import Model.MemberDAO;
 import Model.MemberDTO;
 
@@ -36,6 +40,8 @@ public class LoginServiceCon extends HttpServlet {
 	      
 	      MemberDAO dao = new MemberDAO();
 	      MemberDTO info = dao.login(dto);
+	      CheckingDAO ckdao = new CheckingDAO();
+	      CheckingDTO ckdto = ckdao.select(dto);
 	      
 	      // 실행결과 console 창에 출력
 	      if(info !=null) {
@@ -44,9 +50,11 @@ public class LoginServiceCon extends HttpServlet {
 	    	  // 로그인 정보 유지하기 -> session 이용하기
 	    	  // 1. session객체선언
 	    	  HttpSession session = request.getSession();
-	    	  
 	    	  // 2. 로그인 정보를 담은 session 만들기
 	    	  session.setAttribute("info", info);
+	    	  if(ckdto!=null) {
+	    		  session.setAttribute("ckdto", ckdto);
+	    	  }
 	    	  response.sendRedirect("./quixlab-master/index.jsp");
 	      }else {
 	    	  System.out.println("로그인실패");

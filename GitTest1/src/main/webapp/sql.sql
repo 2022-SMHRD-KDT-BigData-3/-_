@@ -11,7 +11,7 @@ pw varchar2(100) not null,
 nick varchar2(100) not null,
 constraint user_seq primary key(seq),
 constraint id unique(id));
-
+select * from checking where id = '1234' order by checkday desc
 select * from member;
 select * from checking;
 create sequence user_seq

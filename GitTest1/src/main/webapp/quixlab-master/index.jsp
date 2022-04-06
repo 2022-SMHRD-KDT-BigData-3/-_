@@ -1,3 +1,4 @@
+<%@page import="Model.CheckingDTO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -27,6 +28,7 @@
 <body>
 	<%
 MemberDTO info = (MemberDTO)session.getAttribute("info");
+CheckingDTO ckdto= (CheckingDTO)session.getAttribute("dto"); 
 %>
 	<!--*******************
         Preloader start
