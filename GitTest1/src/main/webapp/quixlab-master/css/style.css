@@ -14712,26 +14712,37 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 }
 
 #Dropdown1 {
-	background-color: #018921;
-	border-color:#018921;
+	
+background-color:  #fff;
+	border-image:#7fc638;
+	color:#000000;
+	padding: 10px 200px;
 }
 
 #Dropdown2 {
-	background-color: #7fc638;
-	border-color:#7fc638;
+	background-color:  #fff;
+	border-image:#7fc638;
+	color:#000000;
+	padding: 10px 200px;
 }
 
 #Dropdown3 {
-	background-color: #57c600;
-	border-color:#57c600;
+background-color:  #fff;
+	border-image:#7fc638;
+	color:#000000;
+	padding: 10px 200px;
 }
 #Dropdown4 {
-	background-color: #d35353;
-	border-color:#d35353;
+background-color:  #fff;
+	border-image:#7fc638;
+	color:#000000;
+	padding: 10px 200px;
 }
 #Dropdown5 {
-	background-color: #f29d56;
-	border-color:#f29d56;
+background-color:  #fff;
+	border-image:#7fc638;
+	color:#000000;
+	padding: 10px 200px;
 }
 #button1 {
   color: #fff;
@@ -14739,5 +14750,15 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
  #button2 {
   color: #fff;
  }
+#userCard{
+	box-shadow: 3px gray;
+}
+#userList{
+	box-shadow: 3px gray;
+}
+.tableId{
+	color:gray;
+	padding: 10px 100px;
+}
 
 /*# sourceMappingURL=style.css.map */
