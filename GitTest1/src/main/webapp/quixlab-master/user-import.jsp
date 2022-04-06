@@ -389,7 +389,7 @@
 																<th><h3>1</h3></th>
 																<td>나이</td>
 																<td><div class="dropdown">
-																		<input type="number" name="age" value="29"
+																		<input type="number" name="age" value="55"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown1">
 																	</div></td>
