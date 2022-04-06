@@ -9,7 +9,15 @@ public class CheckingDTO {
 	private int act;
 	private int height;
 	private int age;
-	private int react;
+	public CheckingDTO(int weigth, int blood, int bsugar, int act, int height, int age) {
+		super();
+		this.weigth = weigth;
+		this.blood = blood;
+		this.bsugar = bsugar;
+		this.act = act;
+		this.height = height;
+		this.age = age;
+	}
 	public String getId() {
 		return id;
 	}
@@ -58,10 +66,5 @@ public class CheckingDTO {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public int getReact() {
-		return react;
-	}
-	public void setReact(int react) {
-		this.react = react;
-	}
+
 }

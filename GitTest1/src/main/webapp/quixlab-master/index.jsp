@@ -67,7 +67,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
         ***********************************-->
 
 		<!--**********************************
-            Header start
+            상단 start
         ***********************************-->
 		<div class="header">
 			<div class="header-content clearfix">
@@ -151,8 +151,8 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 									</ul>
 								</div>
 							</div></li>
-										
-							<!-- 로그인 로그아웃 -->
+
+						<!-- 로그인 로그아웃 -->
 						<li class="icons dropdown">
 							<div class="ss" data-toggle="dropdown">
 								<a> <%if(info!=null){ %> <a href="LogoutServiceCon"><img
@@ -160,7 +160,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 										id="logout"> <%} else{%> <img src="images/user/login.png"
 										height="40" width="40" id="login"> <% }%> </a>
 							</div>
-				
+
 						</li>
 					</ul>
 				</div>
@@ -171,7 +171,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
         ***********************************-->
 
 		<!--**********************************
-            Sidebar start
+            사이드바 start
         ***********************************-->
 		<div class="nk-sidebar">
 			<div class="nk-nav-scroll">
@@ -190,7 +190,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 							class="icon-globe-alt menu-icon"></i><span class="nav-text">ㅇㅇ</span>
 					</a>
 						<ul aria-expanded="false">
-							<li><a href="./layout-blank.html">Blank</a></li>
+							<li><a href="./user-import.jsp">Blank</a></li>
 							<li><a href="./layout-one-column.html">One Column</a></li>
 							<li><a href="./layout-two-column.html">Two column</a></li>
 							<li><a href="./layout-compact-nav.html">Compact Nav</a></li>
@@ -299,9 +299,9 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 							class="nav-text">Pages</span>
 					</a> <!-- 로그인  -->
 						<ul aria-expanded="User">
-						<%if(info!=null){ %>
-						<li><a href="../LogoutServiceCon">로그아웃</a></li>
-						<%}else{ %>
+							<%if(info!=null){ %>
+							<li><a href="../LogoutServiceCon">로그아웃</a></li>
+							<%}else{ %>
 							<li><a href="./page-login.jsp">로그인</a></li>
 							<%} %>
 							<li><a href="./page-register.jsp">회원가입</a></li>
@@ -336,11 +336,12 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 									</h2>
 									<p class="text-white mb-0">환영합니다!</p>
 								</div>
+								<span class="float-right display-5 opacity-5"><i
+									class="fa fa-users"></i></span>
 								<%}else{ %>
 								<h2 class="text-white">로그인을 해주세요</h2>
 								<%} %>
-								<span class="float-right display-5 opacity-5"><i
-									class="fa fa-users"></i></span>
+
 							</div>
 						</div>
 					</div>
@@ -396,12 +397,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 							</div>
 						</div>
 					</div>
-
-
-
-
 				</div>
-
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="row">
@@ -528,6 +524,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 					</div>
 				</div>
 			</div>
+
 
 
 
