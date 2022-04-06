@@ -1,4 +1,4 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
+
 <%@page import="Model.CheckingDTO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

@@ -14791,7 +14791,7 @@ background-color:  #fff;
 	padding: 10px 100px;
 }
 
-/* 검색 */
+ /* 음식추천 */
  
  * {
   user-select: none;
@@ -15209,6 +15209,13 @@ input[type="radio"] {
 	margin-left: 10rem;
 }
 
+.background{
+	padding: 30px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: bottom;
+    opacity: 1.0;
+}
 
 
 /*# sourceMappingURL=style.css.map */
