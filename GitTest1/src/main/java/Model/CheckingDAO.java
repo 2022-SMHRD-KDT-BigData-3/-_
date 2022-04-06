@@ -66,20 +66,20 @@ public class CheckingDAO {
 	         }
 	   }
 
-	public void insert(CheckingDTO dto) {
+	public int insert(CheckingDTO dto) {
 		// db연결 메소드 호출
 		      db_conn();
 		      try {
 		         // 2. DB에서 무엇을 할지 결정
 		         // 회원가입 기능 = 입력받은 회원 데이터들을 회원 Table에 추가하기
-		         String sql = "insert into checking values(id, sysdate, ?,?,?,?,?,?)";
+		         String sql = "insert into checking values(?, sysdate, ?,?,?,?,?,?)";
 		         
 		         // 3. sql문장을 DB에 전달 -> 전달 성공 시 PreparedStatement 객체로 반환
 		         psmt = conn.prepareStatement(sql);
 		         
 		         // 4. ? 바인드 변수에 값 채우기
-		         // join메소드 매개변수로 dto(입력받은 값들의 묶음 = 가방) 받아오기
-		         psmt.setString(1, info.getId() );
+		         // insert메소드 매개변수로 dto(입력받은 값들의 묶음 = 가방) 받아오기
+		         psmt.setString(1, dto.getId() );
 		         psmt.setInt(2, dto.getWeigth() );
 		         psmt.setInt(3, dto.getBlood() );
 		         psmt.setInt(4, dto.getBsugar());
@@ -96,6 +96,6 @@ public class CheckingDAO {
 		         e.printStackTrace();
 		      } finally {// 6. DB문 닫기 
 		         db_close();
-	   }
-	   }
+	   } return cnt;
+	   } 
 }

@@ -311,7 +311,7 @@
 							<li><a href="./page-register.jsp">회원가입</a></li>
 							<li><a href="./page-edit.jsp">개인정보수정</a></li>
 							<li><a class="has-arrow" href="javascript:void()"
-								aria-expanded="false">하기싫다</a>
+								aria-expanded="false">하고싶다</a>
 								<ul aria-expanded="false">
 								</ul></li>
 						</ul></li>
@@ -361,7 +361,7 @@
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6">
-						<form action="UserimportServiceCon">
+						<form action="../UserimportServiceCon">
 							<div class="card">
 								<div class="card-body px-0">
 									<div class="col-lg-6">
@@ -389,7 +389,7 @@
 																<th><h3>1</h3></th>
 																<td>나이</td>
 																<td><div class="dropdown">
-																		<input type="text" name="age" value="29"
+																		<input type="number" name="age" value="29"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown1">
 																	</div></td>
@@ -399,7 +399,7 @@
 																<td>키</td>
 																<td>
 																	<div class="dropdown">
-																		<input type="text" name="weigth" value="29"
+																		<input type="number" name="weigth" value="29"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown2">
 																	</div>
@@ -409,7 +409,7 @@
 																<td>몸무게</td>
 																<td>
 																	<div class="dropdown">
-																		<input type="text" name="heigth"
+																		<input type="number" name="heigth"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown3">
 																	</div>
@@ -420,7 +420,7 @@
 																<td>혈압</td>
 																<td>
 																	<div class="dropdown">
-																		<input type="text" name="bs"
+																		<input type="number" name="bs"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown4">
 																	</div>
@@ -431,7 +431,7 @@
 																<td>혈당</td>
 																<td>
 																	<div class="dropdown">
-																		<input type="text" name="bp"
+																		<input type="number" name="bp"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown5">
 																	</div>
@@ -448,12 +448,12 @@
 										<div class="tdl-holder">
 											<div class="tdl-content">
 												<ul id="todo_list">
-													<li><label><input type="checkbox" name="act"
-															value="first" onclick="checkOnlyOne(this)" /><i></i><span>활동뭐시기1</span>
-															<li><label><input type="checkbox" name="act"
-																	value="first" onclick="checkOnlyOne(this)" /><i></i><span>활동뭐시기2</span>
-																	<li><label><input type="checkbox"
-																			name="act" value="first" onclick="checkOnlyOne(this)" /><i></i><span>활동뭐시기3</span>
+													<li><label><input type="checkbox" name="act" value="1"
+															onclick="checkOnlyOne(this)" /><i></i><span>- 앉아서 주로 생활하거나 매일 가벼운 움직임만 하며 활동량이 적은 경우</span>
+															<li><label><input type="checkbox" name="act" value="2"
+																	onclick="checkOnlyOne(this)" /><i></i><span>- 규칙적인 생활로 보통의 활동량을 가진 경우</span>
+																	<li><label><input type="checkbox"  value="3"
+																			name="act" onclick="checkOnlyOne(this)" /><i></i><span>- 육체노동 등 평소 신체 활동량이 많은 경우</span>
 												</ul>
 											</div>
 											<br> <br>
@@ -478,7 +478,7 @@
 	<!--**********************************
             Content body end
         ***********************************-->
-
+        
 
 	<!--**********************************
             Footer start
@@ -544,7 +544,7 @@
 	           
 	           const checkboxes 
 	               = document.getElementsByName("act");
-	           
+	     
 	           checkboxes.forEach((cb) => {
 	             cb.checked = false;
 	           })
