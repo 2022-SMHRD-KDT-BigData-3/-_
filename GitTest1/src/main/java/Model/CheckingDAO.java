@@ -142,5 +142,41 @@ public class CheckingDAO {
 		}
 		return ckdto;
 	}
+	public ArrayList<CheckingDTO> graph(String id) {
+		String sql = "select * from checking where id = ? order by checkday ";
+		ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
+		db_conn();
+		CheckingDTO ckdto = null;
+		try {
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
 
+			// 실행
+			rs = psmt.executeQuery();
+
+			// 결과를 꺼내서 ArrayList로 만들기
+			while(rs.next()) {
+				String checkday = rs.getString(2);
+				int weigth = rs.getInt(3);
+				int blood = rs.getInt(4);
+				int bsugar = rs.getInt(5);
+				int heigth = rs.getInt(6);
+
+				ckdto = new CheckingDTO(checkday, weigth, blood, bsugar, heigth);
+									
+				System.out.println("checkday :" +checkday);
+				System.out.println("weigth :" +weigth);
+				System.out.println("blood :" +blood);
+				System.out.println("bsugar :" +bsugar);
+				System.out.println("heigth :" +heigth);
+				clist.add(ckdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return clist;
+	}
+
+	
 }

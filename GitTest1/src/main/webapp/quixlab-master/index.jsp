@@ -1,4 +1,5 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.CheckingDAO"%>
 <%@page import="Model.CheckingDTO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -30,6 +31,11 @@
 	<%
 MemberDTO info = (MemberDTO)session.getAttribute("info");
 CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto"); 
+ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
+CheckingDAO dao = new CheckingDAO();
+if(info!=null){
+clist = dao.graph(info.getId());
+}
 
 // 몸무게 / 키*키(소수점) 78 / ((176*176)/100) 76* 1.76*1.76
 %> 
@@ -600,6 +606,255 @@ CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto");
     </script>
 	<script type="text/javascript"> document.getElementById("worldMain").style.display="none" </script>
 	<script type="text/javascript"> document.getElementById("SummaryMain").style.display="none" </script>
+	<script type="text/javascript"> (function($) {
+	    "use strict"
 
+	    let ctx = document.getElementById("chart_widget_1");
+	    ctx.height = 280;
+	    new Chart(ctx, {
+	        type: 'line',
+	        data: {
+	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
+            	<%=clist.get(i).getCheckday()%>,
+                <%}%>],
+	            type: 'line',
+	            defaultFontFamily: 'Montserrat',
+	            datasets: [ {
+	                label: "오늘 혈압",
+	                data: [<%for(int i=0;i<clist.size();i++ ){%>
+	                	<%=clist.get(i).getBlood()%>,
+	                <%}%>],
+	               /* backgroundColor: '#ADEB00',*/
+	                borderColor: '#ADEB00',
+	                borderWidth: 0.5,
+	                pointStyle: 'circle',
+	                pointRadius: 5,
+	                pointBorderColor: 'transparent',
+	                pointBackgroundColor: '#ADEB00',
+	            }]
+	        },
+	        options: {
+	            responsive: !0,
+	            maintainAspectRatio: false,
+	            tooltips: {
+	                mode: 'index',
+	                titleFontSize: 12,
+	                titleFontColor: '#000',
+	                bodyFontColor: '#000',
+	                backgroundColor: '#fff',
+	                titleFontFamily: 'Montserrat',
+	                bodyFontFamily: 'Montserrat',
+	                cornerRadius: 3,
+	                intersect: false,
+	            },
+	            legend: {
+	                display: false,
+	                position: 'top',
+	                labels: {
+	                    usePointStyle: true,
+	                    fontFamily: 'Montserrat',
+	                },
+
+
+	            },
+	            scales: {
+	                xAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: false,
+	                        labelString: 'Month'
+	                    }
+	                }],
+	                yAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: true,
+	                        labelString: 'Value'
+	                    }
+	                }]
+	            },
+	            title: {
+	                display: false,
+	            }
+	        }
+	    });
+	})(jQuery);(function($) {
+	    "use strict"
+
+	    let ctx = document.getElementById("chart_widget_2");
+	    ctx.height = 280;
+	    new Chart(ctx, {
+	        type: 'line',
+	        data: {
+	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
+            	<%=clist.get(i).getCheckday()%>,
+                <%}%>],
+	            type: 'line',
+	            defaultFontFamily: 'Montserrat',
+	            datasets: [{
+	                label: "오늘 혈당",
+	                data: [<%for(int i=0;i<clist.size();i++ ){%>
+	            	<%=clist.get(i).getBsugar()%>,
+	                <%}%>],
+	               /* backgroundColor: '#ADEB00',*/
+	                borderColor: '#ADEB00',
+	                borderWidth: 0.5,
+	                pointStyle: 'circle',
+	                pointRadius: 5,
+	                pointBorderColor: 'transparent',
+	                pointBackgroundColor: '#ADEB00',
+	            }]
+	        },
+	        options: {
+	            responsive: !0,
+	            maintainAspectRatio: false,
+	            tooltips: {
+	                mode: 'index',
+	                titleFontSize: 12,
+	                titleFontColor: '#000',
+	                bodyFontColor: '#000',
+	                backgroundColor: '#fff',
+	                titleFontFamily: 'Montserrat',
+	                bodyFontFamily: 'Montserrat',
+	                cornerRadius: 3,
+	                intersect: false,
+	            },
+	            legend: {
+	                display: false,
+	                position: 'top',
+	                labels: {
+	                    usePointStyle: true,
+	                    fontFamily: 'Montserrat',
+	                },
+
+
+	            },
+	            scales: {
+	                xAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: false,
+	                        labelString: 'Month'
+	                    }
+	                }],
+	                yAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: true,
+	                        labelString: 'Value'
+	                    }
+	                }]
+	            },
+	            title: {
+	                display: false,
+	            }
+	        }
+	    });
+	})(jQuery);
+
+	(function($) {
+	    "use strict"
+
+	    let ctx = document.getElementById("chart_wid3");
+	    ctx.height = 280;
+	    new Chart(ctx, {
+	        type: 'line',
+	        data: {
+	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
+            	<%=clist.get(i).getCheckday()%>,
+                <%}%>],
+	            type: 'line',
+	            defaultFontFamily: 'Montserrat',
+	            datasets: [{
+	                label: "오늘 BMI",
+	                data: [<%for(int i=0;i<clist.size();i++ ){
+	            	int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%>,
+	                <%}%>],
+	               /* backgroundColor: '#ADEB00',*/
+	                borderColor: '#ADEB00',
+	                borderWidth: 0.5,
+	                pointStyle: 'circle',
+	                pointRadius: 5,
+	                pointBorderColor: 'transparent',
+	                pointBackgroundColor: '#ADEB00',
+	            }]
+	        },
+	        options: {
+	            responsive: !0,
+	            maintainAspectRatio: false,
+	            tooltips: {
+	                mode: 'index',
+	                titleFontSize: 12,
+	                titleFontColor: '#000',
+	                bodyFontColor: '#000',
+	                backgroundColor: '#fff',
+	                titleFontFamily: 'Montserrat',
+	                bodyFontFamily: 'Montserrat',
+	                cornerRadius: 3,
+	                intersect: false,
+	            },
+	            legend: {
+	                display: false,
+	                position: 'top',
+	                labels: {
+	                    usePointStyle: true,
+	                    fontFamily: 'Montserrat',
+	                },
+
+
+	            },
+	            scales: {
+	                xAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: false,
+	                        labelString: 'Month'
+	                    }
+	                }],
+	                yAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: true,
+	                        labelString: 'Value'
+	                    }
+	                }]
+	            },
+	            title: {
+	                display: false,
+	            }
+	        }
+	    });
+
+
+	    
+
+
+	})(jQuery);
+</script>
+	
 </body>
 </html>
