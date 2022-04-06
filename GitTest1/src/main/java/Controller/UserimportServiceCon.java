@@ -26,12 +26,12 @@ public class UserimportServiceCon extends HttpServlet {
 	int height = Integer.parseInt(request.getParameter("heigth"));
 	int age = Integer.parseInt(request.getParameter("age"));
 	
-	System.out.println(weigth);
-	System.out.println(blood);
-	System.out.println(bsugar);
-	System.out.println(act);
-	System.out.println(height);
-	System.out.println(age);
+	System.out.println("weigth : " +weigth);
+	System.out.println("blood : "+blood);
+	System.out.println("bsugar : " +bsugar);
+	System.out.println("act : "+act);
+	System.out.println("height : "+height);
+	System.out.println("age : "+age);
 	
 	HttpSession session = request.getSession();
 	MemberDTO info = (MemberDTO)session.getAttribute("info");
