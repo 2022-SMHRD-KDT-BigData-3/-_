@@ -1,21 +1,26 @@
+<%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="./plugins/highlightjs/styles/darkula.css">
-    <link href="css/style.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quixlab - Bootstrap Admin Dashboard Template by
+	Themefisher.com</title>
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16"
+	href="images/favicon.png">
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" href="./plugins/highlightjs/styles/darkula.css">
+<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-
+	<%
+	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	%>
 	<!--*******************
         Preloader start
     ********************-->
@@ -74,7 +79,7 @@
 						</div>
 						<input type="search" class="form-control"
 							placeholder="Search Dashboard" aria-label="Search Dashboard">
-						<div class="drop-down   d-md-none">
+						<div class="drop-down animated flipInX d-md-none">
 							<form action="#">
 								<input type="text" class="form-control" placeholder="Search">
 							</form>
@@ -83,15 +88,15 @@
 				</div>
 				<div class="header-right">
 					<ul class="clearfix">
-						<li class="icons dropdown"><a href="javascript:void(0)"
-							data-toggle="dropdown"> <i class="mdi mdi-email-outline"></i>
-								<span class="badge gradient-1 badge-pill badge-primary">3</span>
-						</a>
+						<li class="icons dropdown"></ui>
+
 							<div class="drop-down animated fadeIn dropdown-menu">
 								<div
 									class="dropdown-content-heading d-flex justify-content-between">
-									<span class="">3 New Messages</span>
-
+									<span class="">3 New Messages</span> <a
+										href="javascript:void()" class="d-inline-block"> <span
+										class="badge badge-pill gradient-1">3</span>
+									</a>
 								</div>
 								<div class="dropdown-content-body">
 									<ul>
@@ -137,97 +142,23 @@
 												</div>
 										</a></li>
 									</ul>
-
 								</div>
 							</div></li>
-						<li class="icons dropdown"><a href="javascript:void(0)"
-							data-toggle="dropdown"> <i class="mdi mdi-bell-outline"></i>
-								<span class="badge badge-pill gradient-2 badge-primary">3</span>
-						</a>
-							<div
-								class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
-								<div
-									class="dropdown-content-heading d-flex justify-content-between">
-									<span class="">2 New Notifications</span>
 
-								</div>
-								<div class="dropdown-content-body">
-									<ul>
-										<li><a href="javascript:void()"> <span
-												class="mr-3 avatar-icon bg-success-lighten-2"><i
-													class="icon-present"></i></span>
-												<div class="notification-content">
-													<h6 class="notification-heading">Events near you</h6>
-													<span class="notification-text">Within next 5 days</span>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <span
-												class="mr-3 avatar-icon bg-danger-lighten-2"><i
-													class="icon-present"></i></span>
-												<div class="notification-content">
-													<h6 class="notification-heading">Event Started</h6>
-													<span class="notification-text">One hour ago</span>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <span
-												class="mr-3 avatar-icon bg-success-lighten-2"><i
-													class="icon-present"></i></span>
-												<div class="notification-content">
-													<h6 class="notification-heading">Event Ended
-														Successfully</h6>
-													<span class="notification-text">One hour ago</span>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <span
-												class="mr-3 avatar-icon bg-danger-lighten-2"><i
-													class="icon-present"></i></span>
-												<div class="notification-content">
-													<h6 class="notification-heading">Events to Join</h6>
-													<span class="notification-text">After two days</span>
-												</div>
-										</a></li>
-									</ul>
-
-								</div>
-							</div></li>
-						<li class="icons dropdown d-none d-md-flex"><a
-							href="javascript:void(0)" class="log-user" data-toggle="dropdown">
-								<span>English</span> <i class="fa fa-angle-down f-s-14"
-								aria-hidden="true"></i>
-						</a>
-							<div
-								class="drop-down dropdown-language animated fadeIn  dropdown-menu">
-								<div class="dropdown-content-body">
-									<ul>
-										<li><a href="javascript:void()">English</a></li>
-										<li><a href="javascript:void()">Dutch</a></li>
-									</ul>
-								</div>
-							</div></li>
+						<!-- 로그인 로그아웃 -->
 						<li class="icons dropdown">
-							<div class="user-img c-pointer position-relative"
-								data-toggle="dropdown">
-								<span class="activity active"></span> <img
-									src="images/user/1.png" height="40" width="40" alt="">
+							<div class="ss" data-toggle="dropdown">
+								<a> <%
+ if (info != null) {
+ %> <a href="LogoutServiceCon"><img src="images/user/logout.png"
+										height="40" width="40" id="logout"> <%
+ } else {
+ %> <img src="images/user/login.png" height="40" width="40" id="login">
+										<%
+										}
+										%> </a>
 							</div>
-							<div class="drop-down dropdown-profile   dropdown-menu">
-								<div class="dropdown-content-body">
-									<ul>
-										<li><a href="app-profile.html"><i class="icon-user"></i>
-												<span>Profile</span></a></li>
-										<li><a href="email-inbox.html"><i
-												class="icon-envelope-open"></i> <span>Inbox</span>
-												<div class="badge gradient-3 badge-pill badge-primary">3</div></a>
-										</li>
 
-										<hr class="my-2">
-										<li><a href="page-lock.html"><i class="icon-lock"></i>
-												<span>Lock Screen</span></a></li>
-										<li><a href="page-login.html"><i class="icon-key"></i>
-												<span>Logout</span></a></li>
-									</ul>
-								</div>
-							</div>
 						</li>
 					</ul>
 				</div>
@@ -238,7 +169,7 @@
         ***********************************-->
 
 		<!--**********************************
-            Sidebar start
+            사이드바 start
         ***********************************-->
 		<div class="nk-sidebar">
 			<div class="nk-nav-scroll">
@@ -246,15 +177,15 @@
 					<li class="nav-label">Dashboard</li>
 					<li><a class="has-arrow" href="javascript:void()"
 						aria-expanded="false"> <i class="icon-speedometer menu-icon"></i><span
-							class="nav-text">Dashboard</span>
+							class="nav-text">UserInfo</span>
 					</a>
 						<ul aria-expanded="false">
-							<li><a href="./index.html">Home 1</a></li>
+							<li><a href="./index.jsp">Home 1</a></li>
 							<!-- <li><a href="./index-2.html">Home 2</a></li> -->
 						</ul></li>
 					<li class="mega-menu mega-menu-sm"><a class="has-arrow"
 						href="javascript:void()" aria-expanded="false"> <i
-							class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
+							class="icon-globe-alt menu-icon"></i><span class="nav-text">ㅇㅇ</span>
 					</a>
 						<ul aria-expanded="false">
 							<li><a href="./layout-blank.html">Blank</a></li>
@@ -364,19 +295,24 @@
 					<li><a class="has-arrow" href="javascript:void()"
 						aria-expanded="false"> <i class="icon-notebook menu-icon"></i><span
 							class="nav-text">Pages</span>
-					</a>
-						<ul aria-expanded="false">
-							<li><a href="./page-login.html">Login</a></li>
-							<li><a href="./page-register.html">Register</a></li>
-							<li><a href="./page-lock.html">Lock Screen</a></li>
+					</a> <!-- 로그인  -->
+						<ul aria-expanded="User">
+							<%
+							if (info != null) {
+							%>
+							<li><a href="../LogoutServiceCon">로그아웃</a></li>
+							<%
+							} else {
+							%>
+							<li><a href="./page-login.jsp">로그인</a></li>
+							<%
+							}
+							%>
+							<li><a href="./page-register.jsp">회원가입</a></li>
+							<li><a href="./page-edit.jsp">개인정보수정</a></li>
 							<li><a class="has-arrow" href="javascript:void()"
-								aria-expanded="false">Error</a>
+								aria-expanded="false">하기싫다</a>
 								<ul aria-expanded="false">
-									<li><a href="./page-error-404.html">Error 404</a></li>
-									<li><a href="./page-error-403.html">Error 403</a></li>
-									<li><a href="./page-error-400.html">Error 400</a></li>
-									<li><a href="./page-error-500.html">Error 500</a></li>
-									<li><a href="./page-error-503.html">Error 503</a></li>
 								</ul></li>
 						</ul></li>
 				</ul>
@@ -396,182 +332,144 @@
 					<div class="col-lg-3 col-sm-6">
 						<div class="card gradient-3">
 							<div class="card-body">
+								<%
+								if (info != null) {
+								%>
 								<h3 class="card-title text-white">안녕하세요</h3>
 								<div class="d-inline-block">
-									<h2 class="text-white">nickname님</h2>
+									<h2 class="text-white"><%=info.getNick()%>님
+									</h2>
 									<p class="text-white mb-0">환영합니다!</p>
+									<%
+									} else {
+									%>
+									<h2 class="text-white">입력한 정보가 없습니다.</h2>
+									<p class="text-white mb-0">로그인을 해주세요</p>
+									<%
+									}
+									%>
 								</div>
+								<%
+								if (info != null) {
+								%>
 								<span class="float-right display-5 opacity-5"><i
 									class="fa fa-users"></i></span>
+								<%
+								}
+								%>
 							</div>
 						</div>
 					</div>
-
 					<div class="col-lg-3 col-md-6">
-						<div class="card">
-							<div class="card-body px-0">
-								<div class="col-lg-6">
-									<div class="card">
-										<div class="card-body">
-											<h4 class="card-title">날짜 기입</h4>
-											<div class="table-responsive">
-												<table
-													class="table header-border table-hover verticle-middle">
-													<thead>
-														<tr>
-															<th scope="col">순번</th>
-															<th scope="col">Product</th>
-															<!-- <th scope="col">Popularity</th> -->
-															<th scope="col">Sales</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<th><h3>1</h3></th>
-															<td>나이</td>
-															<td><div class="dropdown">
-																	<input type="text"
-																		class="btn btn-primary dropdown-toggle"
-																		data-toggle="dropdown" id="Dropdown1"></input>
-																
-																</div></td>
-															<!-- 		<td>
-																<div class="progress" style="height: 10px">
-																	<div class="progress-bar gradient-1"
-																		style="width: 70%;" role="progressbar">
-																		<span class="sr-only">70% Complete</span>
+						<form action="UserimportServiceCon">
+							<div class="card">
+								<div class="card-body px-0">
+									<div class="col-lg-6">
+										<div class="card">
+											<div class="card-body">
+												<div id=today>
+													<script>
+														date = new Date()
+																.toLocaleDateString();
+														document.write(date);
+													</script>
+												</div>
+												<div class="table-responsive">
+													<table
+														class="table header-border table-hover verticle-middle">
+														<thead>
+															<tr>
+																<th scope="col">순번</th>
+																<th scope="col">Product</th>
+																<th scope="col">Sales</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<th><h3>1</h3></th>
+																<td>나이</td>
+																<td><div class="dropdown">
+																		<input type="text" name="age" value="29"
+																			class="btn btn-primary dropdown-toggle"
+																			data-toggle="dropdown" id="Dropdown1">
+																	</div></td>
+															</tr>
+															<tr>
+																<th><h3>2</h3></th>
+																<td>키</td>
+																<td>
+																	<div class="dropdown">
+																		<input type="text" name="weigth" value="29"
+																			class="btn btn-primary dropdown-toggle"
+																			data-toggle="dropdown" id="Dropdown2">
 																	</div>
-																</div>
-															</td> -->
-															<!-- <td><span class="label gradient-1 btn-rounded">70%</span>
-															</td> -->
-														</tr>
-														<tr>
-															<th><h3>2</h3></th>
-															<td>키</td>
-															<td>
-																<div class="dropdown">
-																	<input type="text"
-																		class="btn btn-primary dropdown-toggle"
-																		data-toggle="dropdown" id="Dropdown2"></input>
-																
-																</div>
-															</td>
-															<!-- <td>
-																<div class="progress" style="height: 10px">
-																	<div class="progress-bar gradient-2"
-																		style="width: 70%;" role="progressbar">
-																		<span class="sr-only">70% Complete</span>
+															</tr>
+															<tr>
+																<th><h3>3</h3></th>
+																<td>몸무게</td>
+																<td>
+																	<div class="dropdown">
+																		<input type="text" name="heigth"
+																			class="btn btn-primary dropdown-toggle"
+																			data-toggle="dropdown" id="Dropdown3">
 																	</div>
-																</div>
-															</td>
-															<td><span class="label btn-rounded gradient-2">70%</span>
-															</td> -->
-														</tr>
-														<tr>
-															<th><h3>3</h3></th>
-															<td>몸무게</td>
-															<td>
-																<div class="dropdown">
-																	<input type="text"
-																		class="btn btn-primary dropdown-toggle"
-																		data-toggle="dropdown" id="Dropdown3"></input>
-																
-																</div>
-															</td>
-															<!-- <td>
-																<div class="progress" style="height: 10px">
-																	<div class="progress-bar gradient-3"
-																		style="width: 70%;" role="progressbar">
-																		<span class="sr-only">70% Complete</span>
+																</td>
+															</tr>
+															<tr>
+																<th><h3>4</h3></th>
+																<td>혈압</td>
+																<td>
+																	<div class="dropdown">
+																		<input type="text" name="bs"
+																			class="btn btn-primary dropdown-toggle"
+																			data-toggle="dropdown" id="Dropdown4">
 																	</div>
-																</div>
-															</td>
-															<td><span class="label btn-rounded gradient-3">70%</span>
-															</td> -->
-														</tr>
-														<tr>
-															<th><h3>4</h3></th>
-															<td>혈압</td>
-															<td>
-																<div class="dropdown">
-																	<input type="text"
-																		class="btn btn-primary dropdown-toggle"
-																		data-toggle="dropdown" id="Dropdown4"></input>
-															
-																</div>
-															</td>
-															<!-- <td>
-																<div class="progress" style="height: 10px">
-																	<div class="progress-bar gradient-8"
-																		style="width: 70%;" role="progressbar">
-																		<span class="sr-only">70% Complete</span>
+																</td>
+															</tr>
+															<tr>
+																<th><h3>5</h3></th>
+																<td>혈당</td>
+																<td>
+																	<div class="dropdown">
+																		<input type="text" name="bp"
+																			class="btn btn-primary dropdown-toggle"
+																			data-toggle="dropdown" id="Dropdown5">
 																	</div>
-																</div>
-															</td>
-															<td><span class="label gradient-8 btn-rounded">70%</span>
-															</td> -->
-														</tr>
-														<tr>
-															<th><h3>5</h3></th>
-															<td>혈당</td>
-															<td>
-																<div class="dropdown">
-																	<input type="text"
-																		class="btn btn-primary dropdown-toggle"
-																		data-toggle="dropdown" id="Dropdown5"></input>
-															
-																</div>
-															</td>
-															<!-- <td>
-																<div class="progress" style="height: 10px">
-																	<div class="progress-bar gradient-1"
-																		style="width: 70%;" role="progressbar">
-																		<span class="sr-only">70% Complete</span>
-																	</div>
-																</div>
-															</td>
-															<td><span class="label gradient-1 btn-rounded">70%</span>
-															</td> -->
-														</tr>
-													</tbody>
-												</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+									<h4 class="card-title px-4 mb-3">활동지수</h4>
+									<div class="todo-list">
+										<div class="tdl-holder">
+											<div class="tdl-content">
+												<ul id="todo_list">
+													<li><label><input type="checkbox" name="act"
+															value="first" onclick="checkOnlyOne(this)" /><i></i><span>활동뭐시기1</span>
+															<li><label><input type="checkbox" name="act"
+																	value="first" onclick="checkOnlyOne(this)" /><i></i><span>활동뭐시기2</span>
+																	<li><label><input type="checkbox"
+																			name="act" value="first" onclick="checkOnlyOne(this)" /><i></i><span>활동뭐시기3</span>
+												</ul>
+											</div>
+											<br> <br>
+											<div class="px-4">
+												<center>
+													<input type="submit" class="btn mb-1 btn-success"
+														id="button1" value="입력"> <input type="reset"
+														class="btn mb-1 btn-warning" id="button2" value="초기화">
+												</center>
 											</div>
 										</div>
 									</div>
 								</div>
-								<h4 class="card-title px-4 mb-3">Todo</h4>
-								<div class="todo-list">
-									<div class="tdl-holder">
-										<div class="tdl-content">
-											<ul id="todo_list">
-												<li><label><input type="checkbox"
-														onclick="checkOnlyOne(this)" /><i></i><span>활동뭐시기1</span><a
-														href='#' class="ti-trash"></a></label></li>
-												<li><label><input type="checkbox"
-														onclick="checkOnlyOne(this)" /><i></i><span>활동뭐시기2</span><a
-														href='#' class="ti-trash"></a></label></li>
-												<li><label><input type="checkbox"
-														onclick="checkOnlyOne(this)" /><i></i><span>활동뭐시기3</span><a
-														href='#' class="ti-trash"></a></label></li>
-
-											</ul>
-										</div>
-										<br> <br>
-										<div class="px-4">
-											<center>
-												<button type="button" class="btn mb-1 btn-success"
-													id="button1">입력</button>
-												<button type="button" class="btn mb-1 btn-warning"
-													id="button2">취소</button>
-											</center>
-										</div>
-									</div>
-								</div>
 							</div>
-						</div>
+						</form>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -633,6 +531,26 @@
 
 		})(jQuery);
 	</script>
-
+	<script type="text/javascript">
+		document.querySelector("#login").addEventListener("click", function() {
+			location.href = "page-login.jsp"
+		});
+	</script>
+	<script type="text/javascript">
+		document.querySelector("#logout").addEventListener("click", function() {
+			location.href = "../LogoutServiceCon"
+		});
+		function checkOnlyOne(element) {
+	           
+	           const checkboxes 
+	               = document.getElementsByName("act");
+	           
+	           checkboxes.forEach((cb) => {
+	             cb.checked = false;
+	           })
+	           
+	           element.checked = true;
+	         }
+	</script>
 </body>
 </html>
