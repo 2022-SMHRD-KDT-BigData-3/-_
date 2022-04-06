@@ -1,3 +1,4 @@
+<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@page import="Model.CheckingDTO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -28,8 +29,10 @@
 <body>
 	<%
 MemberDTO info = (MemberDTO)session.getAttribute("info");
-CheckingDTO ckdto= (CheckingDTO)session.getAttribute("dto"); 
-%>
+CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto"); 
+
+// 몸무게 / 키*키(소수점) 78 / ((176*176)/100) 76* 1.76*1.76
+%> 
 	<!--*******************
         Preloader start
     ********************-->
@@ -363,7 +366,7 @@ CheckingDTO ckdto= (CheckingDTO)session.getAttribute("dto");
 								<div class="mt-4">
 									<h4>혈당</h4>
 									<h6>
-										Blood pressure <span class="pull-right">30%</span>
+										Blood pressure <span class="pull-right"><%if(info!=null){if(ckdto!=null){%><%=ckdto.getBsugar()%><%}}%></span>
 									</h6>
 									<div class="progress mb-3" style="height: 7px">
 										<div class="progress-bar bg-primary" style="width: 30%;"
@@ -375,7 +378,7 @@ CheckingDTO ckdto= (CheckingDTO)session.getAttribute("dto");
 								<div class="mt-4">
 									<h4>혈압</h4>
 									<h6 class="m-t-10 text-muted">
-										blood glucose <span class="pull-right">50%</span>
+										blood glucose <span class="pull-right"><%if(info!=null){if(ckdto!=null){%><%=ckdto.getBlood()%><%}} %></span>
 									</h6>
 									<div class="progress mb-3" style="height: 7px">
 										<div class="progress-bar bg-success" style="width: 50%;"
@@ -387,7 +390,7 @@ CheckingDTO ckdto= (CheckingDTO)session.getAttribute("dto");
 								<div class="mt-4">
 									<h4>BMI</h4>
 									<h6 class="m-t-10 text-muted">
-										body mass index <span class="pull-right">20%</span>
+										body mass index <span class="pull-right"><%if(info!=null){if(ckdto!=null){int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%><%}} %></span>
 									</h6>
 									<div class="progress mb-3" style="height: 7px">
 										<div class="progress-bar bg-warning" style="width: 20%;"
