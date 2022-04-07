@@ -20,8 +20,11 @@
 </head>
 <body>
 	<%
+	CheckingDTO ckdto = null;
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
-	CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto"); 
+	if(info!=null){
+	 ckdto= (CheckingDTO)session.getAttribute("ckdto"); 
+	}
 	%>
 	<!--*******************
         Preloader start
@@ -363,7 +366,7 @@
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6">
-						<form action="../UserimportServiceCon">
+						<form action="./UserimportServiceCon">
 							<div class="card" id="userCard">
 								<div class="card-body px-0">
 									<div class="col-lg-3">
@@ -385,7 +388,7 @@
 																<td><h4 class="tableId">나이</h4></td>
 																<td><div class="dropdown">
 												
-															<input type="number" name="age"  value="<%if(info!=null){ %><%=ckdto.getAge() %><%} %>"
+															<input type="number" name="age"  value="<%if(info!=null){if(ckdto!=null){ %><%=ckdto.getAge() %><%}} %>"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown1">
 																	</div></td>
@@ -395,7 +398,7 @@
 																<td><h4 class="tableId">키</h4></td>
 																<td>
 																	<div class="dropdown">
-														<input type="number" name="heigth" value="<%if(info!=null){ %><%=ckdto.getHeight() %><%} %>"
+														<input type="number" name="heigth" value="<%if(info!=null){if(ckdto!=null){ %><%=ckdto.getHeight() %><%}} %>"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown2">
 																	</div>
@@ -405,7 +408,7 @@
 																<td><h4 class="tableId">몸무게</h4></td>
 																<td>
 																	<div class="dropdown">
-																		<input type="number" name="weigth" value="<%if(info!=null){ %><%=ckdto.getWeigth() %><%} %>"
+																		<input type="number" name="weigth" value="<%if(info!=null){if(ckdto!=null){ %><%=ckdto.getWeigth() %><%} }%>"
 																			class="btn btn-primary dropdown-toggle"
 																			data-toggle="dropdown" id="Dropdown3">
 																	</div>
@@ -452,19 +455,19 @@
 															<ul id="todo_list">
 																<li><label><input type="checkbox"
 																		name="act" value="1"
-																		<%if(info!=null){if(ckdto.getAct()==1){ %>
-																		checked="checked" <%}} %> onclick="checkOnlyOne(this)" /><i></i><span>-
+																		<%if(info!=null){if(ckdto!=null){if(ckdto.getAct()==1){ %>
+																		checked="checked" <%}}} %> onclick="checkOnlyOne(this)" /><i></i><span>-
 																			앉아서 주로 생활하거나 매일 가벼운 움직임만 하며 활동량이 적은 경우</span>
 																		<li><label><input type="checkbox"
 																				name="act" value="2"
-																				<%if(info!=null){if(ckdto.getAct()==2){ %>
-																				checked="checked" <%}} %>
+																				<%if(info!=null){if(ckdto!=null){if(ckdto.getAct()==2){ %>
+																				checked="checked" <%}} }%>
 																				onclick="checkOnlyOne(this)" /><i></i><span>-
 																					규칙적인 생활로 보통의 활동량을 가진 경우</span>
 																				<li><label><input type="checkbox"
 																						value="3"
-																						<%if(info!=null){if(ckdto.getAct()==3){ %>
-																						checked="checked" <%}} %> name="act"
+																						<%if(info!=null){if(ckdto!=null){if(ckdto.getAct()==3){ %>
+																						checked="checked" <%}}} %> name="act"
 																						onclick="checkOnlyOne(this)" /><i></i><span>-
 																							육체노동 등 평소 신체 활동량이 많은 경우</span>
 															</ul>

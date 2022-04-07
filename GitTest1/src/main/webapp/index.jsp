@@ -25,6 +25,7 @@
 <!-- Custom Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
 
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -34,10 +35,8 @@ CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto");
 
 ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
 CheckingDAO dao = new CheckingDAO();
-
 if(info!=null){
 clist = dao.graph(info.getId());
-
 }
 
 %> 
@@ -365,7 +364,7 @@ clist = dao.graph(info.getId());
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-12">
+				<div class="col-lg-6">
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
@@ -440,7 +439,7 @@ clist = dao.graph(info.getId());
 					<!-- /# card -->
 				</div>
 
-				<div class="col-lg-12">
+				<div class="col-lg-6">
 					<div class="card">
 						<div class="card-body">
 							<h4 class="card-title">Slides With captions</h4>
@@ -491,9 +490,10 @@ clist = dao.graph(info.getId());
 								</div>
 							</div>
 						</div>
+						<br>
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -527,7 +527,7 @@ clist = dao.graph(info.getId());
 				</div>
 
 
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -561,7 +561,7 @@ clist = dao.graph(info.getId());
 				</div>
 
 
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -697,19 +697,19 @@ clist = dao.graph(info.getId());
 	    new Chart(ctx, {
 	        type: 'line',
 	        data: {
-	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
+	            labels: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
             	<%=clist.get(i).getCheckday()%>,
-                <%}%>],
+                <%}}%>],
 	            type: 'line',
 	            defaultFontFamily: 'Montserrat',
 	            datasets: [ {
-	                label: [<%for(int i=0;i<clist.size();i++ ){%>
+	                label: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
 	            	<%String day = clist.get(i).getCheckday();%>
 	            	
-	                <%}%>],
-	                data: [<%for(int i=0;i<clist.size();i++ ){%>
+	                <%}}%>],
+	                data: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
 	                	<%=clist.get(i).getBlood()%>,
-	                <%}%>],
+	                <%}}%>],
 	               /* backgroundColor: '#ADEB00',*/
 	                borderColor: '#ADEB00',
 	                borderWidth: 0.5,
@@ -780,9 +780,9 @@ clist = dao.graph(info.getId());
 	    new Chart(ctx, {
 	        type: 'line',
 	        data: {
-	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
+	            labels: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
             	<%=clist.get(i).getCheckday()%>,
-                <%}%>],
+                <%}}%>],
 	            type: 'line',
 	            defaultFontFamily: 'Montserrat',
 	            datasets: [{
