@@ -736,8 +736,8 @@ pre {
     flex: 0 0 91.66667%;
     max-width: 91.66667%; }
   .col-sm-12 {
-    flex: 0 0 100%;
-    max-width: 100%; }
+    flex: 0 0 50%;
+    max-width: 50%; }
   .order-sm-first {
     order: -1; }
   .order-sm-last {
@@ -936,8 +936,8 @@ pre {
     flex: 0 0 91.66667%;
     max-width: 91.66667%; }
   .col-lg-12 {
-    flex: 0 0 100%;
-    max-width: 100%; }
+    flex: 0 0 50%;
+    max-width: 50%; }
   .order-lg-first {
     order: -1; }
   .order-lg-last {
@@ -1195,6 +1195,7 @@ pre {
 
 .table {
   width: 100%;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   background-color: transparent; }
   .table th,
@@ -3644,9 +3645,12 @@ input[type="button"].btn-block {
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   border: 1px solid transparent;
-  border-radius: 0.25rem; }
+  border-radius: 0.25rem; 
+  width:75px; 
+  height:50px;
+  }
 
 .alert-heading {
   color: inherit; }
@@ -14714,33 +14718,33 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 #Dropdown1 {
 	
 background-color:  #fff;
-	border-image:#7fc638;
+	border-color:#7fc638;
 	color:#000000;
 	padding: 10px 200px;
 }
 
 #Dropdown2 {
 	background-color:  #fff;
-	border-image:#7fc638;
+	border-color:#7fc638;
 	color:#000000;
 	padding: 10px 200px;
 }
 
 #Dropdown3 {
 background-color:  #fff;
-	border-image:#7fc638;
+	border-color:#7fc638;
 	color:#000000;
 	padding: 10px 200px;
 }
 #Dropdown4 {
 background-color:  #fff;
-	border-image:#7fc638;
+	border-color:#7fc638;
 	color:#000000;
 	padding: 10px 200px;
 }
 #Dropdown5 {
 background-color:  #fff;
-	border-image:#7fc638;
+	border-color:#7fc638;
 	color:#000000;
 	padding: 10px 200px;
 }

@@ -367,7 +367,7 @@ System.out.print("test2"+clist.get(0).getBlood());
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
@@ -442,7 +442,7 @@ System.out.print("test2"+clist.get(0).getBlood());
 					<!-- /# card -->
 				</div>
 
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
 							<h4 class="card-title">Slides With captions</h4>
@@ -493,10 +493,9 @@ System.out.print("test2"+clist.get(0).getBlood());
 								</div>
 							</div>
 						</div>
-						<br>
 					</div>
 				</div>
-				<div class="col-lg-12">
+				<div class="col-lg-6">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -530,7 +529,7 @@ System.out.print("test2"+clist.get(0).getBlood());
 				</div>
 
 
-				<div class="col-lg-12">
+				<div class="col-lg-6">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -564,7 +563,7 @@ System.out.print("test2"+clist.get(0).getBlood());
 				</div>
 
 
-				<div class="col-lg-12">
+				<div class="col-lg-6">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">

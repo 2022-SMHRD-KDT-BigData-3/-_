@@ -366,7 +366,7 @@
 						<form action="../UserimportServiceCon">
 							<div class="card" id="userCard">
 								<div class="card-body px-0">
-									<div class="col-lg-6">
+									<div class="col-lg-3">
 										<div class="card">
 											<div class="card-body">
 												<div id=today>
