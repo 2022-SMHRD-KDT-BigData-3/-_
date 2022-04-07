@@ -54,6 +54,7 @@ public class LoginServiceCon extends HttpServlet {
 	    	  session.setAttribute("info", info);
 	    	  if(ckdto!=null) {
 	    		  session.setAttribute("ckdto", ckdto);
+	    		  
 	    	  }
 	    	  response.sendRedirect("./quixlab-master/index.jsp");
 	      }else {
