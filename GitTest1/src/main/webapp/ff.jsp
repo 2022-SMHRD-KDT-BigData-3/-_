@@ -69,7 +69,29 @@
 	data-sidebar-style="full" data-sibebarbg="color_1"
 	data-sidebar-position="static" data-header-position="static"
 	data-container="wide" direction="ltr">
-
+	
+	<div id="modal" class="modal" width="400px">
+        	<div class="modal-content">
+        			<input id="foodName" type="text" class="form-control" placeholder="Search">
+        			<button class="search" onclick="getData()"> 선택 </button>
+        			<button class="close"> 닫기 </button>
+        			<table border="1" id="chart"> 
+    						
+    				</table>	
+        	</div>
+    </div>
+    
+    <div id="modalInfo" class="modal" width="400px">
+        	<div class="modal-content">
+        			<input id="foodName" type="text" class="form-control" placeholder="Search">
+        			<button class="search" onclick="getData()"> 선택 </button>
+        			<button class="close"> 닫기 </button>
+        			<table border="1" id="chart"> 
+    						
+    				</table>	
+        	</div>
+    </div>
+    
 	<!--*******************
         Preloader start
     ********************-->
@@ -91,16 +113,6 @@
     ***********************************-->
 	<div id="main-wrapper" class="show">
 		
-		<div class="modal">
-        		<div class="modal-content">
-        				<input id="foodName" type="text" class="form-control" placeholder="Search">
-        				<button class="search" onclick="getData()"> 선택 </button>
-        				<button class="close"> 닫기 </button>
-        				<table border="1" id="chart"> 
-    						
-    					</table>	
-        		</div>
-        	</div>
 		<!--**********************************
             Nav header start
         ***********************************-->
@@ -316,7 +328,7 @@
 								class="nav-text">Dashboard</span>
 						</a>
 							<ul aria-expanded="false" class="collapse">
-								<li><a href="./index.jsp">Home 1</a></li>
+								<li><a href="./index.html">Home 1</a></li>
 								<!-- <li><a href="./index-2.html">Home 2</a></li> -->
 							</ul></li>
 						<li class="mega-menu mega-menu-sm"><a class="has-arrow"
@@ -549,11 +561,11 @@
 							<tbody>
 								<tr>
 									<td>아침</td>
-									<td><button class = "choice">입력</button></td>
+									<td><button class = "choice">아침 입력</button></td>
 									<td><input type="datetime-local" name="time"></td>
-
+									<td id="morning"></td>
 									<td>
-										<button type="button"
+										<button type="button" id="morNutInfo"
 											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
 									<td><span><a href="#" data-toggle="tooltip"
@@ -564,11 +576,11 @@
 								</tr>
 								<tr>
 									<td>점심</td>
-									<td><button class = "choice">입력</button></td>
+									<td><button class = "choice">점심 입력</button></td>
 									<td><input type="datetime-local" name="time"></td>
-
+									<td id="lunch"></td>
 									<td>
-										<button type="button"
+										<button type="button" id="lunNutInfo"
 											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
 									<td><span><a href="#" data-toggle="tooltip"
@@ -579,11 +591,11 @@
 								</tr>
 								<tr>
 									<td>저녁</td>
-									<td><button class = "choice">입력</button></td>
+									<td><button class = "choice">저녁 입력</button></td>
 									<td><input type="datetime-local" name="time"></td>
-
+									<td id="dinner"></td>
 									<td>
-										<button type="button"
+										<button type="button" id="dinNutInfo"
 											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
 									<td><span><a href="#" data-toggle="tooltip"
@@ -647,7 +659,6 @@
         let pro = null;
         let car = null;
         let fat = null;
-        let mealTime2 = null;
         let input_data = {};
         
 /*         $(".choice").on("click", function(){
@@ -657,13 +668,33 @@
         }); */
         
     	$(".choice").click(function(){
-    		mealTime2 = this.innerText;
-    		console.log(mealTime2);
-    		$(".modal").fadeIn();
+    		mealTime = this.innerText;
+    		console.log(mealTime);
+    		$("#modal").fadeIn();
     		
     	});
         
-    	$(".close").click(function(){
+    	$(".close").click(function(){   		
+    		$("#modal").fadeOut();    		
+    	});
+    	
+    	$("#morNutInfo").click(function(){
+    		$("#modalInfo").fadeIn();
+    		let morFood_data = {};
+    		
+    	});
+    	
+    	$("#lunNutInfo").click(function(){
+    		$("#modalInfo").fadeIn();
+    		let lunFood_data = {};
+    	});
+    	
+    	$("#dinNutInfo").click(function(){
+    		$("#modalInfo").fadeIn();
+    		let dinFood_data = {};
+    	});
+    	
+		$(".close").click(function(){
     		
     		$(".modal").fadeOut();
     		
@@ -681,7 +712,7 @@
         	url : "https://cors-anywhere.herokuapp.com/http://openapi.foodsafetykorea.go.kr/api/6c16719532f64640814f/I2790/json/1/1000/DESC_KOR="+foodName,
         	type : "GET",  
             success : function(data){
-            	console.log("success : "+mealTime2);
+            	console.log("success : "+mealTime);
             	console.log(data);
             	let Array = data.I2790.row;
             	
@@ -697,12 +728,12 @@
             	                	fat = Array[i].NUTR_CONT4;
             	                	
             	                	input_data.num = i;
-            	                	input_data.meal = mealTime2;
+            	                	input_data.meal = mealTime;
             	                
             	                	var str = "<tr>" + "<td id=fname" + i + ">" + fname + 
             	                	"</td>" + "<td id=cal" + i + ">" + cal + "</td>" + "<td id=pro" + i + ">" + pro + 
             	                	"</td>" + "<td id=car" + i + ">" + car + "</td>" + "<td id=fat" + i + ">" + fat + 
-            	                	"</td><td><button id=select onclick='Funcinput("+ i +","+ mealTime2 +")'> 선택 </button></td></tr>"
+            	                	"</td><td><button id=select onclick='Funcinput("+ i +")'> 선택 </button></td></tr>"
             	                	
             	                	console.log(str)
             	                	
@@ -722,29 +753,48 @@
         } // getData 함수 끝    
 		// let i=0;
 		
-        function Funcinput(i, mealTime2){
+        function Funcinput(i){
         	//console.log("input 안의 숫자"+input_data.num);
         	//console.log("input 안의 숫자"+input_data.meal);
         	console.log("input 안의 숫자"+i);
-        	console.log("input 안의 숫자"+mealTime2);
+        	console.log("input 안의 숫자"+mealTime);
     		let fnameSec = document.getElementById("fname"+i).innerText;
     		let calSec = document.getElementById("cal"+i).innerText;
     		let proSec = document.getElementById("pro"+i).innerText;
     		let carSec = document.getElementById("car"+i).innerText;
     		let fatSec = document.getElementById("fat"+i).innerText;
     		
-    		if(mealTime2 == "아침 입력"){
+    		
+    		
+    		if(mealTime == "아침 입력"){
     			let td = document.getElementById("morning");
+    			mor = td.innerText;
+    			
         		console.log(fnameSec);
-        		td.innerText=fnameSec;
-    		}else if(mealTime2 == "점심 입력"){
+        		if(mor == ""){
+        			td.innerText=fnameSec;
+        		} else{
+        			td.innerText=mor+", "+fnameSec;
+        		}
+        		
+    		}else if(mealTime == "점심 입력"){
     			let td = document.getElementById("lunch");
+    			lun = td.innerText;
         		console.log(fnameSec);
-        		td.innerText=fnameSec;
+        		if(lun == ""){
+        			td.innerText=fnameSec;
+        		} else{
+        			td.innerText=lun+", "+fnameSec;
+        		}
     		}else{
     			let td = document.getElementById("dinner");
+    			din = td.innerText;
         		console.log(fnameSec);
-        		td.innerText=fnameSec;
+        		if(din == ""){
+        			td.innerText=fnameSec;
+        		} else{
+        			td.innerText=din+", "+fnameSec;
+        		}
     		} 
 
     	}
