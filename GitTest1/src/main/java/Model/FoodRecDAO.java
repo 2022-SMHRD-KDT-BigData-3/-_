@@ -84,7 +84,7 @@ public class FoodRecDAO {
 			   if(choice.equals("pro")) {
 				    sql = "select * from food_rec order by "+choice+" desc";
 			   } else {
-				    sql = "select * from food_rec order by "+choice ;
+				    sql = "select * from food_rec where "+ choice+">=5 order by "+choice ;
 			   }
 			   psmt = conn.prepareStatement(sql);
 			   
