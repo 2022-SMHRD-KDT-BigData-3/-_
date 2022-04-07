@@ -316,7 +316,7 @@
 								class="nav-text">Dashboard</span>
 						</a>
 							<ul aria-expanded="false" class="collapse">
-								<li><a href="./index.html">Home 1</a></li>
+								<li><a href="./index.jsp">Home 1</a></li>
 								<!-- <li><a href="./index-2.html">Home 2</a></li> -->
 							</ul></li>
 						<li class="mega-menu mega-menu-sm"><a class="has-arrow"
