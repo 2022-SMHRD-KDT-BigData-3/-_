@@ -365,7 +365,7 @@ clist = dao.graph(info.getId());
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
@@ -440,7 +440,7 @@ clist = dao.graph(info.getId());
 					<!-- /# card -->
 				</div>
 
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
 							<h4 class="card-title">Slides With captions</h4>
@@ -491,10 +491,9 @@ clist = dao.graph(info.getId());
 								</div>
 							</div>
 						</div>
-						<br>
 					</div>
 				</div>
-				<div class="col-lg-12">
+				<div class="col-lg-6">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -528,7 +527,7 @@ clist = dao.graph(info.getId());
 				</div>
 
 
-				<div class="col-lg-12">
+				<div class="col-lg-6">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -562,7 +561,7 @@ clist = dao.graph(info.getId());
 				</div>
 
 
-				<div class="col-lg-12">
+				<div class="col-lg-6">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">

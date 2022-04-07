@@ -1,18 +1,8 @@
 drop table member;
 drop table checking;
 drop table menu;
-drop table foodinfo;
 drop table dignosis;
-drop table foodid;
-create table member(
-seq number(10),
-id varchar2(100),
-pw varchar2(100) not null,
-nick varchar2(100) not null,
-constraint user_seq primary key(seq),
-constraint id unique(id));
 
-select * from checking where id = '1234' order by checkday desc
 select * from member;
 select * from checking;
 create sequence user_seq
@@ -21,6 +11,14 @@ create sequence user_seq
 	maxvalue 999999
 	nocycle 
 	nocache
+	
+create table member(
+seq number(10),
+id varchar2(100),
+pw varchar2(100) not null,
+nick varchar2(100) not null,
+constraint user_seq primary key(seq),
+constraint id unique(id));
 	
 create table checking(
 id varchar2(100),
@@ -44,8 +42,8 @@ cal number(20),
 pro number(20),
 car number(20),
 fat number(20),
-constraint menu_foodid primary key(foodid)
-constraint menu_id_fk1 foreign key(id) references member(id),
+constraint menu_foodid primary key(foodid),
+constraint menu_id_fk foreign key(id) references member(id)
 );
 
 create table dignosis(
