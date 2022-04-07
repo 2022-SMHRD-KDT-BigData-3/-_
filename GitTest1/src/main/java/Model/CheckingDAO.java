@@ -157,13 +157,14 @@ public class CheckingDAO {
 
 			// 결과를 꺼내서 ArrayList로 만들기
 			while(rs.next()) {
+				String id1 = rs.getString(1);
 				String checkday = rs.getString(2);
 				int weigth = rs.getInt(3);
 				int blood = rs.getInt(4);
 				int bsugar = rs.getInt(5);
 				int heigth = rs.getInt(6);
 
-				ckdto = new CheckingDTO(checkday, weigth, blood, bsugar, heigth);
+				ckdto = new CheckingDTO(id1,checkday, weigth, blood, bsugar, heigth);
 									
 				System.out.println("checkday :" +checkday);
 				System.out.println("weigth :" +weigth);

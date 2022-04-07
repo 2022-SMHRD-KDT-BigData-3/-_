@@ -48,6 +48,6 @@ public class UserimportServiceCon extends HttpServlet {
           System.out.println("입력실패");
 
 
-	} response.sendRedirect("quixlab-master/user-import.jsp");
+	} response.sendRedirect("./user-import.jsp");
 	}
 	}

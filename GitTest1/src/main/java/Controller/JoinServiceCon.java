@@ -47,10 +47,10 @@ public class JoinServiceCon extends HttpServlet {
 			// url에 얹어서 보내는 방법 - 쿼리스트링방식
 			// ?로 시작하고 변수형태 email보내야하니까 +로 연결
 			// 한글을 보낼때는 URLEncoder.encode(인코딩 할 값, "인코딩 방식")
-			response.sendRedirect("quixlab-master/page-login.jsp");
+			response.sendRedirect("./page-login.jsp");
 		} else {
 			System.out.println("회원가입 실패");
-			response.sendRedirect("quixlab-master/page-register.jsp");
+			response.sendRedirect("./page-register.jsp");
 		}
 	}
 

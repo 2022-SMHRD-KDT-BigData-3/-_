@@ -27,7 +27,7 @@ public class LogoutServiceCon extends HttpServlet {
 		
 		System.out.println("로그아웃 성공");
 		// 3. miin.jsp로 페이지 이동
-		response.sendRedirect("quixlab-master/index.jsp");
+		response.sendRedirect("./index.jsp");
 	}
 
 }

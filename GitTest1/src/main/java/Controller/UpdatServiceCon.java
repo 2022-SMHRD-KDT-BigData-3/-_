@@ -41,7 +41,7 @@ System.out.println("UpdatServiceCon");
 		}else {
 			System.out.println("회원정보수정 실패");
 		}
-		response.sendRedirect("quixlab-master/page-edit.jsp");
+		response.sendRedirect("./page-edit.jsp");
 
 
 	}

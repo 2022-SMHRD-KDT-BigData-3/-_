@@ -39,7 +39,7 @@
 						<div class="card login-form mb-0">
 							<div class="card-body pt-5">
 								<h4>로그인</h4>
-								<form class="mt-5 mb-5 login-input" action="../LoginServiceCon"
+								<form class="mt-5 mb-5 login-input" action="./LoginServiceCon"
 									method="post">
 									<div class="form-group">
 										<input type="text" class="form-control" name="id"
