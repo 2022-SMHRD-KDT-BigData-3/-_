@@ -342,71 +342,154 @@ clist = dao.graph(info.getId());
 							<div class="card-body">
 								<h3 class="card-title text-white">안녕하세요</h3>
 								<div class="d-inline-block">
-									<%if(info!=null){ %>
-									<h2 class="text-white"><%=info.getNick() %>님
+									<%
+									if (info != null) {
+									%>
+									<h2 class="text-white"><%=info.getNick()%>님
 									</h2>
 									<p class="text-white mb-0">환영합니다!</p>
 								</div>
 								<span class="float-right display-5 opacity-5"><i
 									class="fa fa-users"></i></span>
-								<%}else{ %>
+								<%
+								} else {
+								%>
 								<h2 class="text-white">로그인을 해주세요</h2>
-								<%} %>
+								<%
+								}
+								%>
 
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="card card-widget">
-							<div class="card-body">
+				</div>
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-body">
+							<div class="card-title">
 								<h5 class="text-muted">정보</h5>
-								<%if(info!=null){ %>
+								<%
+								if (info != null) {
+								%>
 								<h2 class="mt-4">
 									현재
-									<%=info.getNick() %>님 건강정보
+									<%=info.getNick()%>님 건강정보
 								</h2>
-								<%}else{ %>
+								<%
+								} else {
+								%>
 								<h2 class="mt-4">로그인 해주세요</h2>
-								<%} %>
-								<!-- <span>현재 nickname 건강정보</span> -->
-								<div class="mt-4">
-									<h4>혈당</h4>
-									<h6>
-										Blood pressure <span class="pull-right"><%if(info!=null){if(ckdto!=null){%><%=ckdto.getBsugar()%><%}}%></span>
-									</h6>
-									<div class="progress mb-3" style="height: 7px">
-										<div class="progress-bar bg-primary" style="width: 30%;"
-											role="progressbar">
-											<span class="sr-only">30% Order</span>
+								<%
+								}
+								%>
+							</div>
+							<!-- <span>현재 nickname 건강정보</span> -->
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<tbody>
+										<tr>
+
+											<td><h4 class="userIndex">혈당</h4></td>
+											<td><div class="alert alert-success">
+													<span class="pull-right"> <%
+											if (info != null) {
+												if (ckdto != null) {
+											%><%=ckdto.getBlood()%> <%
+											}
+											}
+											%>
+													</span>
+												</div></td>
+										</tr>
+										<tr>
+
+											<td><h4 class="userIndex">혈압</h4></td>
+											<td><div class="alert alert-success">
+													<span class="pull-right"> <%
+											if (info != null) {
+												if (ckdto != null) {
+											%><%=ckdto.getBlood()%> <%
+											}
+											}
+											%>
+													</span>
+												</div></td>
+										</tr>
+										<tr>
+											<td><h4 class="userIndex">BMI</h4></td>
+											<td><div class="alert alert-success">
+													<span class="pull-right"> <%
+											if (info != null) {
+												if (ckdto != null) {
+													int bmi = (ckdto.getWeigth() / (ckdto.getHeight() * ckdto.getHeight() / 10000));
+											%><%=bmi%> <%
+											}
+											}
+											%>
+													</span>
+												</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+						</div>
+					</div>
+					<!-- /# card -->
+				</div>
+
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">Slides With captions</h4>
+							<div class="bootstrap-carousel">
+								<div data-ride="carousel" class="carousel slide"
+									id="carouselExampleCaptions">
+									<ol class="carousel-indicators">
+										<li class="" data-slide-to="0"
+											data-target="#carouselExampleCaptions"></li>
+										<li data-slide-to="1" data-target="#carouselExampleCaptions"
+											class=""></li>
+										<li data-slide-to="2" data-target="#carouselExampleCaptions"
+											class="active"></li>
+									</ol>
+									<div class="carousel-inner">
+										<div class="carousel-item">
+											<img class="d-block w-100" src="images/big/img5.jpg" alt="">
+											<div class="carousel-caption d-none d-md-block">
+												<h5>First slide label</h5>
+												<p>Nulla vitae elit libero, a pharetra augue mollis
+													interdum.</p>
+											</div>
+										</div>
+										<div class="carousel-item">
+											<img alt="" class="d-block w-100" src="images/big/img6.jpg">
+											<div class="carousel-caption d-none d-md-block">
+												<h5>Second slide label</h5>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing
+													elit.</p>
+											</div>
+										</div>
+										<div class="carousel-item active">
+											<img alt="" class="d-block w-100" src="images/big/img5.jpg">
+											<div class="carousel-caption d-none d-md-block">
+												<h5>Third slide label</h5>
+												<p>Praesent commodo cursus magna, vel scelerisque nisl
+													consectetur.</p>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="mt-4">
-									<h4>혈압</h4>
-									<h6 class="m-t-10 text-muted">
-										blood glucose <span class="pull-right"><%if(info!=null){if(ckdto!=null){%><%=ckdto.getBlood()%><%}} %></span>
-									</h6>
-									<div class="progress mb-3" style="height: 7px">
-										<div class="progress-bar bg-success" style="width: 50%;"
-											role="progressbar">
-											<span class="sr-only">50% Order</span>
-										</div>
-									</div>
-								</div>
-								<div class="mt-4">
-									<h4>BMI</h4>
-									<h6 class="m-t-10 text-muted">
-										body mass index <span class="pull-right"><%if(info!=null){if(ckdto!=null){int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%><%}} %></span>
-									</h6>
-									<div class="progress mb-3" style="height: 7px">
-										<div class="progress-bar bg-warning" style="width: 20%;"
-											role="progressbar">
-											<span class="sr-only">20% Order</span>
-										</div>
-									</div>
+									<a data-slide="prev" href="#carouselExampleCaptions"
+										class="carousel-control-prev"><span
+										class="carousel-control-prev-icon"></span> <span
+										class="sr-only">Previous</span> </a><a data-slide="next"
+										href="#carouselExampleCaptions" class="carousel-control-next"><span
+										class="carousel-control-next-icon"></span> <span
+										class="sr-only">Next</span></a>
 								</div>
 							</div>
 						</div>
+						<br>
 					</div>
 				</div>
 				<div class="col-lg-12">
@@ -606,255 +689,6 @@ clist = dao.graph(info.getId());
     </script>
 	<script type="text/javascript"> document.getElementById("worldMain").style.display="none" </script>
 	<script type="text/javascript"> document.getElementById("SummaryMain").style.display="none" </script>
-	<script type="text/javascript"> (function($) {
-	    "use strict"
 
-	    let ctx = document.getElementById("chart_widget_1");
-	    ctx.height = 280;
-	    new Chart(ctx, {
-	        type: 'line',
-	        data: {
-	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
-            	<%=clist.get(i).getCheckday()%>,
-                <%}%>],
-	            type: 'line',
-	            defaultFontFamily: 'Montserrat',
-	            datasets: [ {
-	                label: "오늘 혈압",
-	                data: [<%for(int i=0;i<clist.size();i++ ){%>
-	                	<%=clist.get(i).getBlood()%>,
-	                <%}%>],
-	               /* backgroundColor: '#ADEB00',*/
-	                borderColor: '#ADEB00',
-	                borderWidth: 0.5,
-	                pointStyle: 'circle',
-	                pointRadius: 5,
-	                pointBorderColor: 'transparent',
-	                pointBackgroundColor: '#ADEB00',
-	            }]
-	        },
-	        options: {
-	            responsive: !0,
-	            maintainAspectRatio: false,
-	            tooltips: {
-	                mode: 'index',
-	                titleFontSize: 12,
-	                titleFontColor: '#000',
-	                bodyFontColor: '#000',
-	                backgroundColor: '#fff',
-	                titleFontFamily: 'Montserrat',
-	                bodyFontFamily: 'Montserrat',
-	                cornerRadius: 3,
-	                intersect: false,
-	            },
-	            legend: {
-	                display: false,
-	                position: 'top',
-	                labels: {
-	                    usePointStyle: true,
-	                    fontFamily: 'Montserrat',
-	                },
-
-
-	            },
-	            scales: {
-	                xAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: false,
-	                        labelString: 'Month'
-	                    }
-	                }],
-	                yAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: true,
-	                        labelString: 'Value'
-	                    }
-	                }]
-	            },
-	            title: {
-	                display: false,
-	            }
-	        }
-	    });
-	})(jQuery);(function($) {
-	    "use strict"
-
-	    let ctx = document.getElementById("chart_widget_2");
-	    ctx.height = 280;
-	    new Chart(ctx, {
-	        type: 'line',
-	        data: {
-	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
-            	<%=clist.get(i).getCheckday()%>,
-                <%}%>],
-	            type: 'line',
-	            defaultFontFamily: 'Montserrat',
-	            datasets: [{
-	                label: "오늘 혈당",
-	                data: [<%for(int i=0;i<clist.size();i++ ){%>
-	            	<%=clist.get(i).getBsugar()%>,
-	                <%}%>],
-	               /* backgroundColor: '#ADEB00',*/
-	                borderColor: '#ADEB00',
-	                borderWidth: 0.5,
-	                pointStyle: 'circle',
-	                pointRadius: 5,
-	                pointBorderColor: 'transparent',
-	                pointBackgroundColor: '#ADEB00',
-	            }]
-	        },
-	        options: {
-	            responsive: !0,
-	            maintainAspectRatio: false,
-	            tooltips: {
-	                mode: 'index',
-	                titleFontSize: 12,
-	                titleFontColor: '#000',
-	                bodyFontColor: '#000',
-	                backgroundColor: '#fff',
-	                titleFontFamily: 'Montserrat',
-	                bodyFontFamily: 'Montserrat',
-	                cornerRadius: 3,
-	                intersect: false,
-	            },
-	            legend: {
-	                display: false,
-	                position: 'top',
-	                labels: {
-	                    usePointStyle: true,
-	                    fontFamily: 'Montserrat',
-	                },
-
-
-	            },
-	            scales: {
-	                xAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: false,
-	                        labelString: 'Month'
-	                    }
-	                }],
-	                yAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: true,
-	                        labelString: 'Value'
-	                    }
-	                }]
-	            },
-	            title: {
-	                display: false,
-	            }
-	        }
-	    });
-	})(jQuery);
-
-	(function($) {
-	    "use strict"
-
-	    let ctx = document.getElementById("chart_wid3");
-	    ctx.height = 280;
-	    new Chart(ctx, {
-	        type: 'line',
-	        data: {
-	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
-            	<%=clist.get(i).getCheckday()%>,
-                <%}%>],
-	            type: 'line',
-	            defaultFontFamily: 'Montserrat',
-	            datasets: [{
-	                label: "오늘 BMI",
-	                data: [<%for(int i=0;i<clist.size();i++ ){
-	            	int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%>,
-	                <%}%>],
-	               /* backgroundColor: '#ADEB00',*/
-	                borderColor: '#ADEB00',
-	                borderWidth: 0.5,
-	                pointStyle: 'circle',
-	                pointRadius: 5,
-	                pointBorderColor: 'transparent',
-	                pointBackgroundColor: '#ADEB00',
-	            }]
-	        },
-	        options: {
-	            responsive: !0,
-	            maintainAspectRatio: false,
-	            tooltips: {
-	                mode: 'index',
-	                titleFontSize: 12,
-	                titleFontColor: '#000',
-	                bodyFontColor: '#000',
-	                backgroundColor: '#fff',
-	                titleFontFamily: 'Montserrat',
-	                bodyFontFamily: 'Montserrat',
-	                cornerRadius: 3,
-	                intersect: false,
-	            },
-	            legend: {
-	                display: false,
-	                position: 'top',
-	                labels: {
-	                    usePointStyle: true,
-	                    fontFamily: 'Montserrat',
-	                },
-
-
-	            },
-	            scales: {
-	                xAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: false,
-	                        labelString: 'Month'
-	                    }
-	                }],
-	                yAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: true,
-	                        labelString: 'Value'
-	                    }
-	                }]
-	            },
-	            title: {
-	                display: false,
-	            }
-	        }
-	    });
-
-
-	    
-
-
-	})(jQuery);
-</script>
-	
 </body>
 </html>
