@@ -1,4 +1,5 @@
-
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.CheckingDAO"%>
 <%@page import="Model.CheckingDTO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -30,6 +31,11 @@
 	<%
 MemberDTO info = (MemberDTO)session.getAttribute("info");
 CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto"); 
+ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
+CheckingDAO dao = new CheckingDAO();
+if(info!=null){
+clist = dao.graph(info.getId());
+}
 
 // 몸무게 / 키*키(소수점) 78 / ((176*176)/100) 76* 1.76*1.76
 %> 
