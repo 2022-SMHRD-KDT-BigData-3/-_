@@ -15198,7 +15198,7 @@ input[type="radio"] {
 }
 
 #box{
-	width: 950px;
+	width: 955px;
 	height: 1050px;
 	padding: 20px;
 	border: 1px solid green;
@@ -15209,13 +15209,14 @@ input[type="radio"] {
 	margin-left: 10rem;
 }
 
-.background{
-	padding: 30px;
-    font-size: 50px;
-    font-weight: bold;
-    text-align: bottom;
-    opacity: 1.0;
+.foodcard{
+	width: 350px;
+	height: 500px;
+	padding: 1.8rem;
+	top: 100px;
 }
+
+
 
 
 /*# sourceMappingURL=style.css.map */
