@@ -65,3 +65,13 @@ bp number(1),
 diaday date default sysdate,
 constraint dignosis_id_fk foreign key(id) references member(id)
 );
+
+select * from food_rec;
+
+select * from food_rec order by cal desc;
+select * from food_rec order by pro desc;
+select * from food_rec order by car desc;
+select * from food_rec order by fat desc;
+select * from food_rec order by sug desc;
+
+
