@@ -60,6 +60,8 @@
  
 }
 
+
+
 </style>
 
 
@@ -90,17 +92,7 @@
         Main wrapper start
     ***********************************-->
 	<div id="main-wrapper" class="show">
-		
-		<div class="modal">
-        		<div class="modal-content">
-        				<input id="foodName" type="text" class="form-control" placeholder="Search">
-        				<button class="search" onclick="getData()"> 선택 </button>
-        				<button class="close"> 닫기 </button>
-        				<table border="1" id="chart"> 
-    						
-    					</table>	
-        		</div>
-        	</div>
+
 		<!--**********************************
             Nav header start
         ***********************************-->
@@ -463,7 +455,6 @@
             Content body start
         ***********************************-->
 		<div class="content-body" style="min-height: 1100px;">
-	
 
 			<div class="row page-titles mx-0">
 				<div class="col p-md-0">
@@ -475,128 +466,70 @@
 				</div>
 			</div>
 			
-			<div id = today>
-			<script>
-			date = new Date().toLocaleDateString();
-			document.write(date);
-			</script>
-			</div>
+			
+			
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	
+        	<!-- 선택메뉴 -->
+        	<div id="info">Observe the platform icon's motion direction when there is up and down hover on options.</div>
 
+			<form id="app-cover">
+				<div id="select-box">
+					<input type="checkbox" id="options-view-button">
+					<div id="select-button" class="brd">
+						<div id="selected-value">
+							<span>음식 추천 받기</span>
+						</div>
+						
+					</div>
+					<div id="options">
+						<div class="option">
+							<input class="s-c top" type="radio" name="platform"
+								value="codepen"> <input class="s-c bottom" type="radio"
+								name="platform" value="codepen"> 
+								<span class="label">탄수화물</span> <span
+								class="opt-val">탄수화물</span>
+						</div>
+						<div class="option">
+							<input class="s-c top" type="radio" name="platform"
+								value="dribbble"> <input class="s-c bottom" type="radio"
+								name="platform" value="dribbble">  <span class="label">단백질</span> <span
+								class="opt-val">단백질</span>
+						</div>
+						
+						<div class="option">
+							<input class="s-c top" type="radio" name="platform"
+								value="hackerrank"> <input class="s-c bottom"
+								type="radio" name="platform" value="hackerrank">  <span class="label">저지방</span> <span
+								class="opt-val">저지방</span>
+						</div>
+						<div class="option">
+							<input class="s-c top" type="radio" name="platform"
+								value="stackoverflow"> <input class="s-c bottom"
+								type="radio" name="platform" value="stackoverflow">  <span class="label">당</span>
+							<span class="opt-val">당</span>
+						</div>
 
-			<div class="card">
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table table-bordered table-striped verticle-middle">
-
-
-							<tr>
-								<td id="bp">칼로리</td>
-								<td id="green">
-									<div class="progress" style="height: 10px">
-										<div class="progress-bar gradient-1" style="width: 70%;"
-											role="progressbar">
-											<span class="sr-only">50% Complete</span>
-										</div>
-									</div>
-								</td>
-							</tbody>
-						</table>
+						<div class="option">
+							<input class="s-c top" type="radio" name="platform"
+								value="freecodecamp"> <input class="s-c bottom"
+								type="radio" name="platform" value="freecodecamp"> <span class="label">칼로리</span>
+							<span class="opt-val">칼로리</span>
+						</div>
+						<div id="option-bg"></div>
 					</div>
 				</div>
-			</div>
-
-
-
-
-
-			<!-- 도넛 -->
-
+			</form>
 			
-				<%
-				int i = 45;
-				%>
-				<div class="pie-chart1">
-					<span class="center">탄수화물</span>
-					
-				</div>
-				
-
-				<div class="pie-chart1">
-					<span class="center">단백질</span>
-				</div>
-				
-
-				<div class="pie-chart1">
-					<span class="center">지방</span>
-				</div>
-				
-
-			
-				<script>
-	 	$(".pie-chart1").css({
-            "background":"conic-gradient(#ADEB00 0% <%=i%>%, #DCDCDC <%=i%>% 100%)"
-				});
-				</script>
-
 			
 
-			<div class="card">
-				<div class="card-body">
-					<h4 class="card-title">식단입력</h4>
-					<div class="table-responsive">
-						<table class="table table-bordered table-striped verticle-middle">
+			<div id = "box"></div>
 
-							<tbody>
-								<tr>
-									<td>아침</td>
-									<td><button class = "choice">입력</button></td>
-									<td><input type="datetime-local" name="time"></td>
 
-									<td>
-										<button type="button"
-											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
-									</td>
-									<td><span><a href="#" data-toggle="tooltip"
-											data-placement="top" title="Edit"><i
-												class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-											data-toggle="tooltip" data-placement="top" title="Close"><i
-												class="fa fa-close color-danger"></i></a></span></td>
-								</tr>
-								<tr>
-									<td>점심</td>
-									<td><button class = "choice">입력</button></td>
-									<td><input type="datetime-local" name="time"></td>
 
-									<td>
-										<button type="button"
-											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
-									</td>
-									<td><span><a href="#" data-toggle="tooltip"
-											data-placement="top" title="Edit"><i
-												class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-											data-toggle="tooltip" data-placement="top" title="Close"><i
-												class="fa fa-close color-danger"></i></a></span></td>
-								</tr>
-								<tr>
-									<td>저녁</td>
-									<td><button class = "choice">입력</button></td>
-									<td><input type="datetime-local" name="time"></td>
-
-									<td>
-										<button type="button"
-											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
-									</td>
-									<td><span><a href="#" data-toggle="tooltip"
-											data-placement="top" title="Edit"><i
-												class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-											data-toggle="tooltip" data-placement="top" title="Close"><i
-												class="fa fa-close color-danger"></i></a></span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
 
 
 
@@ -612,11 +545,14 @@
 			<!--**********************************
             Footer start
         ***********************************-->
+			<br>
+			<br>
+			<br>
 			<div class="footer">
 				<div class="copyright">
 					<p>
 						Copyright © Designed &amp; Developed by <a
-							href="https://themeforest.net/user/quixlab">Quixlab</a> 2018
+							href="https://themeforest.net/user/quixlab">지금 우리 학원은</a> 2022
 					</p>
 				</div>
 			</div>
@@ -639,116 +575,7 @@
 
 		<script src="./plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 		<script src="./js/plugins-init/sparkline.init.js"></script>
-		<script>
-		let foodName = null;
-        let mealTime = null; 
-        let fname = null;
-        let cal = null;
-        let pro = null;
-        let car = null;
-        let fat = null;
-        let mealTime2 = null;
-        let input_data = {};
-        
-/*         $(".choice").on("click", function(){
-		    mealTime2 = this.innerText;
-	    	console.log(mealTime2);
-	    	$(".modal").fadeIn();
-        }); */
-        
-    	$(".choice").click(function(){
-    		mealTime2 = this.innerText;
-    		console.log(mealTime2);
-    		$(".modal").fadeIn();
-    		
-    	});
-        
-    	$(".close").click(function(){
-    		
-    		$(".modal").fadeOut();
-    		
-    	});
-            
-        function getData(){
-    	
-        	$("#chart").empty();
-        	
-        	foodName = document.getElementById("foodName").value;
-        	console.log("성공해봐 ㅋㅋ");
-    		
-        	$.ajax({
-    		headers: {'X-Requested-With': 'XMLHttpRequest'},
-        	url : "https://cors-anywhere.herokuapp.com/http://openapi.foodsafetykorea.go.kr/api/6c16719532f64640814f/I2790/json/1/1000/DESC_KOR="+foodName,
-        	type : "GET",  
-            success : function(data){
-            	console.log("success : "+mealTime2);
-            	console.log(data);
-            	let Array = data.I2790.row;
-            	
-            	$("#chart").append("<tr><td> 식품명 </td><td> 열량 </td><td> 탄수화물 </td><td> 단백질 </td><td> 지방 </td><td> 선택 </td></tr>");        	                
-                for(let i=0; i<=Array.length; i++){
-                	
-                	if(Array[i].NUTR_CONT1 != "" && Array[i].NUTR_CONT2 != "" && Array[i].NUTR_CONT3 != "" && Array[i].NUTR_CONT4 != ""){
-                	
-                					fname = Array[i].DESC_KOR;
-            	                	cal = Array[i].NUTR_CONT1;
-            	                	pro = Array[i].NUTR_CONT2;
-            	                	car = Array[i].NUTR_CONT3;
-            	                	fat = Array[i].NUTR_CONT4;
-            	                	
-            	                	input_data.num = i;
-            	                	input_data.meal = mealTime2;
-            	                
-            	                	var str = "<tr>" + "<td id=fname" + i + ">" + fname + 
-            	                	"</td>" + "<td id=cal" + i + ">" + cal + "</td>" + "<td id=pro" + i + ">" + pro + 
-            	                	"</td>" + "<td id=car" + i + ">" + car + "</td>" + "<td id=fat" + i + ">" + fat + 
-            	                	"</td><td><button id=select onclick='Funcinput("+ i +","+ mealTime2 +")'> 선택 </button></td></tr>"
-            	                	
-            	                	console.log(str)
-            	                	
-            	                	$("#chart").append(str);
-        	                	
-                	} // if문끝
 
-                } // for문끝
-                	
-                	
-                }, // success 끝
-            	
-            error : function(data){
-            alert("통신 실패");
-            } // error 끝
-    }); // ajax끝
-        } // getData 함수 끝    
-		// let i=0;
-		
-        function Funcinput(i, mealTime2){
-        	//console.log("input 안의 숫자"+input_data.num);
-        	//console.log("input 안의 숫자"+input_data.meal);
-        	console.log("input 안의 숫자"+i);
-        	console.log("input 안의 숫자"+mealTime2);
-    		let fnameSec = document.getElementById("fname"+i).innerText;
-    		let calSec = document.getElementById("cal"+i).innerText;
-    		let proSec = document.getElementById("pro"+i).innerText;
-    		let carSec = document.getElementById("car"+i).innerText;
-    		let fatSec = document.getElementById("fat"+i).innerText;
-    		
-    		if(mealTime2 == "아침 입력"){
-    			let td = document.getElementById("morning");
-        		console.log(fnameSec);
-        		td.innerText=fnameSec;
-    		}else if(mealTime2 == "점심 입력"){
-    			let td = document.getElementById("lunch");
-        		console.log(fnameSec);
-        		td.innerText=fnameSec;
-    		}else{
-    			let td = document.getElementById("dinner");
-        		console.log(fnameSec);
-        		td.innerText=fnameSec;
-    		} 
-
-    	}
-		</script>
 
 
 	</div>
