@@ -1,3 +1,6 @@
+<%@page import="Model.FoodRecDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.FoodRecDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,31 +40,28 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
 	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 	crossorigin="anonymous"></script>
-	
+
 <style>
 .pie-chart1 {
-  display:inline-block;
-  position:relative;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  margin-left : 10rem;
-}
-.pie-chart1  .center{
-  position:absolute;
-  width:100px; 
-  height: 100px;
-  background :#fff;
-  border-radius: 50%;
-  top: 50px;
-  left:50px;
-  text-align: center;
-  line-height:100px;
- 
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin-left: 10rem;
 }
 
-
-
+.pie-chart1  .center {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background: #fff;
+	border-radius: 50%;
+	top: 50px;
+	left: 50px;
+	text-align: center;
+	line-height: 100px;
+}
 </style>
 
 
@@ -465,68 +465,87 @@
 					</ol>
 				</div>
 			</div>
-			
-			
-			
-        	<br>
-        	<br>
-        	<br>
-        	<br>
-        	
-        	<!-- 선택메뉴 -->
-        	<div id="info">Observe the platform icon's motion direction when there is up and down hover on options.</div>
 
-			<form id="app-cover">
+
+
+			<br> <br> <br> <br>
+		<!-- 선택메뉴 -->
+			<div id="info">Observe the platform icon's motion direction
+				when there is up and down hover on options.</div>
+
+			<form id="app-cover" action="FoodRecCon" method="post">
 				<div id="select-box">
 					<input type="checkbox" id="options-view-button">
 					<div id="select-button" class="brd">
 						<div id="selected-value">
 							<span>음식 추천 받기</span>
 						</div>
-						
+
 					</div>
 					<div id="options">
 						<div class="option">
 							<input class="s-c top" type="radio" name="platform"
-								value="codepen"> <input class="s-c bottom" type="radio"
-								name="platform" value="codepen"> 
-								<span class="label">탄수화물</span> <span
-								class="opt-val">탄수화물</span>
+								value="car"> <input class="s-c bottom" type="radio"
+								name="platform" value="car"> <span class="label">탄수화물</span>
+							<span class="opt-val">탄수화물</span>
 						</div>
 						<div class="option">
 							<input class="s-c top" type="radio" name="platform"
-								value="dribbble"> <input class="s-c bottom" type="radio"
-								name="platform" value="dribbble">  <span class="label">단백질</span> <span
-								class="opt-val">단백질</span>
-						</div>
-						
-						<div class="option">
-							<input class="s-c top" type="radio" name="platform"
-								value="hackerrank"> <input class="s-c bottom"
-								type="radio" name="platform" value="hackerrank">  <span class="label">저지방</span> <span
-								class="opt-val">저지방</span>
-						</div>
-						<div class="option">
-							<input class="s-c top" type="radio" name="platform"
-								value="stackoverflow"> <input class="s-c bottom"
-								type="radio" name="platform" value="stackoverflow">  <span class="label">당</span>
-							<span class="opt-val">당</span>
+								value="pro"> <input class="s-c bottom" type="radio"
+								name="platform" value="pro"> <span class="label">단백질</span>
+							<span class="opt-val">단백질</span>
 						</div>
 
 						<div class="option">
 							<input class="s-c top" type="radio" name="platform"
-								value="freecodecamp"> <input class="s-c bottom"
-								type="radio" name="platform" value="freecodecamp"> <span class="label">칼로리</span>
-							<span class="opt-val">칼로리</span>
+								value="fat"> <input class="s-c bottom"
+								type="radio" name="platform" value="fat"> <span
+								class="label">저지방</span> <span class="opt-val">저지방</span>
 						</div>
+						<div class="option">
+							<input class="s-c top" type="radio" name="platform"
+								value="sug"> <input class="s-c bottom"
+								type="radio" name="platform" value="sug"> <span
+								class="label">당</span> <span class="opt-val">당</span>
+						</div>
+
+						<div class="option">
+							<input class="s-c top" type="radio" name="platform"
+								value="cal"> <input class="s-c bottom"
+								type="radio" name="platform" value="cal"> <span
+								class="label">칼로리</span> <span class="opt-val">칼로리</span>
+						</div> 
+						<div><input type="submit" value="선택"></div>
+						
 						<div id="option-bg"></div>
 					</div>
 				</div>
 			</form>
-			
-			
 
-			<div id = "box"></div>
+
+	<!-- 출력 창 -->
+			<div id="box">
+				<table>
+							<%
+							ArrayList<FoodRecDTO> list = (ArrayList<FoodRecDTO>)session.getAttribute("list");
+							
+							
+							if(list!=null){
+
+
+							for(int i=0; i<list.size();i++){ %>
+								<tr>
+								<td><%=list.get(i).getFname() %></td>
+								<td><%=list.get(i).getCal() %></td>
+								<td><%=list.get(i).getPro() %></td>							
+								<td><%=list.get(i).getFat() %></td>							
+								<td><%=list.get(i).getCar() %></td>							
+								<td><%=list.get(i).getSug() %></td>							
+							</tr>
+							<%} 
+							}%>
+						</table>
+			</div>
 
 
 
@@ -545,9 +564,7 @@
 			<!--**********************************
             Footer start
         ***********************************-->
-			<br>
-			<br>
-			<br>
+			<br> <br> <br>
 			<div class="footer">
 				<div class="copyright">
 					<p>
