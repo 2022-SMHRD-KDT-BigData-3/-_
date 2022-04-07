@@ -31,10 +31,14 @@
 	<%
 MemberDTO info = (MemberDTO)session.getAttribute("info");
 CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto"); 
+
 ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
 CheckingDAO dao = new CheckingDAO();
+
 if(info!=null){
 clist = dao.graph(info.getId());
+System.out.print("test1"+clist.get(0).getCheckday());
+System.out.print("test2"+clist.get(0).getBlood());
 }
 
 // 몸무게 / 키*키(소수점) 78 / ((176*176)/100) 76* 1.76*1.76
@@ -620,7 +624,10 @@ clist = dao.graph(info.getId());
 	            type: 'line',
 	            defaultFontFamily: 'Montserrat',
 	            datasets: [ {
-	                label: "오늘 혈압",
+	                label: [<%for(int i=0;i<clist.size();i++ ){%>
+	            	<%String day = clist.get(i).getCheckday();%>
+	            	
+	                <%}%>],
 	                data: [<%for(int i=0;i<clist.size();i++ ){%>
 	                	<%=clist.get(i).getBlood()%>,
 	                <%}%>],
@@ -700,7 +707,9 @@ clist = dao.graph(info.getId());
 	            type: 'line',
 	            defaultFontFamily: 'Montserrat',
 	            datasets: [{
-	                label: "오늘 혈당",
+	                label: [<%for(int i=0;i<clist.size();i++ ){%>
+	            	<%=clist.get(i).getCheckday()%>,
+	                <%}%>],
 	                data: [<%for(int i=0;i<clist.size();i++ ){%>
 	            	<%=clist.get(i).getBsugar()%>,
 	                <%}%>],
@@ -782,7 +791,9 @@ clist = dao.graph(info.getId());
 	            type: 'line',
 	            defaultFontFamily: 'Montserrat',
 	            datasets: [{
-	                label: "오늘 BMI",
+	                label: [<%for(int i=0;i<clist.size();i++ ){%>
+	            	<%=clist.get(i).getCheckday()%>,
+	                <%}%>],s
 	                data: [<%for(int i=0;i<clist.size();i++ ){
 	            	int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%>,
 	                <%}%>],

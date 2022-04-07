@@ -170,10 +170,14 @@ public class CheckingDAO {
 				System.out.println("blood :" +blood);
 				System.out.println("bsugar :" +bsugar);
 				System.out.println("heigth :" +heigth);
+				
 				clist.add(ckdto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		finally {
+			db_close();
 		}
 		return clist;
 	}
