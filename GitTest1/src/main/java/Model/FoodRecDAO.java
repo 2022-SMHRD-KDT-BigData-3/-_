@@ -80,9 +80,12 @@ public class FoodRecDAO {
 		     
 		   try {
 			   System.out.println("test "+choice);
-			   
-			   String sql = "select * from food_rec order by "+choice+" desc";
-			   
+			   String sql=null;
+			   if(choice.equals("pro")) {
+				    sql = "select * from food_rec order by "+choice+" desc";
+			   } else {
+				    sql = "select * from food_rec order by "+choice ;
+			   }
 			   psmt = conn.prepareStatement(sql);
 			   
 			  

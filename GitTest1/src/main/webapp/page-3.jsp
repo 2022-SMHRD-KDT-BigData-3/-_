@@ -542,7 +542,7 @@
 								<td>총당류</td>							
 														
 							</tr>
-							<%for(int i=0; i<list.size();i++){ %>
+							<%for(int i=0; i<42;i++){ %>
 								<tr>
 								<td><%=list.get(i).getFname() %></td>
 								<td><%=list.get(i).getCal() %></td>

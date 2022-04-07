@@ -3,6 +3,7 @@ drop table checking;
 drop table menu;
 drop table foodinfo;
 drop table dignosis;
+drop table food_rec;
 
 create table member(
 seq number(10),
