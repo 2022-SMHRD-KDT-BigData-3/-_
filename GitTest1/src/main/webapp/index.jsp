@@ -24,12 +24,13 @@
 	href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
 <!-- Custom Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
-
+<script src="./jquery-3.6.0.min.js"></script>
 
 <title>Insert title here</title>
 </head>
 <body>
-	<%
+<%
+	
 MemberDTO info = (MemberDTO)session.getAttribute("info");
 CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto"); 
 
@@ -37,6 +38,7 @@ ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
 CheckingDAO dao = new CheckingDAO();
 if(info!=null){
 clist = dao.graph(info.getId());
+
 }
 
 %>
@@ -676,7 +678,7 @@ clist = dao.graph(info.getId());
 
 
 
-	<script src="./js/dashboard/dashboard-1.js"></script>
+	
 
 	<!--  로그인 페이지 이동 실행 -->
 	<script type="text/javascript">
@@ -697,197 +699,134 @@ clist = dao.graph(info.getId());
 
 	<!--  차트 css  -->
 	<script type="text/javascript">
-	    let ctx = document.getElementById("chart_widget_1");
-	    ctx.height = 280;
-	    new Chart(ctx, {
-	        type: 'line',
-	        data: {
-	            labels: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
-            	<%=clist.get(i).getCheckday()%>,
-                <%}}%>],
-	            type: 'line',
-	            defaultFontFamily: 'Montserrat',
-	            datasets: [ {
-	                label: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
-	            	<%String day = clist.get(i).getCheckday();%>
-	            	
-	                <%}}%>],
-	                data: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
-	                	<%=clist.get(i).getBlood()%>,
-	                <%}}%>],
-	               /* backgroundColor: '#ADEB00',*/
-	                borderColor: '#ADEB00',
-	                borderWidth: 0.5,
-	                pointStyle: 'circle',
-	                pointRadius: 5,
-	                pointBorderColor: 'transparent',
-	                pointBackgroundColor: '#ADEB00',
-	            }]
-	        },
-	        options: {
-	            responsive: !0,
-	            maintainAspectRatio: false,
-	            tooltips: {
-	                mode: 'index',
-	                titleFontSize: 12,
-	                titleFontColor: '#000',
-	                bodyFontColor: '#000',
-	                backgroundColor: '#fff',
-	                titleFontFamily: 'Montserrat',
-	                bodyFontFamily: 'Montserrat',
-	                cornerRadius: 3,
-	                intersect: false,
-	            },
-	            legend: {
-	                display: false,
-	                position: 'top',
-	                labels: {
-	                    usePointStyle: true,
-	                    fontFamily: 'Montserrat',
-	                },
+
+    
+    
+
+		(function($) {
+		    "use strict"
+	
+
+		    let ctx = document.getElementById("chart_widget_1");
+		   
+		    let arr = []; 
+		    
+		    <%for(int i=0;i<clist.size(); i++){%> 
+			arr[<%=i%>] = "<%=clist.get(i).getCheckday()%>"
+		    <%}%>
+		    
+		   
+		
+		    ctx.height = 280;
+		    new Chart(ctx, {
+		        type: 'line',
+		        data: {
+			labels: arr,
+		            type: 'line',
+		            defaultFontFamily: 'Montserrat',
+		            datasets: [{
+		                data: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
+		                	<%=clist.get(i).getBlood()%>,
+		                <%}}%>],
+		                label: "홍석",
+		                backgroundColor: '#847DFA',
+		                borderColor: '#847DFA',
+		                borderWidth: 0.5,
+		                pointStyle: 'circle',
+		                pointRadius: 5,
+		                pointBorderColor: 'transparent',
+		                pointBackgroundColor: '#847DFA',
+		            }]
+		        },
+		        options: {
+		            responsive: !0,
+		            maintainAspectRatio: false,
+		            tooltips: {
+		                mode: 'index',
+		                titleFontSize: 12,
+		                titleFontColor: '#000',
+		                bodyFontColor: '#000',
+		                backgroundColor: '#fff',
+		                titleFontFamily: 'Montserrat',
+		                bodyFontFamily: 'Montserrat',
+		                cornerRadius: 3,
+		                intersect: false,
+		            },
+		            legend: {
+		                display: false,
+		                position: 'top',
+		                labels: {
+		                    usePointStyle: true,
+		                    fontFamily: 'Montserrat',
+		                },
 
 
-	            },
-	            scales: {
-	                xAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: false,
-	                        labelString: 'Month'
-	                    }
-	                }],
-	                yAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: true,
-	                        labelString: 'Value'
-	                    }
-	                }]
-	            },
-	            title: {
-	                display: false,
-	            }
-	        }
-	    });
-	})(jQuery);(function($) {
-	    "use strict"
-
-	    let ctx = document.getElementById("chart_widget_2");
-	    ctx.height = 280;
-	    new Chart(ctx, {
-	        type: 'line',
-	        data: {
-	            labels: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
-            	<%=clist.get(i).getCheckday()%>,
-                <%}}%>],
-	            type: 'line',
-	            defaultFontFamily: 'Montserrat',
-	            datasets: [{
-	                label: [<%for(int i=0;i<clist.size();i++ ){%>
-	            	<%=clist.get(i).getCheckday()%>,
-	                <%}%>],
-	                data: [<%for(int i=0;i<clist.size();i++ ){%>
-	            	<%=clist.get(i).getBsugar()%>,
-	                <%}%>],
-	               /* backgroundColor: '#ADEB00',*/
-	                borderColor: '#ADEB00',
-	                borderWidth: 0.5,
-	                pointStyle: 'circle',
-	                pointRadius: 5,
-	                pointBorderColor: 'transparent',
-	                pointBackgroundColor: '#ADEB00',
-	            }]
-	        },
-	        options: {
-	            responsive: !0,
-	            maintainAspectRatio: false,
-	            tooltips: {
-	                mode: 'index',
-	                titleFontSize: 12,
-	                titleFontColor: '#000',
-	                bodyFontColor: '#000',
-	                backgroundColor: '#fff',
-	                titleFontFamily: 'Montserrat',
-	                bodyFontFamily: 'Montserrat',
-	                cornerRadius: 3,
-	                intersect: false,
-	            },
-	            legend: {
-	                display: false,
-	                position: 'top',
-	                labels: {
-	                    usePointStyle: true,
-	                    fontFamily: 'Montserrat',
-	                },
+		            },
+		            scales: {
+		                xAxes: [{
+		                    display: false,
+		                    gridLines: {
+		                        display: false,
+		                        drawBorder: false
+		                    },
+		                    scaleLabel: {
+		                        display: false,
+		                        labelString: 'Month'
+		                    }
+		                }],
+		                yAxes: [{
+		                    display: false,
+		                    gridLines: {
+		                        display: false,
+		                        drawBorder: false
+		                    },
+		                    scaleLabel: {
+		                        display: true,
+		                        labelString: 'Value'
+		                    }
+		                }]
+		            },
+		            title: {
+		                display: false,
+		            }
+		        }
+		    });
 
 
-	            },
-	            scales: {
-	                xAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: false,
-	                        labelString: 'Month'
-	                    }
-	                }],
-	                yAxes: [{
-	                    display: false,
-	                    gridLines: {
-	                        display: false,
-	                        drawBorder: false
-	                    },
-	                    scaleLabel: {
-	                        display: true,
-	                        labelString: 'Value'
-	                    }
-	                }]
-	            },
-	            title: {
-	                display: false,
-	            }
-	        }
-	    });
-	})(jQuery);
+		    
+
+
+		})(jQuery);
 
 	(function($) {
 	    "use strict"
-
-	    let ctx = document.getElementById("chart_wid3");
+		
+		    
+	    let ctx = document.getElementById("chart_widget_2");
+	    let arr = []; 
+	    
+	    <%for(int i=0;i<clist.size(); i++){%> 
+		arr[<%=i%>] = "<%=clist.get(i).getCheckday()%>"
+	    <%}%>
 	    ctx.height = 280;
 	    new Chart(ctx, {
 	        type: 'line',
 	        data: {
-	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
-            	<%=clist.get(i).getCheckday()%>,
-                <%}%>],
+		labels: arr,
 	            type: 'line',
 	            defaultFontFamily: 'Montserrat',
 	            datasets: [{
-	                label: [<%for(int i=0;i<clist.size();i++ ){%>
-	            	<%=clist.get(i).getCheckday()%>,
-	                <%}%>],s
-	                data: [<%for(int i=0;i<clist.size();i++ ){
-	            	int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%>,
+	                data: [<%for(int i=0;i<clist.size();i++ ){%>
+	            	<%=clist.get(i).getBsugar()%>,
 	                <%}%>],
-	               /* backgroundColor: '#ADEB00',*/
-	                borderColor: '#ADEB00',
+	                label: "홍석",
+	                backgroundColor: '#847DFA',
+	                borderColor: '#847DFA',
 	                borderWidth: 0.5,
 	                pointStyle: 'circle',
 	                pointRadius: 5,
 	                pointBorderColor: 'transparent',
-	                pointBackgroundColor: '#ADEB00',
+	                pointBackgroundColor: '#847DFA',
 	            }]
 	        },
 	        options: {
@@ -949,6 +888,100 @@ clist = dao.graph(info.getId());
 
 
 	})(jQuery);
+	
+	
+		(function($) {
+		    "use strict"
+			 
+			let arr = []; 
+		    
+		    <%for(int i=0;i<clist.size(); i++){%> 
+			arr[<%=i%>] = "<%=clist.get(i).getCheckday()%>"
+		    <%}%>
+		    let ctx = document.getElementById("chart_wid3");
+		    
+		    ctx.height = 280;
+		    new Chart(ctx, {
+		        type: 'line',
+		        data: {
+			labels: arr,
+		            type: 'line',
+		            defaultFontFamily: 'Montserrat',
+		            datasets: [{
+		                data: [<%for(int i=0;i<clist.size();i++ ){
+	            	int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%>,
+	                <%}%>],
+		                label: "홍석",
+		                backgroundColor: '#847DFA',
+		                borderColor: '#847DFA',
+		                borderWidth: 0.5,
+		                pointStyle: 'circle',
+		                pointRadius: 5,
+		                pointBorderColor: 'transparent',
+		                pointBackgroundColor: '#847DFA',
+		            }]
+		        },
+		        options: {
+		            responsive: !0,
+		            maintainAspectRatio: false,
+		            tooltips: {
+		                mode: 'index',
+		                titleFontSize: 12,
+		                titleFontColor: '#000',
+		                bodyFontColor: '#000',
+		                backgroundColor: '#fff',
+		                titleFontFamily: 'Montserrat',
+		                bodyFontFamily: 'Montserrat',
+		                cornerRadius: 3,
+		                intersect: false,
+		            },
+		            legend: {
+		                display: false,
+		                position: 'top',
+		                labels: {
+		                    usePointStyle: true,
+		                    fontFamily: 'Montserrat',
+		                },
+
+
+		            },
+		            scales: {
+		                xAxes: [{
+		                    display: false,
+		                    gridLines: {
+		                        display: false,
+		                        drawBorder: false
+		                    },
+		                    scaleLabel: {
+		                        display: false,
+		                        labelString: 'Month'
+		                    }
+		                }],
+		                yAxes: [{
+		                    display: false,
+		                    gridLines: {
+		                        display: false,
+		                        drawBorder: false
+		                    },
+		                    scaleLabel: {
+		                        display: true,
+		                        labelString: 'Value'
+		                    }
+		                }]
+		            },
+		            title: {
+		                display: false,
+		            }
+		        }
+		    });
+
+
+		    
+
+
+		})(jQuery);
+
+	
 </script>
 
 </body>
