@@ -405,54 +405,76 @@
             Content body start
         ***********************************-->
 		<div class="content-body">
-			<div class="row">
-				<div class="col-lg-3 col-sm-6">
-
-					<div class="card gradient-2">
-						<div class="card-body">
-							<h3 class="card-title text-white">nickName님의</h3>
-							<div class="d-inline-block">
-								<h2 class="text-white">관련질환 운동</h2>
-								<p class="text-white mb-0">주의사항</p>
-							</div>
-							<span class="float-right display-5 opacity-5"><i
-								class="fa fa-heart"></i></span>
-						</div>
-					</div>
-
-				</div>
-				
-				<div class="col-lg-12">
-					<div class="card">
-						<div class="card-body" style=>
-							
-								<label for="search"></label>
-								<input type="search" id="search" name="search" class="form-control input-rounded" 
-										placeholder="Input Rounded" onkeyup="inputkeyup(event)">
-								<br>
-								<center><button type="button" onclick="ajaxRequest()" placeholder="">Search</button></center>	
-						</div>
-					</div>
-				</div>
-				</div>
-				
+			<div class="container-fluid mt-3">
 				<div class="row">
-				
-				<div class="col-lg-12">
-				<div class="card">
-					<div id="video" class="card-body">		
-							<div>
-								<div class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
-    								<div class="homeVideoThumbnail video-player">
-    								</div>  
-								</div>
-							</div>	
-					</div>	
-					<div class="side-body"> <div id="list"> <ul class="list"></ul> </div> </div>
-				</div>
-				</div>
-			</div>
+					<div class="col-lg-3 col-sm-6">
 
+						<div class="card gradient-2">
+							<div class="card-body">
+								<h3 class="card-title text-white">nickName님의</h3>
+								<div class="d-inline-block">
+									<h2 class="text-white">관련질환 운동</h2>
+									<p class="text-white mb-0">주의사항</p>
+								</div>
+								<span class="float-right display-5 opacity-5"><i
+									class="fa fa-heart"></i></span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<label for="search"></label> <input type="search" id="search"
+									name="search" class="form-control input-rounded"
+									placeholder="Input Rounded" onkeyup="inputkeyup(event)">
+								<br>
+								<center>
+									<button type="button" class="btn mb-1 btn-outline-danger"
+										onclick="ajaxRequest()" placeholder="">Search</button>
+								</center>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div id="video" class="card-body">
+								<div class="row">
+								<div class="col-lg-4">
+									<div class="card">
+										<div id="videoList" class="card-body">
+											<div class="side-body">
+												<div id="list">
+													<ul class="list"></ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+																<div class="col-lg-8" >
+									<div class="card">
+										<div id="videoList" class="card-body">
+											<div class="youtube">
+												<div
+													class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+													<div class="homeVideoThumbnail video-player"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
 		<!--**********************************
             Content body end
         ***********************************-->
@@ -465,7 +487,7 @@
 		<div class="copyright">
 			<p>
 				1차프로잭트 &copy; Designed & Developed by <a
-					>지금우리학원은</a> 2018
+					href="https://themeforest.net/user/quixlab">지금우리학원은</a> 2018
 			</p>
 		</div>
 	</div>
@@ -507,7 +529,7 @@
 
 
 	<script src="./js/dashboard/dashboard-1.js"></script>
-	
+
 	<script>
 	
     const v = document.querySelector('.videoPlayer');

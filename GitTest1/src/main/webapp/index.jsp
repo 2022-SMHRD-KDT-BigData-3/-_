@@ -365,9 +365,11 @@ clist = dao.graph(info.getId());
 						</div>
 					</div>
 				</div>
+				<div class="row">
 				<div class="col-lg-6">
 					<div class="card">
 						<div class="card-body">
+						<div class="super">
 							<div class="card-title">
 								<h5 class="text-muted">정보</h5>
 								<%
@@ -380,7 +382,7 @@ clist = dao.graph(info.getId());
 								<%
 								} else {
 								%>
-								<h2 class="mt-4">로그인을 해주세요</h2>
+								<h1 class="mt-4">로그인을 해주세요</h1>
 								<%
 								}
 								%>
@@ -434,7 +436,7 @@ clist = dao.graph(info.getId());
 									</tbody>
 								</table>
 							</div>
-							<br>
+							</div>
 						</div>
 					</div>
 					<!-- /# card -->
@@ -443,6 +445,7 @@ clist = dao.graph(info.getId());
 				<div class="col-lg-6">
 					<div class="card">
 						<div class="card-body">
+						<div class="super">
 							<h4 class="card-title">Slides With captions</h4>
 							<div class="bootstrap-carousel">
 								<div data-ride="carousel" class="carousel slide"
@@ -491,8 +494,9 @@ clist = dao.graph(info.getId());
 								</div>
 							</div>
 						</div>
-						<br>
+						</div>
 					</div>
+				</div>
 				</div>
 				<div class="col-lg-12">
 					<div class="row">
