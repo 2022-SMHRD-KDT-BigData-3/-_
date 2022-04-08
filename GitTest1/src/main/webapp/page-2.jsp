@@ -503,25 +503,30 @@
 		<!--**********************************
             Content body start
         ***********************************-->
-		<div class="content-body" style="min-height: 1100px;">
+		<div class="content-body">
 
 
-			<div class="row page-titles mx-0">
-				<div class="col p-md-0">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-						<li class="breadcrumb-item active"><a
-							href="javascript:void(0)">Home</a></li>
-					</ol>
+			<div class="row">
+					<div class="col-lg-3 col-sm-6">
+						
+						<div class="card gradient-2">
+							<div class="card-body">
+								
+								<a data-slide="prev" href="#carouselExampleCaptions" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span> </a>
+								<div id=today style="text-align: center;">
+								<script>
+								date = new Date().toLocaleDateString();
+								document.write(date);
+								</script>
+							    </div>
+								<a data-slide="next" href="#carouselExampleCaptions" class="carousel-control-next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+								<span class="float-right display-5 opacity-5"><i
+									class="fa fa-heart"></i></span>
+							</div>
+						</div>
+
+					</div>
 				</div>
-			</div>
-
-			<div id=today>
-				<script>
-			date = new Date().toLocaleDateString();
-			document.write(date);
-			</script>
-			</div>
 
 
 			<div class="card">
