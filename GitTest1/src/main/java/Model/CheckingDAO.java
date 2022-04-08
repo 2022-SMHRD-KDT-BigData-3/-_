@@ -164,7 +164,7 @@ public class CheckingDAO {
 				int bsugar = rs.getInt(5);
 				int heigth = rs.getInt(6);
 
-				ckdto = new CheckingDTO(id1,checkday, weigth, blood, bsugar, heigth);
+				ckdto = new CheckingDTO(id1, checkday, weigth, blood, bsugar, heigth);
 									
 				System.out.println("checkday :" +checkday);
 				System.out.println("weigth :" +weigth);

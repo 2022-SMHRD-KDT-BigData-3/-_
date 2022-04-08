@@ -6,6 +6,7 @@ drop table food_rec;
 
 select * from member;
 select * from checking;
+select * from MENU;
 create sequence user_seq
 	start with 1
 	increment by 1
@@ -37,13 +38,11 @@ create table menu(
 id varchar2(100),
 meal number(1),
 dietday date default sysdate,
-foodid varchar(10),
-fname varchar(10),
-cal number(20),
-pro number(20),
-car number(20),
-fat number(20),
-constraint menu_foodid primary key(foodid),
+fname varchar2 (100),
+cal number(38),
+pro number(38),
+car number(38),
+fat number(38),
 constraint menu_id_fk foreign key(id) references member(id)
 );
 

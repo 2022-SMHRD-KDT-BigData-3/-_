@@ -1,3 +1,4 @@
+<%@page import="Model.CheckingDTO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -71,7 +72,29 @@
 	data-container="wide" direction="ltr">
 
 	<%
+	int act=0;
+	double enCal=0;
+	double enCar=0;
+	double enPro=0;
+	double enFat=0;
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto");
+	if(info!=null){	
+		
+	if(ckdto.getAct()==1){
+			act = 25;
+		}else if(ckdto.getAct()==2){
+			act= 35;
+		}else if(ckdto.getAct()==3){
+			act= 40;
+	}
+	enCal = ((ckdto.getHeight()-100)*0.9)*act;
+	enCar = enCal*0.6;
+	enPro = enCal*0.135;
+	enFat = enCal*0.225;
+	}
+	
+	
 	%>
 	<div id="modal" class="modal" width="400px">
 		<div class="modal-content">
@@ -82,7 +105,7 @@
 			<table border="1" id="chart">
 
 			</table>
-			
+
 		</div>
 	</div>
 
@@ -480,25 +503,30 @@
 		<!--**********************************
             Content body start
         ***********************************-->
-		<div class="content-body" style="min-height: 1100px;">
+		<div class="content-body">
 
 
-			<div class="row page-titles mx-0">
-				<div class="col p-md-0">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-						<li class="breadcrumb-item active"><a
-							href="javascript:void(0)">Home</a></li>
-					</ol>
+			<div class="row">
+					<div class="col-lg-3 col-sm-6">
+						
+						<div class="card gradient-2">
+							<div class="card-body">
+								
+								<a data-slide="prev" href="#carouselExampleCaptions" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span> </a>
+								<div id=today style="text-align: center;">
+								<script>
+								date = new Date().toLocaleDateString();
+								document.write(date);
+								</script>
+							    </div>
+								<a data-slide="next" href="#carouselExampleCaptions" class="carousel-control-next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+								<span class="float-right display-5 opacity-5"><i
+									class="fa fa-heart"></i></span>
+							</div>
+						</div>
+
+					</div>
 				</div>
-			</div>
-
-			<div id=today>
-				<script>
-			date = new Date().toLocaleDateString();
-			document.write(date);
-			</script>
-			</div>
 
 
 			<div class="card">
@@ -511,7 +539,7 @@
 								<td id="bp">칼로리</td>
 								<td id="green">
 									<div class="progress" style="height: 10px">
-										<div class="progress-bar gradient-1" style="width: 70%;"
+										<div class="progress-bar gradient-1" style="width: 50%;"
 											role="progressbar">
 											<span class="sr-only">50% Complete</span>
 										</div>
@@ -572,7 +600,7 @@
 											class="btn mb-1 btn-outline-warning">아침 입력</button></td>
 									<td></td>
 									<td><button type="button"
-											class="btn mb-1 btn-outline-primary" >저장</button></td>
+											class="btn mb-1 btn-outline-primary">저장</button></td>
 									<td id="morning"></td>
 									<td>
 										<button type="button" id="morNutInfo"
@@ -756,7 +784,7 @@
             	                	console.log(str)
             	                	
             	                	$("#chart").append(str);
-           	
+            	                	console.log("fat"+fat)
                 	} // if문끝
 
                 } // for문끝
@@ -818,6 +846,7 @@
     	}
 		</script>
 		<script type="text/javascript">
+		console.log(mealTime);
     	$(".btn-outline-primary").on("click",function(){
     		console.log("실행");
     		let meal =null;
@@ -829,7 +858,7 @@
     			meal = 3;
     		}
 
-    		location.href="InsertServiceCon?meal="+meal+"&fname="+fname+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+"fat"
+    		location.href="InsertServiceCon?meal="+meal+"&fname="+fname+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat
     				console.log("홍석이바보")
     	});
     </script>

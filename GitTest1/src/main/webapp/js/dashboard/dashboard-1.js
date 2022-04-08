@@ -218,143 +218,258 @@
 })(jQuery);
 
 
+(function($) {
+	    "use strict"
+
+	    let ctx = document.getElementById("chart_widget_1");
+	    ctx.height = 280;
+	    new Chart(ctx, {
+	        type: 'line',
+	        data: {
+		labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+	            type: 'line',
+	            defaultFontFamily: 'Montserrat',
+	            datasets: [{
+	                data: [0, 15, 57, 12, 85, 10, 50],
+	                label: "iPhone X",
+	                backgroundColor: '#847DFA',
+	                borderColor: '#847DFA',
+	                borderWidth: 0.5,
+	                pointStyle: 'circle',
+	                pointRadius: 5,
+	                pointBorderColor: 'transparent',
+	                pointBackgroundColor: '#847DFA',
+	            }]
+	        },
+	        options: {
+	            responsive: !0,
+	            maintainAspectRatio: false,
+	            tooltips: {
+	                mode: 'index',
+	                titleFontSize: 12,
+	                titleFontColor: '#000',
+	                bodyFontColor: '#000',
+	                backgroundColor: '#fff',
+	                titleFontFamily: 'Montserrat',
+	                bodyFontFamily: 'Montserrat',
+	                cornerRadius: 3,
+	                intersect: false,
+	            },
+	            legend: {
+	                display: false,
+	                position: 'top',
+	                labels: {
+	                    usePointStyle: true,
+	                    fontFamily: 'Montserrat',
+	                },
+
+
+	            },
+	            scales: {
+	                xAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: false,
+	                        labelString: 'Month'
+	                    }
+	                }],
+	                yAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: true,
+	                        labelString: 'Value'
+	                    }
+	                }]
+	            },
+	            title: {
+	                display: false,
+	            }
+	        }
+	    });
+
+
+	    
+
+
+	})(jQuery);
+
+
+(function($) {
+	    "use strict"
+
+	    let ctx = document.getElementById("chart_widget_2");
+	    ctx.height = 280;
+	    new Chart(ctx, {
+	        type: 'line',
+	        data: {
+		labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+	            type: 'line',
+	            defaultFontFamily: 'Montserrat',
+	            datasets: [{
+	                data: [0, 15, 57, 12, 85, 10, 50],
+	                label: "iPhone X",
+	                backgroundColor: '#847DFA',
+	                borderColor: '#847DFA',
+	                borderWidth: 0.5,
+	                pointStyle: 'circle',
+	                pointRadius: 5,
+	                pointBorderColor: 'transparent',
+	                pointBackgroundColor: '#847DFA',
+	            }]
+	        },
+	        options: {
+	            responsive: !0,
+	            maintainAspectRatio: false,
+	            tooltips: {
+	                mode: 'index',
+	                titleFontSize: 12,
+	                titleFontColor: '#000',
+	                bodyFontColor: '#000',
+	                backgroundColor: '#fff',
+	                titleFontFamily: 'Montserrat',
+	                bodyFontFamily: 'Montserrat',
+	                cornerRadius: 3,
+	                intersect: false,
+	            },
+	            legend: {
+	                display: false,
+	                position: 'top',
+	                labels: {
+	                    usePointStyle: true,
+	                    fontFamily: 'Montserrat',
+	                },
+
+
+	            },
+	            scales: {
+	                xAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: false,
+	                        labelString: 'Month'
+	                    }
+	                }],
+	                yAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: true,
+	                        labelString: 'Value'
+	                    }
+	                }]
+	            },
+	            title: {
+	                display: false,
+	            }
+	        }
+	    });
+
+
+	    
+
+
+	})(jQuery);
 
 
 
 
 (function($) {
-    "use strict"
+	    "use strict"
 
-    let ctx = document.getElementById("chart_widget_3");
-    ctx.height = 130;
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-            type: 'line',
-            defaultFontFamily: 'Montserrat',
-            datasets: [{
-                data: [0, 15, 57, 12, 85, 10],
-                label: "iPhone X",
-                backgroundColor: 'transparent',
-                borderColor: '#847DFA',
-                borderWidth: 2,
-                pointStyle: 'circle',
-                pointRadius: 5,
-                pointBorderColor: '#847DFA',
-                pointBackgroundColor: '#fff',
-            }]
-        },
-        options: {
-            responsive: !0,
-            maintainAspectRatio: true,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#fff',
-                bodyFontColor: '#fff',
-                backgroundColor: '#000',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
-            legend: {
-                display: false,
-                position: 'top',
-                labels: {
-                    usePointStyle: true,
-                    fontFamily: 'Montserrat',
-                },
-
-
-            },
-            scales: {
-                xAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    scaleLabel: {
-                        display: false,
-                        labelString: 'Month'
-                    }
-                }],
-                yAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Value'
-                    }
-                }]
-            },
-            title: {
-                display: false,
-            }
-        }
-    });
+	    let ctx = document.getElementById("chart_wid3");
+	    ctx.height = 280;
+	    new Chart(ctx, {
+	        type: 'line',
+	        data: {
+		labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+	            type: 'line',
+	            defaultFontFamily: 'Montserrat',
+	            datasets: [{
+	                data: [0, 15, 57, 12, 85, 10, 50],
+	                label: "iPhone X",
+	                backgroundColor: '#847DFA',
+	                borderColor: '#847DFA',
+	                borderWidth: 0.5,
+	                pointStyle: 'circle',
+	                pointRadius: 5,
+	                pointBorderColor: 'transparent',
+	                pointBackgroundColor: '#847DFA',
+	            }]
+	        },
+	        options: {
+	            responsive: !0,
+	            maintainAspectRatio: false,
+	            tooltips: {
+	                mode: 'index',
+	                titleFontSize: 12,
+	                titleFontColor: '#000',
+	                bodyFontColor: '#000',
+	                backgroundColor: '#fff',
+	                titleFontFamily: 'Montserrat',
+	                bodyFontFamily: 'Montserrat',
+	                cornerRadius: 3,
+	                intersect: false,
+	            },
+	            legend: {
+	                display: false,
+	                position: 'top',
+	                labels: {
+	                    usePointStyle: true,
+	                    fontFamily: 'Montserrat',
+	                },
 
 
-    
+	            },
+	            scales: {
+	                xAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: false,
+	                        labelString: 'Month'
+	                    }
+	                }],
+	                yAxes: [{
+	                    display: false,
+	                    gridLines: {
+	                        display: false,
+	                        drawBorder: false
+	                    },
+	                    scaleLabel: {
+	                        display: true,
+	                        labelString: 'Value'
+	                    }
+	                }]
+	            },
+	            title: {
+	                display: false,
+	            }
+	        }
+	    });
 
 
-})(jQuery);
+	    
 
 
-
-/*******************
-Chart Chartist
-*******************/
-(function($) {
-    "use strict"
-
-
-    new Chartist.Line("#chart_widget_3", {
-        labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
-        series: [
-            [4, 5, 1.5, 6, 7, 5.5, 5.8, 4.6]
-        ]
-    }, {
-        low: 0,
-        showArea: !1,
-        showPoint: !0,
-        showLine: !0,
-        fullWidth: !0,
-        lineSmooth: !1,
-        chartPadding: {
-            top: 4,
-            right: 4,
-            bottom: -20,
-            left: 4
-        },
-        axisX: {
-            showLabel: !1,
-            showGrid: !1,
-            offset: 0
-        },
-        axisY: {
-            showLabel: !1,
-            showGrid: !1,
-            offset: 0
-        }
-    });
-
-
-    new Chartist.Pie("#chart_widget_3_1", {
-        series: [35, 65]
-    }, {
-        donut: !0,
-        donutWidth: 10,
-        startAngle: 0,
-        showLabel: !1
-    });
-
-})(jQuery);
+	})(jQuery);
 
 
 

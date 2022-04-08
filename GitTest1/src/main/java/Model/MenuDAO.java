@@ -63,7 +63,7 @@ public class MenuDAO {
 	   
 
 	   // 식단 넣기
-	   // 식단 가져오기
+
 	   public int insert(MenuDTO dto) {
 		      // db연결 메소드 호출
 		      db_conn();
@@ -71,7 +71,7 @@ public class MenuDAO {
 		      try {
 		         // 2. DB에서 무엇을 할지 결정
 		         // 메뉴 넣기 = 입력받은 회원 데이터들을 회원 Table에 추가하기
-		         String sql = "insert into menu values(?,?, sysdata,?,?,?,?,?)";
+		         String sql = "insert into menu values(?,?, sysdate,?,?,?,?,?)";
 		         
 		         // 3. sql문장을 DB에 전달 -> 전달 성공 시 PreparedStatement 객체로 반환
 		         psmt = conn.prepareStatement(sql);
@@ -81,10 +81,10 @@ public class MenuDAO {
 		         psmt.setString(1, dto.getId() );
 		         psmt.setInt(2, dto.getMeal() );
 		         psmt.setString(3, dto.getFname());
-		         psmt.setInt(4, dto.getCal());
-		         psmt.setInt(5, dto.getPro());
-		         psmt.setInt(6, dto.getCar());
-		         psmt.setInt(7, dto.getFat());
+		         psmt.setFloat(4, dto.getCal());
+		         psmt.setFloat(5, dto.getPro());
+		         psmt.setFloat(6, dto.getCar());
+		         psmt.setFloat(7, dto.getFat());
 		         
 		         // 5. sql문 실행
 		         // insert -> DB에 변화생기기 때문에 Update
@@ -97,5 +97,39 @@ public class MenuDAO {
 		         db_close();
 		      } return cnt;
 		   }
+	   // 식단 가져오기
+	   public MenuDTO  foodget(MenuDTO dto) {
+		    db_conn();
+		      try {
+		         String sql = "select * from MENU where id= ? and dietday = ? ";
+		         // select로 member에서 가지고 오는데 id과 pw값이 다 일치할때만 가지고 오겠다
+		         
+		        psmt = conn.prepareStatement(sql);
+		        
+		        psmt.setString(1, dto.getId());
+		        psmt.setString(2, dto.getPw());
+		        
+		        // select절은 Query -> ResultSet(rs) 
+		        rs = psmt.executeQuery();
+		        
+		        // rs.next() : 다음 행에 값이 있는지(t) 없는지(f) boolean타입으로 반환
+		        if(rs.next()) {
+		        	// 실행문장 실행 = 값이 있다 = 로그인성공
+		        	int seq = rs.getInt("seq");
+		        	String id = rs.getString(2);
+		        	String pw = rs.getString(3);
+		        	String nick = rs.getString("nick");
+		        	
+		        	
+		        	// info = 로그인한 사람의 정보를 담고있는 memberDTO형태의 객체
+		        	info = new MemberDTO(seq, id, pw, nick);
+		        }
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		         // 이거 적어야 어디서 오류 났는지 알려주니까 꼭 적어야함! 
+		      } finally {
+		    	  db_close();
+		      } return info;
+	   }
 	
 }
