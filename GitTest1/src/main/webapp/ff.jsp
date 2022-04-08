@@ -561,8 +561,10 @@
 							<tbody>
 								<tr>
 									<td>아침</td>
-									<td><button class = "choice">아침 입력</button></td>
-									<td><input type="datetime-local" name="time"></td>
+									
+									<td><button type="button" class="btn mb-1 btn-outline-warning">입력</button></td>
+									<td></td>
+									<td><button type="button" class="btn mb-1 btn-outline-primary">저장</button></td>
 									<td id="morning"></td>
 									<td>
 										<button type="button" id="morNutInfo"
@@ -576,8 +578,10 @@
 								</tr>
 								<tr>
 									<td>점심</td>
-									<td><button class = "choice">점심 입력</button></td>
-									<td><input type="datetime-local" name="time"></td>
+									
+									<td><button type="button" class="btn mb-1 btn-outline-warning">입력</button></td>
+									<td></td>
+									<td><button type="button" class="btn mb-1 btn-outline-primary">저장</button></td>
 									<td id="lunch"></td>
 									<td>
 										<button type="button" id="lunNutInfo"
@@ -591,8 +595,10 @@
 								</tr>
 								<tr>
 									<td>저녁</td>
-									<td><button class = "choice">저녁 입력</button></td>
-									<td><input type="datetime-local" name="time"></td>
+									
+									<td><button type="button" class="btn mb-1 btn-outline-warning">입력</button></td>
+									<td></td>
+									<td><button type="button" class="btn mb-1 btn-outline-primary">저장</button></td>
 									<td id="dinner"></td>
 									<td>
 										<button type="button" id="dinNutInfo"
