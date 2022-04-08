@@ -533,65 +533,54 @@
 
 	<script>
 	
-    const v = document.querySelector('.videoPlayer');
-    const dingnosis = "비만";
-
+const v = document.querySelector('.videoPlayer');
+    
     //iframe 추가하고 비디오 재생
     function updateVideo(id){
-
+       
+       console.log(id);
+       
         v.classList.add("embed-responsive-16by9");
-        v.innerHTML = '<iframe src=//www.youtube.com/embed/6XbPmHk2j-h1sdhe'
+        v.innerHTML = "<iframe src=//www.youtube.com/embed/"
             + id + '?autoplay=1" width="320" height="315" frameborder="0" allowfullscreen></iframe>';
-
+        
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
     
     //엔터키 이벤트
-    
     function inputkeyup(e){
         if(e.keyCode == 13){
             ajaxRequest();
         }
         
     }
-		//검색 
-		
-    	function ajaxRequest(dingnosis){
-
+    
+    let i = 0;
+    
+    //jQuery를 사용하지 않고 Vanilla JS를 사용하자. 비동기로 호출한다.
+    function ajaxRequest(){
         const search = document.getElementById("search");
         const ul = document.querySelector(".list");
-
-        if(search.value.length == 0 && dingnosis == null){
+        if(search.value.length == 0){
             alert("검색어를 입력하세요.");
             search.focus();
             return false;
-        } else if(search.value.length == 0) {
-        	query = dingnosis + " 운동" + search.value;
-            search.value = "";
-            search.focus();
-
         } else {
-        	query = search.value;
+            query = search.value + " 운동";
             search.value = "";
             search.focus();
-        	
         }
         console.log(query);
-        const key = "AIzaSyDhuGBOZ_JFOXAkyXPBuv8k6dh7984N1uA";
+        const key = "AIzaSyBkmQ8mvBv8IWcCbYR7zk5-s_5qQCuzzoQ";
         const url = "https://www.googleapis.com/youtube/v3/search?key="+key+"&q="+query+"&part=snippet&type=video";
-
         //ul 일단 비우고 시작
         ul.innerHTML = "";
-		
+        
         const xhr = new XMLHttpRequest();
-        
-        //비디오리스트에 검색결과 추가
-        
         xhr.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200){
                 //파싱
                 const jsonObj = JSON.parse(this.response);
-
                 console.log(jsonObj['items']);
                 const videoList = jsonObj["items"];
                 videoList.forEach(element => {
@@ -600,26 +589,25 @@
                     const img = document.createElement('img');
                     const h3 = document.createElement('h3');
                     const p1 = document.createElement('p');
-
+                    
                     h3.textContent = element["snippet"]["title"];
                     img.src = element["snippet"]["thumbnails"]["medium"]["url"];
                     p1.textContent = element["snippet"]["description"];
                     //div.setAttribute("data-id", element["id"]["videoId"]);
-                    div.setAttribute("onClick", `updateVideo('${element["id"]["videoId"]}')`);
+                    div.setAttribute("id", "id"+i);
 
+                    div.setAttribute("onClick", `updateVideo("Z7m4mv8arb4")`);
+                    
                     div.appendChild(img);
-
                     li.appendChild(div);
                     ul.appendChild(li);
-
+                    i++
                 });
             }
         };
         xhr.open("GET", url, true);
         xhr.send();
-    };
-    
-    $(document).ready(ajaxRequest(dingnosis));
+    }
 
 </script>
 </body>
