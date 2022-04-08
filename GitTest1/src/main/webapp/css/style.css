@@ -28,7 +28,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   background-image: linear-gradient(230deg, #759bff, #843cf6); }
 
 .gradient-2, .dropdown-mega-menu .ext-link.link-3 a {
-  background-image: linear-gradient(230deg, #fc5286, #fbaaa2); }
+  background-image: linear-gradient(230deg, #ff5e5e, #ff1800); }
 
 .gradient-3, .dropdown-mega-menu .ext-link.link-2 a, .header-right .icons .user-img .activity {
   background-image: linear-gradient(230deg, rgb(128, 255, 0), #018921); }
@@ -1195,7 +1195,7 @@ pre {
 
 .table {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
   background-color: transparent; }
   .table th,
@@ -3649,7 +3649,7 @@ input[type="button"].btn-block {
   border: 1px solid transparent;
   border-radius: 0.25rem;
   width:150px; 
-  height:50px;}
+  height:60px;}
 
 .alert-heading {
   color: inherit; }
@@ -5499,7 +5499,7 @@ button.bg-dark:focus {
 
 .mt-4,
 .my-4 {
-  margin-top: 1.5rem !important; }
+  margin-top: 2.5rem !important; }
 
 .mr-4,
 .mx-4 {
@@ -15219,6 +15219,12 @@ input[type="radio"] {
     text-align: bottom;
     opacity: 1.0;
 }
-
-
+.super{
+	height:445px;
+    width: 92.5%;
+    margin: 0px auto;
+}
+.userIndex{
+	margin:10%;
+}
 /*# sourceMappingURL=style.css.map */
