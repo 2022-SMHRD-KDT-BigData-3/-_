@@ -1,3 +1,4 @@
+<%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,29 +38,28 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
 	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 	crossorigin="anonymous"></script>
-	
+
 <style>
 .pie-chart1 {
-  display:inline-block;
-  position:relative;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  margin-left : 10rem;
-}
-.pie-chart1  .center{
-  position:absolute;
-  width:100px; 
-  height: 100px;
-  background :#fff;
-  border-radius: 50%;
-  top: 50px;
-  left:50px;
-  text-align: center;
-  line-height:100px;
- 
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin-left: 10rem;
 }
 
+.pie-chart1  .center {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background: #fff;
+	border-radius: 50%;
+	top: 50px;
+	left: 50px;
+	text-align: center;
+	line-height: 100px;
+}
 </style>
 
 
@@ -69,29 +69,35 @@
 	data-sidebar-style="full" data-sibebarbg="color_1"
 	data-sidebar-position="static" data-header-position="static"
 	data-container="wide" direction="ltr">
-	
+
+	<%
+	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	%>
 	<div id="modal" class="modal" width="400px">
-        	<div class="modal-content">
-        			<input id="foodName" type="text" class="form-control" placeholder="Search">
-        			<button class="search" onclick="getData()"> 선택 </button>
-        			<button class="close"> 닫기 </button>
-        			<table border="1" id="chart"> 
-    						
-    				</table>	
-        	</div>
-    </div>
-    
-    <div id="modalInfo" class="modal" width="400px">
-        	<div class="modal-content">
-        			<input id="foodName" type="text" class="form-control" placeholder="Search">
-        			<button class="search" onclick="getData()"> 선택 </button>
-        			<button class="close"> 닫기 </button>
-        			<table border="1" id="chart"> 
-    						
-    				</table>	
-        	</div>
-    </div>
-    
+		<div class="modal-content">
+			<input id="foodName" type="text" class="form-control"
+				placeholder="Search">
+			<button class="search" onclick="getData()">선택</button>
+			<button class="close">닫기</button>
+			<table border="1" id="chart">
+
+			</table>
+			
+		</div>
+	</div>
+
+	<div id="modalInfo" class="modal" width="400px">
+		<div class="modal-content">
+			<input id="foodName" type="text" class="form-control"
+				placeholder="Search">
+			<button class="search" onclick="getData()">선택</button>
+			<button class="close">닫기</button>
+			<table border="1" id="chart">
+
+			</table>
+		</div>
+	</div>
+
 	<!--*******************
         Preloader start
     ********************-->
@@ -112,7 +118,7 @@
         Main wrapper start
     ***********************************-->
 	<div id="main-wrapper" class="show">
-		
+
 		<!--**********************************
             Nav header start
         ***********************************-->
@@ -475,7 +481,7 @@
             Content body start
         ***********************************-->
 		<div class="content-body" style="min-height: 1100px;">
-	
+
 
 			<div class="row page-titles mx-0">
 				<div class="col p-md-0">
@@ -486,9 +492,9 @@
 					</ol>
 				</div>
 			</div>
-			
-			<div id = today>
-			<script>
+
+			<div id=today>
+				<script>
 			date = new Date().toLocaleDateString();
 			document.write(date);
 			</script>
@@ -523,34 +529,34 @@
 
 			<!-- 도넛 -->
 
-			
-				<%
-				int i = 45;
-				%>
-				<div class="pie-chart1">
-					<span class="center">탄수화물</span>
-					
-				</div>
-				
 
-				<div class="pie-chart1">
-					<span class="center">단백질</span>
-				</div>
-				
+			<%
+			int i = 45;
+			%>
+			<div class="pie-chart1">
+				<span class="center">탄수화물</span>
 
-				<div class="pie-chart1">
-					<span class="center">지방</span>
-				</div>
-				
+			</div>
 
-			
-				<script>
+
+			<div class="pie-chart1">
+				<span class="center">단백질</span>
+			</div>
+
+
+			<div class="pie-chart1">
+				<span class="center">지방</span>
+			</div>
+
+
+
+			<script>
 	 	$(".pie-chart1").css({
             "background":"conic-gradient(#ADEB00 0% <%=i%>%, #DCDCDC <%=i%>% 100%)"
 				});
 				</script>
 
-			
+
 
 			<div class="card">
 				<div class="card-body">
@@ -561,10 +567,12 @@
 							<tbody>
 								<tr>
 									<td>아침</td>
-									
-									<td><button type="button" class="btn mb-1 btn-outline-warning">입력</button></td>
+
+									<td><button type="button"
+											class="btn mb-1 btn-outline-warning">아침 입력</button></td>
 									<td></td>
-									<td><button type="button" class="btn mb-1 btn-outline-primary">저장</button></td>
+									<td><button type="button"
+											class="btn mb-1 btn-outline-primary" >저장</button></td>
 									<td id="morning"></td>
 									<td>
 										<button type="button" id="morNutInfo"
@@ -578,10 +586,12 @@
 								</tr>
 								<tr>
 									<td>점심</td>
-									
-									<td><button type="button" class="btn mb-1 btn-outline-warning">입력</button></td>
+
+									<td><button type="button"
+											class="btn mb-1 btn-outline-warning">점심 입력</button></td>
 									<td></td>
-									<td><button type="button" class="btn mb-1 btn-outline-primary">저장</button></td>
+									<td><button type="button"
+											class="btn mb-1 btn-outline-primary">저장</button></td>
 									<td id="lunch"></td>
 									<td>
 										<button type="button" id="lunNutInfo"
@@ -595,10 +605,12 @@
 								</tr>
 								<tr>
 									<td>저녁</td>
-									
-									<td><button type="button" class="btn mb-1 btn-outline-warning">입력</button></td>
+
+									<td><button type="button"
+											class="btn mb-1 btn-outline-warning">저녁 입력</button></td>
 									<td></td>
-									<td><button type="button" class="btn mb-1 btn-outline-primary">저장</button></td>
+									<td><button type="button"
+											class="btn mb-1 btn-outline-primary">저장</button></td>
 									<td id="dinner"></td>
 									<td>
 										<button type="button" id="dinNutInfo"
@@ -637,7 +649,7 @@
 					</p>
 				</div>
 			</div>
-			
+
 			<!--**********************************
             Footer end
         ***********************************-->
@@ -673,7 +685,7 @@
 	    	$(".modal").fadeIn();
         }); */
         
-    	$(".choice").click(function(){
+    	$(".btn-outline-warning").click(function(){
     		mealTime = this.innerText;
     		console.log(mealTime);
     		$("#modal").fadeIn();
@@ -698,7 +710,7 @@
     	$("#dinNutInfo").click(function(){
     		$("#modalInfo").fadeIn();
     		let dinFood_data = {};
-    	});
+    	}); 
     	
 		$(".close").click(function(){
     		
@@ -744,7 +756,7 @@
             	                	console.log(str)
             	                	
             	                	$("#chart").append(str);
-        	                	
+           	
                 	} // if문끝
 
                 } // for문끝
@@ -764,7 +776,6 @@
         	console.log("input 안의 숫자"+i);
         	console.log("input 안의 숫자"+mealTime);
         	
-        		mealTime;
         	let fnameSec = document.getElementById("fname"+i).innerText;
     		let calSec = document.getElementById("cal"+i).innerText;
     		let proSec = document.getElementById("pro"+i).innerText;
@@ -806,6 +817,21 @@
 
     	}
 		</script>
+		<script type="text/javascript">
+    	$(".btn-outline-primary").on("click",function(){
+    		console.log("실행");
+    		let meal =null;
+    		if(mealTime=="아침 입력"){
+    			meal = 1;
+    		}else if(mealTime=="점심 입력"){
+    			meal = 2;
+    		} else if (mealTime=="저녁 입력"){
+    			meal = 3;
+    		}
+
+    		location.href="InsertServiceCon?meal="+meal+"&fname="+fname+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+"fat"
+    	});
+    </script>
 
 	</div>
 </body>

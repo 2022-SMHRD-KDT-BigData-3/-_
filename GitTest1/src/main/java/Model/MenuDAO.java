@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class menuDAO {
+public class MenuDAO {
 	
 	Connection conn = null;
 	PreparedStatement psmt = null;
@@ -61,43 +61,7 @@ public class menuDAO {
 	         }
 	   }
 	   
-	   public int set_menu(MenuDTO dto) {
-		   
-		// db연결 메소드 호출
-			db_conn();
-			try {
-				// 2. DB에서 무엇을 할지 결정
-				// 회원가입 기능 = 입력받은 회원 데이터들을 회원 Table에 추가하기
-				String sql = "insert into menu values(?,?, sysdate, ?,?,?,?,?,?)";
 
-				// 3. sql문장을 DB에 전달 -> 전달 성공 시 PreparedStatement 객체로 반환
-				psmt = conn.prepareStatement(sql);
-
-				// 4. ? 바인드 변수에 값 채우기
-				// insert메소드 매개변수로 dto(입력받은 값들의 묶음 = 가방) 받아오기
-				psmt.setString(1, dto.getId());
-				psmt.setInt(2, dto.getMeal());
-				psmt.setString(3, dto.getDietday());
-				psmt.setString(4, dto.getFoodid());
-				psmt.setString(5, dto.getFname());
-				psmt.setInt(6, dto.getCal());
-				psmt.setInt(7, dto.getPro());
-				psmt.setInt(8, dto.getCar());
-				psmt.setInt(9, dto.getFat());
-
-				// 5. sql문 실행
-				// insert -> DB에 변화생기기 때문에 Update
-				// int 형태로 반환, int의 의미 : 몇개의 행에 변화가 생겼는지
-				cnt = psmt.executeUpdate();
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {// 6. DB문 닫기
-				db_close();
-			}
-			return cnt; 
-	   }
-	   
 	   // 식단 넣기
 	   // 식단 가져오기
 	   public int insert(MenuDTO dto) {
@@ -107,7 +71,7 @@ public class menuDAO {
 		      try {
 		         // 2. DB에서 무엇을 할지 결정
 		         // 메뉴 넣기 = 입력받은 회원 데이터들을 회원 Table에 추가하기
-		         String sql = "insert into menu values(?,?, sysdata,?,?,?,?,?,?)";
+		         String sql = "insert into menu values(?,?, sysdata,?,?,?,?,?)";
 		         
 		         // 3. sql문장을 DB에 전달 -> 전달 성공 시 PreparedStatement 객체로 반환
 		         psmt = conn.prepareStatement(sql);
@@ -116,12 +80,11 @@ public class menuDAO {
 		         // join메소드 매개변수로 dto(입력받은 값들의 묶음 = 가방) 받아오기
 		         psmt.setString(1, dto.getId() );
 		         psmt.setInt(2, dto.getMeal() );
-		         psmt.setString(3, dto.getFoodid());
-		         psmt.setString(4, dto.getFname());
-		         psmt.setInt(5, dto.getCal());
-		         psmt.setInt(6, dto.getPro());
-		         psmt.setInt(7, dto.getCar());
-		         psmt.setInt(8, dto.getFat());
+		         psmt.setString(3, dto.getFname());
+		         psmt.setInt(4, dto.getCal());
+		         psmt.setInt(5, dto.getPro());
+		         psmt.setInt(6, dto.getCar());
+		         psmt.setInt(7, dto.getFat());
 		         
 		         // 5. sql문 실행
 		         // insert -> DB에 변화생기기 때문에 Update

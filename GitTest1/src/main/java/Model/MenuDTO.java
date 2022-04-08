@@ -4,9 +4,20 @@ public class MenuDTO {
 	private String id;
 	private int meal;
 	private String dietday;
-	private String foodid;
 	private String fname;
 	private int cal;
+	
+	
+	public MenuDTO(String id, int meal, String fname, int cal, int pro, int car, int fat) {
+		super();
+		this.id = id;
+		this.meal = meal;
+		this.fname = fname;
+		this.cal = cal;
+		this.pro = pro;
+		this.car = car;
+		this.fat = fat;
+	}
 	private int pro;
 	private int car;
 	private int fat;
@@ -28,12 +39,6 @@ public class MenuDTO {
 	}
 	public void setDietday(String dietday) {
 		this.dietday = dietday;
-	}
-	public String getFoodid() {
-		return foodid;
-	}
-	public void setFoodid(String foodid) {
-		this.foodid = foodid;
 	}
 	public String getFname() {
 		return fname;

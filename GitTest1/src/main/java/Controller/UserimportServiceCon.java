@@ -37,6 +37,7 @@ public class UserimportServiceCon extends HttpServlet {
 	MemberDTO info = (MemberDTO)session.getAttribute("info");
 	CheckingDTO dto = new CheckingDTO(info.getId(),weigth,blood,bsugar,act,height,age);
 	CheckingDAO dao = new CheckingDAO();
+	
 	// 3. msgSend() 호출
 	int cnt = dao.insert(dto);
 	// 4. main.jsp 이동
