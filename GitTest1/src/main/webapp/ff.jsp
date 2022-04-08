@@ -613,7 +613,6 @@
 
 
 
-
 			<!-- #/ container -->
 
 			<!--**********************************
@@ -632,6 +631,7 @@
 					</p>
 				</div>
 			</div>
+			
 			<!--**********************************
             Footer end
         ***********************************-->
@@ -752,13 +752,14 @@
     }); // ajax끝
         } // getData 함수 끝    
 		// let i=0;
-		
         function Funcinput(i){
         	//console.log("input 안의 숫자"+input_data.num);
         	//console.log("input 안의 숫자"+input_data.meal);
         	console.log("input 안의 숫자"+i);
         	console.log("input 안의 숫자"+mealTime);
-    		let fnameSec = document.getElementById("fname"+i).innerText;
+        	
+        		mealTime;
+        	let fnameSec = document.getElementById("fname"+i).innerText;
     		let calSec = document.getElementById("cal"+i).innerText;
     		let proSec = document.getElementById("pro"+i).innerText;
     		let carSec = document.getElementById("car"+i).innerText;
@@ -799,7 +800,6 @@
 
     	}
 		</script>
-
 
 	</div>
 </body>

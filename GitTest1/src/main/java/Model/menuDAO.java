@@ -98,39 +98,41 @@ public class menuDAO {
 			return cnt; 
 	   }
 	   
-	   
-	   public MenuDTO print(MenuDTO dto) {
+	   // 식단 넣기
+	   // 식단 가져오기
+	   public int insert(MenuDTO dto) {
+		      // db연결 메소드 호출
 		      db_conn();
+		      
 		      try {
-		         String sql = "select * from menu where id =? and meal =?";      
+		         // 2. DB에서 무엇을 할지 결정
+		         // 메뉴 넣기 = 입력받은 회원 데이터들을 회원 Table에 추가하기
+		         String sql = "insert into menu values(?,?, sysdata,?,?,?,?,?,?)";
 		         
-		        psmt = conn.prepareStatement(sql);
-		        
-		        psmt.setString(1, dto.getId());
-		        psmt.setInt(2, dto.getMeal());
-		        
-		        rs = psmt.executeQuery();
-		        
-		       
-		        if(rs.next()) {
-		        	
-		        	String id = rs.getString(1);
-		        	int meal = rs.getInt(2);
-		        	String dietDay = rs.getString(3);
-		        	String foodID = rs.getString(4);
-		        	String fname = rs.getString(5);
-		        	int cal = rs.getInt(6);
-		        	int pro = rs.getInt(7);
-		        	int car = rs.getInt(8);
-		        	int fat = rs.getInt(9);
-		        	
-		        	info = new MenuDTO();
-		        }
+		         // 3. sql문장을 DB에 전달 -> 전달 성공 시 PreparedStatement 객체로 반환
+		         psmt = conn.prepareStatement(sql);
+		         
+		         // 4. ? 바인드 변수에 값 채우기
+		         // join메소드 매개변수로 dto(입력받은 값들의 묶음 = 가방) 받아오기
+		         psmt.setString(1, dto.getId() );
+		         psmt.setInt(2, dto.getMeal() );
+		         psmt.setString(3, dto.getFoodid());
+		         psmt.setString(4, dto.getFname());
+		         psmt.setInt(5, dto.getCal());
+		         psmt.setInt(6, dto.getPro());
+		         psmt.setInt(7, dto.getCar());
+		         psmt.setInt(8, dto.getFat());
+		         
+		         // 5. sql문 실행
+		         // insert -> DB에 변화생기기 때문에 Update
+		         // int 형태로 반환, int의 의미 : 몇개의 행에 변화가 생겼는지
+		         cnt = psmt.executeUpdate();
+		         
 		      } catch (Exception e) {
 		         e.printStackTrace();
-		      } finally {
-		    	  db_close();
-		      } return info;
+		      } finally {// 6. DB문 닫기 
+		         db_close();
+		      } return cnt;
 		   }
 	
 }

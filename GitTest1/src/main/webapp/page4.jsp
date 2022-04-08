@@ -461,7 +461,7 @@
 		<div class="copyright">
 			<p>
 				1차프로잭트 &copy; Designed & Developed by <a
-					href="https://themeforest.net/user/quixlab">지금우리학원은</a> 2018
+					>지금우리학원은</a> 2018
 			</p>
 		</div>
 	</div>

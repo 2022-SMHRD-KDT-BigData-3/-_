@@ -39,7 +39,7 @@ if(info!=null){
 clist = dao.graph(info.getId());
 }
 
-%> 
+%>
 	<!--*******************
         Preloader start
     ********************-->
@@ -168,9 +168,10 @@ clist = dao.graph(info.getId());
 						<li class="icons dropdown">
 							<div class="ss" data-toggle="dropdown">
 								<a> <%if(info!=null){ %> <a href="./LogoutServiceCon"> </a><img
-										src="images/user/logout.png" height="40" width="40"
-										id="logout"> <%} else{%> <img src="images/user/login.png"
-										height="40" width="40" id="login"> <% }%> </a>
+									src="images/user/logout.png" height="40" width="40" id="logout">
+									<%} else{%> <img src="images/user/login.png" height="40"
+									width="40" id="login"> <% }%>
+								</a>
 							</div>
 
 						</li>
@@ -633,8 +634,7 @@ clist = dao.graph(info.getId());
 	<div class="footer">
 		<div class="copyright">
 			<p>
-				스마트인재개발 &copy; Designed & Developed by <a
-					href="https://themeforest.net/user/quixlab">지금우리학원은</a> 2022
+				스마트인재개발 &copy; Designed & Developed by <a harf="https://smhrd.lms.elice.io/">지금우리학원은</a> 2022
 			</p>
 		</div>
 	</div>
@@ -678,19 +678,24 @@ clist = dao.graph(info.getId());
 
 	<script src="./js/dashboard/dashboard-1.js"></script>
 
+	<!--  로그인 페이지 이동 실행 -->
 	<script type="text/javascript">
     	document.querySelector("#login").addEventListener("click",function(){
     		location.href="page-login.jsp"
     	});
     </script>
+	<!--  로그아웃 실행  -->
 	<script type="text/javascript">
     	document.querySelector("#logout").addEventListener("click",function(){
+    		
     		location.href="LogoutServiceCon"
     	});
     </script>
 	<script type="text/javascript"> document.getElementById("worldMain").style.display="none" </script>
 	<script type="text/javascript"> document.getElementById("SummaryMain").style.display="none" </script>
 
+
+	<!--  차트 css  -->
 	<script type="text/javascript">
 	    let ctx = document.getElementById("chart_widget_1");
 	    ctx.height = 280;
