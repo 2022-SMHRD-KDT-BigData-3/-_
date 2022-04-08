@@ -69,7 +69,29 @@
 	data-sidebar-style="full" data-sibebarbg="color_1"
 	data-sidebar-position="static" data-header-position="static"
 	data-container="wide" direction="ltr">
-
+	
+	<div id="modal" class="modal" width="400px">
+        	<div class="modal-content">
+        			<input id="foodName" type="text" class="form-control" placeholder="Search">
+        			<button class="search" onclick="getData()"> 선택 </button>
+        			<button class="close"> 닫기 </button>
+        			<table border="1" id="chart"> 
+    						
+    				</table>	
+        	</div>
+    </div>
+    
+    <div id="modalInfo" class="modal" width="400px">
+        	<div class="modal-content">
+        			<input id="foodName" type="text" class="form-control" placeholder="Search">
+        			<button class="search" onclick="getData()"> 선택 </button>
+        			<button class="close"> 닫기 </button>
+        			<table border="1" id="chart"> 
+    						
+    				</table>	
+        	</div>
+    </div>
+    
 	<!--*******************
         Preloader start
     ********************-->
@@ -90,7 +112,7 @@
         Main wrapper start
     ***********************************-->
 	<div id="main-wrapper" class="show">
-
+		
 		<!--**********************************
             Nav header start
         ***********************************-->
@@ -453,6 +475,7 @@
             Content body start
         ***********************************-->
 		<div class="content-body" style="min-height: 1100px;">
+	
 
 			<div class="row page-titles mx-0">
 				<div class="col p-md-0">
@@ -538,11 +561,11 @@
 							<tbody>
 								<tr>
 									<td>아침</td>
-									<td><button class = "choice">입력</button></td>
+									<td><button class = "choice">아침 입력</button></td>
 									<td><input type="datetime-local" name="time"></td>
-
+									<td id="morning"></td>
 									<td>
-										<button type="button"
+										<button type="button" id="morNutInfo"
 											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
 									<td><span><a href="#" data-toggle="tooltip"
@@ -553,11 +576,11 @@
 								</tr>
 								<tr>
 									<td>점심</td>
-									<td><button class = "choice">입력</button></td>
+									<td><button class = "choice">점심 입력</button></td>
 									<td><input type="datetime-local" name="time"></td>
-
+									<td id="lunch"></td>
 									<td>
-										<button type="button"
+										<button type="button" id="lunNutInfo"
 											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
 									<td><span><a href="#" data-toggle="tooltip"
@@ -568,11 +591,11 @@
 								</tr>
 								<tr>
 									<td>저녁</td>
-									<td><button class = "choice">입력</button></td>
+									<td><button class = "choice">저녁 입력</button></td>
 									<td><input type="datetime-local" name="time"></td>
-
+									<td id="dinner"></td>
 									<td>
-										<button type="button"
+										<button type="button" id="dinNutInfo"
 											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
 									<td><span><a href="#" data-toggle="tooltip"
@@ -628,7 +651,154 @@
 
 		<script src="./plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 		<script src="./js/plugins-init/sparkline.init.js"></script>
+		<script>
+		let foodName = null;
+        let mealTime = null; 
+        let fname = null;
+        let cal = null;
+        let pro = null;
+        let car = null;
+        let fat = null;
+        let input_data = {};
+        
+/*         $(".choice").on("click", function(){
+		    mealTime2 = this.innerText;
+	    	console.log(mealTime2);
+	    	$(".modal").fadeIn();
+        }); */
+        
+    	$(".choice").click(function(){
+    		mealTime = this.innerText;
+    		console.log(mealTime);
+    		$("#modal").fadeIn();
+    		
+    	});
+        
+    	$(".close").click(function(){   		
+    		$("#modal").fadeOut();    		
+    	});
+    	
+    	$("#morNutInfo").click(function(){
+    		$("#modalInfo").fadeIn();
+    		let morFood_data = {};
+    		
+    	});
+    	
+    	$("#lunNutInfo").click(function(){
+    		$("#modalInfo").fadeIn();
+    		let lunFood_data = {};
+    	});
+    	
+    	$("#dinNutInfo").click(function(){
+    		$("#modalInfo").fadeIn();
+    		let dinFood_data = {};
+    	});
+    	
+		$(".close").click(function(){
+    		
+    		$(".modal").fadeOut();
+    		
+    	});
+            
+        function getData(){
+    	
+        	$("#chart").empty();
+        	
+        	foodName = document.getElementById("foodName").value;
+        	console.log("성공해봐 ㅋㅋ");
+    		
+        	$.ajax({
+    		headers: {'X-Requested-With': 'XMLHttpRequest'},
+        	url : "https://cors-anywhere.herokuapp.com/http://openapi.foodsafetykorea.go.kr/api/6c16719532f64640814f/I2790/json/1/1000/DESC_KOR="+foodName,
+        	type : "GET",  
+            success : function(data){
+            	console.log("success : "+mealTime);
+            	console.log(data);
+            	let Array = data.I2790.row;
+            	
+            	$("#chart").append("<tr><td> 식품명 </td><td> 열량 </td><td> 탄수화물 </td><td> 단백질 </td><td> 지방 </td><td> 선택 </td></tr>");        	                
+                for(let i=0; i<=Array.length; i++){
+                	
+                	if(Array[i].NUTR_CONT1 != "" && Array[i].NUTR_CONT2 != "" && Array[i].NUTR_CONT3 != "" && Array[i].NUTR_CONT4 != ""){
+                	
+                					fname = Array[i].DESC_KOR;
+            	                	cal = Array[i].NUTR_CONT1;
+            	                	pro = Array[i].NUTR_CONT2;
+            	                	car = Array[i].NUTR_CONT3;
+            	                	fat = Array[i].NUTR_CONT4;
+            	                	
+            	                	input_data.num = i;
+            	                	input_data.meal = mealTime;
+            	                
+            	                	var str = "<tr>" + "<td id=fname" + i + ">" + fname + 
+            	                	"</td>" + "<td id=cal" + i + ">" + cal + "</td>" + "<td id=pro" + i + ">" + pro + 
+            	                	"</td>" + "<td id=car" + i + ">" + car + "</td>" + "<td id=fat" + i + ">" + fat + 
+            	                	"</td><td><button id=select onclick='Funcinput("+ i +")'> 선택 </button></td></tr>"
+            	                	
+            	                	console.log(str)
+            	                	
+            	                	$("#chart").append(str);
+        	                	
+                	} // if문끝
 
+                } // for문끝
+                	
+                	
+                }, // success 끝
+            	
+            error : function(data){
+            alert("통신 실패");
+            } // error 끝
+    }); // ajax끝
+        } // getData 함수 끝    
+		// let i=0;
+		
+        function Funcinput(i){
+        	//console.log("input 안의 숫자"+input_data.num);
+        	//console.log("input 안의 숫자"+input_data.meal);
+        	console.log("input 안의 숫자"+i);
+        	console.log("input 안의 숫자"+mealTime);
+    		let fnameSec = document.getElementById("fname"+i).innerText;
+    		let calSec = document.getElementById("cal"+i).innerText;
+    		let proSec = document.getElementById("pro"+i).innerText;
+    		let carSec = document.getElementById("car"+i).innerText;
+    		let fatSec = document.getElementById("fat"+i).innerText;
+    		
+    		
+    		
+    		if(mealTime == "아침 입력"){
+    			let td = document.getElementById("morning");
+    			mor = td.innerText;
+    			
+        		console.log(fnameSec);
+        		if(mor == ""){
+        			td.innerText=fnameSec;
+        		} else{
+        			td.innerText=mor+", "+fnameSec;
+        		}
+        		
+    		}else if(mealTime == "점심 입력"){
+    			let td = document.getElementById("lunch");
+    			lun = td.innerText;
+        		console.log(fnameSec);
+        		if(lun == ""){
+        			td.innerText=fnameSec;
+        		} else{
+        			td.innerText=lun+", "+fnameSec;
+        		}
+    		}else{
+    			let td = document.getElementById("dinner");
+    			din = td.innerText;
+        		console.log(fnameSec);
+        		if(din == ""){
+        			td.innerText=fnameSec;
+        		} else{
+        			td.innerText=din+", "+fnameSec;
+        		}
+    		} 
+
+    	}
+		</script>
 
 
 	</div>
