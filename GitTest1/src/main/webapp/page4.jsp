@@ -554,7 +554,7 @@
         	
         }
         console.log(query);
-        const key = "AIzaSyBkmQ8mvBv8IWcCbYR7zk5-s_5qQCuzzoQ";
+        const key = "AIzaSyAkZszjSMjBzbruqZN0uTeOuMY9CD8SpTQ";
         const url = "https://www.googleapis.com/youtube/v3/search?key="+key+"&q="+query+"&part=snippet&type=video";
 
         //ul 일단 비우고 시작
