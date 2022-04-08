@@ -444,29 +444,30 @@
 						<div class="card">
 							<div id="video" class="card-body">
 								<div class="row">
-								<div class="col-lg-4">
-									<div class="card">
-										<div id="videoList" class="card-body">
-											<div class="side-body">
-												<div id="list">
-													<ul class="list"></ul>
+								<div class="col-lg-8">
+										<div class="card">
+											<div id="videoList" class="card-body">
+												<div class="youtube">
+													<div
+														class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+														<div class="homeVideoThumbnail video-player"></div>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-																<div class="col-lg-8" >
-									<div class="card">
-										<div id="videoList" class="card-body">
-											<div class="youtube">
-												<div
-													class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
-													<div class="homeVideoThumbnail video-player"></div>
+									<div class="col-lg-4">
+										<div class="card">
+											<div id="videoList" class="card-body">
+												<div class="side-body">
+													<div id="list">
+														<ul class="list"></ul>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+									
 								</div>
 							</div>
 						</div>
@@ -576,7 +577,7 @@
         	
         }
         console.log(query);
-        const key = "AIzaSyAkZszjSMjBzbruqZN0uTeOuMY9CD8SpTQ";
+        const key = "AIzaSyDhuGBOZ_JFOXAkyXPBuv8k6dh7984N1uA";
         const url = "https://www.googleapis.com/youtube/v3/search?key="+key+"&q="+query+"&part=snippet&type=video";
 
         //ul 일단 비우고 시작
