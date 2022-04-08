@@ -20,6 +20,11 @@
 	href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
 <!-- Custom Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
+
+
+
+
+
 </head>
 <body>
 	<!--*******************
@@ -416,6 +421,7 @@
 					</div>
 
 				</div>
+				
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body" style=>
@@ -424,30 +430,28 @@
 								<input type="search" id="search" name="search" class="form-control input-rounded" 
 										placeholder="Input Rounded" onkeyup="inputkeyup(event)">
 								<br>
-								<center><button type="button" onclick="ajaxRequest()">Search</button></center>
-
-								
-								
-							
+								<center><button type="button" onclick="ajaxRequest()" placeholder="">Search</button></center>	
 						</div>
 					</div>
 				</div>
+				</div>
+				
+				<div class="row">
+				
 				<div class="col-lg-12">
 				<div class="card">
-					<div class="card-body">
-						
-
+					<div id="video" class="card-body">		
+							<div>
 								<div class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
     								<div class="homeVideoThumbnail video-player">
-        
     								</div>  
 								</div>
-								<ul class="list"></ul>
-					</div>
+							</div>	
+					</div>	
+					<div class="side-body"> <div id="list"> <ul class="list"></ul> </div> </div>
 				</div>
 				</div>
 			</div>
-		</div>
 
 		<!--**********************************
             Content body end
@@ -505,7 +509,9 @@
 	<script src="./js/dashboard/dashboard-1.js"></script>
 	
 	<script>
+	
     const v = document.querySelector('.videoPlayer');
+    const dingnosis = "비만";
 
     //iframe 추가하고 비디오 재생
     function updateVideo(id){
@@ -518,36 +524,46 @@
     }
     
     //엔터키 이벤트
+    
     function inputkeyup(e){
         if(e.keyCode == 13){
             ajaxRequest();
         }
         
     }
-
-    //jQuery를 사용하지 않고 Vanilla JS를 사용하자. 비동기로 호출한다.
-    function ajaxRequest(){
+		//검색 
+		
+    	function ajaxRequest(dingnosis){
 
         const search = document.getElementById("search");
         const ul = document.querySelector(".list");
 
-        if(search.value.length == 0){
+        if(search.value.length == 0 && dingnosis == null){
             alert("검색어를 입력하세요.");
             search.focus();
             return false;
-        } else {
-            query = search.value + " 운동";
+        } else if(search.value.length == 0) {
+        	query = dingnosis + " 운동" + search.value;
             search.value = "";
             search.focus();
+
+        } else {
+        	query = search.value;
+            search.value = "";
+            search.focus();
+        	
         }
         console.log(query);
-        const key = "AIzaSyBkmQ8mvBv8IWcCbYR7zk5-s_5qQCuzzoQ";
+        const key = "AIzaSyAkZszjSMjBzbruqZN0uTeOuMY9CD8SpTQ";
         const url = "https://www.googleapis.com/youtube/v3/search?key="+key+"&q="+query+"&part=snippet&type=video";
 
         //ul 일단 비우고 시작
         ul.innerHTML = "";
-
+		
         const xhr = new XMLHttpRequest();
+        
+        //비디오리스트에 검색결과 추가
+        
         xhr.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200){
                 //파싱
@@ -578,7 +594,9 @@
         };
         xhr.open("GET", url, true);
         xhr.send();
-    }
+    };
+    
+    $(document).ready(ajaxRequest(dingnosis));
 
 </script>
 </body>
