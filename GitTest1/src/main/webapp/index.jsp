@@ -25,6 +25,7 @@
 <!-- Custom Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
 
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -34,14 +35,10 @@ CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto");
 
 ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
 CheckingDAO dao = new CheckingDAO();
-
 if(info!=null){
 clist = dao.graph(info.getId());
-System.out.print("test1"+clist.get(0).getCheckday());
-System.out.print("test2"+clist.get(0).getBlood());
 }
 
-// 몸무게 / 키*키(소수점) 78 / ((176*176)/100) 76* 1.76*1.76
 %> 
 	<!--*******************
         Preloader start
@@ -167,10 +164,10 @@ System.out.print("test2"+clist.get(0).getBlood());
 								</div>
 							</div></li>
 
-						<!-- 로그인 로그아웃 -->
+						<!--  로그아웃 -->
 						<li class="icons dropdown">
 							<div class="ss" data-toggle="dropdown">
-								<a> <%if(info!=null){ %> <a href="LogoutServiceCon"><img
+								<a> <%if(info!=null){ %> <a href="./LogoutServiceCon"> </a><img
 										src="images/user/logout.png" height="40" width="40"
 										id="logout"> <%} else{%> <img src="images/user/login.png"
 										height="40" width="40" id="login"> <% }%> </a>
@@ -312,12 +309,12 @@ System.out.print("test2"+clist.get(0).getBlood());
 					<li><a class="has-arrow" href="javascript:void()"
 						aria-expanded="false"> <i class="icon-notebook menu-icon"></i><span
 							class="nav-text">Pages</span>
-					</a> <!-- 로그인  -->
+					</a> <!--   -->
 						<ul aria-expanded="User">
 							<%if(info!=null){ %>
-							<li><a href="../LogoutServiceCon">로그아웃</a></li>
+							<li><a href="./LogoutServiceCon">로그아웃</a></li>
 							<%}else{ %>
-							<li><a href="./page-login.jsp">로그인</a></li>
+							<li><a href="./page-login.jsp"></a></li>
 							<%} %>
 							<li><a href="./page-register.jsp">회원가입</a></li>
 							<li><a href="./page-edit.jsp">개인정보수정</a></li>
@@ -382,7 +379,7 @@ System.out.print("test2"+clist.get(0).getBlood());
 								<%
 								} else {
 								%>
-								<h2 class="mt-4">로그인 해주세요</h2>
+								<h2 class="mt-4">로그인을 해주세요</h2>
 								<%
 								}
 								%>
@@ -688,7 +685,7 @@ System.out.print("test2"+clist.get(0).getBlood());
     </script>
 	<script type="text/javascript">
     	document.querySelector("#logout").addEventListener("click",function(){
-    		location.href="../LogoutServiceCon"
+    		location.href="LogoutServiceCon"
     	});
     </script>
 	<script type="text/javascript"> document.getElementById("worldMain").style.display="none" </script>
@@ -700,19 +697,19 @@ System.out.print("test2"+clist.get(0).getBlood());
 	    new Chart(ctx, {
 	        type: 'line',
 	        data: {
-	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
+	            labels: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
             	<%=clist.get(i).getCheckday()%>,
-                <%}%>],
+                <%}}%>],
 	            type: 'line',
 	            defaultFontFamily: 'Montserrat',
 	            datasets: [ {
-	                label: [<%for(int i=0;i<clist.size();i++ ){%>
+	                label: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
 	            	<%String day = clist.get(i).getCheckday();%>
 	            	
-	                <%}%>],
-	                data: [<%for(int i=0;i<clist.size();i++ ){%>
+	                <%}}%>],
+	                data: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
 	                	<%=clist.get(i).getBlood()%>,
-	                <%}%>],
+	                <%}}%>],
 	               /* backgroundColor: '#ADEB00',*/
 	                borderColor: '#ADEB00',
 	                borderWidth: 0.5,
@@ -783,9 +780,9 @@ System.out.print("test2"+clist.get(0).getBlood());
 	    new Chart(ctx, {
 	        type: 'line',
 	        data: {
-	            labels: [<%for(int i=0;i<clist.size();i++ ){%>
+	            labels: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
             	<%=clist.get(i).getCheckday()%>,
-                <%}%>],
+                <%}}%>],
 	            type: 'line',
 	            defaultFontFamily: 'Montserrat',
 	            datasets: [{

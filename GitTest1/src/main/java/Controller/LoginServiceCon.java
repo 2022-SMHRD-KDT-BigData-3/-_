@@ -56,10 +56,10 @@ public class LoginServiceCon extends HttpServlet {
 	    		  session.setAttribute("ckdto", ckdto);
 	    		  
 	    	  }
-	    	  response.sendRedirect("./quixlab-master/index.jsp");
+	    	  response.sendRedirect("./index.jsp");
 	      }else {
 	    	  System.out.println("로그인실패");
-	    	  response.sendRedirect("./quixlab-master/page-login.jsp");
+	    	  response.sendRedirect("./page-login.jsp");
 	      }
 	     
 	   }

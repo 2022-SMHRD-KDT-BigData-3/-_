@@ -47,7 +47,7 @@
 									<h4>개인정보수정</h4>
 								</a>
 								<li>접속한 ID : <%=info.getId()%></li>
-								<form class="mt-5 mb-5 login-input" action="../UpdatServiceCon"
+								<form class="mt-5 mb-5 login-input" action="./UpdatServiceCon"
 									method="post">
 									<div class="form-group">
 										<input type="text" class="form-control" name="nick"

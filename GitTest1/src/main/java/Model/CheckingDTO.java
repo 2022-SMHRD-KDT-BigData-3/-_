@@ -6,6 +6,15 @@ public class CheckingDTO {
 	private int weigth;
 	private int blood;
 	private int bsugar;
+	public CheckingDTO(String id,String checkday, int weigth, int blood, int bsugar, int height) {
+		super();
+		this.id=id;
+		this.checkday = checkday;
+		this.weigth = weigth;
+		this.blood = blood;
+		this.bsugar = bsugar;
+		this.height = height;
+	}
 	private int act;
 	private int height;
 	private int age;

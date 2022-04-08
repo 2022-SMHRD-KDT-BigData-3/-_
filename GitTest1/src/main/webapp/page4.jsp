@@ -419,25 +419,30 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body" style=>
-							<h4 class="text-gray">검색창</h4>
-							<div class="basic-form">
-								<form>
-									<div class="form-group">
-										<input type="text" class="form-control input-rounded"
-											placeholder="Input Rounded">
-											<br>
-											<center><button type="button" class="btn mb-1 btn-outline-danger"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">검색</font></font></button></center>
-											
-									</div>
-								</form>
-							</div>
+							
+								<label for="search"></label>
+								<input type="search" id="search" name="search" class="form-control input-rounded" 
+										placeholder="Input Rounded" onkeyup="inputkeyup(event)">
+								<br>
+								<center><button type="button" onclick="ajaxRequest()">Search</button></center>
+
+								
+								
+							
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body">
-					
+						
+
+								<div class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+    								<div class="homeVideoThumbnail video-player">
+        
+    								</div>  
+								</div>
+								<ul class="list"></ul>
 					</div>
 				</div>
 				</div>
@@ -498,5 +503,83 @@
 
 
 	<script src="./js/dashboard/dashboard-1.js"></script>
+	
+	<script>
+    const v = document.querySelector('.videoPlayer');
+
+    //iframe 추가하고 비디오 재생
+    function updateVideo(id){
+
+        v.classList.add("embed-responsive-16by9");
+        v.innerHTML = '<iframe src=//www.youtube.com/embed/6XbPmHk2j-h1sdhe'
+            + id + '?autoplay=1" width="320" height="315" frameborder="0" allowfullscreen></iframe>';
+
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
+    
+    //엔터키 이벤트
+    function inputkeyup(e){
+        if(e.keyCode == 13){
+            ajaxRequest();
+        }
+        
+    }
+
+    //jQuery를 사용하지 않고 Vanilla JS를 사용하자. 비동기로 호출한다.
+    function ajaxRequest(){
+
+        const search = document.getElementById("search");
+        const ul = document.querySelector(".list");
+
+        if(search.value.length == 0){
+            alert("검색어를 입력하세요.");
+            search.focus();
+            return false;
+        } else {
+            query = search.value + " 운동";
+            search.value = "";
+            search.focus();
+        }
+        console.log(query);
+        const key = "AIzaSyBkmQ8mvBv8IWcCbYR7zk5-s_5qQCuzzoQ";
+        const url = "https://www.googleapis.com/youtube/v3/search?key="+key+"&q="+query+"&part=snippet&type=video";
+
+        //ul 일단 비우고 시작
+        ul.innerHTML = "";
+
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200){
+                //파싱
+                const jsonObj = JSON.parse(this.response);
+
+                console.log(jsonObj['items']);
+                const videoList = jsonObj["items"];
+                videoList.forEach(element => {
+                    const li = document.createElement('li');
+                    const div = document.createElement('Div');
+                    const img = document.createElement('img');
+                    const h3 = document.createElement('h3');
+                    const p1 = document.createElement('p');
+
+                    h3.textContent = element["snippet"]["title"];
+                    img.src = element["snippet"]["thumbnails"]["medium"]["url"];
+                    p1.textContent = element["snippet"]["description"];
+                    //div.setAttribute("data-id", element["id"]["videoId"]);
+                    div.setAttribute("onClick", `updateVideo('${element["id"]["videoId"]}')`);
+
+                    div.appendChild(img);
+
+                    li.appendChild(div);
+                    ul.appendChild(li);
+
+                });
+            }
+        };
+        xhr.open("GET", url, true);
+        xhr.send();
+    }
+
+</script>
 </body>
 </html>

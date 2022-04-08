@@ -1,17 +1,9 @@
 drop table member;
 drop table checking;
 drop table menu;
-drop table foodinfo;
 drop table dignosis;
+drop table food_rec;
 
-create table member(
-seq number(10),
-id varchar2(100),
-pw varchar2(100) not null,
-nick varchar2(100) not null,
-constraint user_seq primary key(seq),
-constraint id unique(id));
-select * from checking where id = '1234' order by checkday desc
 select * from member;
 select * from checking;
 create sequence user_seq
@@ -21,8 +13,16 @@ create sequence user_seq
 	nocycle 
 	nocache
 	
+create table member(
+seq number(10),
+id varchar2(100),
+pw varchar2(100) not null,
+nick varchar2(100) not null,
+constraint user_seq primary key(seq),
+constraint id unique(id));
+	
 create table checking(
-id varchar2(10),
+id varchar2(100),
 checkday date default sysdate,
 weigth number(10) not null,
 blood number(10) not null,
@@ -34,26 +34,17 @@ constraint checkdata_id_fk foreign key(id) references member(id)
 );
 
 create table menu(
-id varchar2(10),
+id varchar2(100),
 meal number(1),
 dietday date default sysdate,
 foodid varchar(10),
-constraint menu_id_fk1 foreign key(id) references member(id),
-constraint menu_foodid_fk2 foreign key(foodid) references foodinfo(foodid)
-);
-
-create table foodinfo(
-foodid varchar2(10) ,
-fname varchar2(10),
+fname varchar(10),
 cal number(20),
 pro number(20),
 car number(20),
 fat number(20),
-sod number(20),
-sug number(20),
-vit number(20),
-fday date default sysdate,
-constraint foodinfo_id_pk primary key(foodid)
+constraint menu_foodid primary key(foodid),
+constraint menu_id_fk foreign key(id) references member(id)
 );
 
 create table dignosis(
