@@ -109,74 +109,40 @@ clist = dao.graph(info.getId());
 				</div>
 				<div class="header-right">
 					<ul class="clearfix">
-						<li class="icons dropdown"></ui>
-
-							<div class="drop-down animated fadeIn dropdown-menu">
-								<div
-									class="dropdown-content-heading d-flex justify-content-between">
-									<span class="">3 New Messages</span> <a
-										href="javascript:void()" class="d-inline-block"> <span
-										class="badge badge-pill gradient-1">3</span>
-									</a>
-								</div>
-								<div class="dropdown-content-body">
-									<ul>
-										<li class="notification-unread"><a
-											href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/1.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Saiful Islam</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Hi Teddy, Just wanted
-														to let you ...</div>
-												</div>
-										</a></li>
-										<li class="notification-unread"><a
-											href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/2.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Adam Smith</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Can you do me a
-														favour?</div>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/3.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Barak Obama</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Hi Teddy, Just wanted
-														to let you ...</div>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/4.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Hilari Clinton</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Hello</div>
-												</div>
-										</a></li>
-									</ul>
-								</div>
-							</div></li>
-
-						<!--  로그아웃 -->
 						<li class="icons dropdown">
-							<div class="ss" data-toggle="dropdown">
-								<a> <%if(info!=null){ %> <a href="./LogoutServiceCon"> </a><img
-									src="images/user/logout.png" height="40" width="40" id="logout">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                	<!--  로그인,로그아웃, 회원정보수정, 회원가입 -->
+                      			<a> <%if(info!=null){ %> <img
+									src="images/user/logout.png" height="40" width="40">
 									<%} else{%> <img src="images/user/login.png" height="40"
-									width="40" id="login"> <% }%>
+									width="40"> <% }%>
 								</a>
-							</div>
-
-						</li>
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                    
+                                    <%if(info!=null){ %> <li>
+                                            <a href="page-edit.jsp">
+                                                <i class="icon-people"></i> <span>회원정보수정</span>
+                                            </a>
+                                        </li>
+									<%} else{%> <li>
+                                            <a href="page-register.jsp"><i class="icon-user"></i> <span>회원가입</span></a>
+                                        </li> <% }%>
+                                    
+                                   
+                                        
+                                        <hr class="my-2">
+                                        <li>
+                                            <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                        </li>
+                                        <li><a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
 					</ul>
 				</div>
 			</div>
