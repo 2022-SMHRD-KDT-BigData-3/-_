@@ -830,6 +830,7 @@
     		}
 
     		location.href="InsertServiceCon?meal="+meal+"&fname="+fname+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+"fat"
+    				console.log("홍석이바보")
     	});
     </script>
 
