@@ -4290,7 +4290,9 @@ button.close {
 .carousel-inner {
   position: relative;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-top: 2.5rem;
+   }
 
 .carousel-item {
   position: relative;
@@ -15226,5 +15228,13 @@ input[type="radio"] {
 }
 .userIndex{
 	margin:10%;
+}
+span.tableText{
+	float: right;
+    vertical-align: middle;
+    margin-right: 32%;
+    margin-top: 2%;
+    font-size: 25px;
+	
 }
 /*# sourceMappingURL=style.css.map */
