@@ -5,10 +5,13 @@ public class MenuDTO {
 	private int meal;
 	private String dietday;
 	private String fname;
-	private int cal;
+	private float cal;
+	private float pro;
+	private float car;
+	private float fat;
 	
 	
-	public MenuDTO(String id, int meal, String fname, int cal, int pro, int car, int fat) {
+	public MenuDTO(String id, int meal, String fname, float cal, float pro, float car,float fat) {
 		super();
 		this.id = id;
 		this.meal = meal;
@@ -18,10 +21,7 @@ public class MenuDTO {
 		this.car = car;
 		this.fat = fat;
 	}
-	private int pro;
-	private int car;
-	private int fat;
-	
+
 	public String getId() {
 		return id;
 	}
@@ -46,25 +46,25 @@ public class MenuDTO {
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
-	public int getCal() {
+	public float getCal() {
 		return cal;
 	}
 	public void setCal(int cal) {
 		this.cal = cal;
 	}
-	public int getPro() {
+	public float getPro() {
 		return pro;
 	}
 	public void setPro(int pro) {
 		this.pro = pro;
 	}
-	public int getCar() {
+	public float getCar() {
 		return car;
 	}
 	public void setCar(int car) {
 		this.car = car;
 	}
-	public int getFat() {
+	public float getFat() {
 		return fat;
 	}
 	public void setFat(int fat) {
