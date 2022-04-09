@@ -24,6 +24,20 @@
 	href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
 <!-- Custom Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
+
+<!--폰트 변경 링크  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Grape+Nuts&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Poor+Story&family=Stylish&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu:wght@700&family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Poor+Story&family=Stylish&family=Yeon+Sung&display=swap" rel="stylesheet">
+
 <script src="./jquery-3.6.0.min.js"></script>
 
 <title>Insert title here</title>
@@ -68,10 +82,10 @@ clist = dao.graph(info.getId());
         ***********************************-->
 		<div class="nav-header">
 			<div class="brand-logo">
-				<a href="index.jsp"> <b class="logo-abbr"><img
-						src="images/logo.png" alt=""> </b> <span class="logo-compact"><img
-						src="./images/logo-compact.png" alt=""></span> <span
-					class="brand-title"> <img src="images/logo-text.png" alt="">
+				<a href="index.jsp"><b class="logo-abbr"><img
+						src="images/clover2.png" alt=""> </b><span
+					class="brand-title"> <img src="images/clover1.png" alt="">
+					<span class="mainfont" style="font-size: x-large;">LifeGuader</span>
 				</span>
 				</a>
 			</div>
