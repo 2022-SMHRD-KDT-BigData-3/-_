@@ -1,3 +1,5 @@
+<%@page import="Model.MenuDAO"%>
+<%@page import="Model.MenuDTO"%>
 <%@page import="Model.CheckingDTO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -72,29 +74,39 @@
 	data-container="wide" direction="ltr">
 
 	<%
-	int act=0;
-	double enCal=0;
-	double enCar=0;
-	double enPro=0;
-	double enFat=0;
+	int act = 0;
+	double enCal = 0;
+	double enCar = 0;
+	double enPro = 0;
+	double enFat = 0;
+	int hical =100;
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
-	CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto");
-	if(info!=null){	
-		
-	if(ckdto.getAct()==1){
+	System.out.println("인포id" + info.getId());
+	CheckingDTO ckdto = (CheckingDTO) session.getAttribute("ckdto");
+	MenuDTO select = (MenuDTO) session.getAttribute("select");
+
+	if (info != null) {
+
+		if (ckdto.getAct() == 1) {
 			act = 25;
-		}else if(ckdto.getAct()==2){
-			act= 35;
-		}else if(ckdto.getAct()==3){
-			act= 40;
+		} else if (ckdto.getAct() == 2) {
+			act = 35;
+		} else if (ckdto.getAct() == 3) {
+			act = 40;
+		}
+		enCal = ((ckdto.getHeight() - 100) * 0.9) * act;
+		enCar = enCal * 0.6;
+		enPro = enCal * 0.135;
+		enFat = enCal * 0.225;
+
 	}
-	enCal = ((ckdto.getHeight()-100)*0.9)*act;
-	enCar = enCal*0.6;
-	enPro = enCal*0.135;
-	enFat = enCal*0.225;
+	if (select != null) {
+		enCal = enCal / select.getCal();
+		enCar = enCar / select.getCar();
+		enPro = enPro / select.getPro();
+		enFat = enFat / select.getFat();
+
 	}
-	
-	
 	%>
 	<div id="modal" class="modal" width="400px">
 		<div class="modal-content">
@@ -505,41 +517,54 @@
         ***********************************-->
 		<div class="content-body">
 
-
+			<!-- 날짜 태그 -->
 			<div class="row">
-					<div class="col-lg-3 col-sm-6">
-						
-						<div class="card gradient-2">
-							<div class="card-body">
-								
-								<a data-slide="prev" href="#carouselExampleCaptions" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span> </a>
-								<div id=today style="text-align: center;">
-								<script>
-								date = new Date().toLocaleDateString();
-								document.write(date);
-								</script>
-							    </div>
-								<a data-slide="next" href="#carouselExampleCaptions" class="carousel-control-next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
-								<span class="float-right display-5 opacity-5"><i
-									class="fa fa-heart"></i></span>
+
+				<div class="col-lg-3 col-sm-6">
+
+
+					<div class="card gradient-2">
+
+						<div class="card-body">
+							<!-- 하루전으로 가는 태그 -->
+							<div id="backbtn">
+								<a data-slide="prev" href="#" class="carousel-control-prev"><span
+									class="carousel-control-prev-icon" id="BackClick"
+									></span> <span class="sr-only">하루전</span> </a>
+
+								<div id=today style="text-align: center;"></div>
+
 							</div>
+
+							<!-- 하루 후로 가는 태그 -->
+							<a data-slide="next" href="#carouselExampleCaptions"
+								class="carousel-control-next"><span
+								class="carousel-control-next-icon" id="FrontClick"
+								></span> <span class="sr-only">하루후</span></a> <span
+								class="float-right display-5 opacity-5"><i
+								class="fa fa-heart"></i></span>
 						</div>
-
 					</div>
+
 				</div>
+			</div>
 
-
+			<div class="go">
+				<button type="button" class="btn mb-1 btn-success" onclick="checking()">
+					Seccess <span class="btn-icon-right"><i class="fa fa-check"></i></span>
+				</button>
+			</div>
 			<div class="card">
 				<div class="card-body">
 					<div class="table-responsive">
 						<table class="table table-bordered table-striped verticle-middle">
 
-
+							<!-- 칼로리 그래프 태그 -->
 							<tr>
 								<td id="bp">칼로리</td>
 								<td id="green">
 									<div class="progress" style="height: 10px">
-										<div class="progress-bar gradient-1" style="width: 50%;"
+										<div class="progress-bar gradient-1" style="width: <%=enCal %>%;"
 											role="progressbar">
 											<span class="sr-only">50% Complete</span>
 										</div>
@@ -555,7 +580,7 @@
 
 
 
-			<!-- 도넛 -->
+			<!-- 도넛 그래프 태그 -->
 
 
 			<%
@@ -580,12 +605,13 @@
 
 			<script>
 	 	$(".pie-chart1").css({
-            "background":"conic-gradient(#ADEB00 0% <%=i%>%, #DCDCDC <%=i%>% 100%)"
-				});
-				</script>
+	 	   "background":"conic-gradient(#ADEB00 0% <%=i%>%, #DCDCDC <%=i%>% 100%)"
+								});
+			
+		</script>
 
 
-
+			<!-- 식단 입력 태그 -->
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title">식단입력</h4>
@@ -681,6 +707,7 @@
 			<!--**********************************
             Footer end
         ***********************************-->
+
 		</div>
 		<!--**********************************
         Main wrapper end
@@ -698,171 +725,250 @@
 		<script src="./plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 		<script src="./js/plugins-init/sparkline.init.js"></script>
 		<script>
-		let foodName = null;
-        let mealTime = null; 
-        let fname = null;
-        let cal = null;
-        let pro = null;
-        let car = null;
-        let fat = null;
-        let input_data = {};
-        
-/*         $(".choice").on("click", function(){
-		    mealTime2 = this.innerText;
-	    	console.log(mealTime2);
-	    	$(".modal").fadeIn();
-        }); */
-        
-    	$(".btn-outline-warning").click(function(){
-    		mealTime = this.innerText;
-    		console.log(mealTime);
-    		$("#modal").fadeIn();
-    		
-    	});
-        
-    	$(".close").click(function(){   		
-    		$("#modal").fadeOut();    		
-    	});
-    	
-    	$("#morNutInfo").click(function(){
-    		$("#modalInfo").fadeIn();
-    		let morFood_data = {};
-    		
-    	});
-    	
-    	$("#lunNutInfo").click(function(){
-    		$("#modalInfo").fadeIn();
-    		let lunFood_data = {};
-    	});
-    	
-    	$("#dinNutInfo").click(function(){
-    		$("#modalInfo").fadeIn();
-    		let dinFood_data = {};
-    	}); 
-    	
-		$(".close").click(function(){
-    		
-    		$(".modal").fadeOut();
-    		
-    	});
-            
-        function getData(){
-    	
-        	$("#chart").empty();
-        	
-        	foodName = document.getElementById("foodName").value;
-        	console.log("성공해봐 ㅋㅋ");
-    		
-        	$.ajax({
-    		headers: {'X-Requested-With': 'XMLHttpRequest'},
-        	url : "https://cors-anywhere.herokuapp.com/http://openapi.foodsafetykorea.go.kr/api/6c16719532f64640814f/I2790/json/1/1000/DESC_KOR="+foodName,
-        	type : "GET",  
-            success : function(data){
-            	console.log("success : "+mealTime);
-            	console.log(data);
-            	let Array = data.I2790.row;
-            	
-            	$("#chart").append("<tr><td> 식품명 </td><td> 열량 </td><td> 탄수화물 </td><td> 단백질 </td><td> 지방 </td><td> 선택 </td></tr>");        	                
-                for(let i=0; i<=Array.length; i++){
-                	
-                	if(Array[i].NUTR_CONT1 != "" && Array[i].NUTR_CONT2 != "" && Array[i].NUTR_CONT3 != "" && Array[i].NUTR_CONT4 != ""){
-                	
-                					fname = Array[i].DESC_KOR;
-            	                	cal = Array[i].NUTR_CONT1;
-            	                	pro = Array[i].NUTR_CONT2;
-            	                	car = Array[i].NUTR_CONT3;
-            	                	fat = Array[i].NUTR_CONT4;
-            	                	
-            	                	input_data.num = i;
-            	                	input_data.meal = mealTime;
-            	                
-            	                	var str = "<tr>" + "<td id=fname" + i + ">" + fname + 
-            	                	"</td>" + "<td id=cal" + i + ">" + cal + "</td>" + "<td id=pro" + i + ">" + pro + 
-            	                	"</td>" + "<td id=car" + i + ">" + car + "</td>" + "<td id=fat" + i + ">" + fat + 
-            	                	"</td><td><button id=select onclick='Funcinput("+ i +")'> 선택 </button></td></tr>"
-            	                	
-            	                	console.log(str)
-            	                	
-            	                	$("#chart").append(str);
-            	                	console.log("fat"+fat)
-                	} // if문끝
+			
+		/* 날짜 스크립트 */
+			let date2 = new Date();
+			let year = date2.getFullYear();
+			let month = date2.getMonth() + 1;
+			let day = date2.getDate();
+			console.log(date2);
+			let date = year + "년" + month + "월" + day + "일";
+			$("#today").text(date);
 
-                } // for문끝
-                	
-                	
-                }, // success 끝
-            	
-            error : function(data){
-            alert("통신 실패");
-            } // error 끝
-    }); // ajax끝
-        } // getData 함수 끝    
-		// let i=0;
-        function Funcinput(i){
-        	//console.log("input 안의 숫자"+input_data.num);
-        	//console.log("input 안의 숫자"+input_data.meal);
-        	console.log("input 안의 숫자"+i);
-        	console.log("input 안의 숫자"+mealTime);
-        	
-        	let fnameSec = document.getElementById("fname"+i).innerText;
-    		let calSec = document.getElementById("cal"+i).innerText;
-    		let proSec = document.getElementById("pro"+i).innerText;
-    		let carSec = document.getElementById("car"+i).innerText;
-    		let fatSec = document.getElementById("fat"+i).innerText;
-    		
-    		
-    		
-    		if(mealTime == "아침 입력"){
-    			let td = document.getElementById("morning");
-    			mor = td.innerText;
-    			
-        		console.log(fnameSec);
-        		if(mor == ""){
-        			td.innerText=fnameSec;
-        		} else{
-        			td.innerText=mor+", "+fnameSec;
-        		}
-        		
-    		}else if(mealTime == "점심 입력"){
-    			let td = document.getElementById("lunch");
-    			lun = td.innerText;
-        		console.log(fnameSec);
-        		if(lun == ""){
-        			td.innerText=fnameSec;
-        		} else{
-        			td.innerText=lun+", "+fnameSec;
-        		}
-    		}else{
-    			let td = document.getElementById("dinner");
-    			din = td.innerText;
-        		console.log(fnameSec);
-        		if(din == ""){
-        			td.innerText=fnameSec;
-        		} else{
-        			td.innerText=din+", "+fnameSec;
-        		}
-    		} 
+			
 
-    	}
+		
+			
+			/* MenuDTO 들어갈 변수 */
+			let foodName = null;	
+			let mealTime = null;
+			let fname = null;
+			let cal = null;
+			let pro = null;
+			let car = null;
+			let fat = null;
+			let input_data = {};
+			
+			/*         $(".choice").on("click", function(){
+			 mealTime2 = this.innerText;
+			 console.log(mealTime2);
+			 $(".modal").fadeIn();
+			 }); */
+			
+			$(".btn-outline-warning").click(function() {
+				mealTime = this.innerText;
+				console.log(mealTime);
+				$("#modal").fadeIn();
+
+			});
+
+			$(".close").click(function() {
+				$("#modal").fadeOut();
+			});
+
+			$("#morNutInfo").click(function() {
+				$("#modalInfo").fadeIn();
+				let morFood_data = {};
+
+			});
+
+			$("#lunNutInfo").click(function() {
+				$("#modalInfo").fadeIn();
+				let lunFood_data = {};
+			});
+
+			$("#dinNutInfo").click(function() {
+				$("#modalInfo").fadeIn();
+				let dinFood_data = {};
+			});
+
+			$(".close").click(function() {
+
+				$(".modal").fadeOut();
+
+			});
+			
+			/* 식품 영양정보 API 연결 */
+			function getData() {
+		
+				$("#chart").empty();
+				
+				foodName = document.getElementById("foodName").value;
+				console.log("성공해봐 ㅋㅋ");
+
+				$
+						.ajax({
+							headers : {
+								'X-Requested-With' : 'XMLHttpRequest'
+							},
+							url : "https://cors-anywhere.herokuapp.com/http://openapi.foodsafetykorea.go.kr/api/6c16719532f64640814f/I2790/json/1/1000/DESC_KOR="
+									+ foodName,
+							type : "GET",
+							success : function(data) {
+								console.log("success : " + mealTime);
+								console.log(data);
+								let Array = data.I2790.row;
+
+								$("#chart")
+										.append(
+												"<tr><td> 식품명 </td><td> 열량 </td><td> 탄수화물 </td><td> 단백질 </td><td> 지방 </td><td> 선택 </td></tr>");
+								for (let i = 0; i <= Array.length; i++) {
+
+									if (Array[i].NUTR_CONT1 != ""
+											&& Array[i].NUTR_CONT2 != ""
+											&& Array[i].NUTR_CONT3 != ""
+											&& Array[i].NUTR_CONT4 != "") {
+
+										fname = Array[i].DESC_KOR;
+										cal = Array[i].NUTR_CONT1;
+										pro = Array[i].NUTR_CONT2;
+										car = Array[i].NUTR_CONT3;
+										fat = Array[i].NUTR_CONT4;
+
+										input_data.num = i;
+										input_data.meal = mealTime;
+
+										var str = "<tr>"
+												+ "<td id=fname" + i + ">"
+												+ fname
+												+ "</td>"
+												+ "<td id=cal" + i + ">"
+												+ cal
+												+ "</td>"
+												+ "<td id=pro" + i + ">"
+												+ pro
+												+ "</td>"
+												+ "<td id=car" + i + ">"
+												+ car
+												+ "</td>"
+												+ "<td id=fat" + i + ">"
+												+ fat
+												+ "</td><td><button id=select onclick='Funcinput("
+												+ i
+												+ ")'> 선택 </button></td></tr>"
+
+										console.log(str)
+
+										$("#chart").append(str);
+										console.log("fat" + fat)
+									} // if문끝
+
+								} // for문끝
+
+							}, // success 끝
+
+							error : function(data) {
+								alert("통신 실패");
+							} // error 끝
+						}); // ajax끝
+			} // getData 함수 끝    
+			// let i=0;
+			
+			/* API 정보 보여주는 기능 */
+			
+			function Funcinput(i) {
+				//console.log("input 안의 숫자"+input_data.num);
+				//console.log("input 안의 숫자"+input_data.meal);
+				console.log("input 안의 숫자" + i);
+				console.log("input 안의 숫자" + mealTime);
+
+				let fnameSec = document.getElementById("fname" + i).innerText;
+				let calSec = document.getElementById("cal" + i).innerText;
+				let proSec = document.getElementById("pro" + i).innerText;
+				let carSec = document.getElementById("car" + i).innerText;
+				let fatSec = document.getElementById("fat" + i).innerText;
+
+				if (mealTime == "아침 입력") {
+					let td = document.getElementById("morning");
+					mor = td.innerText;
+
+					console.log(fnameSec);
+					if (mor == "") {
+						td.innerText = fnameSec;
+					} else {
+						td.innerText = mor + ", " + fnameSec;
+					}
+
+				} else if (mealTime == "점심 입력") {
+					let td = document.getElementById("lunch");
+					lun = td.innerText;
+					console.log(fnameSec);
+					if (lun == "") {
+						td.innerText = fnameSec;
+					} else {
+						td.innerText = lun + ", " + fnameSec;
+					}
+				} else {
+					let td = document.getElementById("dinner");
+					din = td.innerText;
+					console.log(fnameSec);
+					if (din == "") {
+						td.innerText = fnameSec;
+					} else {
+						td.innerText = din + ", " + fnameSec;
+					}
+				}
+
+			}
 		</script>
+
+		<!-- 정보 DB 저장하기 -->
+
 		<script type="text/javascript">
-		console.log(mealTime);
-    	$(".btn-outline-primary").on("click",function(){
-    		console.log("실행");
-    		let meal =null;
-    		if(mealTime=="아침 입력"){
-    			meal = 1;
-    		}else if(mealTime=="점심 입력"){
-    			meal = 2;
-    		} else if (mealTime=="저녁 입력"){
-    			meal = 3;
-    		}
 
-    		location.href="InsertServiceCon?meal="+meal+"&fname="+fname+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat
-    				console.log("홍석이바보")
-    	});
-    </script>
+			$(".btn-outline-primary").on("click",function() {
+				console.log("이건 " + date);
+						let meal = null;
 
+						if (mealTime == "아침 입력") {
+							meal = 1;
+						} else if (mealTime == "점심 입력") {
+							meal = 2;
+						} else if (mealTime == "저녁 입력") {
+							meal = 3;
+						}
+												
+						location.href ="InsertServiceCon?id="+<%=info.getId()%>+"&fname="+fname+"&date="+date+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat;
+						});
+		</script>
+
+		<!-- 날짜 바꾸기 -->
+
+		<script type="text/javascript">
+		console.log("그냥 실행");
+		let id = <%=info.getId()%>
+		function checking(){
+			alert("함수 실행00");
+			$.ajax({
+				url : "SelectFoodSerivceCon",
+				data : "id="+id+"&date="+date,
+				success: function(){
+					console.log(id);
+					alert("ajax성공");
+				},
+				error : function(){
+					alert("통신 실패");
+				}
+			});	
+		}
+		
+	$("#BackClick").on("click", function() {
+				day = day - 1;
+				console.log("test3" + date2);
+				date = year + "년" + month + "월" + day + "일";
+				
+				$("#today").text(date);
+				
+				
+			}); 
+		$("#FrontClick").on("click", function() {
+				day = day + 1;
+				date = year + "년" + month + "월" + day + "일";
+				$("#today").text(date);
+				
+			
+			}); 
+		</script>
 	</div>
 </body>
 </html>

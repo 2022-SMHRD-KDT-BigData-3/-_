@@ -10,11 +10,17 @@ public class MenuDTO {
 	private float car;
 	private float fat;
 	
+	public MenuDTO(String id, String dietday) {
+		super();
+		this.id = id;
+		this.dietday = dietday;
+	}
 	
-	public MenuDTO(String id, int meal, String fname, float cal, float pro, float car,float fat) {
+	public MenuDTO(String id, int meal,String dietday, String fname, float cal, float pro, float car,float fat) {
 		super();
 		this.id = id;
 		this.meal = meal;
+		this.dietday = dietday;
 		this.fname = fname;
 		this.cal = cal;
 		this.pro = pro;

@@ -71,7 +71,7 @@ public class MenuDAO {
 		      try {
 		         // 2. DB에서 무엇을 할지 결정
 		         // 메뉴 넣기 = 입력받은 회원 데이터들을 회원 Table에 추가하기
-		         String sql = "insert into menu values(?,?, sysdate,?,?,?,?,?)";
+		         String sql = "insert into menu values(?,?,?,?,?,?,?,?)";
 		         
 		         // 3. sql문장을 DB에 전달 -> 전달 성공 시 PreparedStatement 객체로 반환
 		         psmt = conn.prepareStatement(sql);
@@ -80,11 +80,12 @@ public class MenuDAO {
 		         // join메소드 매개변수로 dto(입력받은 값들의 묶음 = 가방) 받아오기
 		         psmt.setString(1, dto.getId() );
 		         psmt.setInt(2, dto.getMeal() );
-		         psmt.setString(3, dto.getFname());
-		         psmt.setFloat(4, dto.getCal());
-		         psmt.setFloat(5, dto.getPro());
-		         psmt.setFloat(6, dto.getCar());
-		         psmt.setFloat(7, dto.getFat());
+		         psmt.setString(3, dto.getDietday());
+		         psmt.setString(4, dto.getFname());
+		         psmt.setFloat(5, dto.getCal());
+		         psmt.setFloat(6, dto.getPro());
+		         psmt.setFloat(7, dto.getCar());
+		         psmt.setFloat(8, dto.getFat());
 		         
 		         // 5. sql문 실행
 		         // insert -> DB에 변화생기기 때문에 Update
@@ -107,7 +108,7 @@ public class MenuDAO {
 		        psmt = conn.prepareStatement(sql);
 		        
 		        psmt.setString(1, dto.getId());
-		        psmt.setString(2, dto.getPw());
+		        psmt.setString(2, dto.getDietday());
 		        
 		        // select절은 Query -> ResultSet(rs) 
 		        rs = psmt.executeQuery();
@@ -115,14 +116,18 @@ public class MenuDAO {
 		        // rs.next() : 다음 행에 값이 있는지(t) 없는지(f) boolean타입으로 반환
 		        if(rs.next()) {
 		        	// 실행문장 실행 = 값이 있다 = 로그인성공
-		        	int seq = rs.getInt("seq");
-		        	String id = rs.getString(2);
-		        	String pw = rs.getString(3);
-		        	String nick = rs.getString("nick");
-		        	
+		        	String id1 = rs.getString(1);
+		        	int meal= rs.getInt(2);
+		        	String Dietday = rs.getString(3);
+		        	String Fname = rs.getString(4);
+		        	Float cal = rs.getFloat(5);
+		        	Float pro = rs.getFloat(6);
+		        	Float car = rs.getFloat(7);
+		        	Float fat = rs.getFloat(8);
+
 		        	
 		        	// info = 로그인한 사람의 정보를 담고있는 memberDTO형태의 객체
-		        	info = new MemberDTO(seq, id, pw, nick);
+		        	info = new MenuDTO(id1, meal, Dietday, Fname, cal, pro, car, fat);
 		        }
 		      } catch (Exception e) {
 		         e.printStackTrace();

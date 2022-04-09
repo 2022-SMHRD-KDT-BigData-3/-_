@@ -37,7 +37,7 @@ constraint checkdata_id_fk foreign key(id) references member(id)
 create table menu(
 id varchar2(100),
 meal number(1),
-dietday date default sysdate,
+dietday varchar2(100),
 fname varchar2 (100),
 cal number(38),
 pro number(38),
@@ -45,6 +45,9 @@ car number(38),
 fat number(38),
 constraint menu_id_fk foreign key(id) references member(id)
 );
+
+insert into MENU values('123',2,'2022년4월9일','과자',10.0,1.888,5.0,6.3);
+
 
 create table dignosis(
 id varchar2(10),

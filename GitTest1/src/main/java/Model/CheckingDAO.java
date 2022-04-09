@@ -139,11 +139,14 @@ public class CheckingDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {// 6. DB문 닫기
+			db_close();
 		}
+		
 		return ckdto;
 	}
 	public ArrayList<CheckingDTO> graph(String id) {
-		String sql = "select * from checking where id = ? order by checkday ";
+		String sql = "select id, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), weigth, blood, bsugar, heigth from checking where id = ? order by checkday ";
 		ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
 		db_conn();
 		CheckingDTO ckdto = null;
