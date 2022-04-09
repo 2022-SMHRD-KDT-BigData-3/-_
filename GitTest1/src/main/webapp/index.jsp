@@ -24,6 +24,20 @@
 	href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
 <!-- Custom Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
+
+<!--폰트 변경 링크  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Grape+Nuts&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Poor+Story&family=Stylish&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu:wght@700&family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Poor+Story&family=Stylish&family=Yeon+Sung&display=swap" rel="stylesheet">
+
 <script src="./jquery-3.6.0.min.js"></script>
 
 <title>Insert title here</title>
@@ -68,10 +82,10 @@ clist = dao.graph(info.getId());
         ***********************************-->
 		<div class="nav-header">
 			<div class="brand-logo">
-				<a href="index.jsp"> <b class="logo-abbr"><img
-						src="images/logo.png" alt=""> </b> <span class="logo-compact"><img
-						src="./images/logo-compact.png" alt=""></span> <span
-					class="brand-title"> <img src="images/logo-text.png" alt="">
+				<a href="index.jsp"><b class="logo-abbr"><img
+						src="images/clover2.png" alt=""> </b><span
+					class="brand-title"> <img src="images/clover1.png" alt="">
+					<span class="mainfont" style="font-size: x-large;">LifeGuader</span>
 				</span>
 				</a>
 			</div>
@@ -91,92 +105,42 @@ clist = dao.graph(info.getId());
 						<span class="toggle-icon"><i class="icon-menu"></i></span>
 					</div>
 				</div>
-				<div class="header-left">
-					<div class="input-group icons">
-						<div class="input-group-prepend">
-							<span
-								class="input-group-text bg-transparent border-0 pr-2 pr-sm-3"
-								id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-						</div>
-						<input type="search" class="form-control"
-							placeholder="Search Dashboard" aria-label="Search Dashboard">
-						<div class="drop-down animated flipInX d-md-none">
-							<form action="#">
-								<input type="text" class="form-control" placeholder="Search">
-							</form>
-						</div>
-					</div>
-				</div>
 				<div class="header-right">
 					<ul class="clearfix">
-						<li class="icons dropdown"></ui>
-
-							<div class="drop-down animated fadeIn dropdown-menu">
-								<div
-									class="dropdown-content-heading d-flex justify-content-between">
-									<span class="">3 New Messages</span> <a
-										href="javascript:void()" class="d-inline-block"> <span
-										class="badge badge-pill gradient-1">3</span>
-									</a>
-								</div>
-								<div class="dropdown-content-body">
-									<ul>
-										<li class="notification-unread"><a
-											href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/1.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Saiful Islam</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Hi Teddy, Just wanted
-														to let you ...</div>
-												</div>
-										</a></li>
-										<li class="notification-unread"><a
-											href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/2.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Adam Smith</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Can you do me a
-														favour?</div>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/3.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Barak Obama</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Hi Teddy, Just wanted
-														to let you ...</div>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/4.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Hilari Clinton</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Hello</div>
-												</div>
-										</a></li>
-									</ul>
-								</div>
-							</div></li>
-
-						<!--  로그아웃 -->
 						<li class="icons dropdown">
-							<div class="ss" data-toggle="dropdown">
-								<a> <%if(info!=null){ %> <a href="./LogoutServiceCon"> </a><img
-									src="images/user/logout.png" height="40" width="40" id="logout">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                	<!--  로그인,로그아웃, 회원정보수정, 회원가입 -->
+                      			<a> <%if(info!=null){ %> <img
+									src="images/user/logout.png" height="40" width="40">
 									<%} else{%> <img src="images/user/login.png" height="40"
-									width="40" id="login"> <% }%>
+									width="40"> <% }%>
 								</a>
-							</div>
-
-						</li>
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                    
+                                    <%if(info!=null){ %> <li>
+                                            <a href="page-edit.jsp">
+                                                <i class="icon-people"></i> <span>회원정보수정</span>
+                                            </a>
+                                        </li>
+									<%} else{%> <li>
+                                            <a href="page-register.jsp"><i class="icon-user"></i> <span>회원가입</span></a>
+                                        </li> <% }%>
+                                    
+                                   
+                                        
+                                        <hr class="my-2">
+                                        <li>
+                                            <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                        </li>
+                                        <li><a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
 					</ul>
 				</div>
 			</div>
@@ -192,140 +156,31 @@ clist = dao.graph(info.getId());
 			<div class="nk-nav-scroll">
 				<ul class="metismenu" id="menu">
 					<li class="nav-label">Dashboard</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-speedometer menu-icon"></i><span
-							class="nav-text">UserInfo</span>
+					<li><a href="./index.jsp"
+						> <i class="icon-grid menu-icon"></i><span
+							class="nav-text">메인페이지</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./index.jsp">Home 1</a></li>
-							<!-- <li><a href="./index-2.html">Home 2</a></li> -->
-						</ul></li>
-					<li class="mega-menu mega-menu-sm"><a class="has-arrow"
-						href="javascript:void()" aria-expanded="false"> <i
-							class="icon-globe-alt menu-icon"></i><span class="nav-text">ㅇㅇ</span>
+					</li>
+					<li><a href="./user-import.jsp"
+						> <i class="icon-notebook menu-icon"></i><span
+							class="nav-text">유저정보입력</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./user-import.jsp">Blank</a></li>
-							<li><a href="./layout-one-column.html">One Column</a></li>
-							<li><a href="./layout-two-column.html">Two column</a></li>
-							<li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-							<li><a href="./layout-vertical.html">Vertical</a></li>
-							<li><a href="./layout-horizontal.html">Horizontal</a></li>
-							<li><a href="./layout-boxed.html">Boxed</a></li>
-							<li><a href="./layout-wide.html">Wide</a></li>
-
-
-							<li><a href="./layout-fixed-header.html">Fixed Header</a></li>
-							<li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-						</ul></li>
-					<li class="nav-label">Apps</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-envelope menu-icon"></i>
-							<span class="nav-text">Email</span>
+					</li>
+					<li><a href="./page-2.jsp"
+						> <i class="icon-note menu-icon"></i><span
+							class="nav-text">식단입력페이지</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./email-inbox.html">Inbox</a></li>
-							<li><a href="./email-read.html">Read</a></li>
-							<li><a href="./email-compose.html">Compose</a></li>
-						</ul></li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-screen-tablet menu-icon"></i><span
-							class="nav-text">Apps</span>
+					</li>										
+					<li><a href="./page-3.jsp"
+						> <i class="icon-badge menu-icon"></i><span
+							class="nav-text">식단추천페이지</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./app-profile.html">Profile</a></li>
-							<li><a href="./app-calender.html">Calender</a></li>
-						</ul></li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-graph menu-icon"></i> <span
-							class="nav-text">Charts</span>
+					</li>
+					<li><a href="./page4.jsp"
+						> <i class="icon-badge menu-icon"></i><span
+							class="nav-text">운동추천페이지</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./chart-flot.html">Flot</a></li>
-							<li><a href="./chart-morris.html">Morris</a></li>
-							<li><a href="./chart-chartjs.html">Chartjs</a></li>
-							<li><a href="./chart-chartist.html">Chartist</a></li>
-							<li><a href="./chart-sparkline.html">Sparkline</a></li>
-							<li><a href="./chart-peity.html">Peity</a></li>
-						</ul></li>
-					<li class="nav-label">UI Components</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-grid menu-icon"></i><span
-							class="nav-text">UI Components</span>
-					</a>
-						<ul aria-expanded="false">
-							<li><a href="./ui-accordion.html">Accordion</a></li>
-							<li><a href="./ui-alert.html">Alert</a></li>
-							<li><a href="./ui-badge.html">Badge</a></li>
-							<li><a href="./ui-button.html">Button</a></li>
-							<li><a href="./ui-button-group.html">Button Group</a></li>
-							<li><a href="./ui-cards.html">Cards</a></li>
-							<li><a href="./ui-carousel.html">Carousel</a></li>
-							<li><a href="./ui-dropdown.html">Dropdown</a></li>
-							<li><a href="./ui-list-group.html">List Group</a></li>
-							<li><a href="./ui-media-object.html">Media Object</a></li>
-							<li><a href="./ui-modal.html">Modal</a></li>
-							<li><a href="./ui-pagination.html">Pagination</a></li>
-							<li><a href="./ui-popover.html">Popover</a></li>
-							<li><a href="./ui-progressbar.html">Progressbar</a></li>
-							<li><a href="./ui-tab.html">Tab</a></li>
-							<li><a href="./ui-typography.html">Typography</a></li>
-							<!-- </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
-                        </a>
-                        <ul aria-expanded="false"> -->
-							<li><a href="./uc-nestedable.html">Nestedable</a></li>
-							<li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-							<li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-							<li><a href="./uc-toastr.html">Toastr</a></li>
-						</ul></li>
-					<li><a href="widgets.html" aria-expanded="false"> <i
-							class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
-					</a></li>
-					<li class="nav-label">Forms</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-note menu-icon"></i><span
-							class="nav-text">Forms</span>
-					</a>
-						<ul aria-expanded="false">
-							<li><a href="./form-basic.html">Basic Form</a></li>
-							<li><a href="./form-validation.html">Form Validation</a></li>
-							<li><a href="./form-step.html">Step Form</a></li>
-							<li><a href="./form-editor.html">Editor</a></li>
-							<li><a href="./form-picker.html">Picker</a></li>
-						</ul></li>
-					<li class="nav-label">Table</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-menu menu-icon"></i><span
-							class="nav-text">Table</span>
-					</a>
-						<ul aria-expanded="false">
-							<li><a href="./table-basic.html" aria-expanded="false">Basic
-									Table</a></li>
-							<li><a href="./table-datatable.html" aria-expanded="false">Data
-									Table</a></li>
-						</ul></li>
-					<li class="nav-label">Pages</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-notebook menu-icon"></i><span
-							class="nav-text">Pages</span>
-					</a> <!--   -->
-						<ul aria-expanded="User">
-							<%if(info!=null){ %>
-							<li><a href="./LogoutServiceCon">로그아웃</a></li>
-							<%}else{ %>
-							<li><a href="./page-login.jsp"></a></li>
-							<%} %>
-							<li><a href="./page-register.jsp">회원가입</a></li>
-							<li><a href="./page-edit.jsp">개인정보수정</a></li>
-							<li><a class="has-arrow" href="javascript:void()"
-								aria-expanded="false">하기싫다</a>
-								<ul aria-expanded="false">
-								</ul></li>
-						</ul></li>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -397,7 +252,7 @@ clist = dao.graph(info.getId());
 
 											<td><h4 class="userIndex">혈당</h4></td>
 											<td><div class="alert alert-success">
-													<span class="pull-right"> <%
+													<span class="tableText"> <%
 											if (info != null) {
 												if (ckdto != null) {
 											%><%=ckdto.getBlood()%> <%
@@ -411,7 +266,7 @@ clist = dao.graph(info.getId());
 
 											<td><h4 class="userIndex">혈압</h4></td>
 											<td><div class="alert alert-success">
-													<span class="pull-right"> <%
+													<span class="tableText"> <%
 											if (info != null) {
 												if (ckdto != null) {
 											%><%=ckdto.getBlood()%> <%
@@ -424,7 +279,7 @@ clist = dao.graph(info.getId());
 										<tr>
 											<td><h4 class="userIndex">BMI</h4></td>
 											<td><div class="alert alert-success">
-													<span class="pull-right"> <%
+													<span class="tableText"> <%
 											if (info != null) {
 												if (ckdto != null) {
 													int bmi = (ckdto.getWeigth() / (ckdto.getHeight() * ckdto.getHeight() / 10000));

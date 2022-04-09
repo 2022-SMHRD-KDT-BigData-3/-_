@@ -146,7 +146,9 @@ public class CheckingDAO {
 		return ckdto;
 	}
 	public ArrayList<CheckingDTO> graph(String id) {
-		String sql = "select id, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), weigth, blood, bsugar, heigth from checking where id = ? order by checkday ";
+
+		String sql = "select id, TO_CHAR(SYSDATE,  'YYYY\"년\"MM\"월\"DD\"일\"'), weigth, blood, bsugar, heigth from checking where id = ? order by checkday ";
+
 		ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
 		db_conn();
 		CheckingDTO ckdto = null;
