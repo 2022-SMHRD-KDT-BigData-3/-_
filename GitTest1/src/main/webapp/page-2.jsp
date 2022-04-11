@@ -81,7 +81,6 @@
 	double enFat = 0;
 	int hical =100;
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
-	System.out.println("인포id" + info.getId());
 	CheckingDTO ckdto = (CheckingDTO) session.getAttribute("ckdto");
 	MenuDTO select = (MenuDTO) session.getAttribute("select");
 
@@ -430,7 +429,7 @@
 								<td id="bp">칼로리</td>
 								<td id="green">
 									<div class="progress" style="height: 10px">
-										<div class="progress-bar gradient-1" id=calcart style="width: <%=enCal %>%;"
+										<div class="progress-bar gradient-1" id=calcart style="width: 0%;"
 											role="progressbar">
 											<span class="sr-only">50% Complete</span>
 										</div>
@@ -449,9 +448,7 @@
 			<!-- 도넛 그래프 태그 -->
 
 
-			<%
-			int i = 45;
-			%>
+		
 			<div class="pie-chart1" id="carcart">
 				<span class="center" >탄수화물</span>
 
@@ -471,7 +468,7 @@
 
 			<script>
 	 	$(".pie-chart1").css({
-	 	   "background":"conic-gradient(#ADEB00 0% <%=i%>%, #DCDCDC <%=i%>% 100%)"
+	 	   "background":"conic-gradient(#ADEB00 0% 0%, #DCDCDC 0% 100%)"
 								});
 			
 		</script>
@@ -792,18 +789,20 @@
 							meal = 3;
 						}
 												
-						location.href ="InsertServiceCon?id="+<%=info.getId()%>+"&meal="+meal+"&fname="+fname+"&date="+date+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat;
+						location.href ="InsertServiceCon?id="+<%if(info!=null){%><%=info.getId()%><%}%>+"&meal="+meal+"&fname="+fname+"&date="+date+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat;
 						});
 		</script>
 
 		<!-- 날짜 바꾸기 -->
 
 		<script type="text/javascript">
-		let id = <%=info.getId()%>
-		let nomalWeigth = (<%=ckdto.getHeight()%>-100)*0.9
+		let nomalWeigth = 0;
+		let act= 0;
+		let id = <%if(info!=null){%><%=info.getId()%><%}%>
+		<%if(ckdto!=null){%>let nomalWeigth = (<%=ckdto.getHeight()%>-100)*0.9
 		let act = <%if(ckdto.getAct()==1){%> 25
 		<%}else if(ckdto.getAct()==2){%> 35		
-		<%}else if(ckdto.getAct()==3){%>40<%}%>
+		<%}else if(ckdto.getAct()==3){%>40<%}}%>
 		let enCal = nomalWeigth*act;
 		let enCar = enCal*0.6;
 		let enPro = enCal*0.135;

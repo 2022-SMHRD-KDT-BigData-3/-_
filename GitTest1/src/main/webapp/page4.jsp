@@ -46,7 +46,6 @@ CheckingDTO ckdto = (CheckingDTO)session.getAttribute("ckdto");
 
 CheckingDAO dao = new CheckingDAO();
 
-System.out.println("ckdto"+ckdto.getBlood());
 
 %>
 	<!--*******************
