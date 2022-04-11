@@ -11698,7 +11698,7 @@ table.dataTable thead .sorting::after {
     margin: 0;
     padding: 0; }
     .tdl-holder li span {
-      margin-left: 35px;
+      margin-left: 30px;
       font-weight: 500;
       vertical-align: middle;
       -webkit-transition: all .2s linear;

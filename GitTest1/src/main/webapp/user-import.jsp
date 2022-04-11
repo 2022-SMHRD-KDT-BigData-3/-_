@@ -291,7 +291,7 @@
 								<div class="col-lg-3 col-md-6">
 									<div class="card" id="userList">
 										<div class="card-body px-0">
-											<div class="col-lg-6">
+											<div class="col-lg-12">
 
 												<h4 class="card-title px-4 mb-3">활동지수</h4>
 												<div class="todo-list">
