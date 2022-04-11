@@ -263,7 +263,7 @@
                                         <button class="btn btn-success m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button"><i class="fa fa-paper-plane m-r-5"></i> Send</button>
                                         </a>
                                         <a href="BordInsert.jsp">
-                                        <button class="btn-warning m-b-30 m-t-15 f-s-14 p-l-20 p-r-20" type="button"><i class="ti-close m-r-5 f-s-12"></i> Discard</button>
+                                        <button class="btn-warning m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button"><i class="fa fa-paper-plane m-r-5"></i> Discard</button>
                                         </a>
                                     </div>
                                 </div>
