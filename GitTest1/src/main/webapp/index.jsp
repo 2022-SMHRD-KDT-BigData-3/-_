@@ -251,7 +251,7 @@ clist = dao.graph(info.getId());
 													<span class="tableText"> <%
 											if (info != null) {
 												if (ckdto != null) {
-											%><%=ckdto.getBlood()%> <%
+											%><%=ckdto.getBsugar()%> <%
 											}
 											}
 											%>
@@ -278,10 +278,16 @@ clist = dao.graph(info.getId());
 													<span class="tableText"> <%
 											if (info != null) {
 												if (ckdto != null) {
-													int bmi = (ckdto.getWeigth() / (ckdto.getHeight() * ckdto.getHeight() / 10000));
-											%><%=bmi%> <%
+													float bmi = ( (float)ckdto.getWeigth() /( (float)ckdto.getHeight() *  (float)ckdto.getHeight() /  (float)10000));
+												
+													System.out.println("몸무게"+ckdto.getWeigth());
+													System.out.println("키"+ckdto.getHeight()*ckdto.getHeight()/10000);
+							
+													System.out.println("bmi1"+bmi);
+											%><%=(int)bmi%> <%
 											}
 											}
+													
 											%>
 													</span>
 												</div></td>
@@ -762,7 +768,7 @@ clist = dao.graph(info.getId());
 		            defaultFontFamily: 'Montserrat',
 		            datasets: [{
 		                data: [<%for(int i=0;i<clist.size();i++ ){
-	            	int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%>,
+		                	float bmi =((float)ckdto.getWeigth()/((float)ckdto.getHeight()*(float)ckdto.getHeight()/(float)10000));%><%=(float)bmi%>,
 	                <%}%>],
 		                label: "BMI",
 		                backgroundColor: '#847DFA',

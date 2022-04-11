@@ -371,7 +371,7 @@ System.out.println("ckdto"+ckdto.getBlood());
 				
 			<%}%>
 			
-			<%if(ckdto.getBlood()>100) {%>
+			<%if(ckdto.getBsugar()>100) {%>
 			dingnosis2 = "당뇨";
 			selectPlus();
 			console.log(dingnosis2);
