@@ -177,6 +177,11 @@ clist = dao.graph(info.getId());
 							class="nav-text">운동추천페이지</span>
 					</a>
 					</li>
+					<li><a href="./Bord.jsp"
+						> <i class="icon-badge menu-icon"></i><span
+							class="nav-text">게시판</span>
+					</a>
+					</li>
 				</ul>
 			</div>
 		</div>
