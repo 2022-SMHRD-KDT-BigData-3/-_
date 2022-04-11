@@ -425,7 +425,7 @@
 							</div>
 
 							<!-- 하루 후로 가는 태그 -->
-							<a data-slide="next" href="#carouselExampleCaptions"
+							<a data-slide="next" href="#"
 								class="carousel-control-next"><span
 								class="carousel-control-next-icon" id="FrontClick"
 								></span> <span class="sr-only">하루후</span></a> <span
@@ -846,6 +846,7 @@
 				date = year + "년" + month + "월" + day + "일";
 				
 				$("#today").text(date);
+				location.href ="page-2.jsp"
 				
 				
 			}); 
@@ -854,7 +855,7 @@
 				date = year + "년" + month + "월" + day + "일";
 				$("#today").text(date);
 				
-			
+				location.href ="page-2.jsp"			
 			}); 
 		</script>
 	</div>

@@ -1,7 +1,6 @@
 drop table member;
 drop table checking;
 drop table menu;
-drop table dignosis;
 drop table food_rec;
 
 select * from member;
@@ -20,7 +19,8 @@ id varchar2(100),
 pw varchar2(100) not null,
 nick varchar2(100) not null,
 constraint user_seq primary key(seq),
-constraint id unique(id));
+constraint id unique(id),
+constraint nick unique(nick));
 	
 create table checking(
 id varchar2(100),
@@ -49,15 +49,16 @@ constraint menu_id_fk foreign key(id) references member(id)
 insert into MENU values('123',2,'2022년4월9일','과자',10.0,1.888,5.0,6.3);
 
 
-create table dignosis(
-id varchar2(10),
-nomal number(1),
-ob number(1),
-bs number(1),
-bp number(1),
-diaday date default sysdate,
-constraint dignosis_id_fk foreign key(id) references member(id)
+create table food_rec(
+fname varchar2(60),
+cal number(38, 13),
+pro number(38, 14),
+car number(38, 15),
+fat number(38, 15),
+sug number(38, 16)
+constraint food_rec_fname primary key(seq)
 );
+
 
 select * from food_rec;
 
