@@ -781,7 +781,7 @@
 		<script type="text/javascript">
 
 			$(".btn-outline-primary").on("click",function() {
-			
+				console.log("이건 " + date);
 						let meal = null;
 
 						if (mealTime == "아침 입력") {
@@ -792,7 +792,7 @@
 							meal = 3;
 						}
 												
-						location.href ="InsertServiceCon?id="+<%=info.getId()%>+"&fname="+fname+"&date="+date+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat;
+						location.href ="InsertServiceCon?id="+<%=info.getId()%>+"&meal="+meal+"&fname="+fname+"&date="+date+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat;
 						});
 		</script>
 
