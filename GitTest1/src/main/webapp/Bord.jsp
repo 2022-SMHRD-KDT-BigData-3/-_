@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Quixlab - Bootstrap Admin Dashboard Template by
 	Themefisher.com</title>
@@ -46,14 +46,7 @@
 <body>
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
-	CheckingDTO ckdto = (CheckingDTO) session.getAttribute("ckdto");
 
-	ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
-	CheckingDAO dao = new CheckingDAO();
-	if (info != null) {
-		clist = dao.graph(info.getId());
-
-	}
 	%>
 	<!--*******************
         Preloader start
@@ -258,9 +251,9 @@
 														%>
 														<!-- 스크립틀릿 을 통한 table 생성 -->
 														<tr>
-															<td id="num<%=i%>">1</td>
-															<td id="title<%=i%>">어제 먹은 김치가 상했어요</td>
-															<td id="date<%=i%>">2022/05/11</td>
+															<td id="num<%=i%>"></td>
+															<td id="title<%=i%>"></td>
+															<td id="date<%=i%>"></td>
 														</tr>
 														<%
 														}
@@ -272,7 +265,7 @@
 												</table>
 											</div>
 											<br> <a href="BordInsert.jsp">
-												<button type="button" class="btn mb-1 btn-outline-warning">글쓰기</button>
+												<%if(info!=null){ %><button type="button" class="btn mb-1 btn-outline-warning">글쓰기</button><%}%> 
 											</a>
 											<hr>
 											<div class="button-group">
@@ -371,7 +364,7 @@
 	<!--  로그인 페이지 이동 실행 -->
 	<script type="text/javascript">
 		document.querySelector("#login").addEventListener("click", function() {
-			location.href = "page-login.jsp"
+			location.href = "index.jsp"
 		});
 	</script>
 	<!--  로그아웃 실행  -->

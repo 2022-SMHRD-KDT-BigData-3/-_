@@ -22,8 +22,9 @@ import netscape.javascript.JSObject;
 public class border extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		System.out.println("[border]");
 		
+		request.setCharacterEncoding("UTF-8");
 		//몇번부터 가져올 것인지?
 		//몇개의 버튼 생성할 것인지를 알기위한 서블릿
 		int num = Integer.parseInt(request.getParameter("num")); //몇번째 부터 DB에서 가져와야 할지 알수있는 num변수
@@ -41,7 +42,7 @@ public class border extends HttpServlet {
 		for(int i=0;i<list.size();i++) {
 			json.addProperty("num", list.get(i).getNum());
 			json.addProperty("title", list.get(i).getTitle());
-			json.addProperty("date", list.get(i).getDate());
+			json.addProperty("data", list.get(i).getDate());
 			
 			jarray.add(json);
 			json = new JsonObject();

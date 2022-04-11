@@ -94,9 +94,8 @@ public class bordDAO {
 
 			// 4. ? 바인드 변수에 값 채우기
 			// insert메소드 매개변수로 dto(입력받은 값들의 묶음 = 가방) 받아오기
-			pstm.setInt(1, dto.getNum());
-			pstm.setString(2, dto.getTitle());
-			pstm.setString(3, dto.getDate());
+			pstm.setString(1, dto.getTitle());
+			pstm.setString(2, dto.getDate());
 		
 			// 5. sql문 실행
 			// insert -> DB에 변화생기기 때문에 Update

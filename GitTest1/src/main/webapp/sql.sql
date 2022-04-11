@@ -3,6 +3,8 @@ drop table checking;
 drop table menu;
 drop table food_rec;
 
+select * from bord;
+insert into bord values(2,'안녕하세요','선생님');
 select * from member;
 select * from checking;
 select * from MENU;
