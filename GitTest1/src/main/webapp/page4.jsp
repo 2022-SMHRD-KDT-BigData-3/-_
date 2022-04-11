@@ -1,7 +1,7 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="Model.CheckingDAO"%>
 <%@page import="Model.CheckingDTO"%>
 <%@page import="Model.MemberDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,23 +33,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@300&display=swap" rel="stylesheet">
-
-
-
-
 </head>
 <body>
-<%
-	
+
+<% 
+
 MemberDTO info = (MemberDTO)session.getAttribute("info");
-CheckingDTO ckdto= (CheckingDTO)session.getAttribute("ckdto"); 
 
 ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
-CheckingDAO dao = new CheckingDAO();
-if(info!=null){
-clist = dao.graph(info.getId());
 
-}
+CheckingDTO ckdto = (CheckingDTO)session.getAttribute("ckdto"); 
+
+CheckingDAO dao = new CheckingDAO();
+
+System.out.println("ckdto"+ckdto.getBlood());
 
 %>
 	<!--*******************
@@ -193,9 +190,14 @@ clist = dao.graph(info.getId());
 
 						<div class="card gradient-2">
 							<div class="card-body">
-								<h3 class="card-title text-white">nickName님의</h3>
+								<h3 id="nick" class="card-title text-white"><%if(info!=null){%>
+								<%=info.getNick()%>님의
+								<%} else { %>
+									nickName님의
+								<% } %>
+								</h3>
 								<div class="d-inline-block">
-									<h2 class="text-white">관련질환 운동</h2>
+									<h2 id="health" class="text-white"> 관련질환 운동</h2>
 									<p class="text-white mb-0">주의사항</p>
 								</div>
 								<span class="float-right display-5 opacity-5"><i
@@ -211,11 +213,11 @@ clist = dao.graph(info.getId());
 							<div class="card-body">
 								<label for="search"></label> <input type="search" id="search"
 									name="search" class="form-control input-rounded"
-									placeholder="Input Rounded" onkeyup="inputkeyup(event)">
+									onkeyup="inputkeyup(event)">
 								<br>
 								<center>
 									<button type="button" class="btn mb-1 btn-outline-danger"
-										onclick="ajaxRequest()" placeholder="">Search</button>
+										onclick="ajaxRequest()">Search</button>
 								</center>
 							</div>
 						</div>
@@ -230,8 +232,24 @@ clist = dao.graph(info.getId());
 										<div class="card">
 											<div id="videoList" class="card-body">
 												<div class="youtube">
-													<div
-														class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+													<div style="display:none"
+														id="v1" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+														<div class="homeVideoThumbnail video-player"></div>
+													</div>
+													<div style="display:none"
+														id="v2" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+														<div class="homeVideoThumbnail video-player"></div>
+													</div>
+													<div style="display:none"
+														id="v3" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+														<div class="homeVideoThumbnail video-player"></div>
+													</div>
+													<div style="display:none"
+														id="v4" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+														<div class="homeVideoThumbnail video-player"></div>
+													</div>
+													<div style="display:none"
+														id="v5" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
 														<div class="homeVideoThumbnail video-player"></div>
 													</div>
 												</div>
@@ -243,6 +261,9 @@ clist = dao.graph(info.getId());
 											<div id="videoList" class="card-body">
 												<div class="side-body">
 													<div id="list">
+													<button onclick="selectMinus()"> 뒤 </button>
+														<button onclick="selectPlus()"> 앞 </button>
+														<br>
 														<ul class="list"></ul>
 													</div>
 												</div>
@@ -284,6 +305,17 @@ clist = dao.graph(info.getId());
 	<!--**********************************
         Scripts
     ***********************************-->
+	<script>
+	
+	
+	
+	
+	
+	</script>
+	
+	
+	
+	
 	<script src="plugins/common/common.min.js"></script>
 	<script src="js/custom.min.js"></script>
 	<script src="js/settings.js"></script>
@@ -315,14 +347,66 @@ clist = dao.graph(info.getId());
 
 	<script>
 	
-    const v = document.querySelector('.videoPlayer');
-    const dingnosis = "비만";
+	let num = 0;
+	let a1 = document.querySelector('#health');
+	const ding = " 질환 관련 운동";
+	
+	const v1 = document.querySelector('#v1');
+	const v2 = document.querySelector('#v2');
+	const v3 = document.querySelector('#v3');
+	const v4 = document.querySelector('#v4');
+	const v5 = document.querySelector('#v5');
+	
+    let dingnosis1 = "";
+    let dingnosis2 = "";
+    let dingnosis3 = "";
+    
+    <%if (ckdto != null) {%>
+			<% if(ckdto.getBlood()>140) {%>
+			dingnosis1 = "고혈압";
+			selectPlus();
+			
+			console.log(dingnosis1);
+			a1.innerText = dingnosis1 + "" + ding;
+				
+			<%}%>
+			
+			<%if(ckdto.getBlood()>100) {%>
+			dingnosis2 = "당뇨";
+			selectPlus();
+			console.log(dingnosis2);
+			
+			if(a1.innerText == dingnosis1 + "" + ding){
+				a1.innerText = dingnosis1 + "," + dingnosis2 + "" + ding;
+			}else{
+				a1.innerText = dingnosis2 + "" + ding;
+			}
+			
+			<%}%>
+			
+			<%if((ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000) > 30)) {%>
+			dingnosis3 = "비만";
+			selectPlus();
+			console.log(dingnosis3);
+			
+			if(a1.innerText == dingnosis1){
+				a1.innerText = dingnosis1 + "," + dingnosis3 + "" + ding;
+			}else if(a1.innerText == dingnosis1 + "," + dingnosis2 + "" + ding){
+				a1.innerText = dingnosis1 + "," + dingnosis2 + "," + dingnosis3 + "" + ding;
+			} else {
+				a1.innerText = dingnosis3 + "" + ding;
+			}
+			<%}%>
+			
+		<%}%>
 
     //iframe 추가하고 비디오 재생
-    function updateVideo(id){
-
+    function updateVideo(id, v){
+		
+    	console.log(id);
+    	
         v.classList.add("embed-responsive-16by9");
-        v.innerHTML = '<iframe src=//www.youtube.com/embed/6XbPmHk2j-h1sdhe'
+        v.innerHTML = '<iframe src=//www.youtube.com/embed/'
             + id + '?autoplay=1" width="320" height="315" frameborder="0" allowfullscreen></iframe>';
 
         document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -333,75 +417,148 @@ clist = dao.graph(info.getId());
     function inputkeyup(e){
         if(e.keyCode == 13){
             ajaxRequest();
-        }
-        
+        }   
     }
+    
+    var Viii;
+    
+    let i = 0; 
+    
 		//검색 
 		
-    	function ajaxRequest(dingnosis){
-
+    	function ajaxRequest(dingnosis1, dingnosis2, dingnosis3){	
+    	i=0;
         const search = document.getElementById("search");
         const ul = document.querySelector(".list");
-
-        if(search.value.length == 0 && dingnosis == null){
+        
+        if(search.value.length == 0 && dingnosis1 == "" && dingnosis2 == "" && dingnosis3 == ""){
             alert("검색어를 입력하세요.");
             search.focus();
             return false;
         } else if(search.value.length == 0) {
-        	query = dingnosis + " 운동" + search.value;
+            query = dingnosis1 + "" + dingnosis2 + "" + dingnosis3 + " 운동" + search.value;
             search.value = "";
             search.focus();
-
         } else {
         	query = search.value;
             search.value = "";
             search.focus();
-        	
         }
         console.log(query);
-        const key = "AIzaSyDhuGBOZ_JFOXAkyXPBuv8k6dh7984N1uA";
+        const key = "AIzaSyAkZszjSMjBzbruqZN0uTeOuMY9CD8SpTQ";
         const url = "https://www.googleapis.com/youtube/v3/search?key="+key+"&q="+query+"&part=snippet&type=video";
-
         //ul 일단 비우고 시작
         ul.innerHTML = "";
-		
+        
         const xhr = new XMLHttpRequest();
-        
-        //비디오리스트에 검색결과 추가
-        
         xhr.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200){
                 //파싱
                 const jsonObj = JSON.parse(this.response);
-
                 console.log(jsonObj['items']);
-                const videoList = jsonObj["items"];
+                const videoList = jsonObj["items"];       
+                
                 videoList.forEach(element => {
+
                     const li = document.createElement('li');
                     const div = document.createElement('Div');
                     const img = document.createElement('img');
                     const h3 = document.createElement('h3');
                     const p1 = document.createElement('p');
-
+                    
                     h3.textContent = element["snippet"]["title"];
                     img.src = element["snippet"]["thumbnails"]["medium"]["url"];
                     p1.textContent = element["snippet"]["description"];
                     //div.setAttribute("data-id", element["id"]["videoId"]);
-                    div.setAttribute("onClick", `updateVideo('${element["id"]["videoId"]}')`);
+                    
+                    div.setAttribute("id", element["id"]["videoId"]);
 
+                    str = element["id"]["videoId"];
+					Viii = str;
+					
+					console.log(Viii);		
+					
+					if(i==0){
+						updateVideo(Viii, v1);	
+					}else if(i==1){
+						updateVideo(Viii, v2);
+					}else if(i==2){
+						updateVideo(Viii, v3);
+					}else if(i==3){
+						updateVideo(Viii, v4);
+					}else{
+						updateVideo(Viii, v5);
+					}
+					
                     div.appendChild(img);
-
                     li.appendChild(div);
                     ul.appendChild(li);
 
-                });
+                    i++
+                });              
             }
         };
         xhr.open("GET", url, true);
         xhr.send();
-    };
+    }
+		
+    	function selectMinus() {
+    		
+        	if(num!=1){
+    			num--;
+    		}
+        	
+        	console.log(num);
+        	
+        	$('#v1').css("display", "none");
+    		$('#v2').css("display", "none");
+    		$('#v3').css("display", "none");
+    		$('#v4').css("display", "none");
+    		$('#v5').css("display", "none");
+    		
+    		if(num == 1){		
+    			$('#v1').css("display", "flex");
+    			num=1;
+    		}else if(num == 2){		
+    			$('#v2').css("display", "flex");	
+    		}else if(num == 3){		
+    			$('#v3').css("display", "flex");	
+    		}else if(num == 4){		
+    			$('#v4').css("display", "flex");	
+    		}else if(num == 5){		
+    			$('#v5').css("display", "flex");
+    		}	
+    	}
+        
+    	function selectPlus() {
+    		
+    		if(num!=5){
+    			num++;
+    		}
+    		
+    		console.log(num);
+    		
+    		$('#v1').css("display", "none");
+    		$('#v2').css("display", "none");
+    		$('#v3').css("display", "none");
+    		$('#v4').css("display", "none");
+    		$('#v5').css("display", "none");
+    		
+    		if(num == 1){		
+    			$('#v1').css("display", "flex");	
+    		}else if(num == 2){		
+    			$('#v2').css("display", "flex");	
+    		}else if(num == 3){		
+    			$('#v3').css("display", "flex");	
+    		}else if(num == 4){		
+    			$('#v4').css("display", "flex");	
+    		}else if(num == 5){		
+    			$('#v5').css("display", "flex");
+    			num=5;
+    		}
+    	}
     
-    $(document).ready(ajaxRequest(dingnosis));
+    	$(document).ready(ajaxRequest(dingnosis1, dingnosis2, dingnosis3));
 
 </script>
 </body>
