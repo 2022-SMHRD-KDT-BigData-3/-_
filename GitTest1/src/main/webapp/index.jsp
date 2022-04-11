@@ -581,7 +581,7 @@ clist = dao.graph(info.getId());
 		                data: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
 		                	<%=clist.get(i).getBlood()%>,
 		                <%}}%>],
-		                label: "홍석",
+		                label: "혈압",
 		                backgroundColor: '#847DFA',
 		                borderColor: '#847DFA',
 		                borderWidth: 0.5,
@@ -672,7 +672,7 @@ clist = dao.graph(info.getId());
 	                data: [<%for(int i=0;i<clist.size();i++ ){%>
 	            	<%=clist.get(i).getBsugar()%>,
 	                <%}%>],
-	                label: "홍석",
+	                label: "혈당",
 	                backgroundColor: '#847DFA',
 	                borderColor: '#847DFA',
 	                borderWidth: 0.5,
@@ -764,7 +764,7 @@ clist = dao.graph(info.getId());
 		                data: [<%for(int i=0;i<clist.size();i++ ){
 	            	int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%>,
 	                <%}%>],
-		                label: "홍석",
+		                label: "BMI",
 		                backgroundColor: '#847DFA',
 		                borderColor: '#847DFA',
 		                borderWidth: 0.5,
