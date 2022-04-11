@@ -4285,7 +4285,8 @@ button.close {
   color: #76838f; }
 
 .carousel {
-  position: relative; }
+  position: relative;
+  overflow: auto; }
 
 .carousel-inner {
   position: relative;
@@ -5394,7 +5395,8 @@ button.bg-dark:focus {
   width: 75% !important; }
 
 .w-100 {
-  width: 100% !important; }
+  width: 100% !important;
+  overflow: auto; }
 
 .w-auto {
   width: auto !important; }
@@ -15225,6 +15227,7 @@ input[type="radio"] {
 	height:445px;
     width: 92.5%;
     margin: 0px auto;
+    overflow: auto;
 }
 .userIndex{
 	margin:10%;
@@ -15246,5 +15249,14 @@ span.tableText{
 	font-family: 'Do Hyeon', sans-serif;
 	font-size: large;
 	
+}
+ul.list{
+	display: block;
+    margin: 0px auto;
+    overflow: auto;
+}
+div#list {
+    display: block;
+    text-align: center;
 }
 /*# sourceMappingURL=style.css.map */
