@@ -101,6 +101,7 @@ clist = dao.graph(info.getId());
 						<span class="toggle-icon"><i class="icon-menu"></i></span>
 					</div>
 				</div>
+
 				<div class="header-right">
 					<ul class="clearfix">
 						<li class="icons dropdown">
@@ -125,14 +126,13 @@ clist = dao.graph(info.getId());
 									<%} else{%> <li>
                                             <a href="page-register.jsp"><i class="icon-user"></i> <span>회원가입</span></a>
                                         </li> <% }%>
-                                    
-                                   
-                                        
                                         <hr class="my-2">
-                                        <li>
-                                            <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                         <%if(info!=null){ %> <li> 
+                                         <a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a>    
                                         </li>
-                                        <li><a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a></li>
+									<%} else{%> <li>
+                                           <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                        </li> <% }%>
                                     </ul>
                                 </div>
                             </div>
