@@ -262,7 +262,7 @@ System.out.println("ckdto"+ckdto.getBlood());
 												<div class="side-body">
 													<div id="list">
 													<button type="button" class="btn mb-1 btn-rounded btn-danger" onclick="selectMinus()"><i class="icon-control-rewind"></i></button>
-													<button type="button" class="btn mb-1 btn-rounded btn-danger" onclick="selectMinus()"><i class="icon-control-forward"></i></button>
+													<button type="button" class="btn mb-1 btn-rounded btn-danger" onclick="selectPlus()"><i class="icon-control-forward"></i></button>
 														<hr>
 														<ul class="list"></ul>
 													</div>
