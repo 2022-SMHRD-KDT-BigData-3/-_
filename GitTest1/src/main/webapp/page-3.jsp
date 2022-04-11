@@ -1,3 +1,4 @@
+<%@page import="Model.MemberDTO"%>
 <%@page import="Model.FoodRecDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.FoodRecDAO"%>
@@ -71,7 +72,7 @@
 	data-sidebar-style="full" data-sibebarbg="color_1"
 	data-sidebar-position="static" data-header-position="static"
 	data-container="wide" direction="ltr">
-
+<% MemberDTO info = (MemberDTO)session.getAttribute("info");%>
 	<!--*******************
         Preloader start
     ********************-->
@@ -454,107 +455,104 @@
 		<!--**********************************
             Content body start
         ***********************************-->
-		<div class="content-body" style="min-height: 1100px;">
-
-			<div class="row page-titles mx-0">
-				<div class="col p-md-0">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-						<li class="breadcrumb-item active"><a
-							href="javascript:void(0)">Home</a></li>
-					</ol>
-				</div>
-			</div>
-
-
-
-			<br> <br> <br> <br>
-		<!-- 선택메뉴 -->
-			<div id="info">Observe the platform icon's motion direction
-				when there is up and down hover on options.</div>
-
-			<form id="app-cover" action="FoodRecCon" method="post">
-				<div id="select-box">
-					<input type="checkbox" id="options-view-button">
-					<div id="select-button" class="brd">
-						<div id="selected-value">
-							<span>음식 추천 받기</span>
+	<!-- 박스 -->
+		<div class="content-body" >
+		<div class="container-fluid mt-3">
+		<div class="row">
+		
+			<div class="col-lg-3 col-sm-6" style="width:200%">
+                  <div class="card gradient-3">
+                     <div class="card-body">
+                        <h3 class="card-title text-white">안녕하세요</h3>
+                        <div class="d-inline-block">
+                           <%
+                           if (info != null) {
+                           %>
+                           <h2 class="text-white"><%=info.getNick()%>님
+                           </h2>
+                           <p class="text-white mb-0">환영합니다!</p>
+                        </div>
+                        <span class="float-right display-5 opacity-5"><i
+                           class="fa fa-users"></i></span>
+                        <%
+                        } else {
+                        %>
+                        <h2 class="text-white">로그인을 해주세요</h2>
+                        <%
+                        }
+                        %>
+		<!-- 드롭다운메뉴 -->
+                        <div class="dropdown" style="margin-left:88px;">
+						  <button class="dropbtn" id="checkResult">성분 별 음식추천</button>
+							  <div class="dropdown-content" id="checkContent">
+							    <a href="./FoodRecCon?choice=car">저탄수화물</a>
+							    <a href="./FoodRecCon?choice=pro">고단백질</a>
+							    <a href="./FoodRecCon?choice=fat">저지방</a>
+							    <a href="./FoodRecCon?choice=sug">저당류</a>
+							    <a href="./FoodRecCon?choice=cal">저칼로리</a>
+							  </div>
 						</div>
-
-					</div>
-					<div id="options">
-						<div class="option">
-							<input class="s-c top" type="radio" name="platform"
-								value="car"> <input class="s-c bottom" type="radio"
-								name="platform" value="car"> <span class="label">탄수화물</span>
-							<span class="opt-val">탄수화물</span>
-						</div>
-						<div class="option">
-							<input class="s-c top" type="radio" name="platform"
-								value="pro"> <input class="s-c bottom" type="radio"
-								name="platform" value="pro"> <span class="label">단백질</span>
-							<span class="opt-val">단백질</span>
-						</div>
-
-						<div class="option">
-							<input class="s-c top" type="radio" name="platform"
-								value="fat"> <input class="s-c bottom"
-								type="radio" name="platform" value="fat"> <span
-								class="label">저지방</span> <span class="opt-val">저지방</span>
-						</div>
-						<div class="option">
-							<input class="s-c top" type="radio" name="platform"
-								value="sug"> <input class="s-c bottom"
-								type="radio" name="platform" value="sug"> <span
-								class="label">당</span> <span class="opt-val">당</span>
-						</div>
-
-						<div class="option">
-							<input class="s-c top" type="radio" name="platform"
-								value="cal"> <input class="s-c bottom"
-								type="radio" name="platform" value="cal"> <span
-								class="label">칼로리</span> <span class="opt-val">칼로리</span>
-						</div> 
-						<div><input type="submit" value="선택"></div>
-						
-						<div id="option-bg"></div>
-					</div>
-				</div>
-			</form>
+                     </div>
+                  </div>
+               </div>		
+		</div>
 
 
-	<!-- 출력 창 -->
-			<div id="box">
-				<table>
-				
-							<%
+	<script type="text/javascript">
+
+			
+
+			
+			</script>
+			
+        	
+			
+					
+			<div class="card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h4>음식 추천</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table" style="background-color: #FFFFE0">
+                               <%
 							ArrayList<FoodRecDTO> list = (ArrayList<FoodRecDTO>)session.getAttribute("list");
 							
 							
 							if(list!=null){%>
 
 								<tr>
+								<td>번호</td>
 								<td>식품명</td>
 								<td>칼로리</td>							
 								<td>단백질</td>							
 								<td>지방</td>							
 								<td>탄수화물</td>							
-								<td>총당류</td>							
-														
-							</tr>
-							<%for(int i=0; i<42;i++){ %>
+								<td>총당류</td>													
+								</tr>
+							<%for(int i=0; i<20;i++){ %>
 								<tr>
+								<td><%= i+1 %></td>
 								<td><%=list.get(i).getFname() %></td>
 								<td><%=list.get(i).getCal() %></td>
 								<td><%=list.get(i).getPro() %></td>							
 								<td><%=list.get(i).getFat() %></td>							
 								<td><%=list.get(i).getCar() %></td>							
 								<td><%=list.get(i).getSug() %></td>							
-							</tr>
+								</tr>
 							<%} 
 							}%>
-						</table>
-			</div>
+							
+							
+                                            
+                                        
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+</div>
 
 
 
