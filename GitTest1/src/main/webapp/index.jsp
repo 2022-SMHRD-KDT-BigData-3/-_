@@ -28,15 +28,11 @@
 <!--폰트 변경 링크  -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Grape+Nuts&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&display=swap" rel="stylesheet">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Poor+Story&family=Stylish&display=swap" rel="stylesheet">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu:wght@700&family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Poor+Story&family=Stylish&family=Yeon+Sung&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@300&display=swap" rel="stylesheet">
 
 <script src="./jquery-3.6.0.min.js"></script>
 
@@ -85,7 +81,7 @@ clist = dao.graph(info.getId());
 				<a href="index.jsp"><b class="logo-abbr"><img
 						src="images/clover2.png" alt=""> </b><span
 					class="brand-title"> <img src="images/clover1.png" alt="">
-					<span class="mainfont" style="font-size: x-large;">LifeGuader</span>
+					<span class="mainfont" style="font-size: font-size: 22px; margin-left: -0.5rem;">LifeGuader</span>
 				</span>
 				</a>
 			</div>
@@ -105,6 +101,7 @@ clist = dao.graph(info.getId());
 						<span class="toggle-icon"><i class="icon-menu"></i></span>
 					</div>
 				</div>
+
 				<div class="header-right">
 					<ul class="clearfix">
 						<li class="icons dropdown">
@@ -129,14 +126,13 @@ clist = dao.graph(info.getId());
 									<%} else{%> <li>
                                             <a href="page-register.jsp"><i class="icon-user"></i> <span>회원가입</span></a>
                                         </li> <% }%>
-                                    
-                                   
-                                        
                                         <hr class="my-2">
-                                        <li>
-                                            <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                         <%if(info!=null){ %> <li> 
+                                         <a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a>    
                                         </li>
-                                        <li><a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a></li>
+									<%} else{%> <li>
+                                           <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                        </li> <% }%>
                                     </ul>
                                 </div>
                             </div>
@@ -303,7 +299,7 @@ clist = dao.graph(info.getId());
 					<div class="card">
 						<div class="card-body">
 						<div class="super">
-							<h4 class="card-title">Slides With captions</h4>
+							<h4 class="card-title">성인병이란?</h4>
 							<div class="bootstrap-carousel">
 								<div data-ride="carousel" class="carousel slide"
 									id="carouselExampleCaptions">
@@ -313,31 +309,29 @@ clist = dao.graph(info.getId());
 										<li data-slide-to="1" data-target="#carouselExampleCaptions"
 											class=""></li>
 										<li data-slide-to="2" data-target="#carouselExampleCaptions"
+											class=""></li>
+										<li data-slide-to="3" data-target="#carouselExampleCaptions"
 											class="active"></li>
 									</ol>
 									<div class="carousel-inner">
 										<div class="carousel-item">
-											<img class="d-block w-100" src="images/big/img5.jpg" alt="">
+											<img class="d-block w-100" src="images/고지혈증.png" alt="">
 											<div class="carousel-caption d-none d-md-block">
-												<h5>First slide label</h5>
-												<p>Nulla vitae elit libero, a pharetra augue mollis
-													interdum.</p>
 											</div>
 										</div>
 										<div class="carousel-item">
-											<img alt="" class="d-block w-100" src="images/big/img6.jpg">
+											<img alt="" class="d-block w-100" src="images/고혈압.png">
 											<div class="carousel-caption d-none d-md-block">
-												<h5>Second slide label</h5>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-													elit.</p>
+											</div>
+										</div>
+										<div class="carousel-item">
+											<img alt="" class="d-block w-100" src="images/당뇨.png">
+											<div class="carousel-caption d-none d-md-block">
 											</div>
 										</div>
 										<div class="carousel-item active">
-											<img alt="" class="d-block w-100" src="images/big/img5.jpg">
+											<img alt="" class="d-block w-100" src="images/비만.png">
 											<div class="carousel-caption d-none d-md-block">
-												<h5>Third slide label</h5>
-												<p>Praesent commodo cursus magna, vel scelerisque nisl
-													consectetur.</p>
 											</div>
 										</div>
 									</div>
@@ -587,7 +581,7 @@ clist = dao.graph(info.getId());
 		                data: [<%if(ckdto!=null){for(int i=0;i<clist.size();i++ ){%>
 		                	<%=clist.get(i).getBlood()%>,
 		                <%}}%>],
-		                label: "홍석",
+		                label: "혈압",
 		                backgroundColor: '#847DFA',
 		                borderColor: '#847DFA',
 		                borderWidth: 0.5,
@@ -678,7 +672,7 @@ clist = dao.graph(info.getId());
 	                data: [<%for(int i=0;i<clist.size();i++ ){%>
 	            	<%=clist.get(i).getBsugar()%>,
 	                <%}%>],
-	                label: "홍석",
+	                label: "혈당",
 	                backgroundColor: '#847DFA',
 	                borderColor: '#847DFA',
 	                borderWidth: 0.5,
@@ -770,7 +764,7 @@ clist = dao.graph(info.getId());
 		                data: [<%for(int i=0;i<clist.size();i++ ){
 	            	int bmi =(ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000));%><%=bmi%>,
 	                <%}%>],
-		                label: "홍석",
+		                label: "BMI",
 		                backgroundColor: '#847DFA',
 		                borderColor: '#847DFA',
 		                borderWidth: 0.5,

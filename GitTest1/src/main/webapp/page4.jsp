@@ -1,3 +1,7 @@
+<%@page import="Model.CheckingDAO"%>
+<%@page import="Model.CheckingDTO"%>
+<%@page import="Model.MemberDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,12 +25,30 @@
 <!-- Custom Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
 
+<!--폰트 변경 링크  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&display=swap" rel="stylesheet">
 
-
-
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<% 
+
+MemberDTO info = (MemberDTO)session.getAttribute("info");
+
+ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
+
+CheckingDTO ckdto = (CheckingDTO)session.getAttribute("ckdto"); 
+
+CheckingDAO dao = new CheckingDAO();
+
+System.out.println("ckdto"+ckdto.getBlood());
+
+%>
 	<!--*******************
         Preloader start
     ********************-->
@@ -53,10 +75,10 @@
         ***********************************-->
 		<div class="nav-header">
 			<div class="brand-logo">
-				<a href="index.html"> <b class="logo-abbr"><img
-						src="images/logo.png" alt=""> </b> <span class="logo-compact"><img
-						src="./images/logo-compact.png" alt=""></span> <span
-					class="brand-title"> <img src="images/logo-text.png" alt="">
+				<a href="index.jsp"><b class="logo-abbr"><img
+						src="images/clover2.png" alt=""> </b><span
+					class="brand-title"> <img src="images/clover1.png" alt="">
+					<span class="mainfont" style="font-size: font-size: 22px; margin-left: -0.5rem;">LifeGuader</span>
 				</span>
 				</a>
 			</div>
@@ -76,175 +98,42 @@
 						<span class="toggle-icon"><i class="icon-menu"></i></span>
 					</div>
 				</div>
-				<div class="header-left">
-					<div class="input-group icons">
-						<div class="input-group-prepend">
-							<span
-								class="input-group-text bg-transparent border-0 pr-2 pr-sm-3"
-								id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-						</div>
-						<input type="search" class="form-control"
-							placeholder="Search Dashboard" aria-label="Search Dashboard">
-						<div class="drop-down animated flipInX d-md-none">
-							<form action="#">
-								<input type="text" class="form-control" placeholder="Search">
-							</form>
-						</div>
-					</div>
-				</div>
+
 				<div class="header-right">
 					<ul class="clearfix">
-						<li class="icons dropdown"><a href="javascript:void(0)"
-							data-toggle="dropdown"> <i class="mdi mdi-email-outline"></i>
-								<span class="badge badge-pill gradient-1">3</span>
-						</a>
-							<div class="drop-down animated fadeIn dropdown-menu">
-								<div
-									class="dropdown-content-heading d-flex justify-content-between">
-									<span class="">3 New Messages</span> <a
-										href="javascript:void()" class="d-inline-block"> <span
-										class="badge badge-pill gradient-1">3</span>
-									</a>
-								</div>
-								<div class="dropdown-content-body">
-									<ul>
-										<li class="notification-unread"><a
-											href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/1.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Saiful Islam</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Hi Teddy, Just wanted
-														to let you ...</div>
-												</div>
-										</a></li>
-										<li class="notification-unread"><a
-											href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/2.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Adam Smith</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Can you do me a
-														favour?</div>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/3.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Barak Obama</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Hi Teddy, Just wanted
-														to let you ...</div>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <img
-												class="float-left mr-3 avatar-img" src="images/avatar/4.jpg"
-												alt="">
-												<div class="notification-content">
-													<div class="notification-heading">Hilari Clinton</div>
-													<div class="notification-timestamp">08 Hours ago</div>
-													<div class="notification-text">Hello</div>
-												</div>
-										</a></li>
-									</ul>
-
-								</div>
-							</div></li>
-						<li class="icons dropdown"><a href="javascript:void(0)"
-							data-toggle="dropdown"> <i class="mdi mdi-bell-outline"></i>
-								<span class="badge badge-pill gradient-2">3</span>
-						</a>
-							<div
-								class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
-								<div
-									class="dropdown-content-heading d-flex justify-content-between">
-									<span class="">2 New Notifications</span> <a
-										href="javascript:void()" class="d-inline-block"> <span
-										class="badge badge-pill gradient-2">5</span>
-									</a>
-								</div>
-								<div class="dropdown-content-body">
-									<ul>
-										<li><a href="javascript:void()"> <span
-												class="mr-3 avatar-icon bg-success-lighten-2"><i
-													class="icon-present"></i></span>
-												<div class="notification-content">
-													<h6 class="notification-heading">Events near you</h6>
-													<span class="notification-text">Within next 5 days</span>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <span
-												class="mr-3 avatar-icon bg-danger-lighten-2"><i
-													class="icon-present"></i></span>
-												<div class="notification-content">
-													<h6 class="notification-heading">Event Started</h6>
-													<span class="notification-text">One hour ago</span>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <span
-												class="mr-3 avatar-icon bg-success-lighten-2"><i
-													class="icon-present"></i></span>
-												<div class="notification-content">
-													<h6 class="notification-heading">Event Ended
-														Successfully</h6>
-													<span class="notification-text">One hour ago</span>
-												</div>
-										</a></li>
-										<li><a href="javascript:void()"> <span
-												class="mr-3 avatar-icon bg-danger-lighten-2"><i
-													class="icon-present"></i></span>
-												<div class="notification-content">
-													<h6 class="notification-heading">Events to Join</h6>
-													<span class="notification-text">After two days</span>
-												</div>
-										</a></li>
-									</ul>
-
-								</div>
-							</div></li>
-						<li class="icons dropdown d-none d-md-flex"><a
-							href="javascript:void(0)" class="log-user" data-toggle="dropdown">
-								<span>English</span> <i class="fa fa-angle-down f-s-14"
-								aria-hidden="true"></i>
-						</a>
-							<div
-								class="drop-down dropdown-language animated fadeIn  dropdown-menu">
-								<div class="dropdown-content-body">
-									<ul>
-										<li><a href="javascript:void()">English</a></li>
-										<li><a href="javascript:void()">Dutch</a></li>
-									</ul>
-								</div>
-							</div></li>
 						<li class="icons dropdown">
-							<div class="user-img c-pointer position-relative"
-								data-toggle="dropdown">
-								<span class="activity active"></span> <img
-									src="images/user/1.png" height="40" width="40" alt="">
-							</div>
-							<div
-								class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-								<div class="dropdown-content-body">
-									<ul>
-										<li><a href="app-profile.html"><i class="icon-user"></i>
-												<span>Profile</span></a></li>
-										<li><a href="javascript:void()"> <i
-												class="icon-envelope-open"></i> <span>Inbox</span>
-												<div class="badge gradient-3 badge-pill gradient-1">3</div>
-										</a></li>
-
-										<hr class="my-2">
-										<li><a href="page-lock.html"><i class="icon-lock"></i>
-												<span>Lock Screen</span></a></li>
-										<li><a href="page-login.html"><i class="icon-key"></i>
-												<span>Logout</span></a></li>
-									</ul>
-								</div>
-							</div>
-						</li>
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                	<!--  로그인,로그아웃, 회원정보수정, 회원가입 -->
+                      			<a> <%if(info!=null){ %> <img
+									src="images/user/logout.png" height="40" width="40">
+									<%} else{%> <img src="images/user/login.png" height="40"
+									width="40"> <% }%>
+								</a>
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                    
+                                    <%if(info!=null){ %> <li>
+                                            <a href="page-edit.jsp">
+                                                <i class="icon-people"></i> <span>회원정보수정</span>
+                                            </a>
+                                        </li>
+									<%} else{%> <li>
+                                            <a href="page-register.jsp"><i class="icon-user"></i> <span>회원가입</span></a>
+                                        </li> <% }%>
+                                        <hr class="my-2">
+                                         <%if(info!=null){ %> <li> 
+                                         <a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a>    
+                                        </li>
+									<%} else{%> <li>
+                                           <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                        </li> <% }%>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
 					</ul>
 				</div>
 			</div>
@@ -260,141 +149,31 @@
 			<div class="nk-nav-scroll">
 				<ul class="metismenu" id="menu">
 					<li class="nav-label">Dashboard</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-speedometer menu-icon"></i><span
-							class="nav-text">Dashboard</span>
+					<li><a href="./index.jsp"
+						> <i class="icon-grid menu-icon"></i><span
+							class="nav-text">메인페이지</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./index.html">Home 1</a></li>
-							<!-- <li><a href="./index-2.html">Home 2</a></li> -->
-						</ul></li>
-					<li class="mega-menu mega-menu-sm"><a class="has-arrow"
-						href="javascript:void()" aria-expanded="false"> <i
-							class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
+					</li>
+					<li><a href="./user-import.jsp"
+						> <i class="icon-notebook menu-icon"></i><span
+							class="nav-text">유저정보입력</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./layout-blank.html">Blank</a></li>
-							<li><a href="./layout-one-column.html">One Column</a></li>
-							<li><a href="./layout-two-column.html">Two column</a></li>
-							<li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-							<li><a href="./layout-vertical.html">Vertical</a></li>
-							<li><a href="./layout-horizontal.html">Horizontal</a></li>
-							<li><a href="./layout-boxed.html">Boxed</a></li>
-							<li><a href="./layout-wide.html">Wide</a></li>
-
-
-							<li><a href="./layout-fixed-header.html">Fixed Header</a></li>
-							<li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-						</ul></li>
-					<li class="nav-label">Apps</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-envelope menu-icon"></i>
-							<span class="nav-text">Email</span>
+					</li>
+					<li><a href="./page-2.jsp"
+						> <i class="icon-note menu-icon"></i><span
+							class="nav-text">식단입력페이지</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./email-inbox.html">Inbox</a></li>
-							<li><a href="./email-read.html">Read</a></li>
-							<li><a href="./email-compose.html">Compose</a></li>
-						</ul></li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-screen-tablet menu-icon"></i><span
-							class="nav-text">Apps</span>
+					</li>										
+					<li><a href="./page-3.jsp"
+						> <i class="icon-badge menu-icon"></i><span
+							class="nav-text">식단추천페이지</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./app-profile.html">Profile</a></li>
-							<li><a href="./app-calender.html">Calender</a></li>
-						</ul></li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-graph menu-icon"></i> <span
-							class="nav-text">Charts</span>
+					</li>
+					<li><a href="./page4.jsp"
+						> <i class="icon-badge menu-icon"></i><span
+							class="nav-text">운동추천페이지</span>
 					</a>
-						<ul aria-expanded="false">
-							<li><a href="./chart-flot.html">Flot</a></li>
-							<li><a href="./chart-morris.html">Morris</a></li>
-							<li><a href="./chart-chartjs.html">Chartjs</a></li>
-							<li><a href="./chart-chartist.html">Chartist</a></li>
-							<li><a href="./chart-sparkline.html">Sparkline</a></li>
-							<li><a href="./chart-peity.html">Peity</a></li>
-						</ul></li>
-					<li class="nav-label">UI Components</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-grid menu-icon"></i><span
-							class="nav-text">UI Components</span>
-					</a>
-						<ul aria-expanded="false">
-							<li><a href="./ui-accordion.html">Accordion</a></li>
-							<li><a href="./ui-alert.html">Alert</a></li>
-							<li><a href="./ui-badge.html">Badge</a></li>
-							<li><a href="./ui-button.html">Button</a></li>
-							<li><a href="./ui-button-group.html">Button Group</a></li>
-							<li><a href="./ui-cards.html">Cards</a></li>
-							<li><a href="./ui-carousel.html">Carousel</a></li>
-							<li><a href="./ui-dropdown.html">Dropdown</a></li>
-							<li><a href="./ui-list-group.html">List Group</a></li>
-							<li><a href="./ui-media-object.html">Media Object</a></li>
-							<li><a href="./ui-modal.html">Modal</a></li>
-							<li><a href="./ui-pagination.html">Pagination</a></li>
-							<li><a href="./ui-popover.html">Popover</a></li>
-							<li><a href="./ui-progressbar.html">Progressbar</a></li>
-							<li><a href="./ui-tab.html">Tab</a></li>
-							<li><a href="./ui-typography.html">Typography</a></li>
-							<!-- </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
-                        </a>
-                        <ul aria-expanded="false"> -->
-							<li><a href="./uc-nestedable.html">Nestedable</a></li>
-							<li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-							<li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-							<li><a href="./uc-toastr.html">Toastr</a></li>
-						</ul></li>
-					<li><a href="widgets.html" aria-expanded="false"> <i
-							class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
-					</a></li>
-					<li class="nav-label">Forms</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-note menu-icon"></i><span
-							class="nav-text">Forms</span>
-					</a>
-						<ul aria-expanded="false">
-							<li><a href="./form-basic.html">Basic Form</a></li>
-							<li><a href="./form-validation.html">Form Validation</a></li>
-							<li><a href="./form-step.html">Step Form</a></li>
-							<li><a href="./form-editor.html">Editor</a></li>
-							<li><a href="./form-picker.html">Picker</a></li>
-						</ul></li>
-					<li class="nav-label">Table</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-menu menu-icon"></i><span
-							class="nav-text">Table</span>
-					</a>
-						<ul aria-expanded="false">
-							<li><a href="./table-basic.html" aria-expanded="false">Basic
-									Table</a></li>
-							<li><a href="./table-datatable.html" aria-expanded="false">Data
-									Table</a></li>
-						</ul></li>
-					<li class="nav-label">Pages</li>
-					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"> <i class="icon-notebook menu-icon"></i><span
-							class="nav-text">Pages</span>
-					</a>
-						<ul aria-expanded="false">
-							<li><a href="./page-login.html">Login</a></li>
-							<li><a href="./page-register.html">Register</a></li>
-							<li><a href="./page-lock.html">Lock Screen</a></li>
-							<li><a class="has-arrow" href="javascript:void()"
-								aria-expanded="false">Error</a>
-								<ul aria-expanded="false">
-									<li><a href="./page-error-404.html">Error 404</a></li>
-									<li><a href="./page-error-403.html">Error 403</a></li>
-									<li><a href="./page-error-400.html">Error 400</a></li>
-									<li><a href="./page-error-500.html">Error 500</a></li>
-									<li><a href="./page-error-503.html">Error 503</a></li>
-								</ul></li>
-						</ul></li>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -411,9 +190,14 @@
 
 						<div class="card gradient-2">
 							<div class="card-body">
-								<h3 class="card-title text-white">nickName님의</h3>
+								<h3 id="nick" class="card-title text-white"><%if(info!=null){%>
+								<%=info.getNick()%>님의
+								<%} else { %>
+									nickName님의
+								<% } %>
+								</h3>
 								<div class="d-inline-block">
-									<h2 class="text-white">관련질환 운동</h2>
+									<h2 id="health" class="text-white"> 관련질환 운동</h2>
 									<p class="text-white mb-0">주의사항</p>
 								</div>
 								<span class="float-right display-5 opacity-5"><i
@@ -429,11 +213,11 @@
 							<div class="card-body">
 								<label for="search"></label> <input type="search" id="search"
 									name="search" class="form-control input-rounded"
-									placeholder="Input Rounded" onkeyup="inputkeyup(event)">
+									onkeyup="inputkeyup(event)">
 								<br>
 								<center>
 									<button type="button" class="btn mb-1 btn-outline-danger"
-										onclick="ajaxRequest()" placeholder="">Search</button>
+										onclick="ajaxRequest()">Search</button>
 								</center>
 							</div>
 						</div>
@@ -448,8 +232,24 @@
 										<div class="card">
 											<div id="videoList" class="card-body">
 												<div class="youtube">
-													<div
-														class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+													<div style="display:none"
+														id="v1" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+														<div class="homeVideoThumbnail video-player"></div>
+													</div>
+													<div style="display:none"
+														id="v2" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+														<div class="homeVideoThumbnail video-player"></div>
+													</div>
+													<div style="display:none"
+														id="v3" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+														<div class="homeVideoThumbnail video-player"></div>
+													</div>
+													<div style="display:none"
+														id="v4" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
+														<div class="homeVideoThumbnail video-player"></div>
+													</div>
+													<div style="display:none"
+														id="v5" class="youtube-container home-youtube-container embed-responsive embed-responsive-item videoPlayer">
 														<div class="homeVideoThumbnail video-player"></div>
 													</div>
 												</div>
@@ -461,6 +261,9 @@
 											<div id="videoList" class="card-body">
 												<div class="side-body">
 													<div id="list">
+													<button type="button" class="btn mb-1 btn-rounded btn-danger" onclick="selectMinus()"><i class="icon-control-rewind"></i></button>
+													<button type="button" class="btn mb-1 btn-rounded btn-danger" onclick="selectMinus()"><i class="icon-control-forward"></i></button>
+														<hr>
 														<ul class="list"></ul>
 													</div>
 												</div>
@@ -502,6 +305,17 @@
 	<!--**********************************
         Scripts
     ***********************************-->
+	<script>
+	
+	
+	
+	
+	
+	</script>
+	
+	
+	
+	
 	<script src="plugins/common/common.min.js"></script>
 	<script src="js/custom.min.js"></script>
 	<script src="js/settings.js"></script>
@@ -533,14 +347,66 @@
 
 	<script>
 	
-    const v = document.querySelector('.videoPlayer');
-    const dingnosis = "비만";
+	let num = 0;
+	let a1 = document.querySelector('#health');
+	const ding = " 질환 관련 운동";
+	
+	const v1 = document.querySelector('#v1');
+	const v2 = document.querySelector('#v2');
+	const v3 = document.querySelector('#v3');
+	const v4 = document.querySelector('#v4');
+	const v5 = document.querySelector('#v5');
+	
+    let dingnosis1 = "";
+    let dingnosis2 = "";
+    let dingnosis3 = "";
+    
+    <%if (ckdto != null) {%>
+			<% if(ckdto.getBlood()>140) {%>
+			dingnosis1 = "고혈압";
+			selectPlus();
+			
+			console.log(dingnosis1);
+			a1.innerText = dingnosis1 + "" + ding;
+				
+			<%}%>
+			
+			<%if(ckdto.getBlood()>100) {%>
+			dingnosis2 = "당뇨";
+			selectPlus();
+			console.log(dingnosis2);
+			
+			if(a1.innerText == dingnosis1 + "" + ding){
+				a1.innerText = dingnosis1 + "," + dingnosis2 + "" + ding;
+			}else{
+				a1.innerText = dingnosis2 + "" + ding;
+			}
+			
+			<%}%>
+			
+			<%if((ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000) > 30)) {%>
+			dingnosis3 = "비만";
+			selectPlus();
+			console.log(dingnosis3);
+			
+			if(a1.innerText == dingnosis1){
+				a1.innerText = dingnosis1 + "," + dingnosis3 + "" + ding;
+			}else if(a1.innerText == dingnosis1 + "," + dingnosis2 + "" + ding){
+				a1.innerText = dingnosis1 + "," + dingnosis2 + "," + dingnosis3 + "" + ding;
+			} else {
+				a1.innerText = dingnosis3 + "" + ding;
+			}
+			<%}%>
+			
+		<%}%>
 
     //iframe 추가하고 비디오 재생
-    function updateVideo(id){
-
+    function updateVideo(id, v){
+		
+    	console.log(id);
+    	
         v.classList.add("embed-responsive-16by9");
-        v.innerHTML = '<iframe src=//www.youtube.com/embed/6XbPmHk2j-h1sdhe'
+        v.innerHTML = '<iframe src=//www.youtube.com/embed/'
             + id + '?autoplay=1" width="320" height="315" frameborder="0" allowfullscreen></iframe>';
 
         document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -551,75 +417,148 @@
     function inputkeyup(e){
         if(e.keyCode == 13){
             ajaxRequest();
-        }
-        
+        }   
     }
+    
+    var Viii;
+    
+    let i = 0; 
+    
 		//검색 
 		
-    	function ajaxRequest(dingnosis){
-
+    	function ajaxRequest(dingnosis1, dingnosis2, dingnosis3){	
+    	i=0;
         const search = document.getElementById("search");
         const ul = document.querySelector(".list");
-
-        if(search.value.length == 0 && dingnosis == null){
+        
+        if(search.value.length == 0 && dingnosis1 == "" && dingnosis2 == "" && dingnosis3 == ""){
             alert("검색어를 입력하세요.");
             search.focus();
             return false;
         } else if(search.value.length == 0) {
-        	query = dingnosis + " 운동" + search.value;
+            query = dingnosis1 + "" + dingnosis2 + "" + dingnosis3 + " 운동" + search.value;
             search.value = "";
             search.focus();
-
         } else {
         	query = search.value;
             search.value = "";
             search.focus();
-        	
         }
         console.log(query);
-        const key = "AIzaSyDhuGBOZ_JFOXAkyXPBuv8k6dh7984N1uA";
+        const key = "AIzaSyAkZszjSMjBzbruqZN0uTeOuMY9CD8SpTQ";
         const url = "https://www.googleapis.com/youtube/v3/search?key="+key+"&q="+query+"&part=snippet&type=video";
-
         //ul 일단 비우고 시작
         ul.innerHTML = "";
-		
+        
         const xhr = new XMLHttpRequest();
-        
-        //비디오리스트에 검색결과 추가
-        
         xhr.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200){
                 //파싱
                 const jsonObj = JSON.parse(this.response);
-
                 console.log(jsonObj['items']);
-                const videoList = jsonObj["items"];
+                const videoList = jsonObj["items"];       
+                
                 videoList.forEach(element => {
+
                     const li = document.createElement('li');
                     const div = document.createElement('Div');
                     const img = document.createElement('img');
                     const h3 = document.createElement('h3');
                     const p1 = document.createElement('p');
-
+                    
                     h3.textContent = element["snippet"]["title"];
                     img.src = element["snippet"]["thumbnails"]["medium"]["url"];
                     p1.textContent = element["snippet"]["description"];
                     //div.setAttribute("data-id", element["id"]["videoId"]);
-                    div.setAttribute("onClick", `updateVideo('${element["id"]["videoId"]}')`);
+                    
+                    div.setAttribute("id", element["id"]["videoId"]);
 
+                    str = element["id"]["videoId"];
+					Viii = str;
+					
+					console.log(Viii);		
+					
+					if(i==0){
+						updateVideo(Viii, v1);	
+					}else if(i==1){
+						updateVideo(Viii, v2);
+					}else if(i==2){
+						updateVideo(Viii, v3);
+					}else if(i==3){
+						updateVideo(Viii, v4);
+					}else{
+						updateVideo(Viii, v5);
+					}
+					
                     div.appendChild(img);
-
                     li.appendChild(div);
                     ul.appendChild(li);
 
-                });
+                    i++
+                });              
             }
         };
         xhr.open("GET", url, true);
         xhr.send();
-    };
+    }
+		
+    	function selectMinus() {
+    		
+        	if(num!=1){
+    			num--;
+    		}
+        	
+        	console.log(num);
+        	
+        	$('#v1').css("display", "none");
+    		$('#v2').css("display", "none");
+    		$('#v3').css("display", "none");
+    		$('#v4').css("display", "none");
+    		$('#v5').css("display", "none");
+    		
+    		if(num == 1){		
+    			$('#v1').css("display", "flex");
+    			num=1;
+    		}else if(num == 2){		
+    			$('#v2').css("display", "flex");	
+    		}else if(num == 3){		
+    			$('#v3').css("display", "flex");	
+    		}else if(num == 4){		
+    			$('#v4').css("display", "flex");	
+    		}else if(num == 5){		
+    			$('#v5').css("display", "flex");
+    		}	
+    	}
+        
+    	function selectPlus() {
+    		
+    		if(num!=5){
+    			num++;
+    		}
+    		
+    		console.log(num);
+    		
+    		$('#v1').css("display", "none");
+    		$('#v2').css("display", "none");
+    		$('#v3').css("display", "none");
+    		$('#v4').css("display", "none");
+    		$('#v5').css("display", "none");
+    		
+    		if(num == 1){		
+    			$('#v1').css("display", "flex");	
+    		}else if(num == 2){		
+    			$('#v2').css("display", "flex");	
+    		}else if(num == 3){		
+    			$('#v3').css("display", "flex");	
+    		}else if(num == 4){		
+    			$('#v4').css("display", "flex");	
+    		}else if(num == 5){		
+    			$('#v5').css("display", "flex");
+    			num=5;
+    		}
+    	}
     
-    $(document).ready(ajaxRequest(dingnosis));
+    	$(document).ready(ajaxRequest(dingnosis1, dingnosis2, dingnosis3));
 
 </script>
 </body>
