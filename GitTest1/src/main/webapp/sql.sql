@@ -58,6 +58,15 @@ fat number(38, 15),
 sug number(38, 16)
 constraint food_rec_fname primary key(seq)
 );
+create table bord(
+	num number(20),
+	title varchar2(100),
+	data varchar2(4000)
+);
+
+CREATE SEQUENCE  num_seq
+ START WITH  1
+INCREMENT BY 1;
 
 
 select * from food_rec;

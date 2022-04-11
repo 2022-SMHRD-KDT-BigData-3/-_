@@ -10,9 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import Model.bordDAO;
 import Model.bordDTO;
+import netscape.javascript.JSObject;
 
 @WebServlet("/border")
 public class border extends HttpServlet {
@@ -23,6 +27,8 @@ public class border extends HttpServlet {
 		//몇번부터 가져올 것인지?
 		//몇개의 버튼 생성할 것인지를 알기위한 서블릿
 		int num = Integer.parseInt(request.getParameter("num")); //몇번째 부터 DB에서 가져와야 할지 알수있는 num변수
+		
+		Gson gson = new Gson(); 
 		
 		JsonObject json = new JsonObject(); //json 객체를 만들고
 		JsonArray jarray = new JsonArray(); //json객체를 담아줄 jarray객체를 만들어 준다

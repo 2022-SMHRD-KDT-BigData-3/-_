@@ -12,7 +12,7 @@ public class bordDAO {
 	Connection con = null;
 	PreparedStatement pstm = null;
 	ResultSet rs = null;
-	
+	int cnt = 0;
 	public void conn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -81,5 +81,33 @@ public class bordDAO {
 		
 		return bord_list;
 	}	
+	public int insert(bordDTO dto) {
+		// db연결 메소드 호출
+		conn();
+		try {
+			// 2. DB에서 무엇을 할지 결정
+			// 회원가입 기능 = 입력받은 회원 데이터들을 회원 Table에 추가하기
+			String sql = "insert into bord values(num_seq.nextval,?, ?)";
 
+			// 3. sql문장을 DB에 전달 -> 전달 성공 시 PreparedStatement 객체로 반환
+			pstm = con.prepareStatement(sql);
+
+			// 4. ? 바인드 변수에 값 채우기
+			// insert메소드 매개변수로 dto(입력받은 값들의 묶음 = 가방) 받아오기
+			pstm.setInt(1, dto.getNum());
+			pstm.setString(2, dto.getTitle());
+			pstm.setString(3, dto.getDate());
+		
+			// 5. sql문 실행
+			// insert -> DB에 변화생기기 때문에 Update
+			// int 형태로 반환, int의 의미 : 몇개의 행에 변화가 생겼는지
+			 cnt = pstm.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {// 6. DB문 닫기
+			close();
+		}
+		return cnt;
+	}
 }

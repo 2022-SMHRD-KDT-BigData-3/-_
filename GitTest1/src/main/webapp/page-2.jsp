@@ -85,28 +85,6 @@
 	CheckingDTO ckdto = (CheckingDTO) session.getAttribute("ckdto");
 	MenuDTO select = (MenuDTO) session.getAttribute("select");
 
-	if (info != null) {
-
-		if (ckdto.getAct() == 1) {
-			act = 25;
-		} else if (ckdto.getAct() == 2) {
-			act = 35;
-		} else if (ckdto.getAct() == 3) {
-			act = 40;
-		}
-		enCal = ((ckdto.getHeight() - 100) * 0.9) * act;
-		enCar = enCal * 0.6;
-		enPro = enCal * 0.135;
-		enFat = enCal * 0.225;
-
-	}
-	if (select != null) {
-		enCal = enCal / select.getCal();
-		enCar = enCar / select.getCar();
-		enPro = enPro / select.getPro();
-		enFat = enFat / select.getFat();
-
-	}
 	%>
 	<div id="modal" class="modal" width="400px">
 		<div class="modal-content">
@@ -452,7 +430,7 @@
 								<td id="bp">칼로리</td>
 								<td id="green">
 									<div class="progress" style="height: 10px">
-										<div class="progress-bar gradient-1" style="width: <%=enCal %>%;"
+										<div class="progress-bar gradient-1" id=calcart style="width: <%=enCal %>%;"
 											role="progressbar">
 											<span class="sr-only">50% Complete</span>
 										</div>
@@ -474,19 +452,19 @@
 			<%
 			int i = 45;
 			%>
-			<div class="pie-chart1">
-				<span class="center">탄수화물</span>
+			<div class="pie-chart1" id="carcart">
+				<span class="center" >탄수화물</span>
 
 			</div>
 
 
-			<div class="pie-chart1">
-				<span class="center">단백질</span>
+			<div class="pie-chart1" id="procart">
+				<span class="center" >단백질</span>
 			</div>
 
 
-			<div class="pie-chart1">
-				<span class="center">지방</span>
+			<div class="pie-chart1" id="fatcart">
+				<span class="center" >지방</span>
 			</div>
 
 
@@ -619,7 +597,7 @@
 			let year = date2.getFullYear();
 			let month = date2.getMonth() + 1;
 			let day = date2.getDate();
-			console.log(date2);
+
 			let date = year + "년" + month + "월" + day + "일";
 			$("#today").text(date);
 
@@ -645,7 +623,7 @@
 			
 			$(".btn-outline-warning").click(function() {
 				mealTime = this.innerText;
-				console.log(mealTime);
+	
 				$("#modal").fadeIn();
 
 			});
@@ -682,7 +660,7 @@
 				$("#chart").empty();
 				
 				foodName = document.getElementById("foodName").value;
-				console.log("성공해봐 ㅋㅋ");
+		
 
 				$
 						.ajax({
@@ -693,8 +671,8 @@
 									+ foodName,
 							type : "GET",
 							success : function(data) {
-								console.log("success : " + mealTime);
-								console.log(data);
+								
+				
 								let Array = data.I2790.row;
 
 								$("#chart")
@@ -735,10 +713,10 @@
 												+ i
 												+ ")'> 선택 </button></td></tr>"
 
-										console.log(str)
+									
 
 										$("#chart").append(str);
-										console.log("fat" + fat)
+										
 									} // if문끝
 
 								} // for문끝
@@ -757,9 +735,7 @@
 			function Funcinput(i) {
 				//console.log("input 안의 숫자"+input_data.num);
 				//console.log("input 안의 숫자"+input_data.meal);
-				console.log("input 안의 숫자" + i);
-				console.log("input 안의 숫자" + mealTime);
-
+		
 				let fnameSec = document.getElementById("fname" + i).innerText;
 				let calSec = document.getElementById("cal" + i).innerText;
 				let proSec = document.getElementById("pro" + i).innerText;
@@ -770,7 +746,7 @@
 					let td = document.getElementById("morning");
 					mor = td.innerText;
 
-					console.log(fnameSec);
+				
 					if (mor == "") {
 						td.innerText = fnameSec;
 					} else {
@@ -780,7 +756,7 @@
 				} else if (mealTime == "점심 입력") {
 					let td = document.getElementById("lunch");
 					lun = td.innerText;
-					console.log(fnameSec);
+					
 					if (lun == "") {
 						td.innerText = fnameSec;
 					} else {
@@ -789,7 +765,7 @@
 				} else {
 					let td = document.getElementById("dinner");
 					din = td.innerText;
-					console.log(fnameSec);
+			
 					if (din == "") {
 						td.innerText = fnameSec;
 					} else {
@@ -805,7 +781,7 @@
 		<script type="text/javascript">
 
 			$(".btn-outline-primary").on("click",function() {
-				console.log("이건 " + date);
+			
 						let meal = null;
 
 						if (mealTime == "아침 입력") {
@@ -823,16 +799,44 @@
 		<!-- 날짜 바꾸기 -->
 
 		<script type="text/javascript">
-		console.log("그냥 실행");
 		let id = <%=info.getId()%>
+		let nomalWeigth = (<%=ckdto.getHeight()%>-100)*0.9
+		let act = <%if(ckdto.getAct()==1){%> 25
+		<%}else if(ckdto.getAct()==2){%> 35		
+		<%}else if(ckdto.getAct()==3){%>40<%}%>
+		let enCal = nomalWeigth*act;
+		let enCar = enCal*0.6;
+		let enPro = enCal*0.135;
+		let enFat = enCal*0.225;
 		function checking(){
-			alert("함수 실행00");
+	
 			$.ajax({
 				url : "SelectFoodSerivceCon",
 				data : "id="+id+"&date="+date,
-				success: function(){
-					console.log(id);
-					alert("ajax성공");
+				dataType  : "json",
+				success: function(result){
+		
+				let cal = result["cal"];
+				let pro = result["pro"];
+				let car = result["car"];
+				let fat = result["fat"];
+			
+				let pcal = enCal%cal;
+				let ppro = enPro%pro;
+				let pcar = enCar%car;
+				let pfat = enFat%fat;
+
+				$("#calcart").css("width",pcal);
+				$("#procart").css({
+				 	   "background":"conic-gradient(#ADEB00 0% "+ppro+"%, #DCDCDC 0% 100%)"
+				});
+				$("#carcart").css({
+				 	   "background":"conic-gradient(#ADEB00 0% "+pcar+"%, #DCDCDC 0% 100%)"
+				});
+				$("#fatcart").css({
+				 	   "background":"conic-gradient(#ADEB00 0% "+pfat+"%, #DCDCDC 0% 100%)"
+				});
+
 				},
 				error : function(){
 					alert("통신 실패");
@@ -842,11 +846,11 @@
 		
 	$("#BackClick").on("click", function() {
 				day = day - 1;
-				console.log("test3" + date2);
+		
 				date = year + "년" + month + "월" + day + "일";
 				
 				$("#today").text(date);
-				location.href ="page-2.jsp"
+
 				
 				
 			}); 
@@ -854,8 +858,7 @@
 				day = day + 1;
 				date = year + "년" + month + "월" + day + "일";
 				$("#today").text(date);
-				
-				location.href ="page-2.jsp"			
+	
 			}); 
 		</script>
 	</div>

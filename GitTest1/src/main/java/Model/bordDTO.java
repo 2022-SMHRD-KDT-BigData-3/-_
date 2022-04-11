@@ -3,9 +3,15 @@ package Model;
 public class bordDTO {
 	
 	private int num;
+	
+
 	private String title;
 	private String date;
-	
+	public bordDTO(String title, String date) {
+		super();
+		this.title = title;
+		this.date = date;
+	}
 	public bordDTO(int num, String title, String date) {
 		super();
 		this.num = num;
