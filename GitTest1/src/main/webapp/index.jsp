@@ -751,12 +751,12 @@ clist = dao.graph(info.getId());
 	                <%}%>],
 		                label: "BMI",
 		                backgroundColor: '#fff',
-		                borderColor: '#f9ef71',
+		                borderColor: '#018921',
 		                borderWidth: 0.5,
 		                pointStyle: 'circle',
 		                pointRadius: 5,
 		                pointBorderColor: 'transparent',
-		                pointBackgroundColor: '#f9ef71',
+		                pointBackgroundColor: '#018921',
 		            }]
 		        },
 		        options: {
