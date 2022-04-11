@@ -261,9 +261,9 @@ System.out.println("ckdto"+ckdto.getBlood());
 											<div id="videoList" class="card-body">
 												<div class="side-body">
 													<div id="list">
-													<button onclick="selectMinus()"> 뒤 </button>
-														<button onclick="selectPlus()"> 앞 </button>
-														<br>
+													<button type="button" class="btn mb-1 btn-rounded btn-danger" onclick="selectMinus()"><i class="icon-control-rewind"></i></button>
+													<button type="button" class="btn mb-1 btn-rounded btn-danger" onclick="selectMinus()"><i class="icon-control-forward"></i></button>
+														<hr>
 														<ul class="list"></ul>
 													</div>
 												</div>
