@@ -9361,7 +9361,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   padding: 0 20px 20px 10px; }
 
 .email-right-box {
-  margin-left: 250px; }
+  /* margin-left: 250px; */ }
 
 .email-list {
   display: block;

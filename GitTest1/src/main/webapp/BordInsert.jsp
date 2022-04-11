@@ -229,81 +229,49 @@
 					</div>
 				</div>
 
-				<div class="col-lg-12">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="row">
-								<div class="col-12">
-									<div class="card">
-										<div class="card-body">
-											<div class="card-title">
-												<h5 class="text-muted">게시판</h5>
+				<div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="email-right-box">
 
-												<h2 class="mt-4">자유게시판</h2>
+                                    <div class="compose-content mt-5">
+                                        <form action="#">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control bg-transparent" placeholder=" To">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control bg-transparent" placeholder=" Subject">
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="textarea_editor form-control bg-light" rows="15" placeholder="Enter text ..."></textarea>
+                                            </div>
+                                        </form>
+                                        <h5 class="m-b-20"><i class="fa fa-paperclip m-r-5 f-s-18"></i> Attatchment</h5>
+                                        <form action="#" class="dropzone">
+                                            <div class="form-group">
+                                                <div class="fallback">
+                                                    <input class="l-border-1" name="file" type="file" multiple="multiple">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="text-left m-t-15">
+                                    	<a href="Bord.jsp">
 
-											</div>
-											<!-- <span>현재 nickname 건강정보</span> -->
-											<div class="table-responsive">
-												<table class="table table-hover" border="1">
-													<thead>
-														<tr>
-															<th style="width: 5%;">순서</th>
-															<th style="width: 25%;">제목</th>
-															<th>내용</th>
-														</tr>
-													</thead>
-													<tbody>
-														<%
-														for (int i = 0; i < 10; i++) {
-														%>
-														<!-- 스크립틀릿 을 통한 table 생성 -->
-														<tr>
-															<td id="num<%=i%>">1</td>
-															<td id="title<%=i%>">어제 먹은 김치가 상했어요</td>
-															<td id="date<%=i%>">2022/05/11</td>
-														</tr>
-														<%
-														}
-														%>
-														<tr>
-															<td colspan="3" id="controller"></td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<br> <a href="BordInsert.jsp">
-												<button type="button" class="btn mb-1 btn-outline-warning">글쓰기</button>
-											</a>
-											<hr>
-											<div class="button-group">
-												<div class="btn-toolbar">
-													<div class="btn-group mr-2 mb-2">
-														<button type="button" class="btn mb-1 btn-outline-success">1</button>
-														<button type="button" class="btn mb-1 btn-outline-success">2</button>
-														<button type="button" class="btn mb-1 btn-outline-success">3</button>
-														<button type="button" class="btn mb-1 btn-outline-success">4</button>
-													</div>
-													<div class="btn-group mr-2 mb-2">
-														<button type="button" class="btn mb-1 btn-outline-success">5</button>
-														<button type="button" class="btn mb-1 btn-outline-success">6</button>
-														<button type="button" class="btn mb-1 btn-outline-success">7</button>
-													</div>
-													<div class="btn-group mb-2">
-														<button type="button" class="btn mb-1 btn-outline-success">8</button>
-													</div>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- /# card -->
-
-					</div>
-
-				</div>
+                                        <button class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button"><i class="fa fa-paper-plane m-r-5"></i> Send</button>
+                                        </a>
+                                        <a href="BordInsert.jsp">
+                                        <button class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20" type="button"><i class="ti-close m-r-5 f-s-12"></i> Discard</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
