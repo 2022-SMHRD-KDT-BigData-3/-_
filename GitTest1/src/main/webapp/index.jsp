@@ -365,13 +365,7 @@ clist = dao.graph(info.getId());
 
 									</div>
 									<div>
-										<ul>
-											<li class="d-inline-block mr-3"><a class="text-dark"
-												href="#">일</a></li>
-											<li class="d-inline-block mr-3"><a class="text-dark"
-												href="#">주</a></li>
-											<li class="d-inline-block"><a class="text-dark" href="#">달</a></li>
-										</ul>
+								
 									</div>
 								</div>
 								<div class="chart-wrapper">
@@ -379,8 +373,7 @@ clist = dao.graph(info.getId());
 								</div>
 								<div class="card-body">
 									<div class="d-flex justify-content-between">
-										<h6>어제 혈압값</h6>
-										<h6>오늘 혈압값</h6>
+						
 									</div>
 								</div>
 							</div>
@@ -399,13 +392,7 @@ clist = dao.graph(info.getId());
 
 									</div>
 									<div>
-										<ul>
-											<li class="d-inline-block mr-3"><a class="text-dark"
-												href="#">일</a></li>
-											<li class="d-inline-block mr-3"><a class="text-dark"
-												href="#">주</a></li>
-											<li class="d-inline-block"><a class="text-dark" href="#">달</a></li>
-										</ul>
+							
 									</div>
 								</div>
 								<div class="chart-wrapper">
@@ -413,8 +400,7 @@ clist = dao.graph(info.getId());
 								</div>
 								<div class="card-body">
 									<div class="d-flex justify-content-between">
-										<h6>어제 혈당값</h6>
-										<h6>오늘 혈당값</h6>
+						
 									</div>
 								</div>
 							</div>
@@ -433,13 +419,7 @@ clist = dao.graph(info.getId());
 
 									</div>
 									<div>
-										<ul>
-											<li class="d-inline-block mr-3"><a class="text-dark"
-												href="#">일</a></li>
-											<li class="d-inline-block mr-3"><a class="text-dark"
-												href="#">주</a></li>
-											<li class="d-inline-block"><a class="text-dark" href="#">달</a></li>
-										</ul>
+						
 									</div>
 								</div>
 								<div class="chart-wrapper">
@@ -447,8 +427,7 @@ clist = dao.graph(info.getId());
 								</div>
 								<div class="card-body">
 									<div class="d-flex justify-content-between">
-										<h6>어제 BMI값</h6>
-										<h6>오늘 BMI값</h6>
+						
 									</div>
 								</div>
 							</div>
@@ -768,7 +747,7 @@ clist = dao.graph(info.getId());
 		            defaultFontFamily: 'Montserrat',
 		            datasets: [{
 		                data: [<%for(int i=0;i<clist.size();i++ ){
-		                	float bmi =((float)ckdto.getWeigth()/((float)ckdto.getHeight()*(float)ckdto.getHeight()/(float)10000));%><%=(float)bmi%>,
+		                	float bmi =((float)clist.get(i).getWeigth()/((float)clist.get(i).getHeight()*(float)clist.get(i).getHeight()/(float)10000));%><%=(int)bmi%>,
 	                <%}%>],
 		                label: "BMI",
 		                backgroundColor: '#847DFA',
