@@ -4,9 +4,10 @@ drop table menu;
 drop table food_rec;
 drop table board;
 select * from board;
-insert into bord values(2,'안녕하세요','선생님');
+insert into board values(2,'안녕하세요','선생님');
 select * from member;
-select * from checking;
+select * from checking order by checkday;
+insert into checking values('1','2022-01-11',110,120,110,175,29,2);
 select * from MENU;
 create sequence user_seq
 	start with 1
@@ -14,7 +15,7 @@ create sequence user_seq
 	maxvalue 999999
 	nocycle 
 	nocache
-	
+	select * from checking where id = '1' order by checkday ;
 create table member(
 seq number(10),
 id varchar2(100),
