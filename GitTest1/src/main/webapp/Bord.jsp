@@ -10,11 +10,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quixlab - Bootstrap Admin Dashboard Template by
-	Themefisher.com</title>
+<title>LifeGuader</title>
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="16x16"
-	href="images/favicon.png">
+	href="images/clover1.png">
 <!-- Pignose Calender -->
 <link href="./plugins/pg-calendar/css/pignose.calendar.min.css"
 	rel="stylesheet">
@@ -75,10 +74,11 @@
 		<div class="nav-header">
 			<div class="brand-logo">
 				<a href="index.jsp"><b class="logo-abbr"><img
-						src="images/clover2.png" alt=""> </b><span class="brand-title">
-						<img src="images/clover1.png" alt=""> <span class="mainfont"
-						style="font-size: font-size: 22px; margin-left: -0.5rem;">LifeGuader</span>
-				</span> </a>
+						src="images/clover2.png" alt=""> </b><span
+					class="brand-title"> <img src="images/clover1.png" alt="">
+					<span class="mainfont" style="font-size: font-size: 22px; margin-left: -0.5rem;">LifeGuader</span>
+				</span>
+				</a>
 			</div>
 		</div>
 		<!--**********************************
@@ -100,56 +100,38 @@
 				<div class="header-right">
 					<ul class="clearfix">
 						<li class="icons dropdown">
-							<div class="user-img c-pointer position-relative"
-								data-toggle="dropdown">
-								<span class="activity active"></span>
-								<!--  로그인,로그아웃, 회원정보수정, 회원가입 -->
-								<a> <%
- if (info != null) {
- %> <img src="images/user/logout.png" height="40" width="40"> <%
- } else {
- %> <img src="images/user/login.png" height="40" width="40"> <%
- }
- %>
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                	<!--  로그인,로그아웃, 회원정보수정, 회원가입 -->
+                      			<a> <%if(info!=null){ %> <img
+									src="images/user/logout.png" height="40" width="40">
+									<%} else{%> <img src="images/user/login.png" height="40"
+									width="40"> <% }%>
 								</a>
-							</div>
-							<div
-								class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-								<div class="dropdown-content-body">
-									<ul>
-
-										<%
-										if (info != null) {
-										%>
-										<li><a href="page-edit.jsp"> <i class="icon-people"></i>
-												<span>회원정보수정</span>
-										</a></li>
-										<%
-										} else {
-										%>
-										<li><a href="page-register.jsp"><i class="icon-user"></i>
-												<span>회원가입</span></a></li>
-										<%
-										}
-										%>
-										<hr class="my-2">
-										<%
-										if (info != null) {
-										%>
-										<li><a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a>
-										</li>
-										<%
-										} else {
-										%>
-										<li><a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
-										</li>
-										<%
-										}
-										%>
-									</ul>
-								</div>
-							</div>
-						</li>
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                    
+                                    <%if(info!=null){ %> <li>
+                                            <a href="page-edit.jsp">
+                                                <i class="icon-people"></i> <span>회원정보수정</span>
+                                            </a>
+                                        </li>
+									<%} else{%> <li>
+                                            <a href="page-register.jsp"><i class="icon-user"></i> <span>회원가입</span></a>
+                                        </li> <% }%>
+                                        <hr class="my-2">
+                                         <%if(info!=null){ %> <li> 
+                                         <a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a>    
+                                        </li>
+									<%} else{%> <li>
+                                           <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                        </li> <% }%>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
 					</ul>
 				</div>
 			</div>
@@ -164,22 +146,36 @@
 		<div class="nk-sidebar">
 			<div class="nk-nav-scroll">
 				<ul class="metismenu" id="menu">
-					<li class="nav-label">Dashboard</li>
-					<li><a href="./index.jsp"> <i class="icon-grid menu-icon"></i><span
-							class="nav-text">메인페이지</span>
-					</a></li>
-					<li><a href="./user-import.jsp"> <i
-							class="icon-notebook menu-icon"></i><span class="nav-text">유저정보입력</span>
-					</a></li>
-					<li><a href="./page-2.jsp"> <i class="icon-note menu-icon"></i><span
-							class="nav-text">식단입력페이지</span>
-					</a></li>
-					<li><a href="./page-3.jsp"> <i
-							class="icon-badge menu-icon"></i><span class="nav-text">식단추천페이지</span>
-					</a></li>
-					<li><a href="./page4.jsp"> <i class="icon-badge menu-icon"></i><span
-							class="nav-text">운동추천페이지</span>
-					</a></li>
+					<li><a href="./index.jsp"
+						> <i class="icon-home"></i><span
+							class="nav-text">홈</span>
+					</a>
+					</li>
+					<li><a href="./user-import.jsp"
+						> <i class="icon-notebook menu-icon"></i><span
+							class="nav-text">유저정보입력</span>
+					</a>
+					</li>
+					<li><a href="./page-2.jsp"
+						> <i class="icon-note menu-icon"></i><span
+							class="nav-text">식단입력</span>
+					</a>
+					</li>										
+					<li><a href="./page-3.jsp"
+						> <i class="icon-badge menu-icon"></i><span
+							class="nav-text">식단추천</span>
+					</a>
+					</li>
+					<li><a href="./page4.jsp"
+						> <i class="icon-social-youtube"></i><span
+							class="nav-text">운동추천</span>
+					</a>
+					</li>
+					<li><a href="./Bord.jsp"
+						> <i class="icon-list"></i><span
+							class="nav-text">게시판</span>
+					</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -267,8 +263,7 @@
 											<br> <a href="BordInsert.jsp">
 												<%if(info!=null){ %><button type="button" class="btn mb-1 btn-outline-warning">글쓰기</button><%}%> 
 											</a>
-											<hr>
-											
+							
 
 										</div>
 									</div>
@@ -392,7 +387,7 @@
 				arr = data_list;
 				$('#controller').append(
 						'<button onclick="page(' + currentPage + ')" id="'
-								+ currentPage + '" class="button">'
+								+ currentPage + '" class="btn mb-1 btn-outline-success">'
 								+ currentPage + '</button>');
 				currentPage = currentPage + 1;
 			}
@@ -403,7 +398,7 @@
 				$('#controller').append(
 						'<button onclick="next_list(' + next_startRow + ','
 								+ (startPage + pageSize)
-								+ ')" class="next" id="next' + currentPage
+								+ ')" class="btn mb-1 btn-outline-success" id="next' + currentPage
 								+ '">다음</button>');
 				//여기서 currentPage 는 전에 계속 더했던 값이 들어있기 때문에 다음페이지 에서의 페이지블럭의 첫 시작수 이다.
 			}
@@ -414,7 +409,7 @@
 
 				$('#controller').append(
 						'<button onclick="before_list(' + before_num + ','
-								+ before_page + ')" class="before" id="before'
+								+ before_page + ')" class="btn mb-1 btn-outline-success" id="before'
 								+ before_page + '">이전</button>');
 			}
 		}
@@ -460,7 +455,7 @@
 					"num" : before_num
 				},// 한 페이지 에서 가져와야하는 양이 정해저 있으므로 어디 페이지에서 요청했는지 알기위해 가져올DB의 시작 num을 같이 넘겨 준다 
 				success : function(data_list) {
-
+		
 					// DB를 통해 가져왔는데 가져온 양이 테이블 행의 갯수인 10 보다 적으면 html의 테이블은 이전값을 가지고 있으므로 안보이게 .hide()를 사용해주어야 한다 
 					if (data_list.length < 10) {
 						list_write(data_list);
@@ -493,7 +488,7 @@
 					"num" : startRow
 				},/* 한 페이지 에서 가져와야하는 양이 정해저 있으므로 어디 페이지에서 요청했는지 알기위해 가져올DB의 시작 num을 같이 넘겨 준다 */
 				success : function(data_list) {
-
+				console.log("tset"+data_list);
 					if (data_list.length < 10) {/* DB를 통해 가져왔는데 가져온 양이 테이블 행의 갯수인 10 보다 적으면 html의 테이블은 이전값을 가지고 있으므로 안보이게 .hide()를 사용해주어야 한다 */
 						list_write(data_list);
 						button_create(data_list, startPage);
@@ -582,6 +577,7 @@
 
 		//해당 게시물을 출력한다
 		function print_list(data_list) {
+			console.log("test"+date_list)
 			for (var i = 0; i < 10; i++) {
 				$('#num' + i).show();
 				$('#title' + i).show();

@@ -10,11 +10,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quixlab - Bootstrap Admin Dashboard Template by
-   Themefisher.com</title>
+<title>LifeGuader</title>
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="16x16"
-   href="images/favicon.png">
+	href="images/clover1.png">
 <!-- Pignose Calender -->
 <link href="./plugins/pg-calendar/css/pignose.calendar.min.css"
    rel="stylesheet">
@@ -161,42 +160,41 @@
             사이드바 start
         ***********************************-->
       <div class="nk-sidebar">
-         <div class="nk-nav-scroll">
-            <ul class="metismenu" id="menu">
-               <li class="nav-label">Dashboard</li>
-               <li><a href="./index.jsp"
-                  > <i class="icon-grid menu-icon"></i><span
-                     class="nav-text">메인페이지</span>
-               </a>
-               </li>
-               <li><a href="./user-import.jsp"
-                  > <i class="icon-notebook menu-icon"></i><span
-                     class="nav-text">유저정보입력</span>
-               </a>
-               </li>
-               <li><a href="./page-2.jsp"
-                  > <i class="icon-note menu-icon"></i><span
-                     class="nav-text">식단입력페이지</span>
-               </a>
-               </li>                              
-               <li><a href="./page-3.jsp"
-                  > <i class="icon-badge menu-icon"></i><span
-                     class="nav-text">식단추천페이지</span>
-               </a>
-               </li>
-               <li><a href="./page4.jsp"
-                  > <i class="icon-badge menu-icon"></i><span
-                     class="nav-text">운동추천페이지</span>
-               </a>
-               </li>
-               <li><a href="./Bord.jsp"
-                  > <i class="icon-badge menu-icon"></i><span
-                     class="nav-text">게시판</span>
-               </a>
-               </li>
-            </ul>
-         </div>
-      </div>
+			<div class="nk-nav-scroll">
+				<ul class="metismenu" id="menu">
+					<li><a href="./index.jsp"
+						> <i class="icon-home"></i><span
+							class="nav-text">홈</span>
+					</a>
+					</li>
+					<li><a href="./user-import.jsp"
+						> <i class="icon-notebook menu-icon"></i><span
+							class="nav-text">유저정보입력</span>
+					</a>
+					</li>
+					<li><a href="./page-2.jsp"
+						> <i class="icon-note menu-icon"></i><span
+							class="nav-text">식단입력</span>
+					</a>
+					</li>										
+					<li><a href="./page-3.jsp"
+						> <i class="icon-badge menu-icon"></i><span
+							class="nav-text">식단추천</span>
+					</a>
+					</li>
+					<li><a href="./page4.jsp"
+						> <i class="icon-social-youtube"></i><span
+							class="nav-text">운동추천</span>
+					</a>
+					</li>
+					<li><a href="./Bord.jsp"
+						> <i class="icon-list"></i><span
+							class="nav-text">게시판</span>
+					</a>
+					</li>
+				</ul>
+			</div>
+		</div>
       <!--**********************************
             Sidebar end
         ***********************************-->
