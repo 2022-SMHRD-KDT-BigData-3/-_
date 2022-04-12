@@ -249,7 +249,7 @@
 														<tr>
 															<td id="num<%=i%>"></td>
 															<td id="title<%=i%>"></td>
-															<td id="data<%=i%>"></td>
+															<td id="date<%=i%>"></td>
 														</tr>
 														<%
 														}
@@ -263,7 +263,25 @@
 											<br> <a href="BordInsert.jsp">
 												<%if(info!=null){ %><button type="button" class="btn mb-1 btn-outline-warning">글쓰기</button><%}%> 
 											</a>
-							
+											<hr>
+											<div class="button-group">
+												<div class="btn-toolbar">
+													<div class="btn-group mr-2 mb-2">
+														<button type="button" class="btn mb-1 btn-outline-success">1</button>
+														<button type="button" class="btn mb-1 btn-outline-success">2</button>
+														<button type="button" class="btn mb-1 btn-outline-success">3</button>
+														<button type="button" class="btn mb-1 btn-outline-success">4</button>
+													</div>
+													<div class="btn-group mr-2 mb-2">
+														<button type="button" class="btn mb-1 btn-outline-success">5</button>
+														<button type="button" class="btn mb-1 btn-outline-success">6</button>
+														<button type="button" class="btn mb-1 btn-outline-success">7</button>
+													</div>
+													<div class="btn-group mb-2">
+														<button type="button" class="btn mb-1 btn-outline-success">8</button>
+													</div>
+												</div>
+											</div>
 
 										</div>
 									</div>
@@ -387,7 +405,7 @@
 				arr = data_list;
 				$('#controller').append(
 						'<button onclick="page(' + currentPage + ')" id="'
-								+ currentPage + '" class="btn mb-1 btn-outline-success">'
+								+ currentPage + '" class="button">'
 								+ currentPage + '</button>');
 				currentPage = currentPage + 1;
 			}
@@ -398,7 +416,7 @@
 				$('#controller').append(
 						'<button onclick="next_list(' + next_startRow + ','
 								+ (startPage + pageSize)
-								+ ')" class="btn mb-1 btn-outline-success" id="next' + currentPage
+								+ ')" class="next" id="next' + currentPage
 								+ '">다음</button>');
 				//여기서 currentPage 는 전에 계속 더했던 값이 들어있기 때문에 다음페이지 에서의 페이지블럭의 첫 시작수 이다.
 			}
@@ -409,7 +427,7 @@
 
 				$('#controller').append(
 						'<button onclick="before_list(' + before_num + ','
-								+ before_page + ')" class="btn mb-1 btn-outline-success" id="before'
+								+ before_page + ')" class="before" id="before'
 								+ before_page + '">이전</button>');
 			}
 		}
@@ -517,13 +535,13 @@
 
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#data' + i).text(data_list[i].data);
+				$('#date' + i).text(data_list[i].date);
 			}
 
 			for (var i = data_list.length; i < 10; i++) {//jsonArray타입의 객체의 갯수가 10개보다 적을경우 데이터가 들어가지 않는 행은 안보임 처리를 해준다
 				$('#num' + i).hide();
 				$('#title' + i).hide();
-				$('#data' + i).hide();
+				$('#date' + i).hide();
 			}
 
 		}
@@ -580,11 +598,11 @@
 			for (var i = 0; i < 10; i++) {
 				$('#num' + i).show();
 				$('#title' + i).show();
-				$('#data' + i).show();
+				$('#date' + i).show();
 
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#data' + i).text(data_list[i].data);
+				$('#date' + i).text(data_list[i].date);
 			}
 		}
 	</script>
