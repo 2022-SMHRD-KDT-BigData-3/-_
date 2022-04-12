@@ -40,7 +40,9 @@ public class border extends HttpServlet {
 		bordDAO dao = new bordDAO();
 		list= dao.all_bord(num); //num 변수의 값부터 DB에서 가져온다
 		
-
+		System.out.println("num2 : "+list.get(0).getNum());
+		System.out.println("title  : "+list.get(0).getTitle());
+		System.out.println("data  : "+list.get(0).getData());
 		for(int i=0;i<list.size();i++) {
 			json.addProperty("num", list.get(i).getNum());
 			json.addProperty("title", list.get(i).getTitle());

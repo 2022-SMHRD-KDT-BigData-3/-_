@@ -227,10 +227,10 @@
                                     <div class="compose-content mt-5">
                                         <form action="borderinsert" method="post">
                                             <div class="form-group">
-                                                <input type="text" class="form-control bg-transparent" placeholder=" Subject" name="title">
+                                                <input type="text" class="form-control bg-transparent" placeholder="제목" name="title">
                                             </div>
                                             <div class="form-group">
-                                                <input class="textarea_editor form-control bg-light" rows="15" placeholder="Enter text ..." name="data">
+                                                <input  type="text" class="textarea_editor form-control bg-light" rows="15" placeholder="글을 써주세요" name="data">
                                             </div>
                                         <h5 class="m-b-20"><i class="fa fa-paperclip m-r-5 f-s-18"></i>첨부파일</h5>
                                             <div class="form-group">

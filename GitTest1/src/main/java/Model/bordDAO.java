@@ -70,7 +70,7 @@ public class bordDAO {
 		db_conn();
 		
 		try {
-			String sql  = "select * from board where num >= ?";
+			String sql  = "select * from board where num >= ? order by num desc";
 			psmt=conn.prepareStatement(sql);
 			psmt.setInt(1, startNum);
 			rs = psmt.executeQuery();

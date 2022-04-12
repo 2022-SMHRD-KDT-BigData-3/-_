@@ -4,7 +4,7 @@ drop table menu;
 drop table food_rec;
 drop table board;
 select * from board;
-insert into board values(2,'안녕하세요','선생님');
+insert into board values(1,'안녕못한다','선생님');
 select * from member;
 select * from checking order by checkday;
 insert into checking values('1','2022-01-11',110,120,110,175,29,2);
