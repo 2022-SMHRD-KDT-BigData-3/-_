@@ -255,7 +255,7 @@
 														}
 														%>
 														<tr>
-															<td colspan="3" id="controller"></td>
+															<td colspan="3" id="controller" style="text-align: center"></td>
 														</tr>
 													</tbody>
 												</table>
