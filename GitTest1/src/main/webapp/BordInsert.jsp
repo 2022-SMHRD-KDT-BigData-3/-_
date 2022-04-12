@@ -243,10 +243,10 @@
                                     <div class="text-left m-t-15">
                                     	<a href="Bord.jsp">
 
-                                        <input class="btn btn-success m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="submit"><i class="fa fa-paper-plane m-r-5"></i> Send</button>
+                                        <input class="btn btn-success m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="submit" style="color: white;"></button>
                                         </a>
                                         <a href="BordInsert.jsp">
-                                        <button class="btn-warning m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button"><i class="fa fa-paper-plane m-r-5"></i> Discard</button>
+                                        <button class="btn btn-warning m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button" style="color:white;">초기화</button>
                                         </a> 
                                         </form>
                                     </div>

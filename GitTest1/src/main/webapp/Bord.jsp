@@ -249,13 +249,13 @@
 														<tr>
 															<td id="num<%=i%>"></td>
 															<td id="title<%=i%>"></td>
-															<td id="data<%=i%>"></td>
+															<td id="date<%=i%>"></td>
 														</tr>
 														<%
 														}
 														%>
 														<tr>
-															<td colspan="3" id="controller"></td>
+															<td colspan="3" id="controller" style="text-align: center"></td>
 														</tr>
 													</tbody>
 												</table>
@@ -263,7 +263,8 @@
 											<br> <a href="BordInsert.jsp">
 												<%if(info!=null){ %><button type="button" class="btn mb-1 btn-outline-warning">글쓰기</button><%}%> 
 											</a>
-							
+											<hr>
+									
 
 										</div>
 									</div>
@@ -385,14 +386,30 @@
 
 			for (var i = 0; i < pageNum; i++) {
 				arr = data_list;
+<<<<<<< HEAD
 				$('#controller').append('<button onclick="page('+currentPage+')" id="'+currentPage+'" class="button">'+currentPage+'</button>');
 				currentPage= currentPage+1;
+=======
+				$('#controller').append(
+						'<button onclick="page(' + currentPage + ')" id="'
+								+ currentPage + '" style="padding: 7px 18px; margin-bottom: 0.25rem !important; color: #6fd96f; background-color: transparent; background-image: none; border-radius: 0.25rem; border: 1px solid transparent; border-color: #6fd96f; text-align: center;" class="button">'
+								+ currentPage + '</button>');
+				currentPage = currentPage + 1;
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-3/now-our-academy.git
 			}
 
 			var next_startRow = data_list[data_list.length - 1].num + 1;
 
 			if (pageNum >= pageSize) {
+<<<<<<< HEAD
 				$('#controller').append('<button onclick="next_list('+next_startRow+','+(startPage+pageSize)+')" class="next" id="next'+currentPage+'">다음</button>');
+=======
+				$('#controller').append(
+						'<button onclick="next_list(' + next_startRow + ','
+								+ (startPage + pageSize)
+								+ ')" class="next" style="padding: 7px 18px; margin-bottom: 0.25rem !important; color: #6fd96f; background-color: transparent; background-image: none; border-radius: 0.25rem; border: 1px solid transparent; border-color: #6fd96f; text-align: center;" id="next' + currentPage
+								+ '">다음</button>');
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-3/now-our-academy.git
 				//여기서 currentPage 는 전에 계속 더했던 값이 들어있기 때문에 다음페이지 에서의 페이지블럭의 첫 시작수 이다.
 			}
 
@@ -400,7 +417,14 @@
 				var before_num = data_list[0].num - (pageSize * maxRow);
 				var before_page = startPage - pageSize;
 
+<<<<<<< HEAD
 				$('#controller').append('<button onclick="before_list('+before_num+','+before_page+')" class="before" id="before'+before_page+'">이전</button>');
+=======
+				$('#controller').append(
+						'<button onclick="before_list(' + before_num + ','
+								+ before_page + ')" class="before" style="padding: 7px 18px; margin-bottom: 0.25rem !important; color: #6fd96f; background-color: transparent; background-image: none; border-radius: 0.25rem; border: 1px solid transparent; border-color: #6fd96f; text-align: center;" id="before'
+								+ before_page + '">이전</button>');
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-3/now-our-academy.git
 			}
 		}
 
@@ -445,7 +469,11 @@
 					"num" : before_num
 				},// 한 페이지 에서 가져와야하는 양이 정해저 있으므로 어디 페이지에서 요청했는지 알기위해 가져올DB의 시작 num을 같이 넘겨 준다 
 				success : function(data_list) {
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-3/now-our-academy.git
 					// DB를 통해 가져왔는데 가져온 양이 테이블 행의 갯수인 10 보다 적으면 html의 테이블은 이전값을 가지고 있으므로 안보이게 .hide()를 사용해주어야 한다 
 					if (data_list.length < 10) {
 						list_write(data_list);
@@ -478,7 +506,7 @@
 					"num" : startRow
 				},/* 한 페이지 에서 가져와야하는 양이 정해저 있으므로 어디 페이지에서 요청했는지 알기위해 가져올DB의 시작 num을 같이 넘겨 준다 */
 				success : function(data_list) {
-				console.log("tset"+data_list);
+
 					if (data_list.length < 10) {/* DB를 통해 가져왔는데 가져온 양이 테이블 행의 갯수인 10 보다 적으면 html의 테이블은 이전값을 가지고 있으므로 안보이게 .hide()를 사용해주어야 한다 */
 						list_write(data_list);
 						button_create(data_list, startPage);
@@ -507,13 +535,13 @@
 
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#data' + i).text(data_list[i].data);
+				$('#date' + i).text(data_list[i].date);
 			}
 
 			for (var i = data_list.length; i < 10; i++) {//jsonArray타입의 객체의 갯수가 10개보다 적을경우 데이터가 들어가지 않는 행은 안보임 처리를 해준다
 				$('#num' + i).hide();
 				$('#title' + i).hide();
-				$('#data' + i).hide();
+				$('#date' + i).hide();
 			}
 
 		}
@@ -570,11 +598,11 @@
 			for (var i = 0; i < 10; i++) {
 				$('#num' + i).show();
 				$('#title' + i).show();
-				$('#data' + i).show();
+				$('#date' + i).show();
 
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#data' + i).text(data_list[i].data);
+				$('#date' + i).text(data_list[i].date);
 			}
 		}
 	</script>
