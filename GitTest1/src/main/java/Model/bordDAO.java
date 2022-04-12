@@ -70,7 +70,7 @@ public class bordDAO {
 		db_conn();
 		
 		try {
-			String sql  = "select * from bord where num >= ?";
+			String sql  = "select * from board where num >= ?";
 			psmt=conn.prepareStatement(sql);
 			psmt.setInt(1, startNum);
 			rs = psmt.executeQuery();
@@ -101,7 +101,7 @@ public class bordDAO {
 		try {
 			// 2. DB에서 무엇을 할지 결정
 			// 회원가입 기능 = 입력받은 회원 데이터들을 회원 Table에 추가하기
-			String sql = "insert into bord values(num_seq.nextval,?, ?)";
+			String sql = "insert into board values(num_seq.nextval,?, ?)";
 
 			// 3. sql문장을 DB에 전달 -> 전달 성공 시 PreparedStatement 객체로 반환
 			psmt = conn.prepareStatement(sql);

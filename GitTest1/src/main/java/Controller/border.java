@@ -31,6 +31,7 @@ public class border extends HttpServlet {
 		
 		Gson gson = new Gson(); 
 		
+		response.setContentType("text/plain; charset=utf-8;");
 		JsonObject json = new JsonObject(); //json 객체를 만들고
 		JsonArray jarray = new JsonArray(); //json객체를 담아줄 jarray객체를 만들어 준다
 		PrintWriter out = response.getWriter();
@@ -39,6 +40,7 @@ public class border extends HttpServlet {
 		bordDAO dao = new bordDAO();
 		list= dao.all_bord(num); //num 변수의 값부터 DB에서 가져온다
 		
+
 		for(int i=0;i<list.size();i++) {
 			json.addProperty("num", list.get(i).getNum());
 			json.addProperty("title", list.get(i).getTitle());

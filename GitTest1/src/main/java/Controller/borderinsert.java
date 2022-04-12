@@ -28,6 +28,7 @@ public class borderinsert extends HttpServlet {
 		
 		bordDAO dao = new bordDAO();
 		int cnt = dao.insert(dto);
+		
 		if (cnt > 0) {
 			System.out.println("게시글 입력 성공");
 
