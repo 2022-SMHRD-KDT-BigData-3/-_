@@ -64,11 +64,10 @@
 		<div class="nav-header">
 			<div class="brand-logo">
 				<a href="index.jsp"><b class="logo-abbr"><img
-						src="images/clover2.png" alt=""> </b><span
-					class="brand-title"> <img src="images/clover1.png" alt="">
-					<span class="mainfont" style="font-size: x-large;">LifeGuader</span>
-				</span>
-				</a>
+						src="images/clover2.png" alt=""> </b><span class="brand-title">
+						<img src="images/clover1.png" alt=""> <span class="mainfont"
+						style="font-size: font-size: 22px; margin-left: -0.5rem;">LifeGuader</span>
+				</span> </a>
 			</div>
 		</div>
 		<!--**********************************
