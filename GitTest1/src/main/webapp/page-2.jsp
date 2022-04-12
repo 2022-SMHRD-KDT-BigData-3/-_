@@ -734,11 +734,16 @@
       let act = <%if(ckdto.getAct()==1){%> 25
       <%}else if(ckdto.getAct()==2){%> 35      
       <%}else if(ckdto.getAct()==3){%>40<%}}}%>
-      let enCal = nomalWeigth*act;
-      let enCar = enCal*0.6;
-      let enPro = enCal*0.135;
-      let enFat = enCal*0.225;      
       
+      let enCal = nomalWeigth*act;
+      
+      let enCar = enCal*0.6*0.25;
+      let enPro = enCal*0.135*0.25;
+      let enFat = enCal*0.225/9;      
+      
+      console.log(enCar);
+      console.log(enPro);
+      console.log(enFat);
       
    $("#BackClick").on("click", function() {
             
@@ -909,11 +914,12 @@
                   let tdC = document.getElementById("carP");
                   let tdP = document.getElementById("proP");
                   let tdF = document.getElementById("fatP");
+                  
                   let tdB = document.getElementById("cardBar");
                   
-                  tdC.innerText = car;
-                  tdP.innerText = pro;
-                  tdF.innerText = fat;
+                  tdC.innerText = car+"/"+enCar;
+                  tdP.innerText = pro+"/"+enPro;
+                  tdF.innerText = fat+"/"+enFat;
                   tdB.innerText = cal + "kcal";
                   
                   $("#calcart").css("width",pcal);
