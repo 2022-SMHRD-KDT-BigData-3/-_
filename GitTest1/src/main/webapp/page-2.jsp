@@ -5,74 +5,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Quixlab - Bootstrap Admin Dashboard Template by
-	Themefisher.com</title>
+   Themefisher.com</title>
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="16x16"
-	href="images/favicon.png">
+   href="images/favicon.png">
+<!-- Pignose Calender -->
+<link href="./plugins/pg-calendar/css/pignose.calendar.min.css"
+   rel="stylesheet">
+<!-- Chartist -->
+<link rel="stylesheet" href="./plugins/chartist/css/chartist.min.css">
+<link rel="stylesheet"
+   href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
 <!-- Custom Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
 
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--폰트 변경 링크  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&display=swap" rel="stylesheet">
 
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
-<title>Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@300&display=swap" rel="stylesheet">
 
 <script src="./jquery-3.6.0.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-	crossorigin="anonymous"></script>
 
 <style>
 .pie-chart1 {
-	display: inline-block;
-	position: relative;
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
-	margin-left: 10rem;
+  display:inline-block;
+  position:relative;
+  width: 20%;
+  height: 295px;
+  border-radius: 50%;
+  margin-left : 8rem;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+}
+.pie-chart1  .center{
+  position:absolute;
+  width:70%; 
+  height: 208px;
+  background :#fff;
+  border-radius: 50%;
+  top: 42px;
+  left:47px;
+  text-align: center;
+  line-height:300px;
+  font-size: 27px;
+  
 }
 
-.pie-chart1  .center {
-	position: absolute;
-	width: 100px;
-	height: 100px;
-	background: #fff;
-	border-radius: 50%;
-	top: 50px;
-	left: 50px;
-	text-align: center;
-	line-height: 100px;
+.center2{
+	 position:absolute;
+	 width:70%; 
+	 height: 208px;
+	
+	 border-radius: 50%;
+	 top: -6px;
+	 left:33px;
+	 text-align: center;
+	 line-height:300px;
+	 font-size: 18px;
 }
+
+.center3{
+	position:absolute;
+	 width:70%; 
+	 height: 208px;
+	 border-radius: 50%;
+	 top: -73px;
+	 left:33px;
+	 text-align: center;
+	 line-height:300px;
+	 font-size: 27px;
+}
+
+
+
+#sikdan{
+	text-align: center;
+}
+.Testicon{
+	left: 0px;
+	}
+
+
 </style>
 
 
+<title>Insert title here</title>
 </head>
-<body data-theme-version="light" data-layout="vertical"
-	data-nav-headerbg="color_1" data-headerbg="color_1"
-	data-sidebar-style="full" data-sibebarbg="color_1"
-	data-sidebar-position="static" data-header-position="static"
-	data-container="wide" direction="ltr">
-
+<body>
 	<%
 	int act = 0;
 	double enCal = 0;
@@ -81,15 +110,16 @@
 	double enFat = 0;
 	int hical =100;
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
-	CheckingDTO ckdto = (CheckingDTO) session.getAttribute("ckdto");
+	CheckingDTO ckdto= null;
+ ckdto = (CheckingDTO) session.getAttribute("ckdto");
 	MenuDTO select = (MenuDTO) session.getAttribute("select");
 
 	%>
-	<div id="modal" class="modal" width="400px">
+	<div id="modal" class="modal" width="400px" style="text-align: center;">
 		<div class="modal-content">
 			<input id="foodName" type="text" class="form-control"
-				placeholder="Search">
-			<button class="search" onclick="getData()">선택</button>
+				placeholder="Search" style="margin-left:40.5%">
+			<button class="btn mb-1 btn-rounded btn-outline-dark" onclick="getData()"style="width:20%; margin-left:40%;">선택</button>
 			<button class="close">닫기</button>
 			<table border="1" id="chart">
 
@@ -102,7 +132,7 @@
 		<div class="modal-content">
 			<input id="foodName" type="text" class="form-control"
 				placeholder="Search">
-			<button class="search" onclick="getData()">선택</button>
+			<button class="search" onclick="getData()" style="margin-left:40%;">선택</button>
 			<button class="close">닫기</button>
 			<table border="1" id="chart">
 
@@ -110,82 +140,67 @@
 		</div>
 	</div>
 
-	<!--*******************
+   <!--*******************
         Preloader start
     ********************-->
-	<div id="preloader" style="display: none;">
-		<div class="loader">
-			<svg class="circular" viewBox="25 25 50 50">
+   <div id="preloader">
+      <div class="loader">
+         <svg class="circular" viewBox="25 25 50 50">
                 <circle class="path" cx="50" cy="50" r="20" fill="none"
-					stroke-width="3" stroke-miterlimit="10"></circle>
+               stroke-width="3" stroke-miterlimit="10" />
             </svg>
-		</div>
-	</div>
-	<!--*******************
+      </div>
+   </div>
+   <!--*******************
         Preloader end
     ********************-->
 
 
-	<!--**********************************
+   <!--**********************************
         Main wrapper start
     ***********************************-->
-	<div id="main-wrapper" class="show">
+   <div id="main-wrapper">
 
-		<!--**********************************
+      <!--**********************************
             Nav header start
         ***********************************-->
-		<div class="nav-header">
-			<div class="brand-logo">
-				<a href="index.html"> <b class="logo-abbr"><img
-						src="images/logo.png" alt=""> </b> <span class="logo-compact"><img
-						src="./images/logo-compact.png" alt=""></span> <span
-					class="brand-title"> <img src="images/logo-text.png" alt="">
-				</span>
-				</a>
-			</div>
-		</div>
-		<!--**********************************
+      <div class="nav-header">
+         <div class="brand-logo">
+            <a href="index.jsp"><b class="logo-abbr"><img
+                  src="images/clover2.png" alt=""> </b><span
+               class="brand-title"> <img src="images/clover1.png" alt="">
+               <span class="mainfont" style="font-size: font-size: 22px; margin-left: -0.5rem;">LifeGuader</span>
+            </span>
+            </a>
+         </div>
+      </div>
+      <!--**********************************
             Nav header end
         ***********************************-->
 
-		<!--**********************************
-            Header start
+      <!--**********************************
+            상단 start
         ***********************************-->
-		<div class="header">
-			<div class="header-content clearfix">
+      <div class="header">
+         <div class="header-content clearfix">
 
-				<div class="nav-control">
-					<div class="hamburger">
-						<span class="toggle-icon"><i class="icon-menu"></i></span>
-					</div>
-				</div>
-				<div class="header-left">
-					<div class="input-group icons">
-						<div class="input-group-prepend">
-							<span
-								class="input-group-text bg-transparent border-0 pr-2 pr-sm-3"
-								id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-						</div>
-						<input type="search" class="form-control"
-							placeholder="Search Dashboard" aria-label="Search Dashboard">
-						<div class="drop-down animated flipInX d-md-none">
-							<form action="#">
-								<input type="text" class="form-control" placeholder="Search">
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="header-right">
-					<ul class="clearfix">
-						<li class="icons dropdown">
+            <div class="nav-control">
+               <div class="hamburger">
+                  <span class="toggle-icon"><i class="icon-menu"></i></span>
+               </div>
+            </div>
+
+            <div class="header-right">
+               <ul class="clearfix">
+                  <li class="icons dropdown Testicon">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                	<!--  로그인,로그아웃, 회원정보수정, 회원가입 -->
-                      			<a> <%if(info!=null){ %> <img
-									src="images/user/logout.png" height="40" width="40">
-									<%} else{%> <img src="images/user/login.png" height="40"
-									width="40"> <% }%>
-								</a>
+                                   <!--  로그인,로그아웃, 회원정보수정, 회원가입 -->
+                               <a><%if(info!=null){ %> <img
+                           src="images/user/logout.png" height="40" width="40">
+                           <%} else{%> <img src="images/user/login.png" height="40"
+                           width="40"> <% }%>
+                        </a>
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -196,202 +211,84 @@
                                                 <i class="icon-people"></i> <span>회원정보수정</span>
                                             </a>
                                         </li>
-									<%} else{%> <li>
+                           <%} else{%> <li>
                                             <a href="page-register.jsp"><i class="icon-user"></i> <span>회원가입</span></a>
                                         </li> <% }%>
-                                    
-                                   
-                                        
                                         <hr class="my-2">
-                                        <li>
-                                            <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                         <%if(info!=null){ %> <li> 
+                                         <a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a>    
                                         </li>
-                                        <li><a href="LogoutServiceCon"><i class="icon-key"></i><span>로그아웃</span></a></li>
+                           <%} else{%> <li>
+                                           <a href="page-login.jsp"><i class="icon-lock"></i><span>로그인</span></a>
+                                        </li> <% }%>
                                     </ul>
                                 </div>
                             </div>
                         </li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!--**********************************
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
 
-		<!--**********************************
-            Sidebar start
+      <!--**********************************
+            사이드바 start
         ***********************************-->
-		<div class="nk-sidebar">
-			<div class="slimScrollDiv"
-				style="position: relative; overflow: hidden; width: auto; height: 100%;">
-				<div class="nk-nav-scroll active"
-					style="overflow: hidden; width: auto; height: 100%;">
-					<ul class="metismenu in" id="menu">
-						<li class="nav-label">Dashboard</li>
-						<li><a class="has-arrow" href="javascript:void()"
-							aria-expanded="false"> <i class="icon-speedometer menu-icon"></i><span
-								class="nav-text">Dashboard</span>
-						</a>
-							<ul aria-expanded="false" class="collapse">
-								<li><a href="./index.html">Home 1</a></li>
-								<!-- <li><a href="./index-2.html">Home 2</a></li> -->
-							</ul></li>
-						<li class="mega-menu mega-menu-sm"><a class="has-arrow"
-							href="javascript:void()" aria-expanded="false"> <i
-								class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
-						</a>
-							<ul aria-expanded="false" class="collapse">
-								<li><a href="./layout-blank.html">Blank</a></li>
-								<li><a href="./layout-one-column.html">One Column</a></li>
-								<li><a href="./layout-two-column.html">Two column</a></li>
-								<li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-								<li><a href="./layout-vertical.html">Vertical</a></li>
-								<li><a href="./layout-horizontal.html">Horizontal</a></li>
-								<li><a href="./layout-boxed.html">Boxed</a></li>
-								<li><a href="./layout-wide.html">Wide</a></li>
-
-
-								<li><a href="./layout-fixed-header.html">Fixed Header</a></li>
-								<li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-							</ul></li>
-						<li class="nav-label">Apps</li>
-						<li><a class="has-arrow" href="javascript:void()"
-							aria-expanded="false"> <i class="icon-envelope menu-icon"></i>
-								<span class="nav-text">Email</span>
-						</a>
-							<ul aria-expanded="false" class="collapse">
-								<li><a href="./email-inbox.html">Inbox</a></li>
-								<li><a href="./email-read.html">Read</a></li>
-								<li><a href="./email-compose.html">Compose</a></li>
-							</ul></li>
-						<li><a class="has-arrow" href="javascript:void()"
-							aria-expanded="false"> <i
-								class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
-						</a>
-							<ul aria-expanded="false" class="collapse">
-								<li><a href="./app-profile.html">Profile</a></li>
-								<li><a href="./app-calender.html">Calender</a></li>
-							</ul></li>
-						<li class="active"><a class="has-arrow"
-							href="javascript:void()" aria-expanded="false"> <i
-								class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
-						</a>
-							<ul aria-expanded="false" class="collapse in">
-								<li><a href="./chart-flot.html">Flot</a></li>
-								<li><a href="./chart-morris.html">Morris</a></li>
-								<li><a href="./chart-chartjs.html">Chartjs</a></li>
-								<li><a href="./chart-chartist.html">Chartist</a></li>
-								<li class="active"><a href="./chart-sparkline.html"
-									class="active">Sparkline</a></li>
-								<li><a href="./chart-peity.html">Peity</a></li>
-							</ul></li>
-						<li class="nav-label">UI Components</li>
-						<li><a class="has-arrow" href="javascript:void()"
-							aria-expanded="false"> <i class="icon-grid menu-icon"></i><span
-								class="nav-text">UI Components</span>
-						</a>
-							<ul aria-expanded="false" class="collapse">
-								<li><a href="./ui-accordion.html">Accordion</a></li>
-								<li><a href="./ui-alert.html">Alert</a></li>
-								<li><a href="./ui-badge.html">Badge</a></li>
-								<li><a href="./ui-button.html">Button</a></li>
-								<li><a href="./ui-button-group.html">Button Group</a></li>
-								<li><a href="./ui-cards.html">Cards</a></li>
-								<li><a href="./ui-carousel.html">Carousel</a></li>
-								<li><a href="./ui-dropdown.html">Dropdown</a></li>
-								<li><a href="./ui-list-group.html">List Group</a></li>
-								<li><a href="./ui-media-object.html">Media Object</a></li>
-								<li><a href="./ui-modal.html">Modal</a></li>
-								<li><a href="./ui-pagination.html">Pagination</a></li>
-								<li><a href="./ui-popover.html">Popover</a></li>
-								<li><a href="./ui-progressbar.html">Progressbar</a></li>
-								<li><a href="./ui-tab.html">Tab</a></li>
-								<li><a href="./ui-typography.html">Typography</a></li>
-								<!-- </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
-                        </a>
-                        <ul aria-expanded="false"> -->
-								<li><a href="./uc-nestedable.html">Nestedable</a></li>
-								<li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-								<li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-								<li><a href="./uc-toastr.html">Toastr</a></li>
-							</ul></li>
-						<li><a href="widgets.html" aria-expanded="false"> <i
-								class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
-						</a></li>
-						<li class="nav-label">Forms</li>
-						<li><a class="has-arrow" href="javascript:void()"
-							aria-expanded="false"> <i class="icon-note menu-icon"></i><span
-								class="nav-text">Forms</span>
-						</a>
-							<ul aria-expanded="false" class="collapse">
-								<li><a href="./form-basic.html">Basic Form</a></li>
-								<li><a href="./form-validation.html">Form Validation</a></li>
-								<li><a href="./form-step.html">Step Form</a></li>
-								<li><a href="./form-editor.html">Editor</a></li>
-								<li><a href="./form-picker.html">Picker</a></li>
-							</ul></li>
-						<li class="nav-label">Table</li>
-						<li><a class="has-arrow" href="javascript:void()"
-							aria-expanded="false"> <i class="icon-menu menu-icon"></i><span
-								class="nav-text">Table</span>
-						</a>
-							<ul aria-expanded="false" class="collapse">
-								<li><a href="./table-basic.html" aria-expanded="false">Basic
-										Table</a></li>
-								<li><a href="./table-datatable.html" aria-expanded="false">Data
-										Table</a></li>
-							</ul></li>
-						<li class="nav-label">Pages</li>
-						<li><a class="has-arrow" href="javascript:void()"
-							aria-expanded="false"> <i class="icon-notebook menu-icon"></i><span
-								class="nav-text">Pages</span>
-						</a>
-							<ul aria-expanded="false" class="collapse">
-								<li><a href="./page-login.html">Login</a></li>
-								<li><a href="./page-register.html">Register</a></li>
-								<li><a href="./page-lock.html">Lock Screen</a></li>
-								<li><a class="has-arrow" href="javascript:void()"
-									aria-expanded="false">Error</a>
-									<ul aria-expanded="false" class="collapse">
-										<li><a href="./page-error-404.html">Error 404</a></li>
-										<li><a href="./page-error-403.html">Error 403</a></li>
-										<li><a href="./page-error-400.html">Error 400</a></li>
-										<li><a href="./page-error-500.html">Error 500</a></li>
-										<li><a href="./page-error-503.html">Error 503</a></li>
-									</ul></li>
-							</ul></li>
-					</ul>
-				</div>
-				<div class="slimScrollBar"
-					style="background: transparent; width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 1068px;"></div>
-				<div class="slimScrollRail"
-					style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
-			</div>
-		</div>
-		<!--**********************************
+      <div class="nk-sidebar">
+         <div class="nk-nav-scroll">
+            <ul class="metismenu" id="menu">
+               <li class="nav-label">Dashboard</li>
+               <li><a href="./index.jsp"
+                  > <i class="icon-grid menu-icon"></i><span
+                     class="nav-text">메인페이지</span>
+               </a>
+               </li>
+               <li><a href="./user-import.jsp"
+                  > <i class="icon-notebook menu-icon"></i><span
+                     class="nav-text">유저정보입력</span>
+               </a>
+               </li>
+               <li><a href="./page-2.jsp"
+                  > <i class="icon-note menu-icon"></i><span
+                     class="nav-text">식단입력페이지</span>
+               </a>
+               </li>                              
+               <li><a href="./page-3.jsp"
+                  > <i class="icon-badge menu-icon"></i><span
+                     class="nav-text">식단추천페이지</span>
+               </a>
+               </li>
+               <li><a href="./page4.jsp"
+                  > <i class="icon-badge menu-icon"></i><span
+                     class="nav-text">운동추천페이지</span>
+               </a>
+               </li>
+               <li><a href="./Bord.jsp"
+                  > <i class="icon-badge menu-icon"></i><span
+                     class="nav-text">게시판</span>
+               </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <!--**********************************
             Sidebar end
         ***********************************-->
 
-		<!--**********************************
+      <!--**********************************
             Content body start
         ***********************************-->
-		<div class="content-body">
+		<div class="content-body" >
 
-			<!-- 날짜 태그 -->
-			<div class="row">
+			<div class="container-fluid mt-3">
+				<div class="row">
 
-				<div class="col-lg-3 col-sm-6">
-
-
-					<div class="card gradient-2">
-
-						<div class="card-body">
-							<!-- 하루전으로 가는 태그 -->
+					<div class="col-lg-3 col-sm-6">
+						<div class="card gradient-3">
+							<div class="card-body">
+								<!-- 하루전으로 가는 태그 -->
 							<div id="backbtn">
 								<a data-slide="prev" href="#" class="carousel-control-prev"><span
 									class="carousel-control-prev-icon" id="BackClick"
@@ -400,47 +297,43 @@
 								<div id=today style="text-align: center;"></div>
 
 							</div>
-
 							<!-- 하루 후로 가는 태그 -->
 							<a data-slide="next" href="#"
 								class="carousel-control-next"><span
 								class="carousel-control-next-icon" id="FrontClick"
-								></span> <span class="sr-only">하루후</span></a> <span
-								class="float-right display-5 opacity-5"><i
-								class="fa fa-heart"></i></span>
+								></span> <span class="sr-only">하루후</span></a>
+
+							</div>
 						</div>
 					</div>
-
 				</div>
-			</div>
-
-			<div class="go">
-				<button type="button" class="btn mb-1 btn-success" onclick="checking()">
-					Seccess <span class="btn-icon-right"><i class="fa fa-check"></i></span>
+		
+		<div class="row">
+					<div class="col-lg-12" style="width:60%;">
+						<div class="card" style="width:100%;">
+						<!-- 조회하기 -->
+			<!-- <div class="go">
+				<button type="button" class="btn mb-1 btn-success" onclick="checking()"style="margin-left:88%;
+				margin-top:2rem;position:absolute;">
+					조회하기 <span class="btn-icon-right"><i class="fa fa-check"></i></span>
 				</button>
-			</div>
-			<div class="card">
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table table-bordered table-striped verticle-middle">
-
-							<!-- 칼로리 그래프 태그 -->
-							<tr>
-								<td id="bp">칼로리</td>
-								<td id="green">
-									<div class="progress" style="height: 10px">
-										<div class="progress-bar gradient-1" id=calcart style="width: 0%;"
-											role="progressbar">
-											<span class="sr-only">50% Complete</span>
-										</div>
-									</div>
-								</td>
-							</tbody>
-						</table>
+			</div> -->
+							<div class="card-body" style="margin-left: 100px;">
+								<div class="col-md-12">
+                    
+                        
+		                            <h4 class="card-title" style="font-size: 20px;">칼로리 kcal</h4>
+		                            <div class="k-bar" style="height: 37px;">
+		                                <div class="progress-bar bg-info progress-bar-striped" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;" role="progressbar"><span class="sr-only">85% Complete (success)</span>
+		                                <span style="left: 20%;" style="font-size: 20px;">kal</span>
+		                                </div>
+		                            </div>
+                       
+                				</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-
 
 
 
@@ -448,108 +341,154 @@
 			<!-- 도넛 그래프 태그 -->
 
 
-		
-			<div class="pie-chart1" id="carcart">
-				<span class="center" >탄수화물</span>
+      
+         <div class="pie-chart1" id="carcart" style="background:conic-gradient(#eaa18a 0% 45%, #DCDCDC 45% 100%)">
+            <span class="center" ><span class="center3">탄수화물</span><span class="center2">수치</span></span>
 
-			</div>
-
-
-			<div class="pie-chart1" id="procart">
-				<span class="center" >단백질</span>
-			</div>
+         </div>
 
 
-			<div class="pie-chart1" id="fatcart">
-				<span class="center" >지방</span>
-			</div>
+         <div class="pie-chart1" id="procart"  style="background:conic-gradient(#7fc638 0% 45%, #DCDCDC 45% 100%)">
+            <span class="center" ><span class="center3">단백질</span><span class="center2">수치</span></span>
+         </div>
+
+
+         <div class="pie-chart1" id="fatcart" style="background:conic-gradient(#ADEB00 0% 45%, #DCDCDC 45% 100%)">
+            <span class="center" ><span class="center3">지방</span><span class="center2">수치</span></span>
+         </div>
 
 
 
-			<script>
-	 	$(".pie-chart1").css({
-	 	   "background":"conic-gradient(#ADEB00 0% 0%, #DCDCDC 0% 100%)"
-								});
-			
-		</script>
+
+ 
 
 
 			<!-- 식단 입력 태그 -->
-			<div class="card">
+			<div class="card"style="width: 100%;">
 				<div class="card-body">
-					<h4 class="card-title">식단입력</h4>
-					<div class="table-responsive">
-						<table class="table table-bordered table-striped verticle-middle">
-
-							<tbody>
-								<tr>
-									<td>아침</td>
-
-									<td><button type="button"
-											class="btn mb-1 btn-outline-warning">아침 입력</button></td>
-									<td></td>
-									<td><button type="button"
-											class="btn mb-1 btn-outline-primary">저장</button></td>
-									<td id="morning"></td>
+					<h4 class="card-title">식단 입력</h4>
+                    <div class="put">
+                    <div class="custom-media-object-2">
+                        <div class="media border-bottom-1 p-t-15">
+		           
+                              <div class="media-body">
+                                  <div class="row">
+                                  <!-- 시작 -->
+                                  <div class="table-responsive">
+                                       <table
+                                          class="table header-border table-hover verticle-middle">
+                                          <tbody>
+                                             <tr>
+                                                
+                                                <td><div class="col-lg-12"style="margin-left: 65px;"><h4>아침</h4></div></td>
+										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">아침 입력</button></div></td>
+										
+										<td id="morning"></td>
 									<td>
-										<button type="button" id="morNutInfo"
-											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
+										<button type="button" id="morNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
-									<td><span><a href="#" data-toggle="tooltip"
-											data-placement="top" title="Edit"><i
-												class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-											data-toggle="tooltip" data-placement="top" title="Close"><i
-												class="fa fa-close color-danger"></i></a></span></td>
-								</tr>
-								<tr>
-									<td>점심</td>
-
-									<td><button type="button"
-											class="btn mb-1 btn-outline-warning">점심 입력</button></td>
-									<td></td>
-									<td><button type="button"
-											class="btn mb-1 btn-outline-primary">저장</button></td>
-									<td id="lunch"></td>
+                                             </tr>
+                                             <tr>
+                                                
+                                                <td><div class="col-lg-12" style="margin-left: 65px;" style="margin-top: 2.5rem;"><h4>점심</h4></div></td>
+										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">점심 입력</button></div></td>
+										
+										<td id="morning"></td>
 									<td>
-										<button type="button" id="lunNutInfo"
-											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
+										<button type="button" id="morNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
-									<td><span><a href="#" data-toggle="tooltip"
-											data-placement="top" title="Edit"><i
-												class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-											data-toggle="tooltip" data-placement="top" title="Close"><i
-												class="fa fa-close color-danger"></i></a></span></td>
-								</tr>
-								<tr>
-									<td>저녁</td>
-
-									<td><button type="button"
-											class="btn mb-1 btn-outline-warning">저녁 입력</button></td>
-									<td></td>
-									<td><button type="button"
-											class="btn mb-1 btn-outline-primary">저장</button></td>
-									<td id="dinner"></td>
+                                             </tr>
+                                             <tr>
+                                                
+                                                <td><div class="col-lg-12" style="margin-left: 65px;" style="margin-top: 2.5rem;"><h4>저녁</h4></div></td>
+										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">저녁 입력</button></div></td>
+										<td id="morning"></td>
 									<td>
-										<button type="button" id="dinNutInfo"
-											class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
+										<button type="button" id="morNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
-									<td><span><a href="#" data-toggle="tooltip"
-											data-placement="top" title="Edit"><i
-												class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-											data-toggle="tooltip" data-placement="top" title="Close"><i
-												class="fa fa-close color-danger"></i></a></span></td>
+                                             </tr>
+                                             
+                                             
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                  <!-- 끝 -->
+                                            
+                              <!--           <table>
+										<tr>
+										<td><div class="col-lg-12" style="margin-left: 55px; margin-top: 2.5rem;"><h4>아침</h4></div></td>
+										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">아침 입력</button></div></td>
+										
+										<td id="morning"></td>
+									<td>
+										<button type="button" id="morNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
+									</td>
+									
 								</tr>
-							</tbody>
-						</table>
+										</table>
+										
+							   </div>
+                             </div>
+                          </div>
+                          
+                          <div class="media border-bottom-1 p-t-15">
+		           
+                              <div class="media-body">
+                                  <div class="row">
+                                            
+                                        <table>
+										<tr>
+										<td><div class="col-lg-12" style="margin-left: 55px;" style="margin-top: 2.5rem;"><h4>점심</h4></div></td>
+										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">점심 입력</button></div></td>
+										
+										<td id="morning"></td>
+									<td>
+										<button type="button" id="morNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
+									</td>
+									
+								</tr>
+										</table>
+										
+							   </div>
+                             </div>
+                          </div>
+                          
+                          <div class="media border-bottom-1 p-t-15">
+		           
+                              <div class="media-body">
+                                  <div class="row">
+                                            
+                                        <table>
+										<tr>
+										<td><div class="col-lg-12" style="margin-left: 55px;" style="margin-top: 2.5rem;"><h4>저녁</h4></div></td>
+										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">저녁 입력</button></div></td>
+										<td id="morning"></td>
+									<td>
+										<button type="button" id="morNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
+									</td>
+									
+								</tr>
+										</table>
+										
+							   </div>
+                             </div>
+                          </div>
+ -->
+							
+							
 					</div>
-				</div>
+				</div> 
+
+				
 			</div>
-
-
-
-
-			<!-- #/ container -->
-
+		</div>
+		<!-- #/ container -->
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
 			<!--**********************************
             Content body end
         ***********************************-->
@@ -561,8 +500,7 @@
 			<div class="footer">
 				<div class="copyright">
 					<p>
-						Copyright © Designed &amp; Developed by <a
-							href="https://themeforest.net/user/quixlab">Quixlab</a> 2018
+						Copyright © Designed &amp; Developed by <a>지금 우리 학원은</a> 2022
 					</p>
 				</div>
 			</div>
@@ -571,7 +509,7 @@
             Footer end
         ***********************************-->
 
-		</div>
+		
 		<!--**********************************
         Main wrapper end
     ***********************************-->
@@ -618,7 +556,7 @@
 			 $(".modal").fadeIn();
 			 }); */
 			
-			$(".btn-outline-warning").click(function() {
+			$(".btn-outline-success").click(function() {
 				mealTime = this.innerText;
 	
 				$("#modal").fadeIn();
@@ -674,7 +612,7 @@
 
 								$("#chart")
 										.append(
-												"<tr><td> 식품명 </td><td> 열량 </td><td> 탄수화물 </td><td> 단백질 </td><td> 지방 </td><td> 선택 </td></tr>");
+												"<tr><td > 식품명 </td><td> 열량 </td><td> 탄수화물 </td><td> 단백질 </td><td> 지방 </td><td> 선택 </td></tr>");
 								for (let i = 0; i <= Array.length; i++) {
 
 									if (Array[i].NUTR_CONT1 != ""
@@ -706,11 +644,11 @@
 												+ "</td>"
 												+ "<td id=fat" + i + ">"
 												+ fat
-												+ "</td><td><button id=select onclick='Funcinput("
+												+ "</td><td><button class='btn mb-1 btn-rounded btn-outline-dark' onclick='Funcinput("
 												+ i
 												+ ")'> 선택 </button></td></tr>"
 
-									
+												$("td").css({"width":"14%"})
 
 										$("#chart").append(str);
 										
@@ -778,7 +716,7 @@
 		<script type="text/javascript">
 
 			$(".btn-outline-primary").on("click",function() {
-				console.log("이건 " + date);
+			
 						let meal = null;
 
 						if (mealTime == "아침 입력") {
@@ -789,17 +727,17 @@
 							meal = 3;
 						}
 												
-						location.href ="InsertServiceCon?id="+<%if(info!=null){%><%=info.getId()%><%}%>+"&meal="+meal+"&fname="+fname+"&date="+date+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat;
+						location.href ="InsertServiceCon?id=123">+"&fname="+fname+"&date="+date+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat;
 						});
 		</script>
 
 		<!-- 날짜 바꾸기 -->
 
 		<script type="text/javascript">
-		let nomalWeigth = 0;
-		let act= 0;
-		let id = <%if(info!=null){%><%=info.getId()%><%}%>
-		<%if(ckdto!=null){%>let nomalWeigth = (<%=ckdto.getHeight()%>-100)*0.9
+		
+		let id = 123
+		let nomalWeigth = (73-100)*0.9
+		<%if(ckdto!=null){%>
 		let act = <%if(ckdto.getAct()==1){%> 25
 		<%}else if(ckdto.getAct()==2){%> 35		
 		<%}else if(ckdto.getAct()==3){%>40<%}}%>
