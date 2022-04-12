@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MenuDAO {
 	
@@ -99,7 +100,10 @@ public class MenuDAO {
 		      } return cnt;
 		   }
 	   // 식단 가져오기
-	   public MenuDTO  foodget(MenuDTO dto) {
+	   
+	   public ArrayList<MenuDTO> foodget(MenuDTO dto) {
+		   
+		   ArrayList<MenuDTO> flist = new ArrayList<MenuDTO>();
 		    db_conn();
 		      try {
 		         String sql = "select * from MENU where id= ? and dietday = ? ";
@@ -114,7 +118,7 @@ public class MenuDAO {
 		        rs = psmt.executeQuery();
 		        
 		        // rs.next() : 다음 행에 값이 있는지(t) 없는지(f) boolean타입으로 반환
-		        if(rs.next()) {
+		        while(rs.next()) {
 		        	// 실행문장 실행 = 값이 있다 = 로그인성공
 		        	String id1 = rs.getString(1);
 		        	int meal= rs.getInt(2);
@@ -128,13 +132,16 @@ public class MenuDAO {
 		        	
 		        	// info = 로그인한 사람의 정보를 담고있는 memberDTO형태의 객체
 		        	info = new MenuDTO(id1, meal, Dietday, Fname, cal, pro, car, fat);
+		        	
+		        	flist.add(info);
+		        	
 		        }
 		      } catch (Exception e) {
 		         e.printStackTrace();
 		         // 이거 적어야 어디서 오류 났는지 알려주니까 꼭 적어야함! 
 		      } finally {
 		    	  db_close();
-		      } return info;
+		      } return flist;
 	   }
 	
 }

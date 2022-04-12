@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,11 +37,16 @@ public class SelectFoodSerivceCon extends HttpServlet {
 
 		// 4. join메소드 호출
 		MenuDAO dao = new MenuDAO();
-		MenuDTO info = dao.foodget(dto);
+		ArrayList<MenuDTO> info = dao.foodget(dto);
 		
-
+		for(int i=0; i<info.size(); i++) {
+			System.out.println(info.get(i).getFname());
+		}
+		
 		// 5. 실행 결과값에 따라서 페이지 이동
 		// cnt가 0이면 변화가 없다는 뜻
+		response.setContentType("text/plain; charset=utf-8;");
+		
 		if (info!=null) {
 			System.out.println("식단 가져오기 성공");
 			Gson gson = new Gson(); 
@@ -53,7 +59,7 @@ public class SelectFoodSerivceCon extends HttpServlet {
 			// 한글을 보낼때는 URLEncoder.encode(인코딩 할 값, "인코딩 방식")
 			/* response.sendRedirect("./page-2.jsp"); */
 		} else {
-			System.out.println("식단 가져기 실패");
+			System.out.println("식단 가져오기 실패");
 			response.sendRedirect("./page-2.jsp");
 		}
 

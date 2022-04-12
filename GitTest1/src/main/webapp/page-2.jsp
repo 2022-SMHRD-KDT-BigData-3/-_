@@ -128,14 +128,29 @@
 		</div>
 	</div>
 
-	<div id="modalInfo" class="modal" width="400px">
+	<div id="morModal" class="modal" width="400px">
 		<div class="modal-content">
-			<input id="foodName" type="text" class="form-control"
-				placeholder="Search">
-			<button class="search" onclick="getData()" style="margin-left:40%;">선택</button>
 			<button class="close">닫기</button>
-			<table border="1" id="chart">
-
+			<table border="1" id="morInfo" class="modalInfo">
+			<tr><th> 식품명 </th><th> 열량 </th><th> 탄수화물 </th><th> 단백질 </th><th> 지방 </th></tr>	
+			</table>
+		</div>
+	</div>
+	
+	<div id="lunModal" class="modal" width="400px">
+		<div class="modal-content">
+			<button class="close">닫기</button>
+			<table border="1" id="lunInfo" class="modalInfo">
+			<tr><th> 식품명 </th><th> 열량 </th><th> 탄수화물 </th><th> 단백질 </th><th> 지방 </th></tr>	
+			</table>
+		</div>
+	</div>
+	
+	<div id="dinModal" class="modal" width="400px">
+		<div class="modal-content">
+			<button class="close">닫기</button>
+			<table border="1" id="dinInfo" class="modalInfo">
+			<tr><th> 식품명 </th><th> 열량 </th><th> 탄수화물 </th><th> 단백질 </th><th> 지방 </th></tr>
 			</table>
 		</div>
 	</div>
@@ -324,8 +339,8 @@
                         
 		                            <h4 class="card-title" style="font-size: 20px;">칼로리 kcal</h4>
 		                            <div class="k-bar" style="height: 37px;">
-		                                <div class="progress-bar bg-info progress-bar-striped" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;" role="progressbar"><span class="sr-only">85% Complete (success)</span>
-		                                <span style="left: 20%;" style="font-size: 20px;">kal</span>
+		                                <div class="progress-bar bg-info progress-bar-striped" id="calcart"><span class="sr-only">85% Complete (success)</span>
+		                                <span id="cardBar" style="left: 20%;" style="font-size: 20px;">kal</span>
 		                                </div>
 		                            </div>
                        
@@ -343,18 +358,18 @@
 
       
          <div class="pie-chart1" id="carcart" style="background:conic-gradient(#eaa18a 0% 45%, #DCDCDC 45% 100%)">
-            <span class="center" ><span class="center3">탄수화물</span><span class="center2">수치</span></span>
+            <span class="center"><span class="center3">탄수화물</span><span class="center2" id="carP">수치</span></span>
 
          </div>
 
 
          <div class="pie-chart1" id="procart"  style="background:conic-gradient(#7fc638 0% 45%, #DCDCDC 45% 100%)">
-            <span class="center" ><span class="center3">단백질</span><span class="center2">수치</span></span>
+            <span class="center" ><span class="center3">단백질</span><span class="center2" id="proP">수치</span></span>
          </div>
 
 
          <div class="pie-chart1" id="fatcart" style="background:conic-gradient(#ADEB00 0% 45%, #DCDCDC 45% 100%)">
-            <span class="center" ><span class="center3">지방</span><span class="center2">수치</span></span>
+            <span class="center" ><span class="center3">지방</span><span class="center2" id="fatP">수치</span></span>
          </div>
 
 
@@ -392,19 +407,18 @@
                                                 
                                                 <td><div class="col-lg-12" style="margin-left: 65px;" style="margin-top: 2.5rem;"><h4>점심</h4></div></td>
 										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">점심 입력</button></div></td>
-										
-										<td id="morning"></td>
+										<td id="lunch"></td>
 									<td>
-										<button type="button" id="morNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
+										<button type="button" id="lunNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
                                              </tr>
                                              <tr>
                                                 
                                                 <td><div class="col-lg-12" style="margin-left: 65px;" style="margin-top: 2.5rem;"><h4>저녁</h4></div></td>
 										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">저녁 입력</button></div></td>
-										<td id="morning"></td>
+										<td id="dinner"></td>
 									<td>
-										<button type="button" id="morNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
+										<button type="button" id="dinNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
 									</td>
                                              </tr>
                                              
@@ -548,6 +562,11 @@
 			let pro = null;
 			let car = null;
 			let fat = null;
+			let fnameS = null;
+			let calS = null;
+			let proS = null;
+			let carS = null;
+			let fatS = null;
 			let input_data = {};
 			
 			/*         $(".choice").on("click", function(){
@@ -564,28 +583,28 @@
 			});
 
 			$(".close").click(function() {
-				$("#modal").fadeOut();
+				$(".modal").fadeOut();
 			});
 
 			$("#morNutInfo").click(function() {
-				$("#modalInfo").fadeIn();
+				$("#morModal").fadeIn();	
 				let morFood_data = {};
 
 			});
 
 			$("#lunNutInfo").click(function() {
-				$("#modalInfo").fadeIn();
+				$("#lunModal").fadeIn();
 				let lunFood_data = {};
 			});
 
 			$("#dinNutInfo").click(function() {
-				$("#modalInfo").fadeIn();
+				$("#dinModal").fadeIn();
 				let dinFood_data = {};
 			});
 
-			$(".close").click(function() {
+			$(".closeInfo").click(function() {
 
-				$(".modal").fadeOut();
+				$(".modalInfo").fadeOut();
 
 			});
 			
@@ -602,7 +621,7 @@
 							headers : {
 								'X-Requested-With' : 'XMLHttpRequest'
 							},
-							url : "https://cors-anywhere.herokuapp.com/http://openapi.foodsafetykorea.go.kr/api/6c16719532f64640814f/I2790/json/1/1000/DESC_KOR="
+							url : "https://cors-anywhere.herokuapp.com/http://openapi.foodsafetykorea.go.kr/api/6c16719532f64640814f/I2790/json/1/500/DESC_KOR="
 									+ foodName,
 							type : "GET",
 							success : function(data) {
@@ -612,7 +631,7 @@
 
 								$("#chart")
 										.append(
-												"<tr><td > 식품명 </td><td> 열량 </td><td> 탄수화물 </td><td> 단백질 </td><td> 지방 </td><td> 선택 </td></tr>");
+												"<tr><td> 식품명 </td><td> 열량 </td><td> 탄수화물 </td><td> 단백질 </td><td> 지방 </td><td> 선택 </td></tr>");
 								for (let i = 0; i <= Array.length; i++) {
 
 									if (Array[i].NUTR_CONT1 != ""
@@ -644,13 +663,14 @@
 												+ "</td>"
 												+ "<td id=fat" + i + ">"
 												+ fat
-												+ "</td><td><button class='btn mb-1 btn-rounded btn-outline-dark' onclick='Funcinput("
+												+ "</td><td><button id=select onclick='Funcinput("
 												+ i
 												+ ")'> 선택 </button></td></tr>"
 
-												$("td").css({"width":"14%"})
+									
 
 										$("#chart").append(str);
+										$(".modalInfo").fadeOut();
 										
 									} // if문끝
 
@@ -678,125 +698,241 @@
 				let fatSec = document.getElementById("fat" + i).innerText;
 
 				if (mealTime == "아침 입력") {
-					let td = document.getElementById("morning");
-					mor = td.innerText;
-
-				
-					if (mor == "") {
-						td.innerText = fnameSec;
-					} else {
-						td.innerText = mor + ", " + fnameSec;
-					}
-
-				} else if (mealTime == "점심 입력") {
-					let td = document.getElementById("lunch");
-					lun = td.innerText;
 					
-					if (lun == "") {
-						td.innerText = fnameSec;
-					} else {
-						td.innerText = lun + ", " + fnameSec;
+					meal = 1;
+					location.href ="InsertServiceCon?id="+<%=info.getId()%>+"&meal="+meal+"&fname="+fnameSec+"&date="+date+"&cal="+calSec+"&pro="+proSec+"&car="+carSec+"&fat="+fatSec;
 					}
-				} else {
-					let td = document.getElementById("dinner");
-					din = td.innerText;
-			
-					if (din == "") {
-						td.innerText = fnameSec;
-					} else {
-						td.innerText = din + ", " + fnameSec;
-					}
-				}
+				
+					else if (mealTime == "점심 입력") {
+					
+					meal = 2;
+					location.href ="InsertServiceCon?id="+<%=info.getId()%>+"&meal="+meal+"&fname="+fnameSec+"&date="+date+"&cal="+calSec+"&pro="+proSec+"&car="+carSec+"&fat="+fatSec;
+					} 
+				
+					else {
 
+					meal = 3;
+					location.href ="InsertServiceCon?id="+<%=info.getId()%>+"&meal="+meal+"&fname="+fnameSec+"&date="+date+"&cal="+calSec+"&pro="+proSec+"&car="+carSec+"&fat="+fatSec;		
+				}
 			}
 		</script>
 
 		<!-- 정보 DB 저장하기 -->
 
-		<script type="text/javascript">
-
-			$(".btn-outline-primary").on("click",function() {
-			
-						let meal = null;
-
-						if (mealTime == "아침 입력") {
-							meal = 1;
-						} else if (mealTime == "점심 입력") {
-							meal = 2;
-						} else if (mealTime == "저녁 입력") {
-							meal = 3;
-						}
-												
-						location.href ="InsertServiceCon?id=123">+"&fname="+fname+"&date="+date+"&cal="+cal+"&pro="+pro+"&car="+car+"&fat="+fat;
-						});
-		</script>
+		
 
 		<!-- 날짜 바꾸기 -->
 
 		<script type="text/javascript">
-		
-		let id = 123
-		let nomalWeigth = (73-100)*0.9
-		<%if(ckdto!=null){%>
+		let id = <%=info.getId()%>
+		let nomalWeigth = (<%=ckdto.getHeight()%>-100)*0.9
 		let act = <%if(ckdto.getAct()==1){%> 25
 		<%}else if(ckdto.getAct()==2){%> 35		
-		<%}else if(ckdto.getAct()==3){%>40<%}}%>
+		<%}else if(ckdto.getAct()==3){%>40<%}%>
 		let enCal = nomalWeigth*act;
 		let enCar = enCal*0.6;
 		let enPro = enCal*0.135;
-		let enFat = enCal*0.225;
-		function checking(){
-	
-			$.ajax({
-				url : "SelectFoodSerivceCon",
-				data : "id="+id+"&date="+date,
-				dataType  : "json",
-				success: function(result){
+		let enFat = enCal*0.225;		
 		
-				let cal = result["cal"];
-				let pro = result["pro"];
-				let car = result["car"];
-				let fat = result["fat"];
-			
-				let pcal = enCal%cal;
-				let ppro = enPro%pro;
-				let pcar = enCar%car;
-				let pfat = enFat%fat;
-
-				$("#calcart").css("width",pcal);
-				$("#procart").css({
-				 	   "background":"conic-gradient(#ADEB00 0% "+ppro+"%, #DCDCDC 0% 100%)"
-				});
-				$("#carcart").css({
-				 	   "background":"conic-gradient(#ADEB00 0% "+pcar+"%, #DCDCDC 0% 100%)"
-				});
-				$("#fatcart").css({
-				 	   "background":"conic-gradient(#ADEB00 0% "+pfat+"%, #DCDCDC 0% 100%)"
-				});
-
-				},
-				error : function(){
-					alert("통신 실패");
-				}
-			});	
-		}
 		
 	$("#BackClick").on("click", function() {
+				
 				day = day - 1;
 		
 				date = year + "년" + month + "월" + day + "일";
 				
+				let tdm = document.getElementById("morning");
+				let tdl = document.getElementById("lunch");
+				let tdd = document.getElementById("dinner");
+				
+				tdm.innerText = "";
+				tdl.innerText = "";
+				tdd.innerText = "";
+				
+				let tdim = document.getElementById("morInfo");
+				let tdil = document.getElementById("lunInfo");
+				let tdid = document.getElementById("dinInfo");
+				
+				tdim.innerHTML = null;
+				tdil.innerHTML = null;
+				tdid.innerHTML = null;
+				
+				let tdiC = document.getElementById("carP");
+				let tdiP = document.getElementById("proP");
+				let tdiF = document.getElementById("fatP");
+				
+				tdiC.innerText = "";
+				tdiP.innerText = "";
+				tdiF.innerText = "";
+				
+				$(".modalInfo")
+				.append("<tr><th> 식품명 </th><th> 열량 </th><th> 탄수화물 </th><th> 단백질 </th><th> 지방 </th></tr>");
+				
+				getInfo(date);
+				
 				$("#today").text(date);
 
 				
 				
 			}); 
+		
 		$("#FrontClick").on("click", function() {
 				day = day + 1;
 				date = year + "년" + month + "월" + day + "일";
+				
+				let tdm = document.getElementById("morning");
+				let tdl = document.getElementById("lunch");
+				let tdd = document.getElementById("dinner");
+				
+				tdm.innerText = "";
+				tdl.innerText = "";
+				tdd.innerText = "";
+				
+				let tdim = document.getElementById("morInfo");
+				let tdil = document.getElementById("lunInfo");
+				let tdid = document.getElementById("dinInfo");
+				
+				tdim.innerHTML = "";
+				tdil.innerHTML = "";
+				tdid.innerHTML = "";
+				
+				let tdiC = document.getElementById("carP");
+				let tdiP = document.getElementById("proP");
+				let tdiF = document.getElementById("fatP");
+				
+				tdiC.innerText = "";
+				tdiP.innerText = "";
+				tdiF.innerText = "";
+				
+				$(".modalInfo")
+				.append("<tr><th> 식품명 </th><th> 열량 </th><th> 탄수화물 </th><th> 단백질 </th><th> 지방 </th></tr>");
+				
+				getInfo(date);
 				$("#today").text(date);
 	
 			}); 
+		
+		
+		
+		function getInfo(date){
+					
+					$.ajax({
+						url : "SelectFoodSerivceCon",
+						data : "id="+id+"&date="+date,
+						dataType : "json",
+						async:false, 
+						
+						success: function(result){
+						console.log(result);
+						
+						let cal = 0;
+						let pro = 0;
+						let car = 0;
+						let fat = 0;
+					
+						for(let a = 0; a < result.length; a++){
+							
+							let fnameS = result[a].fname;
+							let calS = result[a].cal;
+							let proS = result[a].pro;
+							let carS = result[a].car;
+							let fatS= result[a].fat;
+							let mealS = result[a].meal;
+							
+							cal += result[a].cal;
+							pro += result[a].pro;
+							car += result[a].car;
+							fat += result[a].fat;
+							
+							if(mealS == 1){
+								
+								let td = document.getElementById("morning");
+								mor = td.innerText;
+								
+								if (mor == "") {						
+									td.innerText = fnameS;
+								} else {
+									td.innerText = mor + ", " + fnameS;
+								}
+								
+								$("#morInfo")
+								.append("<tr><td>" + fnameS + "</td><td>" + calS + "</td><td>" + carS + "</td><td>" + proS + "</td><td>" + fatS + "</td></tr>");
+								
+							}else if(mealS == 2){
+								
+								let td = document.getElementById("lunch");
+								lun = td.innerText;
+								
+								if (lun == "") {						
+									td.innerText = fnameS;
+								} else {
+									td.innerText = lun + ", " + fnameS;
+								}
+								
+								$("#lunInfo")
+									.append("<tr><td>" + fnameS + "</td><td>" + calS + "</td><td>" + carS + "</td><td>" + proS + "</td><td>" + fatS + "</td></tr>");
+								
+							}else{
+								
+								let td = document.getElementById("dinner");
+								din = td.innerText;
+								
+								if (din == "") {						
+									td.innerText = fnameS;
+								} else {
+									td.innerText = din + ", " + fnameS;
+								}
+								
+								$("#dinInfo")
+								.append("<tr><td>" + fnameS + "</td><td>" + calS + "</td><td>" + carS + "</td><td>" + proS + "</td><td>" + fatS + "</td></tr>");
+							}
+						}
+						
+						let pcal = enCal%cal;
+						let ppro = enPro%pro;
+						let pcar = enCar%car;
+						let pfat = enFat%fat;
+						
+						if(result.length == 0){
+							pcal = 0;
+							ppro = 0;
+							pcar = 0;
+							pfat = 0;
+							
+						}
+						
+						let tdC = document.getElementById("carP");
+						let tdP = document.getElementById("proP");
+						let tdF = document.getElementById("fatP");
+						let tdB = document.getElementById("cardBar");
+						
+						tdC.innerText = car;
+						tdP.innerText = pro;
+						tdF.innerText = fat;
+						tdB.innerText = cal + "kcal";
+						
+						$("#calcart").css("width",pcal);
+						
+						$("#procart").css({
+						 	   "background":"conic-gradient(#ADEB00 0% "+ppro+"%, #DCDCDC 0% 100%)"
+						});
+						$("#carcart").css({
+						 	   "background":"conic-gradient(#ADEB00 0% "+pcar+"%, #DCDCDC 0% 100%)"
+						});
+						$("#fatcart").css({
+						 	   "background":"conic-gradient(#ADEB00 0% "+pfat+"%, #DCDCDC 0% 100%)"
+						});
+						
+						},
+						error : function(){
+							alert("통신 실패");
+						}
+					});	
+			}			
+		
+		$(document).ready(getInfo(date));
+		
+		
 		</script>
 	</div>
 </body>

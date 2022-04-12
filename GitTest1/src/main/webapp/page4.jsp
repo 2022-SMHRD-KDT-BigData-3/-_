@@ -347,8 +347,11 @@ CheckingDAO dao = new CheckingDAO();
 	<script>
 	
 	let num = 0;
+	
 	let a1 = document.querySelector('#health');
+	
 	const ding = " 질환 관련 운동";
+	const dingNo = "관련 질환이 없습니다";
 	
 	const v1 = document.querySelector('#v1');
 	const v2 = document.querySelector('#v2');
@@ -361,6 +364,7 @@ CheckingDAO dao = new CheckingDAO();
     let dingnosis3 = "";
     
     <%if (ckdto != null) {%>
+			
 			<% if(ckdto.getBlood()>140) {%>
 			dingnosis1 = "고혈압";
 			selectPlus();
@@ -397,6 +401,10 @@ CheckingDAO dao = new CheckingDAO();
 			}
 			<%}%>
 			
+			<%if((ckdto.getBlood()<140) && (ckdto.getBsugar()<100) && (ckdto.getWeigth() / (ckdto.getHeight()*ckdto.getHeight()/10000) < 30)){%>
+				a1.innerText = dingNo;
+			<%}%>
+			
 		<%}%>
 
     //iframe 추가하고 비디오 재생
@@ -431,7 +439,6 @@ CheckingDAO dao = new CheckingDAO();
         const ul = document.querySelector(".list");
         
         if(search.value.length == 0 && dingnosis1 == "" && dingnosis2 == "" && dingnosis3 == ""){
-            alert("검색어를 입력하세요.");
             search.focus();
             return false;
         } else if(search.value.length == 0) {
@@ -556,7 +563,7 @@ CheckingDAO dao = new CheckingDAO();
     			num=5;
     		}
     	}
-    
+    		
     	$(document).ready(ajaxRequest(dingnosis1, dingnosis2, dingnosis3));
 
 </script>

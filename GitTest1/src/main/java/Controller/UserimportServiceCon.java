@@ -44,7 +44,7 @@ public class UserimportServiceCon extends HttpServlet {
 	if(cnt > 0) {
           System.out.println("입력성공");
        
-          session.setAttribute("dto", dto);
+          session.setAttribute("ckdto", dto);
        }else {
           System.out.println("입력실패");
 
