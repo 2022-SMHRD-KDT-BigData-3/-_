@@ -556,6 +556,7 @@ clist = dao.graph(info.getId());
 		    
 		    <%for(int i=0;i<clist.size(); i++){%> 
 			arr[<%=i%>] = "<%=clist.get(i).getCheckday()%>"
+				<%System.out.print("체크데이 : "+clist.get(i).getCheckday());%>
 		    <%}%>
 		    
 		   

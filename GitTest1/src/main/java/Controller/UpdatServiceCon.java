@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Model.CheckingDAO;
+import Model.CheckingDTO;
 import Model.MemberDAO;
 import Model.MemberDTO;
 
@@ -28,8 +30,8 @@ System.out.println("UpdatServiceCon");
 		System.out.println("pw : "+pw);
 
 		MemberDTO info = new MemberDTO(user.getId(), pw,nick);
-		
 		MemberDAO dao = new MemberDAO();
+	      
 		int cnt = dao.updata(info);
 		
 		if(cnt>0) {
@@ -38,6 +40,8 @@ System.out.println("UpdatServiceCon");
 			// ->같은 session이름에 다른 값 담아주기(덮어쓰기)
 			
 			session.setAttribute("info", info);
+			
+			
 		}else {
 			System.out.println("회원정보수정 실패");
 		}
