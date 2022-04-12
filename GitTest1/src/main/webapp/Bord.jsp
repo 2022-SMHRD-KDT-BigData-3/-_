@@ -253,7 +253,7 @@
 														<tr>
 															<td id="num<%=i%>"></td>
 															<td id="title<%=i%>"></td>
-															<td id="date<%=i%>"></td>
+															<td id="data<%=i%>"></td>
 														</tr>
 														<%
 														}
@@ -268,24 +268,7 @@
 												<%if(info!=null){ %><button type="button" class="btn mb-1 btn-outline-warning">글쓰기</button><%}%> 
 											</a>
 											<hr>
-											<div class="button-group">
-												<div class="btn-toolbar">
-													<div class="btn-group mr-2 mb-2">
-														<button type="button" class="btn mb-1 btn-outline-success">1</button>
-														<button type="button" class="btn mb-1 btn-outline-success">2</button>
-														<button type="button" class="btn mb-1 btn-outline-success">3</button>
-														<button type="button" class="btn mb-1 btn-outline-success">4</button>
-													</div>
-													<div class="btn-group mr-2 mb-2">
-														<button type="button" class="btn mb-1 btn-outline-success">5</button>
-														<button type="button" class="btn mb-1 btn-outline-success">6</button>
-														<button type="button" class="btn mb-1 btn-outline-success">7</button>
-													</div>
-													<div class="btn-group mb-2">
-														<button type="button" class="btn mb-1 btn-outline-success">8</button>
-													</div>
-												</div>
-											</div>
+											
 
 										</div>
 									</div>
@@ -539,13 +522,13 @@
 
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#date' + i).text(data_list[i].date);
+				$('#data' + i).text(data_list[i].data);
 			}
 
 			for (var i = data_list.length; i < 10; i++) {//jsonArray타입의 객체의 갯수가 10개보다 적을경우 데이터가 들어가지 않는 행은 안보임 처리를 해준다
 				$('#num' + i).hide();
 				$('#title' + i).hide();
-				$('#date' + i).hide();
+				$('#data' + i).hide();
 			}
 
 		}
@@ -602,11 +585,11 @@
 			for (var i = 0; i < 10; i++) {
 				$('#num' + i).show();
 				$('#title' + i).show();
-				$('#date' + i).show();
+				$('#data' + i).show();
 
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#date' + i).text(data_list[i].date);
+				$('#data' + i).text(data_list[i].data);
 			}
 		}
 	</script>

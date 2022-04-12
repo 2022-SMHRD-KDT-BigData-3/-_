@@ -42,7 +42,7 @@ public class border extends HttpServlet {
 		for(int i=0;i<list.size();i++) {
 			json.addProperty("num", list.get(i).getNum());
 			json.addProperty("title", list.get(i).getTitle());
-			json.addProperty("data", list.get(i).getDate());
+			json.addProperty("data", list.get(i).getData());
 			
 			jarray.add(json);
 			json = new JsonObject();
