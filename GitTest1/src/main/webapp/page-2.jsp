@@ -94,7 +94,6 @@
 	left: 0px;
 	}
 
-
 </style>
 
 
@@ -112,9 +111,10 @@
 	CheckingDTO ckdto= null;
  ckdto = (CheckingDTO) session.getAttribute("ckdto");
 	MenuDTO select = (MenuDTO) session.getAttribute("select");
-
 	%>
+	
 	<div id="modal" class="modal" width="400px" style="text-align: center;">
+	
 		<div class="modal-content">
 			<input id="foodName" type="text" class="form-control"
 				placeholder="Search" style="margin-left:40.5%">
@@ -371,11 +371,6 @@
          </div>
 
 
-
-
- 
-
-
 			<!-- 식단 입력 태그 -->
 			<div class="card"style="width: 100%;">
 				<div class="card-body">
@@ -394,7 +389,7 @@
                                              <tr>
                                                 
                                                 <td><div class="col-lg-12"style="margin-left: 65px;"><h4>아침</h4></div></td>
-										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">아침 입력</button></div></td>
+										<td><div class="col-lg-12"><button type="button" id="mors" class="btn mb-1 btn-rounded btn-outline-success">아침 입력</button></div></td>
 										
 										<td id="morning"></td>
 									<td>
@@ -404,7 +399,7 @@
                                              <tr>
                                                 
                                                 <td><div class="col-lg-12" style="margin-left: 65px;" style="margin-top: 2.5rem;"><h4>점심</h4></div></td>
-										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">점심 입력</button></div></td>
+										<td><div class="col-lg-12"><button type="button" id="luns" class="btn mb-1 btn-rounded btn-outline-success">점심 입력</button></div></td>
 										<td id="lunch"></td>
 									<td>
 										<button type="button" id="lunNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
@@ -413,7 +408,7 @@
                                              <tr>
                                                 
                                                 <td><div class="col-lg-12" style="margin-left: 65px;" style="margin-top: 2.5rem;"><h4>저녁</h4></div></td>
-										<td><div class="col-lg-12"><button type="button"class="btn mb-1 btn-rounded btn-outline-success">저녁 입력</button></div></td>
+										<td><div class="col-lg-12"><button type="button" id="dins" class="btn mb-1 btn-rounded btn-outline-success">저녁 입력</button></div></td>
 										<td id="dinner"></td>
 									<td>
 										<button type="button" id="dinNutInfo" class="btn mb-1 btn-rounded btn-outline-success">영양정보</button>
@@ -573,12 +568,20 @@
 			 $(".modal").fadeIn();
 			 }); */
 			
-			$(".btn-outline-success").click(function() {
+			$("#mors").click(function() {
 				mealTime = this.innerText;
-	
 				$("#modal").fadeIn();
-
 			});
+			 
+			$("#luns").click(function() {
+					mealTime = this.innerText;
+					$("#modal").fadeIn();
+				});
+			 
+			$("#dins").click(function() {
+					mealTime = this.innerText;
+					$("#modal").fadeIn();
+				});
 
 			$(".close").click(function() {
 				$(".modal").fadeOut();

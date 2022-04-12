@@ -367,7 +367,7 @@ CheckingDAO dao = new CheckingDAO();
     
     <%if (ckdto != null) {%>
 			
-			<% if(ckdto.getBlood()>140) {%>
+			<% if(ckdto.getBlood()>=140) {%>
 			dingnosis1 = "고혈압";
 			selectPlus();
 			
@@ -376,7 +376,7 @@ CheckingDAO dao = new CheckingDAO();
 				
 			<%}%>
 			
-			<%if(ckdto.getBsugar()>100) {%>
+			<%if(ckdto.getBsugar()>=100) {%>
 			dingnosis2 = "당뇨";
 			selectPlus();
 			console.log(dingnosis2);
@@ -389,7 +389,7 @@ CheckingDAO dao = new CheckingDAO();
 			
 			<%}%>
 			
-			<%if((ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000) > 30)) {%>
+			<%if((ckdto.getWeigth()/(ckdto.getHeight()*ckdto.getHeight()/10000) >= 30)) {%>
 			dingnosis3 = "비만";
 			selectPlus();
 			console.log(dingnosis3);
