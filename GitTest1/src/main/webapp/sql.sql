@@ -2,7 +2,9 @@ drop table member;
 drop table checking;
 drop table menu;
 drop table food_rec;
-
+drop table board;
+select * from board;
+insert into bord values(2,'안녕하세요','선생님');
 select * from member;
 select * from checking;
 select * from MENU;
@@ -58,7 +60,7 @@ fat number(38, 15),
 sug number(38, 16)
 constraint food_rec_fname primary key(seq)
 );
-create table bord(
+create table board(
 	num number(20),
 	title varchar2(100),
 	data varchar2(4000)

@@ -46,14 +46,7 @@
 <body>
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
-	CheckingDTO ckdto = (CheckingDTO) session.getAttribute("ckdto");
 
-	ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
-	CheckingDAO dao = new CheckingDAO();
-	if (info != null) {
-		clist = dao.graph(info.getId());
-
-	}
 	%>
 	<!--*******************
         Preloader start
@@ -237,34 +230,30 @@
                                 <div class="email-right-box">
 
                                     <div class="compose-content mt-5">
-                                        <form action="#">
+                                        <form action="borderinsert" method="post">
                                             <div class="form-group">
-                                                <input type="text" class="form-control bg-transparent" placeholder=" To">
+                                                <input type="text" class="form-control bg-transparent" placeholder=" Subject" name="title">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control bg-transparent" placeholder=" Subject">
+                                                <input class="textarea_editor form-control bg-light" rows="15" placeholder="Enter text ..." name="data">
                                             </div>
-                                            <div class="form-group">
-                                                <textarea class="textarea_editor form-control bg-light" rows="15" placeholder="Enter text ..."></textarea>
-                                            </div>
-                                        </form>
-                                        <h5 class="m-b-20"><i class="fa fa-paperclip m-r-5 f-s-18"></i> Attatchment</h5>
-                                        <form action="#" class="dropzone">
+                                        <h5 class="m-b-20"><i class="fa fa-paperclip m-r-5 f-s-18"></i>첨부파일</h5>
                                             <div class="form-group">
                                                 <div class="fallback">
                                                     <input class="l-border-1" name="file" type="file" multiple="multiple">
                                                 </div>
                                             </div>
-                                        </form>
+                                       
                                     </div>
                                     <div class="text-left m-t-15">
                                     	<a href="Bord.jsp">
 
-                                        <button class="btn btn-success m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button"><i class="fa fa-paper-plane m-r-5"></i> Send</button>
+                                        <input class="btn btn-success m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="submit"><i class="fa fa-paper-plane m-r-5"></i> Send</button>
                                         </a>
                                         <a href="BordInsert.jsp">
                                         <button class="btn-warning m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button"><i class="fa fa-paper-plane m-r-5"></i> Discard</button>
-                                        </a>
+                                        </a> 
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -584,6 +573,9 @@
 				$('#date' + i).text(data_list[i].date);
 			}
 		}
+
+	
+
 	</script>
 
 </body>

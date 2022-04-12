@@ -6,17 +6,17 @@ public class bordDTO {
 	
 
 	private String title;
-	private String date;
+	private String data;
 	public bordDTO(String title, String date) {
 		super();
 		this.title = title;
-		this.date = date;
+		this.data = data;
 	}
-	public bordDTO(int num, String title, String date) {
+	public bordDTO(int num, String title, String data) {
 		super();
 		this.num = num;
 		this.title = title;
-		this.date = date;
+		this.data = data;
 	}
 
 	public int getNum() {
@@ -35,12 +35,12 @@ public class bordDTO {
 		this.title = title;
 	}
 
-	public String getDate() {
-		return date;
+	public String getData() {
+		return data;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDate(String data) {
+		this.data = data;
 	}
 	
 	

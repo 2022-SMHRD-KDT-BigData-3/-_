@@ -14,15 +14,21 @@ import Model.bordDTO;
 public class borderinsert extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		int num = Integer.parseInt(request.getParameter("num"));
+		System.out.println("[borderinsert]");
+
+		request.setCharacterEncoding("UTF-8");
+		
 		String title = request.getParameter("title");
 		String data = request.getParameter("data");
+		
+		System.out.println("title :"+title);
+		System.out.println("data : "+data);
 		
 		bordDTO dto = new bordDTO(title, data);
 		
 		bordDAO dao = new bordDAO();
 		int cnt = dao.insert(dto);
+		
 		if (cnt > 0) {
 			System.out.println("게시글 입력 성공");
 

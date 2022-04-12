@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Quixlab - Bootstrap Admin Dashboard Template by
 	Themefisher.com</title>
@@ -46,14 +46,7 @@
 <body>
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
-	CheckingDTO ckdto = (CheckingDTO) session.getAttribute("ckdto");
 
-	ArrayList<CheckingDTO> clist = new ArrayList<CheckingDTO>();
-	CheckingDAO dao = new CheckingDAO();
-	if (info != null) {
-		clist = dao.graph(info.getId());
-
-	}
 	%>
 	<!--*******************
         Preloader start
@@ -258,9 +251,9 @@
 														%>
 														<!-- 스크립틀릿 을 통한 table 생성 -->
 														<tr>
-															<td id="num<%=i%>">1</td>
-															<td id="title<%=i%>">어제 먹은 김치가 상했어요</td>
-															<td id="date<%=i%>">2022/05/11</td>
+															<td id="num<%=i%>"></td>
+															<td id="title<%=i%>"></td>
+															<td id="data<%=i%>"></td>
 														</tr>
 														<%
 														}
@@ -272,27 +265,10 @@
 												</table>
 											</div>
 											<br> <a href="BordInsert.jsp">
-												<button type="button" class="btn mb-1 btn-outline-warning">글쓰기</button>
+												<%if(info!=null){ %><button type="button" class="btn mb-1 btn-outline-warning">글쓰기</button><%}%> 
 											</a>
 											<hr>
-											<div class="button-group">
-												<div class="btn-toolbar">
-													<div class="btn-group mr-2 mb-2">
-														<button type="button" class="btn mb-1 btn-outline-success">1</button>
-														<button type="button" class="btn mb-1 btn-outline-success">2</button>
-														<button type="button" class="btn mb-1 btn-outline-success">3</button>
-														<button type="button" class="btn mb-1 btn-outline-success">4</button>
-													</div>
-													<div class="btn-group mr-2 mb-2">
-														<button type="button" class="btn mb-1 btn-outline-success">5</button>
-														<button type="button" class="btn mb-1 btn-outline-success">6</button>
-														<button type="button" class="btn mb-1 btn-outline-success">7</button>
-													</div>
-													<div class="btn-group mb-2">
-														<button type="button" class="btn mb-1 btn-outline-success">8</button>
-													</div>
-												</div>
-											</div>
+											
 
 										</div>
 									</div>
@@ -371,7 +347,7 @@
 	<!--  로그인 페이지 이동 실행 -->
 	<script type="text/javascript">
 		document.querySelector("#login").addEventListener("click", function() {
-			location.href = "page-login.jsp"
+			location.href = "index.jsp"
 		});
 	</script>
 	<!--  로그아웃 실행  -->
@@ -546,13 +522,13 @@
 
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#date' + i).text(data_list[i].date);
+				$('#data' + i).text(data_list[i].data);
 			}
 
 			for (var i = data_list.length; i < 10; i++) {//jsonArray타입의 객체의 갯수가 10개보다 적을경우 데이터가 들어가지 않는 행은 안보임 처리를 해준다
 				$('#num' + i).hide();
 				$('#title' + i).hide();
-				$('#date' + i).hide();
+				$('#data' + i).hide();
 			}
 
 		}
@@ -609,11 +585,11 @@
 			for (var i = 0; i < 10; i++) {
 				$('#num' + i).show();
 				$('#title' + i).show();
-				$('#date' + i).show();
+				$('#data' + i).show();
 
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#date' + i).text(data_list[i].date);
+				$('#data' + i).text(data_list[i].data);
 			}
 		}
 	</script>
