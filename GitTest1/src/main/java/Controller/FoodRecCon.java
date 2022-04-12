@@ -25,9 +25,9 @@ public class FoodRecCon extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String choice = request.getParameter("platform");
+		String choice = request.getParameter("choice");
 
-		System.out.println("choice : " + choice);
+		System.out.println("choice : " +choice);
 
 		FoodRecDAO dao = new FoodRecDAO();
 		ArrayList<FoodRecDTO> list = dao.f_dec(choice);
