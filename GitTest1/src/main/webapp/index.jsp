@@ -151,10 +151,9 @@ clist = dao.graph(info.getId());
 		<div class="nk-sidebar">
 			<div class="nk-nav-scroll">
 				<ul class="metismenu" id="menu">
-					<li class="nav-label">Dashboard</li>
 					<li><a href="./index.jsp"
-						> <i class="icon-grid menu-icon"></i><span
-							class="nav-text">메인페이지</span>
+						> <i class="icon-home"></i><span
+							class="nav-text">홈</span>
 					</a>
 					</li>
 					<li><a href="./user-import.jsp"
@@ -164,21 +163,21 @@ clist = dao.graph(info.getId());
 					</li>
 					<li><a href="./page-2.jsp"
 						> <i class="icon-note menu-icon"></i><span
-							class="nav-text">식단입력페이지</span>
+							class="nav-text">식단입력</span>
 					</a>
 					</li>										
 					<li><a href="./page-3.jsp"
 						> <i class="icon-badge menu-icon"></i><span
-							class="nav-text">식단추천페이지</span>
+							class="nav-text">식단추천</span>
 					</a>
 					</li>
 					<li><a href="./page4.jsp"
-						> <i class="icon-badge menu-icon"></i><span
-							class="nav-text">운동추천페이지</span>
+						> <i class="icon-social-youtube"></i><span
+							class="nav-text">운동추천</span>
 					</a>
 					</li>
 					<li><a href="./Bord.jsp"
-						> <i class="icon-badge menu-icon"></i><span
+						> <i class="icon-list"></i><span
 							class="nav-text">게시판</span>
 					</a>
 					</li>
