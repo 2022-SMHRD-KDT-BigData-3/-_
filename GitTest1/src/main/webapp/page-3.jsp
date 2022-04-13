@@ -257,7 +257,7 @@
         	
 			
 					
-			<div class="card"style="width:170%">
+			<div class="card"style="width:100%">
                             <div class="card-body">
                                 <div class="card-title" >
                                     <h4>음식 추천</h4>
