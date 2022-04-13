@@ -477,10 +477,10 @@ clist = dao.graph(info.getId());
 	<!--**********************************
             Footer start
         ***********************************-->
-	<div class="footer">
+		<div class="footer">
 		<div class="copyright">
 			<p>
-				스마트인재개발 &copy; Designed & Developed by <a harf="https://smhrd.lms.elice.io/">지금우리학원은</a> 2022
+				스마트인재개발 &copy; Designed & Developed by <a harf="https://smhrd.lms.elice.io/home">지금우리학원은</a> 2022
 			</p>
 		</div>
 	</div>
