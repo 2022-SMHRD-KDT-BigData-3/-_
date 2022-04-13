@@ -4,10 +4,12 @@ drop table menu;
 drop table food_rec;
 drop table board;
 select * from board;
-insert into board values(1,'안녕못한다','선생님');
+delete from BORD where title ='탄수화물으';
+insert into board values(17,'탄수화물으','탄수화물이다');
 select * from member;
 select * from checking order by checkday;
 insert into checking values('1','2022-01-11',110,120,110,175,29,2);
+insert into menu values('1',)
 select * from MENU;
 create sequence user_seq
 	start with 1
@@ -24,7 +26,8 @@ nick varchar2(100) not null,
 constraint user_seq primary key(seq),
 constraint id unique(id),
 constraint nick unique(nick));
-	
+
+ 
 create table checking(
 id varchar2(100),
 checkday date default sysdate,

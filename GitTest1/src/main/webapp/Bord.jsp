@@ -248,7 +248,7 @@
 														<tr>
 															<td id="num<%=i%>"></td>
 															<td id="title<%=i%>"></td>
-															<td id="date<%=i%>"></td>
+															<td id="data<%=i%>"></td>
 														</tr>
 														<%
 														}
@@ -484,12 +484,12 @@
 			for (var i = 0; i < data_list.length; i++) {//jquery 문을통해 태그안의 내용을 바꾸어준다 --> .text()사용
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#date' + i).text(data_list[i].date);
+				$('#data' + i).text(data_list[i].data);
 			}
 			for (var i = data_list.length; i < 10; i++) {//jsonArray타입의 객체의 갯수가 10개보다 적을경우 데이터가 들어가지 않는 행은 안보임 처리를 해준다
 				$('#num' + i).hide();
 				$('#title' + i).hide();
-				$('#date' + i).hide();
+				$('#data' + i).hide();
 			}
 		}
 		//클로저 함수 --> 클릭된 버튼의 값에 맞게 불러온 데이터 를 슬라이싱 해서 보여줌
@@ -532,10 +532,10 @@
 			for (var i = 0; i < 10; i++) {
 				$('#num' + i).show();
 				$('#title' + i).show();
-				$('#date' + i).show();
+				$('#data' + i).show();
 				$('#num' + i).text(data_list[i].num);
 				$('#title' + i).text(data_list[i].title);
-				$('#date' + i).text(data_list[i].date);
+				$('#data' + i).text(data_list[i].data);
 			}
 		}
 	</script>

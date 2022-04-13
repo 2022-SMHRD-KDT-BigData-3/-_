@@ -335,7 +335,7 @@
                         <div class="col-md-12">
                     
                         
-                                  <h4 class="card-title" style="font-size: 20px;">칼로리 kcal</h4>
+                                  <h4 class="card-title" style="font-size: 20px;">칼로리</h4>
                                   <div class="k-bar" style="height: 37px;">
                                       <div class="progress-bar bg-info progress-bar-striped" id="calcart"><span class="sr-only">85% Complete (success)</span>
                                       <span id="cardBar" style="left: 20%;" style="font-size: 20px;">kal</span>
@@ -736,12 +736,12 @@
       <%}else if(ckdto.getAct()==3){%>40<%}}}%>
       
       let enCal = nomalWeigth*act;
+      /* 권장영양소 */
+      let enCar = enCal/4*0.6;
+      let enPro = enCal/4*0.135;
+      let enFat = enCal/9*0.225;      
       
-      let enCar = enCal*0.6*0.25;
-      let enPro = enCal*0.135*0.25;
-      let enFat = enCal*0.225/9;      
-      
-      console.log(enCar);
+      console.log("권장칼로리 : "+enCar);
       console.log(enPro);
       console.log(enFat);
       
@@ -842,13 +842,14 @@
                
                   for(let a = 0; a < result.length; a++){
                      
+                	  /* 먹은데이터 */
                      let fnameS = result[a].fname;
                      let calS = result[a].cal;
                      let proS = result[a].pro;
                      let carS = result[a].car;
                      let fatS= result[a].fat;
                      let mealS = result[a].meal;
-                     
+                     /* 먹은영양소 */
                      cal += result[a].cal;
                      pro += result[a].pro;
                      car += result[a].car;
@@ -898,11 +899,15 @@
                      }
                   }
                   
-                  let pcal = enCal%cal;
-                  let ppro = enPro%pro;
-                  let pcar = enCar%car;
-                  let pfat = enFat%fat;
+                  let pcal = cal/enCal*100;
+                  let ppro = pro/enPro*100;
+                  let pcar = car/enCar*100;
+                  let pfat = fat/enFat*100;
                   
+                  console.log("pcal:"+pcal);
+                  console.log("ppro:"+ppro);
+                  console.log("pcar:"+pcar);
+                  console.log("pfat:"+pfat);
                   if(result.length == 0){
                      pcal = 0;
                      ppro = 0;
@@ -917,12 +922,12 @@
                   
                   let tdB = document.getElementById("cardBar");
                   
-                  tdC.innerText = car+"/"+enCar;
-                  tdP.innerText = pro+"/"+enPro;
-                  tdF.innerText = fat+"/"+enFat;
-                  tdB.innerText = cal + "kcal";
+                  tdC.innerText = car+"(섭취)/"+enCar+"(권장)";
+                  tdP.innerText = pro+"(섭취)/"+enPro+"(권장)";
+                  tdF.innerText = fat+"(섭취)/"+enFat+"(권장)";
+                  tdB.innerText = cal + "kcal(섭취)/"+enCal+"kcal(권장)";
                   
-                  $("#calcart").css("width",pcal);
+                  $("#calcart").css("width",pcal+"%");
                   
                   $("#procart").css({
                          "background":"conic-gradient(#25673e 0% "+ppro+"%, #DCDCDC 0% 100%)"

@@ -49,10 +49,10 @@ public class border extends HttpServlet {
 			json.addProperty("data", list.get(i).getData());
 			
 			jarray.add(json);
-			json = new JsonObject();
+		
 		}
 		
-		
+		System.out.println();
 		out.print(jarray);
 	}
 
